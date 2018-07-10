@@ -1,0 +1,27 @@
+<!-- Cart.liquid v0.1 -->
+<h2>Your Cart</h2>
+{% if cart.item_count == 0 %}
+ <!-- If the customer has nothing in their cart do this -->
+You have nothing in your cart.
+  {% else %}
+ <!-- If the customer does have something their cart do this 
+
+So far the cart is really basic. Remove is not yet working. Will need to add that functionality in with javascript.
+
+-->
+
+<div class="cart">
+	{% for item in cart.items %}
+	<div class="cart-item">
+		<div class="cart-item-image"><img src="{{ item.product.images.first | product_img_url: 'thumb' }}" alt="{{ item.title | escape }}" /></div>
+		<div class="cart-item-name"><a href="{{ item.product.url }}">{{ item.title }}</a></p>
+		{{ item.product.description | strip_html | truncate: 120 }}</div>
+		<div class="cart-item-price">{{ item.price | money }}</div>
+		<div class="cart-item-qty">{{ item.quantity }}</div>
+		<div class="cart-item-delete"><a href="#">Remove</a> </div>
+		<div class="cart-item-lineprice">{{ item.line_price | money }}</div>
+	</div>
+	{% endfor %}
+</div>
+
+{% endif %}

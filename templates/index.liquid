@@ -1,0 +1,52 @@
+<!-- Index.liquid v0.1 -->
+
+	<!-- FEATURED PRODUCTS
+	
+	I'd recommend removing a few of these modules. We wanted to create a front page that had everything you might want with the suggestion to remove a bunch! 
+	
+	-->
+	<div id="featured">
+		<h2>Featured Products</h2>
+		{% for product in collections.frontpage.products limit:3  %}
+	   		<a href="{{product.url}}">{{ product.featured_image | product_img_url: 'medium' | img_tag }}</a>
+	   		<h3><a href="{{product.url}}">{{product.title}}</a></h3>
+	   		<ul class="attributes">
+	     		<li><span class="money">{{product.price_min | money}}</span></li>
+	   		</ul>
+		{% endfor %}
+	</div>
+
+	<!-- ARTICLE
+	
+	If you've written anything in the "frontpage" article, that will be displayed. Otherwise this will be hidden
+	
+	-->
+
+  	{% assign article = pages.frontpage %}
+	{% if article.content != "" %}	
+		<div id="frontpage-article">
+    		<div class="article">
+		  		<h3>{{ article.title }}</h3>
+      			<div class="article-body textile">
+  		  			{{ article.content }}
+  				</div>
+  			</div>
+		</div>
+	{% endif %}
+    
+	<!-- BLOG
+	
+	Display a list of your 5 most recent blog posts
+	
+	-->
+	<div id="frontpage-posts">
+		<h3>Recent posts from the blog</h3>
+		<ul id="blog-list">
+			{% for article in blogs.news.articles limit: 5 %}
+				<li>
+					<a href="{{ article.url }}">{{ article.title }}</a>
+				</li>
+			{% endfor %}
+		</ul>
+		&nbsp;
+	</div>
