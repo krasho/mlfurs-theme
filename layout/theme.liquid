@@ -1,43 +1,102 @@
-<html>
+<!doctype html>
+<html lang="en">
 <head>
   	{{ content_for_header }}
   	<title>{{ shop.name }} - {{ page_title }}</title>
+
+    <meta charset="utf-8">
+    <!-- <base href="/"> -->
+
   	<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
-  	<title>untitled</title>
-	{{ 'blank.css'  | asset_url | stylesheet_tag }}
+    
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    
+    <!-- Template Basic Images Start -->
+    <meta property="og:image" content="path/to/image.jpg">
+    <link rel="icon" href="{{ 'favicon.ico' | asset_url }}">
+    <link rel="apple-touch-icon" sizes="180x180" href="img/favicon/apple-touch-icon-180x180.png">
+    <!-- Template Basic Images End -->
+    
+    <!-- Custom Browsers Color Start -->
+    <meta name="theme-color" content="#000">
+    <!-- Custom Browsers Color End -->
+
+	  {{ 'main.min.css'  | asset_url | stylesheet_tag }}
 </head>
 
-<body>
-  <div id="wrapper">
-    <div id="header">
-	  <h1>{{ shop.name }}</h1>
-		<div id="top-nav">
-			<div class="menu"> 
-			<ul class="menu">
-		    	{% for link in linklists.main-menu.links %}
-			      <li class="menu-item"><a href="{{ link.url }}">{{ link.title }}</a></li>
-			    {% endfor %}
-			  </ul>
-			<div>
-		</div>
-		<div id="cart">
-			<h3>Shopping Cart</h3>
-			<p class="cart-count">
-				{% if cart.item_count == 0 %}
-					Your cart is currently empty
-				{% else %}
-					{{ cart.item_count }} {{ cart.item_count | pluralize: 'item', 'items' }} <span>-</span> Total: {{cart.total_price | money_with_currency }} <span>-</span> <a href="/cart">View Cart</a>
-				{% endif %}			
-			</p>
+<body class="body">
+  {%- section 'header' -%}	
+  <main class="main-content">	
+  	<div class="{{template.name}}">
+     {{ content_for_layout }}
+    </div> 
+  </main>  
+
+  {%- section 'footer' -%}
+
+
+	<div class="d-none">
+
+		<div id="login-popup" class="login-popup popup-window">
+			<div class="login-popup__left-part">
+				<form class="account-form">
+					<div class="account-form__title">Create an Account</div>
+					<div class="account-form__body">
+						<input type="text" class="input-text account-form__input-text" placeholder="EMAIL ADDRESS">
+						<input type="text" class="input-text account-form__input-text" placeholder="PASSWORD">
+						<input type="text" class="input-text account-form__input-text" placeholder="CONFIRM PASSWORD">
+						<input type="text" class="input-text account-form__input-text input-text_width_sm" placeholder="CAPTCHA">
+						<input type="submit" class="form-button" value="Login">
+					</div>
+					<div class="account-form__text-under-form">
+						Have an account? <a href="#" class="quick-link">Login</a>
+					</div>
+				</form>
+			</div>
+			<div class="login-popup__right-part">
+				<img src="{{ 'login-image.png' | asset_url }}" alt="Login" class="img-responsive img-width">
+				<div class="login-popup__text">
+					<div class="login-popup__text-title">Ml Furs Advantage</div>
+					<div class="login-popup__list">
+						<li class="login-popup__list-item">Lorem ipsum dolor sit amet.</li>
+						<li class="login-popup__list-item">Lorem ipsum dolor sit.</li>
+						<li class="login-popup__list-item">Lorem ipsum dolor.</li>
+						<li class="login-popup__list-item">Lorem ipsum dolor sit.</li>
+						<li class="login-popup__list-item">Lorem ipsum.</li>
+					</div>
+				</div>
+			</div>
 		</div>
 
-    </div><!-- #header -->
-	
-    <div class="content">
-      {{ content_for_layout }}
-    </div><!-- .content -->
-	&nbsp;
-  </div><!-- #wrapper -->
-&nbsp;
+
+		<div id="sale-popup" class="sale-popup popup-window">
+			<div class="sale-popup__left-part"></div>
+			<div class="sale-popup__right-part">
+				<form class="sale-form">
+					<div class="sale-form__header">
+						<div class="sale-form__header-title">Wait!</div>
+						<div class="sale-form__header-descr">Looks Like You`re Leaving before Getting Your Special Offer</div>
+					</div>
+					<div class="sale-form__body">
+						<div class="sale-form__descr">
+							<div class="sale-form__descr-left">
+								Save <br>
+								<span>10%</span>
+							</div>
+							<div class="sale-form__descr-right">
+								Lorem ipsum dolor sit amet, consectetur adipisicing elit. Illum architecto porro
+							</div>
+						</div>
+						<input type="text" class="input-text sale-form__input-text" placeholder="EMAIL ADDRESS">
+						<input type="submit" class="form-button" value="Get 10% off on your next order">
+					</div>
+				</form>
+			</div>
+		</div>
+
+	</div>
+  {{ 'scripts.min.js' | asset_url | script_tag }}
+  {{ 'common.js' | asset_url | script_tag }}
 </body>
 </html>

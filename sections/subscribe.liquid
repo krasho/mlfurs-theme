@@ -1,0 +1,34 @@
+	<section class="subscribe">
+		<div class="container-fluid">
+			<div class="row">
+				<div class="col-12 col-lg-6 subscribe__left">
+					<div class="subscribe__left-image"><img class="img-responsive img-width" src="{{ 'authentic.png' | asset_url }}" alt="img"></div>
+					<div class="subscribe__left-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Deserunt, at, atque. Dolor voluptatem fuga enim, possimus ab minima placeat totam. Veritatis explicabo ducimus molestias assumenda, cupiditate nobis hic a doloremque.</div>					
+				</div>
+				<div class="col-12 col-lg-6 subscribe__right">
+					<div class="subscribe__right-left-part">
+						<div class="subscribe__right-title">Subscribe</div>
+						<div class="subscribe__right-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptas voluptatibus, asperiores.</div>
+					</div>
+					<form class="subscribe__block-input block-input">
+						<input type="email" class="block-input__input-text input-text input-text_bg_gray" placeholder="EMAIL ADDRESS">
+						<input type="submit" class="block-input__form-button form-button form-button_fontsize_sm" value="JOIN">
+					</form>
+				</div>
+			</div>
+		</div>
+	</section>
+
+{% schema %} {
+  "name": "Subscribe",
+  "settings": [
+  ],
+  
+  "presets": [
+    {
+      "name": "Subscribe Section",
+      "category": "Generals"
+    }
+  ] 
+}
+{% endschema %}        

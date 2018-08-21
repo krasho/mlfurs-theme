@@ -1,0 +1,61 @@
+	<section class="catalog-home-page">
+		<div class="container-fluid">
+			<div class="row">
+				<div class="col-12">
+					<div class="catalog-home-page__title">The stylish looks <b>230 shoppers</b><br> are viewing right now</div>
+				</div>
+			</div>
+			<div class="row">
+				{%- for block in section.blocks limit: 4 -%}
+				    {% assign product = all_products[block.settings.product] %}
+
+					<div class="col-6 col-lg-3 catalog-home-page__item">
+						<div class="product">
+							<div class="product__image">							    
+								<a class="product__link" href="{{product.url}}">
+								   {%- if product.images.size > 0 -%}
+									 <img src="{{ product.featured_image | product_img_url: '480x480', scale: 2, crop:'center' }}" alt="{{ product.title | escape }}" alt="product" class="img-responsive img-width" />
+								   {%- endif -%}
+								</a>
+							</div>
+							<div class="product__body">
+								<div class="product__size">em-el</div>
+								<div class="product__descr">{{product.title}}</div>
+								<div class="product__price">{{product.price | money}}</div>
+								<div class="product__rate"><img src="{{ '5-stars.png' | asset_url }}" alt="5 stars"></div>
+								<div class="product__info">Jane S. | Los Angeles, CA</div>
+								<div class="product__color" style="background-color: yellow"></div>
+							</div>
+						</div>
+					</div>
+				{%- endfor -%}
+			</div>
+		</div>
+	</section>
+
+{% schema %} {
+  "name": "Featured Products",
+  "max_blocks": 4,
+  "blocks": [
+     {
+	   "type": "product",
+	   "name": "products",
+	   "settings": [
+			{
+			"id": "product",
+			"type": "product",
+			"label": "Choose a product"
+			}
+     	]
+	}
+   ],
+
+  
+  "presets": [
+    {
+      "name": "Featured Products",
+      "category": "Products"
+    }
+  ] 
+}
+{% endschema %}        

@@ -1,0 +1,70 @@
+	<section class="banners">
+		<div class="container-fluid">
+			<div class="row">
+				<div class="col-12 col-lg-6 banners__item">
+
+					<div class="banner-preview" style="background-image: url({{ section.settings.preview1 | img_url: 'master' }});">
+						<h3>From One Runway <br> <span>To Another</span></h3>
+						<div class="banner-preview__text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptatem, quas!</div>
+						<a href="#" class="banner-preview__button button-preview">Shop Runway Looks</a>
+					</div>
+
+				</div>
+				<div class="col-12 col-lg-6 banners__item">
+
+					<div class="banner-preview" style="background-image: url({{ section.settings.preview2 | img_url: 'master' }});">
+						<h3><span>Apres-ski</span> <br> In Style</h3>
+						<div class="banner-preview__text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptatem, quas!</div>
+						<div class="banner-preview__buttons">
+							<a href="#" class="banner-preview__button button-preview">Shop Man</a>
+							<a href="#" class="banner-preview__button button-preview">Shop Women</a>
+						</div>
+					</div>
+
+				</div>
+			</div>
+
+			<div class="row">
+				<div class="col-12">
+					<div class="second-banner banners__second-banner" style="background-image: url({{ section.settings.banner_full | img_url: 'master' }});">
+						<div class="second-banner__content">
+							<h2><span>Say Goodbye to</span> <br>Winter Blues</h2>
+							<div class="second-banner__descr">
+								<div class="second-banner__text-left">Save <br> <span>40%</span></div>
+								<div class="second-banner__text-right">On Full Priced Items <br> <span>- Shop Now</span></div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+
+{% schema %} {
+  "name": "Categories Section",
+  "settings": [
+    {
+      "id": "preview1",
+      "type": "image_picker",
+      "label": "Image for Preview 1"
+    },
+    {
+      "id": "preview2",
+      "type": "image_picker",
+      "label": "Image for Preview 2"
+    },
+    {
+      "id": "banner_full",
+      "type": "image_picker",
+      "label": "Image Full Banner"
+    }              
+  ],
+  
+  "presets": [
+    {
+      "name": "Categories Section",
+      "category": "Banners"
+    }
+  ] 
+}
+{% endschema %}    
