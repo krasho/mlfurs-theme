@@ -1,0 +1,7 @@
+{% assign was_price = product.metafields["global"]["was_price"] | times: 1 %}
+{%- if was_price > 0 -%}
+    <div class="product-info__was__price">                                                                                                    
+        Was: {{ product.metafields["global"]["was_price"] | money}}
+    </div>
+{%- endif-%}
+

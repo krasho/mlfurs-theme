@@ -1,0 +1,274 @@
+.menu
+	padding-left: 40px
+	z-index: 10
+
+.menu__item
+	display: inline-block
+	height: 100%
+	transition: all .25s ease
+
+.menu__item_dropdown
+	.menu__item-link
+		&:before
+			width: 0
+			height: 0
+			content: ''
+			border-left: 5px solid transparent
+			border-right: 5px solid transparent
+			border-bottom: 7px solid #2e2b2a
+			bottom: 30px
+			position: absolute
+			left: 50%
+			margin-left: -5px
+			pointer-events: none
+			opacity: 0
+			visibility: hidden
+			-webkit-transition: opacity .3s,visibility .3s,bottom .3s
+			transition: opacity .3s,visibility .3s,bottom .3s
+			transition: opacity .3s,visibility .3s,bottom .3s,-webkit-bottom .3s
+	&:hover
+		.menu__left-subnav_static
+			opacity: 1
+			visibility: visible
+			pointer-events: auto
+		.menu__right-subnav_static
+			opacity: 1
+			visibility: visible
+			pointer-events: auto
+		.menu__subnav
+			opacity: 1
+			visibility: visible
+			-webkit-transform: translate(0,0)
+			-ms-transform: translate(0,0)
+			transform: translate(0,0)
+			pointer-events: auto
+		.menu__item-link
+			opacity: 1
+			&:before
+				opacity: 1
+				visibility: visible
+				bottom: 0
+				pointer-events: auto
+
+.menu__item_color_accent
+	.menu__item-link
+		color: $accent
+		&:hover
+			color: $accent
+
+.menu__item-link
+	padding: 18px 32px
+	padding-bottom: 40px
+	height: 100%
+	display: block
+	vertical-align: middle
+	text-decoration: none
+	color: $text
+	text-transform: uppercase
+	font-size: 14px
+	font-family: $semi-bold
+	position: relative
+	&:hover
+		opacity: .5
+		text-decoration: none
+		color: $text
+
+.menu__subnav
+	display: -webkit-flex
+	display: -moz-flex
+	display: -ms-flex
+	display: -o-flex
+	display: flex
+	min-height: 550px
+	pointer-events: none
+	opacity: 0
+	visibility: hidden
+	-webkit-transform: translate(0,-5%)
+	-ms-transform: translate(0,-5%)
+	transform: translate(0,-5%)
+	-webkit-transition: opacity .3s,visibility .3s,-webkit-transform .3s
+	transition: opacity .3s,visibility .3s,transform .3s
+	transition: opacity .3s,visibility .3s,transform .3s,-webkit-transform .3s
+	background-color: #2e2b2a
+	width: 100%
+	position: absolute
+	left: 0
+	top: 100%
+	z-index: 1
+
+.menu__subnav-menu
+	width: 25%
+	flex: 0 0 25%
+	max-width: 400px
+	padding: 25px 0
+	background-color: #373332
+
+.menu__subnav-menu-item
+	padding: 0 30px
+	&:last-child
+		.menu__subnav-menu-link
+			border-bottom: none
+	&:hover
+		.menu__subnav-menu-link_dropdown
+			color: #fff
+			&:after
+				opacity: 1
+				visibility: visible
+				right: 0
+				pointer-events: auto
+		.menu__left-subnav
+			left: 25%
+			opacity: 1
+			visibility: visible
+			pointer-events: auto
+		.menu__right-subnav
+			right: 0
+			opacity: 1
+			visibility: visible
+			pointer-events: auto
+
+.menu__subnav-menu-link
+	border-bottom: 1px solid #3d3837
+	color: #b8b8b8
+	text-transform: uppercase
+	font-size: 14px
+	text-decoration: none
+	display: block
+	padding: 20px 0
+	position: relative
+	&:hover
+		color: #fff
+		text-decoration: none
+
+.menu__subnav-menu-link_dropdown
+	&:after
+		right: 10px
+		content: url(../img/arrow-right.png)
+		position: absolute
+		top: 50%
+		margin-top: -12px
+		opacity: 0
+		visibility: hidden
+		-webkit-transition: opacity .3s,visibility .3s,-webkit-right .3s
+		transition: opacity .3s,visibility .3s,right .3s
+		transition: opacity .3s,visibility .3s,right .3s,-webkit-right .3s
+
+.menu__right-subnav
+	position: absolute
+	pointer-events: none
+	visibility: hidden
+	-webkit-transition: opacity .3s,visibility .3s,-webkit-right .3s
+	transition: opacity .3s,visibility .3s,right .3s
+	transition: opacity .3s,visibility .3s,right .3s,-webkit-right .3s
+	opacity: 0
+	right: 10px
+	width: 50%
+	flex: 0 0 50%
+	max-width: 800px
+	top: 0
+	height: 100%
+	z-index: 2
+
+.menu__right-subnav_static
+	right: 0
+	z-index: 1
+
+.menu__banner-container
+	width: 50%
+	float: left
+	padding-top: 20px
+	padding-bottom: 20px
+	padding-right: 20px
+	height: 100%
+
+.menu__banner
+	background-size: cover
+	background-repeat: no-repeat
+	width: 100%
+	padding: 20px
+
+.menu__banner_content_bottom
+	display: -webkit-flex
+	display: -moz-flex
+	display: -ms-flex
+	display: -o-flex
+	display: flex
+	align-items: flex-end
+	padding-left: 25px
+	padding-bottom: 25px
+
+.menu__banner-descr-bottom
+	font-size: 28px
+	text-transform: uppercase
+	line-height: 1
+	color: #fff
+	&:first-line
+		font-size: 20px
+		text-transform: none
+		font-family: $light-italic
+
+
+.menu__banner-descr-title
+	font-size: 18px
+	text-transform: uppercase
+	font-family: $bold
+
+.menu__banner-descr-text
+	font-size: 12px
+	text-transform: uppercase
+	font-family: $medium
+
+.menu__banner-descr-code
+	text-align: center
+	background-color: $accent
+	text-transform: uppercase
+	font-size: 14px
+	color: #fff
+	font-family: $bold
+	padding: 10px 20px
+	display: inline-block
+	margin-top: 10px
+
+.menu__banner_large
+	height: 100%
+
+.menu__banner_small
+	height: calc(50% - 10px)
+	margin-bottom: 20px
+	&:last-child
+		margin-bottom: 0
+
+.menu__left-subnav
+	padding: 25px
+	position: absolute
+	pointer-events: none
+	visibility: hidden
+	-webkit-transition: opacity .3s,visibility .3s,-webkit-left .3s
+	transition: opacity .3s,visibility .3s,left .3s
+	transition: opacity .3s,visibility .3s,left .3s,-webkit-left .3s
+	opacity: 0
+	left: 24%
+	width: 25%
+	flex: 0 0 25%
+	max-width: 400px
+	top: 0
+	height: 100%
+	overflow: auto
+	z-index: 2
+	background-color: #2e2b2a
+
+.menu__left-subnav_static
+	z-index: 1
+	left: 25%
+
+.menu__left-subnav-link
+	color: #fff
+	font-family: $light
+	text-decoration: none
+	padding: 8px 20px
+	font-size: 14px
+	display: block
+	&:hover
+		text-decoration: none
+		color: #fff
+		background-color: $text

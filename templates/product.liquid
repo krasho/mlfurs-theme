@@ -3,173 +3,19 @@
 
 			<div class="row">
 				<div class="col-12">
-					<div class="breadcrumbs product-card__breadcrumbs breadcrumbs_size_sm">
-						<div class="breadcrumbs__item .breadcrumbs__item_dark">
-							<a href="#" class="breadcrumbs__link breadcrumbs__link_dark">Home</a>
-						</div>
-						<div class="breadcrumbs__item breadcrumbs__item_dark">
-							<a href="#" class="breadcrumbs__link breadcrumbs__link_dark">Premium Fur</a>
-						</div>
-						<div class="breadcrumbs__item breadcrumbs__item_dark">
-							<a href="#" class="breadcrumbs__link breadcrumbs__link_dark">All Fur</a>
-						</div>
-						<div class="breadcrumbs__item breadcrumbs__item_dark breadcrumbs__item_disabled">{{product.title | scape}}</div>
-					</div>
+				    {% assign class_to_link = 'breadcrumbs__link breadcrumbs__link_dark' %}
+					{% assign class_to_breadcrumbs = 'breadcrumbs product-card__breadcrumbs breadcrumbs_size_sm' %}
+					{% assign class_to_item = 'breadcrumbs__item .breadcrumbs__item_dark' %}
+					{% assign class_to_last_item = 'breadcrumbs__item breadcrumbs__item_dark breadcrumbs__item_disabled' %}
+				    {% include 'breadcrumbs' %}
 				</div>
 			</div>
-
-
-			<div class="product-card__content">
-				<div class="row">
-
-        {%- if product.images.size > 0 -%}
-          <div class="product-card__slider-nav-container d-none d-lg-flex">
-            <div class="slider-nav product-card__slider-nav">
-              {%- for image in product.images -%}
-                <div class="slider-nav__item">
-                  <img  alt="product" class="slider-nav__image img-responsive img-width" src="{{ image | product_img_url: '240x240', scale: 2 }}" alt="{{ product.title | escape }}" />
-                </div>
-              {%- endfor -%}  
-            </div>
-          </div>
-        {%- endif -%}  
-
-
-				<div class="col d-lg-none">
-					<div class="product-info__size">em-el</div>
-					<div class="product-info__descr">{{product.title | scape}}</div>
-					<div class="product-info__price-rate">
-						<div class="product-info__price">{{product.price | money}}</div>
-						<div class="product-info__rate"><a href="#" class="quick-link product-info__quick-link quick-link_size_sm">Be the first to review</a><img src="img/0-stars.png" alt="stars"></div>
-					</div>
-				</div>
-
-
-        {%- if product.images.size > 0 -%}
-				  <div class="product-card__slider-for-container">
-					  <div class="slider-for product-card__slider-for">
-              {%- for image in product.images -%}
-                <div class="slider-for__item">
-                  <img src="{{ image | product_img_url: 'master'}}" alt="product" class="slider-nav__image img-responsive img-width">
-                </div>
-              {%- endfor -%}  
-            </div>
-          </div>
-        {%- endif -%}        
-
-				<div class="product-card__product-info-container">
-					<div class="product-info product-card__product-info">
-						<div class="product-info__size d-none d-lg-block">em-el</div>
-						<div class="product-info__descr d-none d-lg-block">{{product.title | scape}}</div>
-						<div class="product-info__price-rate d-none d-lg-flex">
-							<div class="product-info__price">{{product.price | money}}</div>
-							<div class="product-info__rate"><a href="#" class="quick-link product-info__quick-link quick-link_size_sm">Be the first to review</a><img src="img/0-stars.png" alt="stars"></div>
-						</div>
-
-            {%- if product.options_with_values.size > 1 -%}               
-                  {% for product_option in product.options_with_values %}
-                     {{ product_option.name }}
-
-                     {%- if product_option.name == "Color" -%}
-                        <div class="product-info__color-boxes">
-                     {%- else -%}
-                        <div class="product-info__size-boxes">
-                     {%- endif -%} 
-
-                     
-                      {% for value in product_option.values %}
-                        {%- if product_option.name == "Color" -%}
-                            <div class="product-info__color-box" style="background-color: {{value}}"></div>
-                        {%- else -%}
-                            <div class="product-info__size-box product-info__size-box_active">{{ value }}</div>
-                        {%- endif -%}                        
-                        {% endfor %} 
-
-                        {%- if product_option.name == "Size" -%}
-                            <a href="#" class="product-info__size-link quick-link quick-link_size_sm quick-link_dark">Size Guide</a>
-                        {%- endif -%}                        
-                     </div>   
-                  {% endfor %}
-
-               </div>
-            {%- endif -%}            
-
-						<!--<div class="product-info__size-boxes">
-							<div class="product-info__size-box product-info__size-box_active">XS</div>
-							<div class="product-info__size-box">S</div>
-							<div class="product-info__size-box product-info__size-box_disabled">M</div>
-							<div class="product-info__size-box product-info__size-box_disabled">L</div>
-							<a href="#" class="product-info__size-link quick-link quick-link_size_sm quick-link_dark">Size Guide</a>
-						</div>
-            -->
-
-            {% form "product", product %}
-              {%- if product.variants.size > 1 -%}
-                    <select id="product-select" name="id">
-                       {%- for variant in product.variants -%}
-                          <option {% if variant == product.selected_or_first_available_variant %} selected="selected" {% endif %} value="{{ variant.id }}">{{ variant.title | escape }} -
-                                {{ variant.price | money }}
-                          </option>
-                       {%- endfor -%}
-                    </select>
-              {%- else -%}
-                      <input type="hidden" name="id" value="{{ product.variants.first.id }}" />
-              {%- endif -%}            
-						<!--<div class="product-info__color-boxes">
-							<div class="product-info__color-box" style="background-color: pink"></div>
-							<div class="product-info__color-box" style="background-color: yellow"></div>
-							<div class="product-info__color-box" style="background-color: black"></div>
-							<div class="product-info__color-box" style="background-color: red"></div>
-						</div>-->
-						<div class="product-info__count-add">
-							<input name="quantity" type="number" class="product-info__count-input input-text input-text_height_sm text-center input-text_bg_gray input-text_size_sm" value="1">
-              <button class="product-info__form-button form-button form-button_height_sm form-button_fontsize_sm" type="submit" {% unless product.available %}disabled="disabled"{% endunless %}>Add to cart</button>
-						</div>
-            {% endform %}
-						<div class="product-info__pay-text"><b>Pay in Installments</b>: Starting at <b class="color-accent">$220/mo</b> with <img class="product-info__affirm-image" src="{{ 'affirm-product.png' | asset_url }}" alt="affirm"></div>
-						<div class="product-info__buttons">
-							<a href="#" class="product-info__button-preview button-preview button-preview_with_image button-preview_dark button-preview_size_sm">Add to wish list <img class="button-preview__image" src="{{ 'heart.png' | asset_url }}" alt="heart"></a>
-							<a href="#" class="product-info__button-preview button-preview button-preview_with_image button-preview_dark button-preview_size_sm">Compare <img class="button-preview__image" src="{{ 'compare.png' | asset_url }}" alt="compare"></a>
-						</div>
-						<div class="product-info__share">
-							<div class="product-info__share-item">Share</div>
-							<div class="product-info__share-item">
-								<a href="#" class="product-info__share-link"><img src="{{ 'fb.png' | asset_url }}" alt="fb"></a>
-							</div>
-							<div class="product-info__share-item">
-								<a href="#" class="product-info__share-link"><img src="{{ 'tw.png' | asset_url }}" alt="tw"></a>
-							</div>
-							<div class="product-info__share-item">
-								<a href="#" class="product-info__share-link"><img src="{{ 'pint.png' | asset_url }}" alt="pint"></a>
-							</div>
-							<div class="product-info__share-item">
-								<a href="#" class="product-info__share-link"><img src="{{ 'mail.png' | asset_url }}" alt="mail"></a>
-							</div>
-						</div>
-						<div class="product-info__accordion accordion">
-							<div class="accordion__item">
-								<div class="product-info__accordion-title accordion__title">Lorem ipsum dolor.</div>
-								<div class="product-info__accordion-content accordion__content">
-									Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ea eos odio, perspiciatis praesentium consequatur esse obcaecati, ipsum suscipit doloribus sed cupiditate qui ducimus repellendus aut, quae at harum ipsa inventore.
-								</div>
-							</div>
-							<div class="accordion__item">
-								<div class="product-info__accordion-title accordion__title">Lorem ipsum dolor.</div>
-								<div class="product-info__accordion-content accordion__content">
-									Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ea eos odio, perspiciatis praesentium consequatur esse obcaecati, ipsum suscipit doloribus sed cupiditate qui ducimus repellendus aut, quae at harum ipsa inventore.
-								</div>
-							</div>
-						</div>
-					</div>
-				</div>
-
-
-			</div>
-			</div>
-
+         	
+			{% section 'product_detail_information' %}
 
 		</div>
 	</section>
+
 
 	
 
@@ -180,76 +26,13 @@
 					<div class="catalog-home-page__title">Related products</div>
 				</div>
 			</div>
-			<div class="row">
-				<div class="col-6 col-lg-3 catalog-home-page__item">
-          {%- assign RELATED_PRODUCTS_LIMIT = 4 -%}
-          {%- if product.metafields.theme.related_products != blank -%}
-          <div>Entre</div>
-          {%- endif -%}
-
-				  <!--<div class="product">
-						<div class="product__image">
-							<a class="product__link" href="#"><img src="img/product-1.png" alt="product" class="img-responsive img-width"></a>
-						</div>
-						<div class="product__body">
-							<div class="product__size">em-el</div>
-							<div class="product__descr">Hooded Sheared Beaver & Fox Fur Parka</div>
-							<div class="product__price">$6,995.00</div>
-							<div class="product__rate"><img src="img/5-stars.png" alt="5 stars"></div>
-							<div class="product__info">Jane S. | Los Angeles, CA</div>
-							<div class="product__color" style="background-color: yellow"></div>
-						</div>
-					</div>
-				</div>
-				<div class="col-6 col-lg-3 catalog-home-page__item">
-					<div class="product">
-						<div class="product__image">
-							<a class="product__link" href="#"><img src="img/product-2.png" alt="product" class="img-responsive img-width"></a>
-						</div>
-						<div class="product__body">
-							<div class="product__size">em-el</div>
-							<div class="product__descr">Hooded Sheared Beaver & Fox Fur Parka</div>
-							<div class="product__price">$6,995.00</div>
-							<div class="product__rate"><img src="img/4-stars.png" alt="5 stars"></div>
-							<div class="product__info">Jane S. | Los Angeles, CA</div>
-							<div class="product__color" style="background-color: pink"></div>
-						</div>
-					</div>
-				</div>
-				<div class="col-6 col-lg-3 catalog-home-page__item">
-					<div class="product">
-						<div class="product__image">
-							<a class="product__link" href="#"><img src="img/product-3.png" alt="product" class="img-responsive img-width"></a>
-						</div>
-						<div class="product__body">
-							<div class="product__size">em-el</div>
-							<div class="product__descr">Hooded Sheared Beaver & Fox Fur Parka</div>
-							<div class="product__price">$6,995.00</div>
-							<div class="product__rate"><img src="img/5-stars.png" alt="5 stars"></div>
-							<div class="product__info">Jane S. | Los Angeles, CA</div>
-							<div class="product__color" style="background-color: red"></div>
-						</div>
-					</div>
-				</div>
-				<div class="col-6 col-lg-3 catalog-home-page__item">
-					<div class="product">
-						<div class="product__image">
-							<a class="product__link" href="#"><img src="img/product-4.png" alt="product" class="img-responsive img-width"></a>
-						</div>
-						<div class="product__body">
-							<div class="product__size">em-el</div>
-							<div class="product__descr">Hooded Sheared Beaver & Fox Fur Parka</div>
-							<div class="product__price">$6,995.00</div>
-							<div class="product__rate"><img src="img/0-stars.png" alt="5 stars"></div>
-							<div class="product__info">Jane S. | Los Angeles, CA</div>
-							<div class="product__color" style="background-color: white"></div>
-						</div>
-					</div>
-          -->
-				</div>
+			<div class="row">				
+			{%- assign RELATED_PRODUCTS_LIMIT = 4 -%}
+			{%- include 'related-products' -%}
 			</div>
 		</div>
 	</section>
 
 
   {% section 'subscribe' %}
+

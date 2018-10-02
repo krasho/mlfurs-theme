@@ -1,0 +1,69 @@
+	<section class="main-contact">
+		<div class="container-fluid">
+			<div class="row">
+				{% include 'nav-sidebar', option_selected: 'contact' %}
+				<div class="col">
+					<div class="main-contact__banner" style="background-image: url({{ section.settings.banner | img_url: 'master' }})">
+						<div class="main-contact__banner-title">Contact us</div>
+						<div class="main-contact__banner-descr">
+							Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dicta autem,<br> vero ratione pariatur aut non ab, qui nemo molestias magnam<br> voluptatem, repudiandae. Voluptas iste dolorum accusamus
+						</div>
+					</div>
+					<div class="main-contact__content">
+						<div class="row">
+							<div class="col-lg-10 offset-lg-1">
+								<div class="contact-map">
+									<div class="contact-map__info">
+										<div class="contact-map__info-block contact-map__info-block_theme_brown">
+											<div class="contact-map__info-title">Marks-Lloyds Furs</div>
+											<div class="contact-map__info-address">
+												<div class="contact-map__info-descr">Lorem ipsum dolor <br>sit amet</div>
+												<a href="#" class="contact-map__location-link location-link">Directions</a>
+											</div>
+										</div>
+										<div class="contact-map__info-block">
+											<div class="contact-map__info-descr">
+												<a class="contact-map__info-link" href="tel:3033222287">303-322-22-87</a><br>
+												<a class="contact-map__info-link" href="tel:3033222287">1-877-mlf-furs (1-877-653-3877)</a>
+											</div>
+										</div>
+										<div class="contact-map__info-block">
+											<div class="contact-map__info-descr">
+												Hours: <br>
+												Mon-Sat 9am - 5:30pm <br>
+												Sunday 11am - 3pm
+											</div>
+											<div class="contact-map__info-descr">
+												Lorem ipsum dolor sit amet, consectetur.
+											</div>
+										</div>
+									</div>
+									<div class="map contact-map__map">
+										<iframe src="https://snazzymaps.com/embed/82111" width="100%" height="100%" style="border:none;"></iframe>
+									</div>
+								</div>
+								<div class="main-contact__map-descr">
+									Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptas sunt distinctio dolore <br>asperiores totam deleniti quisquam amet temporibus ratione illo. Laudantium maxime <br>molestias natus et sapiente at aut, debitis atque.
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+
+
+
+			</div>
+		</div>
+	</section>
+
+{% schema %} {
+  "name": "Contact Us",
+  "settings": [
+    {
+      "id": "banner",
+      "type": "image_picker",
+      "label": "Banner"
+    } 
+  ]
+}
+{% endschema %}

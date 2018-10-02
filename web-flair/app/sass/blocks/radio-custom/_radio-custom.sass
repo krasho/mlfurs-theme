@@ -1,0 +1,32 @@
+.radio-custom
+	position: relative
+	display: -webkit-flex
+	display: -moz-flex
+	display: -ms-flex
+	display: -o-flex
+	display: flex
+
+.radio-custom__indicator
+	width: 20px
+	height: 20px
+	border-radius: 50%
+	border: 1px solid $gray
+	background-color: #fff
+
+.radio-custom__box
+	opacity: 0
+	cursor: pointer
+	left: 0
+	top: 0
+	position: absolute
+	width: 20px
+	height: 20px
+	border-radius: 50%
+	&:focus
+		&~.radio-custom__indicator
+			border: 2px solid $accent
+	&:checked
+		&~.radio-custom__indicator
+			border: 6px solid $accent
+			background-repeat: no-repeat
+			background-position: center

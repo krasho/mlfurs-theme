@@ -3,17 +3,35 @@
 			<div class="row">
 				<div class="col-12 col-lg-6 subscribe__left">
 					<div class="subscribe__left-image"><img class="img-responsive img-width" src="{{ 'authentic.png' | asset_url }}" alt="img"></div>
-					<div class="subscribe__left-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Deserunt, at, atque. Dolor voluptatem fuga enim, possimus ab minima placeat totam. Veritatis explicabo ducimus molestias assumenda, cupiditate nobis hic a doloremque.</div>					
+					<div class="subscribe__left-text">Products contain only real fur either ranch raised, or from a country who governs the standards of sustainable fur products, and are labeled to show country of origin. Fur is a natural product; color and length can vary amongst garments. Prices online do not reflect prices in store, and may vary due to market fluctuation.</div>					
 				</div>
 				<div class="col-12 col-lg-6 subscribe__right">
 					<div class="subscribe__right-left-part">
 						<div class="subscribe__right-title">Subscribe</div>
 						<div class="subscribe__right-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptas voluptatibus, asperiores.</div>
 					</div>
-					<form class="subscribe__block-input block-input">
-						<input type="email" class="block-input__input-text input-text input-text_bg_gray" placeholder="EMAIL ADDRESS">
-						<input type="submit" class="block-input__form-button form-button form-button_fontsize_sm" value="JOIN">
-					</form>
+
+					{% form 'customer', class: 'subscribe__block-input block-input' %}
+							{{ form.errors | default_errors }}
+							{% if form.posted_successfully? %}
+								<div class="alert alert-success" role="alert">{{ 'general.newsletter_form.confirmation' | t }}</div>
+							{% else %}
+									<input type="hidden" name="contact[tags]" value="newsletter">
+									<input type="email"
+										name="contact[email]"
+										id="Email"
+										class="block-input__input-text input-text input-text_bg_gray input-group__field newsletter__input"
+										value=""
+										placeholder="EMAIL ADDRESS"
+										autocorrect="off"
+										autocapitalize="off" required>
+									
+										<button type="submit" class="block-input__form-button form-button form-button_fontsize_sm" name="commit" id="Subscribe" >
+											<span class="newsletter__submit-text--large">JOIN</span>
+										</button>
+									
+							{% endif %}
+					{% endform %}
 				</div>
 			</div>
 		</div>

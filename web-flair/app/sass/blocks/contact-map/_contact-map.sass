@@ -1,0 +1,55 @@
+.contact-map
+	display: -webkit-flex
+	display: -moz-flex
+	display: -ms-flex
+	display: -o-flex
+	display: flex
+	box-shadow: 0 0 30px 5px  rgba($text, .3)
+
+.contact-map__info
+	flex: 0 0 40%
+
+.contact-map__info-block
+	padding: 30px
+	padding-left: 45px
+	font-size: 14px
+	border-bottom: 1px solid $gray
+	&:last-child
+		border-bottom: none
+
+.contact-map__info-block_theme_brown
+	background-color: #6d5f54
+	color: #fff
+	.contact-map__info-link
+		color: #fff
+		&:hover
+			color: #fff
+
+.contact-map__info-link
+	color: $text
+	text-transform: uppercase
+	&:hover
+		color: $text
+
+.contact-map__info-title
+	text-transform: uppercase
+	font-family: $semi-bold
+	margin-bottom: 15px
+
+.contact-map__info-address
+	display: -webkit-flex
+	display: -moz-flex
+	display: -ms-flex
+	display: -o-flex
+	display: flex
+	justify-content: space-between
+	align-items: flex-end
+
+.contact-map__info-descr
+	font-family: $light
+	margin-top: 20px
+	&:first-child
+		margin-top: 0
+
+.contact-map__map
+	flex: 0 0 60%

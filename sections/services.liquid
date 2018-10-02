@@ -1,0 +1,158 @@
+	<section class="main-services">
+		<div class="container-fluid">
+			<div class="row">
+				<div class="col-12">
+					<div class="main-services__content">
+
+						<div class="main-services__banner" style="background-image: url({{ section.settings.hero | img_url: 'master' }});">
+							<div class="main-services__banner-content">
+								<div class="main-services__title">Name of the service</div>
+							</div>
+						</div>
+
+						<div class="row">
+							<div class="col-lg-10 offset-lg-1">
+								<div class="main-services__more-info more-info">
+									<div class="more-info__image d-none d-lg-block" style="background-image: url({{ section.settings.about_service | img_url: 'master' }});"></div>
+									<div class="more-info__content main-services__more-info-form-container">
+										<form class="more-info__form">
+											<div class="more-info__title">About Service</div>
+											<div class="more-info__text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Laborum ex voluptates, quos possimus maxime dolorem. Laborum ex voluptates, quos possimus maxime dolorem</div>
+											<select class="select more-info__select select_color_gray select_bg_gray">
+												<option selected value="0">Select Garment</option>
+												<option value="1">One value</option>
+												<option value="2">Two value</option>
+												<option value="3">Three value</option>
+												<option value="4">Four value</option>
+											</select>
+											<select class="select more-info__select select_color_gray select_bg_gray">
+												<option selected value="0">Select Service</option>
+												<option value="1">One value</option>
+												<option value="2">Two value</option>
+												<option value="3">Three value</option>
+												<option value="4">Four value</option>
+											</select>
+											<select class="select more-info__select select_color_gray select_bg_gray">
+												<option selected value="0">Number of Garnments</option>
+												<option value="1">One value</option>
+												<option value="2">Two value</option>
+												<option value="3">Three value</option>
+												<option value="4">Four value</option>
+											</select>
+											<div class="more-info__start-from">
+												<div class="more-info__price-title">Starting from</div>
+												<div class="more-info__price">$750.00</div>
+											</div>
+											<button class="form-button form-button_height_sm form-button_fontsize_sm">Request this service</button>
+										</form>
+									</div>
+								</div>
+							</div>
+						</div>
+
+						<div class="row">
+							<div class="col-lg-10 offset-lg-1">
+								<div class="main-services__teasers">
+									<div class="row">
+										<div class="col-lg-4 main-services__teasers-item">
+											<div class="teaser main-services__teaser">
+												<div class="teaser__image-block">
+													<img src="{{ 'clock.png' | asset_url }}" alt="diamond" class="teaser__image img-responsive">
+												</div>
+												<div class="teaser__text-block">
+													<div class="teaser__title">Lorem ipsum.</div>
+													<div class="teaser__descr">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolores, minus.</div>
+												</div>
+											</div>
+										</div>
+										<div class="col-lg-4 main-services__teasers-item">
+											<div class="teaser main-services__teaser">
+												<div class="teaser__image-block">
+													<img src="{{ 'fiber.png' | asset_url }}" alt="diamond" class="teaser__image img-responsive">
+												</div>
+												<div class="teaser__text-block">
+													<div class="teaser__title">Lorem ipsum.</div>
+													<div class="teaser__descr">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolores, minus.</div>
+												</div>
+											</div>
+										</div>
+										<div class="col-lg-4 main-services__teasers-item">
+											<div class="teaser main-services__teaser">
+												<div class="teaser__image-block">
+													<img src="{{ 'diamond.png' | asset_url }}" alt="diamond" class="teaser__image img-responsive">
+												</div>
+												<div class="teaser__text-block">
+													<div class="teaser__title">Lorem ipsum.</div>
+													<div class="teaser__descr">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolores, minus.</div>
+												</div>
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+
+						
+
+						<div class="row">
+							<div class="col-lg-10 offset-lg-1">
+								<div class="main-services__mobile-banner d-lg-none">
+									<img src="{{ section.settings.more_info | img_url: 'master' }}" alt="banner" class="main-services__mobile-banner-image img-responsive img-width">
+								</div>
+								<div class="more-info main-services__more-info more-info_bottom">
+									<div class="more-info__content">
+										<div class="more-info__title">More Information</div>
+										<div class="more-info__text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Recusandae culpa aperiam molestiae veritatis, necessitatibus ea vero? Quae dolore ea perferendis magnam expedita repudiandae, rem, facilis optio numquam quia hic nulla. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Recusandae culpa aperiam molestiae veritatis, necessitatibus ea vero? Quae dolore ea perferendis magnam expedita repudiandae, rem, facilis optio numquam quia hic nulla. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Recusandae culpa aperiam molestiae veritatis, necessitatibus ea vero? Quae dolore ea perferendis magnam expedita repudiandae, rem, facilis optio numquam quia hic nulla.</div>
+										<div class="more-info__text">Quae dolore ea perferendis magnam expedita repudiandae, rem, facilis optio numquam quia hic nulla. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Recusandae culpa aperiam molestiae veritatis, necessitatibus ea vero? Quae dolore ea perferendis magnam expedita repudiandae, rem, facilis optio numquam quia hic nulla. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Recusandae culpa aperiam molestiae veritatis, necessitatibus ea vero? Quae dolore ea perferendis magnam expedita repudiandae, rem, facilis optio numquam quia hic nulla.</div>
+									</div>
+									<div class="more-info__image" style="background-image: url({{ section.settings.more_info | img_url: 'master' }});"></div>
+								</div>
+							</div>
+						</div>
+
+
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+
+
+	<section class="d-none d-sm-block">
+		<div class="container-fluid">
+			<div class="row">
+				<div class="col-lg-10 offset-lg-1">
+					<div class="brands main-services__brands">
+						<img src="{{ 'teaser-1.png' | asset_url }}" alt="brand" class="brands__item img-responsive">
+						<img src="{{ 'teaser-2.png' | asset_url }}" alt="brand" class="brands__item img-responsive">
+						<img src="{{ 'teaser-3.png' | asset_url }}" alt="brand" class="brands__item img-responsive">
+						<img src="{{ 'teaser-4.png' | asset_url }}" alt="brand" class="brands__item img-responsive">
+						<img src="{{ 'teaser-5.png' | asset_url }}" alt="brand" class="brands__item img-responsive">
+						<img src="{{ 'teaser-6.png' | asset_url }}" alt="brand" class="brands__item img-responsive">
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+
+{% schema %} {
+  "name": "Services Information",
+  "settings": [
+    {
+      "id": "hero",
+      "type": "image_picker",
+      "label": "Hero Image"
+    },
+    {
+      "id": "about_service",
+      "type": "image_picker",
+      "label": "About Service Image"
+    },
+    {
+      "id": "more_info",
+      "type": "image_picker",
+      "label": "More Info Image"
+    }     
+  ]
+}
+{% endschema %}    

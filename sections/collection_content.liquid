@@ -1,0 +1,168 @@
+<form id="collection-form" method="get" action="{{ collection.url }}">	
+    <section class="main-category">
+		<div class="container-fluid">
+			<div class="row">
+				<div class="col-12">
+					<div class="main-category__top-panel">
+						<div class="main-category__filter-handler filter-handler">
+							<div class="filter-handler__burger filter-handler__burger_open">
+								<span></span>
+								<span></span>
+								<span></span>
+								<span></span>
+							</div>
+							<div class="filter-handler__text">Filters</div>
+						</div>
+
+						<div class="main-category__dropdown-list dropdown-list">
+                        {%- assign current_sort_by = collection.sort_by | default:collection.default_sort_by -%}  
+							<div class="dropdown-list__name">{{current_sort_by}}</div>                            
+                                                          
+                                <div class="dropdown-list__menu">
+                                    <div class="dropdown-list__menu-item">
+                                        <a href="#" class="dropdown-list__menu-link" data-value="manual">Featured</a>
+                                    </div>
+                                    <div class="dropdown-list__menu-item">
+                                        <a href="#" class="dropdown-list__menu-link" data-value="title-ascending">Alphabetically, A-Z</a>
+                                    </div>
+                                    <div class="dropdown-list__menu-item">
+                                        <a href="#" class="dropdown-list__menu-link" data-value="title-descending">Alphabetically, Z-A</a>
+                                    </div>
+                                    <div class="dropdown-list__menu-item">
+                                        <a href="#" class="dropdown-list__menu-link" data-value="price-ascending">Price, low to high</a>
+                                    </div>
+                                    <div class="dropdown-list__menu-item">
+                                        <a href="#" class="dropdown-list__menu-link" data-value="price-descending">Price, high to low</a>
+                                    </div>                                                                        
+                                </div>
+
+                                <input type="hidden" name="sort_by" id="sort_by" value="{{current_sort_by}}">                                
+						</div>
+					</div>
+				</div>
+			</div>
+
+			<div class="row">
+				<div class="col-lg-3 main-category__filter-container">
+					<div class="filter">					    
+                        <div class="filter__item">
+						   <div class="filter__item-title filter__item_tags">FILTER BY</div>
+						   <div class="filter__item-menu">
+						        {% assign current_tags_string = current_tags | join: '+' %}
+								{% assign current_tags_array = current_tags_string | split: '+' %}
+																
+
+								{% for tag in collection.all_tags %}
+								    {% assign checked = '' %}
+									{% assign tag_without_whitespace = tag | replace: " ", "-"%}
+								    <div class="checkbox-custom filter__checkbox-custom">
+									    
+										{% if current_tags_array contains tag_without_whitespace  %}
+										    {% assign checked = 'checked' %}										    
+										{% endif %}
+
+										<input name="checkbox_filters[]" 
+										       type="checkbox" 
+											   class="checkbox-custom__box checkbox_tags" 
+											   value="{{tag | replace: ' ', '-'}}" 											   
+											   {{checked}}>
+										<div class="checkbox-custom__indicator"></div>
+										<span class="label_type_filter">{{ tag  }}</span>										
+									</div>	
+								{% endfor %}
+                                
+								<button type="submit" id="update_filters">Update</button>
+						   </div>
+						</div>
+												
+
+                        <div class="filter__item">
+						   <div class="filter__item-title filter__item_collections">COLLECTIONS</div>						
+								<div class="filter__item-menu">
+									{%- for collection_option in collections -%}
+										{%-if collection_option.all_products_count > 0 -%}
+										<div class="checkbox-custom filter__checkbox-custom">
+												{%- if collection.handle == collection_option.handle -%}
+														{{collection_option.title | escape}}
+														<span class="label_type_filter">({{collection_option.all_products_count}})</span>
+													
+												{%- else -%}	
+													<a href="{{ collection_option.url }}?sort_by={{ collection.sort_by }}">
+															{{collection_option.title | escape}}
+															<span class="label_type_filter">({{collection_option.all_products_count}})</span>
+													</a>																					  
+												{%-endif-%}
+										</div>									
+										{%- endif -%}
+									{%- endfor -%}  
+								</div>	
+						</div>
+
+                        <div class="filter__item">
+						   <div class="filter__item-title filter__item_types">TYPES</div>						
+								<div class="filter__item-menu">
+									{%- for product_type in collection.all_types -%}										
+										<div class="checkbox-custom filter__checkbox-custom">
+										        {{ product_type | link_to_type }}
+										</div>									
+									{%- endfor -%}  
+								</div>	
+						</div>
+
+						<div class="filter__item">
+							<div class="filter__item-title filter__item-title_open">Fur Type</div>
+							<div class="filter__item-menu">
+								<div class="colors">
+									<div class="colors__item colors__item_with_border" style="background-color: white"></div>
+									<div class="colors__item" style="background-color: pink"></div>
+									<div class="colors__item colors__item_checked" style="background-color: pink"></div>
+									<div class="colors__item" style="background-color: pink"></div>
+									<div class="colors__item" style="background-color: pink"></div>
+									<div class="colors__item" style="background-color: pink"></div>
+									<div class="colors__item" style="background-color: pink"></div>
+									<div class="colors__item" style="background-color: pink"></div>
+									<div class="colors__item" style="background-image: url(img/banner-1.png);"></div>
+								</div>
+							</div>
+						</div>
+					</div>					
+
+				</div>
+
+
+				<div class="col">
+					<div class="main-category__product-list">
+						<div class="row">						
+						{%- if collection.products_count > 0 -%}						
+							{%- paginate collection.products by 12 -%}							
+									{%- for product in collection.products -%}
+										<div class="col-6 col-lg-4 main-category__product">
+										{%-  include 'product_detail' -%}
+										</div>   
+									{%- endfor -%}
+
+								{%- if paginate.pages > 1 -%}
+								{{ paginate | default_pagination }}
+								{%- endif -%}
+							{%- endpaginate -%}
+						{%- else -%}
+							<div style="text-align: center; width: 100%;">
+							   <strong>No Found Products</strong>
+							</div>
+
+						{%- endif -%}
+
+						</div>
+
+
+						<div class="text-center d-none d-md-block">
+							<a href="#" class="button-preview button-preview_dark button-preview_size_sm">Learn More</a>
+						</div>
+					</div>
+				</div>
+
+			</div>
+
+		</div>
+	</section>
+</form>    

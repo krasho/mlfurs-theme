@@ -1,0 +1,39 @@
+
+<section class="main-banner">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-12">
+
+                <div class="main-banner__social">
+                    <a href="#" class="main-banner__social-item"><img src="{{ 'fb.png' | asset_url }}" alt="fb"></a>
+                    <a href="#" class="main-banner__social-item"><img src="{{ 'tw.png' | asset_url }}" alt="tw"></a>
+                    <a href="#" class="main-banner__social-item"><img src="{{ 'inst.png' | asset_url }}" alt="inst"></a>
+                </div>
+
+                <a href="#" class="main-banner__link">Shop <img src="{{ 'arrow-down.png' | asset_url }}" alt="Arrow"></a>
+
+                <div class="main-banner__content" style="background-image: url({{ section.settings.hero_image | img_url: 'master' }});">
+                    <h5>Celebrate the arrival of</h5>
+                    <h1>Spring Weather</h1>
+                    <div class="main-banner__content-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptatem, quas!</div>
+                    <a href="#" class="main-banner__button-preview button-preview">Shop New Arrivals</a>
+                </div>
+
+
+            </div>
+        </div>
+    </div>
+</section>
+
+
+{% schema %} {
+  "name": "Coming Soon",
+  "settings": [
+    {
+      "id": "hero_image",
+      "type": "image_picker",
+      "label": "Hero Image"
+    }
+  ]
+}
+{% endschema %}	

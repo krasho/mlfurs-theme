@@ -1,0 +1,31 @@
+	<section>
+		<div class="container-fluid">
+			<div class="row">
+				<div class="col-12">
+					<div class="category-banner" style="background-image: url({{ section.settings.hero | img_url: 'master' }});">
+						<div class="category-banner__title">{{collection.title}}</div>
+	
+				    {% assign class_to_link = 'breadcrumbs__link' %}
+  					{% assign class_to_breadcrumbs = 'breadcrumbs' %} 
+					  {% assign class_to_item = 'breadcrumbs__item' %}
+					  {% assign class_to_last_item = '' %} 
+            
+						{%- include 'breadcrumbs' -%}
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+
+
+    {% schema %} {
+  "name": "Collection Information",
+  "settings": [
+    {
+      "id": "hero",
+      "type": "image_picker",
+      "label": "Hero Image"
+    } 
+  ]
+}
+{% endschema %}

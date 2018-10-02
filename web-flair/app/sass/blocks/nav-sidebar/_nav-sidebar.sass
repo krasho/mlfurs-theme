@@ -1,0 +1,30 @@
+.nav-sidebar__item
+	border-bottom: 1px solid $gray
+	&:last-child
+		border-bottom: none
+
+.nav-sidebar__link
+	text-transform: uppercase
+	font-size: 14px
+	color: $text
+	display: block
+	padding: 12px 0
+	position: relative
+	transition: all .25s ease
+	&:before
+		position: absolute
+		right: 0
+		top: 50%
+		margin-top: -11px
+		content: url(../img/angle-right.png)
+	&:hover
+		text-decoration: none
+		color: $text
+		font-family: $semi-bold
+		&:before
+			content: url(../img/angle-right-accent.png)
+
+.nav-sidebar__link_active
+	font-family: $semi-bold
+	&:before
+			content: url(../img/angle-right-accent.png)

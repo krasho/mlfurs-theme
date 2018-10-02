@@ -1,0 +1,51 @@
+.top-nav
+	background-color: $text
+	color: #fff
+	font-size: 13px
+
+.top-nav__content
+	display: -webkit-flex
+	display: -moz-flex
+	display: -ms-flex
+	display: -o-flex
+	display: flex
+	justify-content: space-between
+
+.top-nav__text
+	text-transform: uppercase
+	font-family: $light
+	padding: 8px 0
+
+.top-nav__nav-item
+	color: #fff
+	text-transform: uppercase
+	text-decoration: none
+	height: 100%
+	display: inline-block
+	padding: 8px 15px
+	padding-left: 35px
+	border-right: 1px solid #433f3e
+	position: relative
+	background-repeat: no-repeat
+	background-size: auto
+	background-position: 10px center
+	transition: all .25s ease
+	outline: none
+	&:first-child
+		border-left: 1px solid #433f3e
+	&:hover
+		opacity: .5
+		text-decoration: none
+		color: #fff
+
+.top-nav__nav-item_icon_phone
+	background-image: url(../img/phone.png)
+
+.top-nav__nav-item_icon_chat
+	background-image: url(../img/chat.png)
+
+.top-nav__nav-item_icon_user
+	background-image: url(../img/user.png)
+
+.top-nav__nav-item_icon_cart
+	background-image: url(../img/cart.png)

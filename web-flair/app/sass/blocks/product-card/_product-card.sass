@@ -1,0 +1,77 @@
+.product-card
+	padding-bottom: 40px
+
+.product-card__breadcrumbs
+	margin-top: 15px
+
+.product-card__slider-nav-container
+	padding: 0 15px
+	flex: 0 0 14%
+	max-width: 14%
+	width: 14%
+
+.product-card__slider-for-container
+	padding: 0 15px
+	flex: 0 0 39%
+	max-width: 39%
+	margin-left: 0
+	margin-right: 0
+	width: 39%
+
+.product-card__product-info-container
+    padding: 0 15px
+    max-width: 100%
+    width: 540px
+
+
+.product-card__slider-nav
+	margin-top: 30px
+	.slider-nav__item
+		padding: 10px 0
+		outline: none
+		cursor: pointer
+	.slider-nav__image
+		/*height: calc( (100vh - 320px) / 3)*/
+		/*width: 180px*/
+		height: auto
+		width: auto
+		max-height: 293px
+
+	.slick-arrow
+		position: relative
+		cursor: pointer
+		left: 77px
+		transition: opacity .25s ease
+		&:hover
+			opacity: .5
+
+.product-card__slider-for
+	margin-top: 30px
+	.slider-for__item
+		outline: none
+	.slider-for__image
+		height: calc(100vh - 209px)
+		width: 600px
+	.slick-dots
+		display: -webkit-flex
+		display: -moz-flex
+		display: -ms-flex
+		display: -o-flex
+		display: flex
+		justify-content: center
+		align-items: center
+		padding: 30px 0
+		li
+			width: 10px
+			height: 10px
+			background-color: $gray
+			border-radius: 50%
+			margin: 0 7px
+			&.slick-active
+				background-color: $accent
+				height: 100% important
+			button
+				display: none
+
+.product-card__product-info
+	margin-top: 30px

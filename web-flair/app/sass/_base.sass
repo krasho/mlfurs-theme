@@ -1,0 +1,118 @@
+::selection
+	background-color: $accent
+	color: #fff
+
+::-webkit-scrollbar
+    width:  4px
+    height: 40px
+
+
+::-webkit-scrollbar-thumb
+    background: #dcdbdb
+    border-radius: 4px
+
+
+::-webkit-scrollbar-track
+    background: transparent
+
+
+
+body.body
+	font-size: 16px
+	min-width: 320px
+	position: relative
+	line-height: 1.65
+	font-family: $regular
+	overflow-x: hidden
+	color: $text
+    scrollbar-face-color: #dcdbdb
+    scrollbar-track-color: transparent
+	input, textarea
+		&:focus:required:invalid
+			border-color: red
+		&:required:valid
+			border-color: green
+
+.img-responsive
+	display: block
+	max-width: 100%
+	height: auto
+	&.img-width
+		width: 100%
+
+.container-fluid
+	padding-left: 115px
+	padding-right: 115px
+
+.text-center
+	text-align: center
+
+.text-right
+    text-align: right
+
+b, strong
+	font-family: $bold
+
+ul, li
+	margin: 0
+	padding: 0
+	list-style-type: none
+
+.color-accent
+    color: $accent
+
+.my-mfp-slide-bottom
+  .popup-window
+    opacity: 0
+    -webkit-transition: all 0.2s ease-out
+    -moz-transition: all 0.2s ease-out
+    -o-transition: all 0.2s ease-out
+    transition: all 0.2s ease-out
+    -webkit-transform: translateY(-20px) perspective(600px) rotateX(10deg)
+    -moz-transform: translateY(-20px) perspective(600px) rotateX(10deg)
+    -ms-transform: translateY(-20px) perspective(600px) rotateX(10deg)
+    -o-transform: translateY(-20px) perspective(600px) rotateX(10deg)
+    transform: translateY(-20px) perspective(600px) rotateX(10deg)
+  &.mfp-ready .popup-window
+    opacity: 1
+    -webkit-transform: translateY(0) perspective(600px) rotateX(0)
+    -moz-transform: translateY(0) perspective(600px) rotateX(0)
+    -ms-transform: translateY(0) perspective(600px) rotateX(0)
+    -o-transform: translateY(0) perspective(600px) rotateX(0)
+    transform: translateY(0) perspective(600px) rotateX(0)
+  &.mfp-removing .popup-window
+    opacity: 0
+    -webkit-transform: translateY(-10px) perspective(600px) rotateX(10deg)
+    -moz-transform: translateY(-10px) perspective(600px) rotateX(10deg)
+    -ms-transform: translateY(-10px) perspective(600px) rotateX(10deg)
+    -o-transform: translateY(-10px) perspective(600px) rotateX(10deg)
+    transform: translateY(-10px) perspective(600px) rotateX(10deg)
+  &.mfp-bg
+    opacity: 0
+    -webkit-transition: opacity 0.3s ease-out
+    -moz-transition: opacity 0.3s ease-out
+    -o-transition: opacity 0.3s ease-out
+    transition: opacity 0.3s ease-out
+  &.mfp-ready.mfp-bg
+    opacity: 0.8
+  &.mfp-removing.mfp-bg
+    opacity: 0
+
+.mfp-close-btn-in .mfp-close
+    color: #fff
+    width: 35px
+    height: 35px
+    border-radius: 50%
+    background-color: $text
+    display: -webkit-flex
+    display: -moz-flex
+    display: -ms-flex
+    display: -o-flex
+    display: flex
+    justify-content: center
+    align-items: center
+    opacity: 1
+    line-height: 1
+    position: absolute
+    top: -13px
+    right: -13px

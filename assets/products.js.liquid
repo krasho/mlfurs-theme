@@ -1,0 +1,83 @@
+let $left = $(".slider-nav");
+
+function handleCarouselsHeight() {
+  if (window.matchMedia("(min-width: 1024px)").matches) {
+    let gl2H = $(".product-card__slider-for").height();
+    $left.css("height", gl2H);
+  } else {
+    $left.css("height", "auto");
+  }
+}
+
+$('.option_to_select').on("click", function(){
+   let options = $("#options_separated_by_comma").val()
+   let optionsArray = options.split(",")
+   
+   let newValueToSearch = ''
+   let option_name = $(this).data('option') 
+   let newValue = $(this).data('name')
+   $("#"+option_name+"_selected").val(newValue)
+   let separator = ''
+ 
+   optionsArray.forEach( element => {
+      value_selected = $("#"+element+"_selected").val()
+      newValueToSearch = newValueToSearch+separator+value_selected 
+
+      separator = ' / '            
+   })
+
+   let productVariants = $("#variants_separated_by_comma").val()
+   let productVariantsArray = productVariants.split(",")
+
+   $('#btn_to_add_cart').show()
+   $("#sold-out-container").hide()
+   if (productVariantsArray.length > 1) {
+     let found = productVariantsArray.findIndex( element => {
+            return element == newValueToSearch
+      })
+
+      
+      if (found >= 0) {
+          $('#product-select').prop('selectedIndex', found)          
+          let variant_hidden = $("#variant_hidden_"+$('#product-select').val())
+
+          let compare_price = variant_hidden.data("compare")
+          let price = variant_hidden.data("price")
+
+          $("#original_price_container").hide()
+          $("#current_price_container").show()
+          $("#now_price_container").hide()
+
+          if (compare_price != "" && price != compare_price) {
+             $("#original_price_value").html(compare_price)
+             $("#current_price_with_compare").html(price)
+
+             $("#original_price_container").show()
+             $("#current_price_container").hide()
+             $("#now_price_container").show()
+          } 
+          
+      } else {
+          $("#sold-out-container").show()
+          $('#btn_to_add_cart').hide()
+      }
+
+   }
+});
+
+$(window).on("load", () => {
+    console.log("en el load")
+  handleCarouselsHeight();
+});
+
+
+/*$(window).load(function() {
+      $('.slides').on('setPosition', function () {
+      $(this).find('.slick-slide').height('auto');
+      var slickTrack = $(this).find('.slick-track');
+      var slickTrackHeight = $(slickTrack).height();
+      $(this).find('.slick-slide').css('height', slickTrackHeight + 'px');
+      });
+})
+*/
+

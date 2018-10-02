@@ -3,7 +3,7 @@
 			<div class="row">
 				<div class="col-12">
 					<div class="footer__main">
-						<div class="footer__column footer__column_bordered">
+						<div class="footer__column footer__column_bordered" style="flex: 0 0 209px">
 							<div class="footer__column-title">Visit us</div>
 							<ul class="footer__list">
 								<li class="footer__list-item">263 Josephine St.<br>Denver, CO 80206 <br> M-S 10am-5:00pm MST</li>
@@ -21,85 +21,62 @@
 								<img class="img-responsive img-width" src="{{ 'paypal.png' | asset_url }}" alt="paypal">
 							</div>
 						</div>
-						<div class="footer__column">
-							<div class="footer__column-title">DESIGNERS</div>
-							<ul class="footer__list">
-								<li class="footer__list-item"><a class="footer__list-link" href="#">Featured Designers</a></li>
-								<li class="footer__list-item"><a class="footer__list-link" href="#">Brand A-Z</a></li>
-							</ul>
-							<div class="footer__column-title">SALE</div>
+
+						<div class="footer__column d-flex d-sm-flex d-md-flex d-lg-flex d-xl-flex">
+							<div style="flex: 0 0 209px">
+								<div class="footer__column-title">{{section.settings.text_for_footer_menu_linklist}}</div>
+								<ul class="footer__list">
+									{% for link in linklists[section.settings.footer_menu_linklist].links %}
+										<li class="footer__list-item">
+										<a class="footer__list-link" href="{{ link.url }}">{{link.title}}</a>
+										</li>
+									{% endfor %}								
+								</ul>
+							</div>
+
+							<div style="flex: 0 0 209px">
+								<div class="footer__column-title">{{section.settings.text_for_footer_menu2_linklist}}</div>
+								<ul class="footer__list">
+									{% for link in linklists[section.settings.footer_menu2_linklist].links %}
+										<li class="footer__list-item">
+										<a class="footer__list-link" href="{{ link.url }}">{{link.title}}</a>
+										</li>
+									{% endfor %}								
+								</ul>
+							</div>												
 						</div>
-						<div class="footer__column">
-							<div class="footer__column-title">FEATURED</div>
+
+						<div class="footer__column" style="flex: 0 0 209px"> 
+							<div class="footer__column-title">STAY CONECTED</div>
 							<ul class="footer__list">
-								<li class="footer__list-item"><a class="footer__list-link" href="#">Lookbooks</a></li>
-								<li class="footer__list-item"><a class="footer__list-link" href="#">Bridal Fur / Evening Fur</a></li>
-								<li class="footer__list-item"><a class="footer__list-link" href="#">Home Decor / Collection</a></li>
-								<li class="footer__list-item"><a class="footer__list-link" href="#">Fan Wear</a></li>
-								<li class="footer__list-item"><a class="footer__list-link" href="#">Spotlight Promotions / Weekly Deals</a></li>
-								<li class="footer__list-item"><a class="footer__list-link" href="#">Made to Order</a></li>
-								<li class="footer__list-item"><a class="footer__list-link" href="#">Gift Guide</a></li>
-								<li class="footer__list-item"><a class="footer__list-link" href="#">New Arrivals</a></li>
-								<li class="footer__list-item"><a class="footer__list-link" href="#">Best Sellers</a></li>							
-							</ul>
-						</div>
-						<div class="footer__column">
-							<div class="footer__column-title">PREMIUM FUR</div>
-							<ul class="footer__list">
-								<li class="footer__list-item"><a class="footer__list-link" href="#">All Fur</a></li>
-								<li class="footer__list-item"><a class="footer__list-link" href="#">Vests</a></li>
-								<li class="footer__list-item"><a class="footer__list-link" href="#">Coats</a></li>
-								<li class="footer__list-item"><a class="footer__list-link" href="#">Jackets</a></li>
-								<li class="footer__list-item"><a class="footer__list-link" href="#">Plus Size</a></li>
-							</ul>
-						</div>
-						<div class="footer__column">
-							<div class="footer__column-title">OUTERWEAR</div>
-							<ul class="footer__list">
-								<li class="footer__list-item"><a class="footer__list-link" href="#">All Outerwear</a></li>
-								<li class="footer__list-item"><a class="footer__list-link" href="#">Shearlings</a></li>
-								<li class="footer__list-item"><a class="footer__list-link" href="#">Apres Ski</a></li>
-								<li class="footer__list-item"><a class="footer__list-link" href="#">Jackets</a></li>
-								<li class="footer__list-item"><a class="footer__list-link" href="#">Cashmere</a></li>
-								<li class="footer__list-item"><a class="footer__list-link" href="#">Parkas &  Puffers</a></li>
-							</ul>
-						</div>
-						<div class="footer__column">
-							<div class="footer__column-title">LUXURY SKi WEAR</div>
-							<ul class="footer__list">								
-                                <li class="footer__list-item"><a class="footer__list-link" href="#">All Ski Wear</a></li>
-                                <li class="footer__list-item"><a class="footer__list-link" href="#">Ski Jackets</a></li>
-                                <li class="footer__list-item"><a class="footer__list-link" href="#">Ski Pants</a></li>
-								<li class="footer__list-item"><a class="footer__list-link" href="#">Base Layers</a></li>
-								<li class="footer__list-item"><a class="footer__list-link" href="#">Mid Layers</a></li>
-								<li class="footer__list-item"><a class="footer__list-link" href="#">Ski Accessories</a></li>
-							</ul>
-						</div>
-						<div class="footer__column">
-							<div class="footer__column-title">MENS</div>
-							<ul class="footer__list">
-								<li class="footer__list-item"><a class="footer__list-link" href="#">All Mens</a></li>
-								<li class="footer__list-item"><a class="footer__list-link" href="#">Furs / Shearlings</a></li>
-								<li class="footer__list-item"><a class="footer__list-link" href="#">Ski Jackets</a></li>
-								<li class="footer__list-item"><a class="footer__list-link" href="#">Ski Pants</a></li>
-								<li class="footer__list-item"><a class="footer__list-link" href="#">Base Layers</a></li>
-								<li class="footer__list-item"><a class="footer__list-link" href="#">Mid Layers</a></li>
-								<li class="footer__list-item"><a class="footer__list-link" href="#">Ski Accessories</a></li>
-								<li class="footer__list-item"><a class="footer__list-link" href="#">Ski Equipment</a></li>
-								<li class="footer__list-item"><a class="footer__list-link" href="#">Mens Gloves</a></li>
-							</ul>
-						</div>
-						<div class="footer__column">
-							<div class="footer__column-title">SERVICE & SUSTAIN</div>
-							<ul class="footer__list">
-								<li class="footer__list-item"><a class="footer__list-link" href="#">Book Fur Services</a></li>
-								<li class="footer__list-item"><a class="footer__list-link" href="#">Fur Service Pricing</a></li>
-								<li class="footer__list-item"><a class="footer__list-link" href="#">Fur Storage / Cleaning / Glazing</a></li>
-								<li class="footer__list-item"><a class="footer__list-link" href="#">Fur Trade-Ins</a></li>
-								<li class="footer__list-item"><a class="footer__list-link" href="#">Fur Repairs / Alterations / Monograms</a></li>
-								<li class="footer__list-item"><a class="footer__list-link" href="#">Fur Remodels / Restyles</a></li>
-								<li class="footer__list-item"><a class="footer__list-link" href="#">Ugg Restoration</a></li>
-								<li class="footer__list-item"><a class="footer__list-link" href="#">Sustain</a></li>
+								<li class="footer__social-item footer__social-item_blured">
+								   <a class="footer__list-link" href="https://www.facebook.com/MarksLloydsFurs" target="_blank">
+								      <img src="{{ 'fb.png' | asset_url }}" alt="fb">&nbsp; Facebook
+								   </a>
+								</li>
+								<li class="footer__social-item footer__social-item_blured">
+								   <a class="footer__list-link" href="https://twitter.com/markslloydsfurs" target="_blank">
+								      <img src="{{ 'tw.png' | asset_url }}" alt="tw">&nbsp; Twitter
+								   </a>
+								</li>
+
+								<li class="footer__social-item footer__social-item_blured">
+								   <a class="footer__list-link" href="#" target="_blank">
+								      <img src="{{ 'inst.png' | asset_url }}" alt="tw">&nbsp; Instagram
+								   </a>
+								</li>																
+
+								<li class="footer__social-item footer__social-item_blured">
+								   <a class="footer__list-link" href="#" target="_blank">
+								      <img src="{{ 'yt.png' | asset_url }}" alt="tw">&nbsp; Youtube
+								   </a>
+								</li>								
+
+								<li class="footer__social-item footer__social-item_blured">
+								   <a class="footer__list-link" href="#" target="_blank">
+								      <img src="{{ 'gp.png' | asset_url }}" alt="tw">&nbsp; Google +
+								   </a>
+								</li>								
 							</ul>
 						</div>
 					</div>
@@ -111,9 +88,7 @@
 					<div class="footer__bottom">
 						<div class="footer__bottom-left">
 							<ul class="footer__bottom-menu">
-								<li class="footer__bottom-menu-item"><a class="footer__bottom-menu-link" href="#">About Us</a></li>
 								<li class="footer__bottom-menu-item"><a class="footer__bottom-menu-link" href="#">Careers</a></li>
-								<li class="footer__bottom-menu-item"><a class="footer__bottom-menu-link" href="#">Customer Service</a></li>
 								<li class="footer__bottom-menu-item"><a class="footer__bottom-menu-link" href="#">Sitemap</a></li>
 								<li class="footer__bottom-menu-item"><a class="footer__bottom-menu-link" href="#">Privacy Policy</a></li>
 							</ul>
@@ -130,78 +105,29 @@
 			</div>
 		</div>
 	</footer>
-
-
-<!--<footer class="footer">
-	<div class="footer_top">
-		<div class="wrapper">
-			<div class="flex between">
-				<div class="footer_top__option">
-					<div class="title">
-						<span class="font-1 _semi">VISIT US</span>
-					</div>
-				</div>
-				<div class="footer_top__option">
-					<div class="title">
-						<span class="font-1 _semi">DESIGNERS</span>
-					</div>					
-				</div>
-				<div class="footer_top__option">
-					<div class="title">
-						<span class="font-1 _semi">FEATURED</span>
-					</div>										
-				</div>
-				<div class="footer_top__option">
-					<div class="title">
-						<span class="font-1 _semi">PREMIUM FUR</span>
-					</div>															
-				</div>
-				<div class="footer_top__option">
-					<div class="title">
-						<span class="font-1 _semi">OUTERWEAR</span>
-					</div>
-				</div>
-				<div class="footer_top__option">
-					<div class="title">
-						<span class="font-1 _semi">LUXURY SKi WEAR</span>
-					</div>					
-				</div>
-				<div class="footer_top__option">
-					<div class="title">
-						<span class="font-1 _semi">MENS</span>
-					</div>										
-				</div>
-				<div class="footer_top__option">
-					<div class="title">
-						<span class="font-1 _semi">SERVICE & SUSTAIN</span>
-					</div>					
-				</div>
-			</div>
-		</div>	
-	</div>
-
-	<div class="footer_bottom">
-	   <div class="wrapper">
-	   	   <div class="flex between">
-		   	   <div class="left-section">
-					<ul class="footer_bottom__menu flex start">
-						<li class="option"><span class="font-1 _regular">About Us</span></li>
-						<li class="option"><span class="font-1 _regular">Careers</span></li>
-						<li class="option"><span class="font-1 _regular">Customer Service</span></li>
-						<li class="option"><span class="font-1 _regular">Sitemap</span></li>
-						<li class="option"><span class="font-1 _regular">Privacy Policy</span></li>
-					</ul>
-
-					<div class="footer_bottom_copyright">
-						<span class="font-1 _regular">&copy; 2018 Marks-Lloyds Furs. All Rights Reserved</span>
-					</div>				   	   	
-		   	   </div>
-
-		   	   <div class="right-section">
-		   	   	  <img src="{{ 'security_logos.png' | asset_url }}" alt="Logo" />
-		   	   </div>	   	   	
-	   	   </div>
-	   </div>	
-	</div>   	
-</footer>
--->
+{% schema %} {
+  "name": "Footer",
+  "settings": [
+    {
+      "type": "text",
+      "id": "text_for_footer_menu_linklist",
+      "label": "Title for Menu 1"
+    },	  
+    {
+      "type": "link_list",
+      "id": "footer_menu_linklist",
+      "label": "Menu 1"
+    },
+    {
+      "type": "text",
+      "id": "text_for_footer_menu2_linklist",
+      "label": "Title for Menu 2"
+    },
+    {
+      "type": "link_list",
+      "id": "footer_menu2_linklist",
+      "label": "Menu 2"      
+    }	
+  ]
+}
+{% endschema %}

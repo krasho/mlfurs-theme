@@ -1,0 +1,22 @@
+<link href="{{ 'globomenu.css' | asset_url }}" rel="stylesheet" type="text/css" media="all">
+<script>
+  var MenuApp = {
+    shop 	: '{{ shop.permanent_domain }}',
+    menu	: "main-menu",
+    themeId	: 796,
+    menuClass	: 'globomenu-store-796 globomenu globomenu-main globomenu-horizontal globomenu-transition-shift globomenu-items-align-left globomenu-sub-indicators  globomenu-trigger-hover globomenu-responsive globomenu-responsive-collapse',
+    mobileBtn	: '<a class="globomenu-responsive-toggle-796 globomenu-responsive-toggle globomenu-responsive-toggle-content-align-left"><i class="fa fa-bars"></i>Menu</a>',
+    linkLists	: {
+      {% for list in linklists %}
+        '{{ list.handle }}':{
+		  title : "{{ list.title | replace: '"', '\"' | strip_html }}",
+    	  items : [{% for link in linklists[list.handle].links %}"{{ link.url | replace: '"', '\"' }}"{% unless forloop.last %},{% endunless %}{% endfor %}],
+    	  names : [{% for link in linklists[list.handle].links %}"{{ link.title | replace: '"', '\"' | strip_html }}"{% unless forloop.last %},{% endunless %}{% endfor %}]
+      	}{% unless forloop.last %},{% endunless %}
+      {% endfor %}
+  	}
+  };
+</script>
+{% include 'globo-megamenu' %}
+<script src="{{ 'globomenu.js' | asset_url }}" type="text/javascript"></script>
+<script>MenuApp.init();</script>

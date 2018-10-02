@@ -1,0 +1,27 @@
+{%- if section.settings.hero_image -%}
+    <div class="row">
+        <div class="col-12">
+            <div class="sustainability__banner" style="background-image: url({{ section.settings.hero_image | img_url: 'master' }});">
+                <div class="sustainability__title">{{section.settings.hero_description}}</div>
+            </div>
+        </div>
+    </div>
+{%- endif -%}
+
+{% schema %} {
+  "name": "Hero image",
+  "settings": [
+    {
+      "id": "hero_image",
+      "type": "image_picker",
+      "label": "Hero image"
+    },
+    {
+      "id": "hero_description",
+      "type": "text",
+      "label": "Hero Description"
+    }    										
+  ]  
+}
+{% endschema %}
+

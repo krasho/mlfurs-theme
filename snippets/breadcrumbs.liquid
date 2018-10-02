@@ -1,0 +1,61 @@
+
+{% unless template == 'index' or template == 'cart' or template == 'list-collections' %}
+<div class="{{class_to_breadcrumbs}}" role="navigation" aria-label="breadcrumbs">
+    <div class="{{class_to_item}}">
+        <a href="/" class="{{class_to_link}}">Home</a>
+    </div>    
+  {% if template contains 'page' %}
+    <div class="{{class_to_item}}">
+        <a href="/" class="{{class_to_link}}">{{ page.title }}</a>
+    </div>    
+  {% elsif template contains 'product' %}         
+    {% if collection.url %}
+       <div class="{{class_to_item}}">
+          <a href="{{collection.url}}" class="{{class_to_link}}">{{ collection.title }}</a>
+       </div> 
+    {% endif %}
+
+    <div class="{{class_to_item}}">
+       <span class="{{class_to_last_item}}">{{ product.title }}</span>
+    </div>      
+
+  {% elsif template contains 'collection' and collection.handle %}
+    {% if current_tags %}
+      {% capture url %}/collections/{{ collection.handle }}{% endcapture %}
+        <div class="{{class_to_item}}">
+            <a href="{{url}}" class="{{class_to_link}}">{{ collection.title }}</a>
+        </div>      
+      <span>{{ current_tags | join: " + " }}</span>
+    {% else %}
+        <div class="{{class_to_item}}">
+            <span class="{{class_to_last_item}}">{{ collection.title }}</span>
+        </div>          
+    {% endif %}
+  {% elsif template == 'blog' %}
+    {% if current_tags %}
+        <div class="{{class_to_item}}">
+            <a href="{{blog.url}}" class="{{class_to_link}}">{{ blog.title }}</a>
+        </div>    
+      <span>{{ current_tags | join: " + " }}</span>
+    {% else %}
+        <div class="{{class_to_item}}">
+           <span class="{{class_to_link}}">{{ blog.title }}</span>
+        </div>    
+    
+    {% endif %}
+  {% elsif template == 'article' %}
+        <div class="{{class_to_item}}">
+            <a href="{{blog.url}}" class="{{class_to_link}}">{{ blog.title }}</a>
+        </div>
+
+        <div class="{{class_to_item}}">
+            <span class="{{class_to_last_item}}">{{ article.title }}</span>
+        </div>          
+    
+  {% else %}
+        <div class="{{class_to_item}}">
+            <span class="{{class_to_last_item}}">{{ page_title }}</span>
+        </div>     
+  {% endif %}
+</div>
+{% endunless %}

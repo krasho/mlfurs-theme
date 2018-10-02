@@ -1,0 +1,121 @@
+.main-about
+	padding-top: 30px
+	padding-bottom: 50px
+
+.main-about__banner
+	padding: 100px 15px
+	color: #fff
+	background-image: url(../img/about-banner.png)
+	background-repeat: no-repeat
+	background-size: cover
+	text-align: center
+
+.main-about__banner-title
+	font-size: 36px
+	text-transform: uppercase
+	font-family: $bold
+	margin-bottom: 35px
+
+.main-about__banner-descr
+	font-family: $light
+
+.main-about__chronology
+	padding-bottom: 50px
+	background-color: #6d5f54
+	position: relative
+	&:before
+		position: absolute
+		background-color: #5d4f45
+		width: 16px
+		height: 16px
+		border-radius: 50%
+		top: -8px
+		left: 50%
+		margin-left: -8px
+		content: ''
+
+.main-about__chain
+	padding-top: 50px
+	position: relative
+	&:after
+		position: absolute
+		background-color: #5d4f45
+		width: 16px
+		height: 16px
+		border-radius: 50%
+		bottom: 0
+		left: 50%
+		margin-left: -8px
+		content: ''
+	&:before
+		content: ''
+		position: absolute
+		top: 0
+		left: 50%
+		margin-left: -2px
+		height: 100%
+		width: 4px
+		background-color: #5d4f45
+
+.main-about__period
+	width: 100%
+	margin-bottom: 95px
+	display: -webkit-flex
+	display: -moz-flex
+	display: -ms-flex
+	display: -o-flex
+	display: flex
+	color: #fff
+	&:last-child
+		margin-bottom: 0
+
+.main-about__period-part
+	flex: 0 0 50%
+
+.main-about__chain-item
+	color: #fff
+	position: relative
+	padding: 0 50px
+	margin-bottom: 40px
+	&:last-child
+		margin-bottom: 0
+
+.main-about__chain-item_left
+	text-align: right
+	display: -webkit-flex
+	display: -moz-flex
+	display: -ms-flex
+	display: -o-flex
+	display: flex
+	flex-direction: column
+	align-items: flex-end
+	&:before
+		right: -8px
+
+.main-about__chain-item_right
+	&:before
+		left: -8px
+
+.main-about__chain-item_with_point
+	&:before
+		position: absolute
+		top: 8px
+		content: ''
+		width: 16px
+		height: 16px
+		border-radius: 50%
+		border: 4px solid #5d4f45
+		background-color: #6d5f54
+
+.main-about__chain-item_large_distance
+	margin-bottom: 100px
+
+.main-about__chain-item-date
+	font-size: 24px
+	font-family: $medium
+
+.main-about__chain-item-descr
+	font-family: $light
+
+.main-about__button-preview
+	margin-top: 60px

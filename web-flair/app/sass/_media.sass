@@ -1,0 +1,1090 @@
+@import "vars"
+
+
+/*==========  Desktop First  ==========*/
+
+@media (max-width: 1600px)
+
+	.menu__item-link
+		padding: 18px 20px
+		padding-bottom: 40px
+
+	.product-card__slider-nav-container
+		flex: 0 0 10%
+		max-width: 10%
+		width: 10%
+		
+	.product-card__product-info-container
+		max-width: 100%
+		width: 540px
+		min-width: 540px
+	
+	.product-card__slider-for-container
+		flex-shrink: 1
+		max-width: 100%        
+
+
+	.product-card__slider-for
+		.slider-for__image
+			width: auto
+
+	.product-card__slider-nav
+		text-align: center
+		.slick-arrow
+			left: 0
+		.slider-nav__image
+			display: inline-block
+			width: auto
+
+	.footer__bottom-company
+		margin-left: 25px
+
+	.main-checkout,
+	.main-cart
+		padding-left: 50px
+		padding-right: 50px
+
+
+
+
+
+// 1199
++media-breakpoint-down(lg)
+
+	.product-card__slider-for
+		.slider-for__image
+			height: auto
+
+	.product-card__slider-nav
+		.slider-nav__image
+			display: block
+			height: auto
+
+	.container-fluid
+		padding-left: 25px
+		padding-right: 25px
+
+	.main-banner__social,
+	.banner-descr__button-preview
+		display: none
+
+	.main-banner__link
+		display: none
+
+	.menu
+		padding-left: 20px
+
+	.banner-descr__left-text
+		flex:  0 0 60%
+
+	.footer__bottom-menu-item
+		margin-right: 10px
+
+	.footer__column_bordered+.footer__column
+		padding-left: 15px
+
+	.footer__column_bordered
+		padding-right: 15px
+
+	.login-popup
+		max-width: 90%
+
+	.sale-popup
+		max-width: 90%
+
+	.form-card:last-child
+		margin-bottom: 30px
+
+	.main-checkout
+		padding-bottom: 10px
+		padding-left: 0
+		padding-right: 0
+
+	.main-cart
+		padding-bottom: 10px
+		padding-left: 0
+		padding-right: 0
+
+	.discount
+		margin-bottom: 30px
+
+// 991
++media-breakpoint-down(md)
+
+	.catalog-home-page__item
+		margin-bottom: 30px
+
+	.main-about
+		padding: 0
+
+	.main-about__banner
+		margin-right: -25px
+		margin-left: -25px
+		padding: 75px 15px
+
+	.main-about__chronology
+		margin-right: -25px
+		margin-left: -25px
+		&:before
+			display: none
+
+	.main-about__chain
+		&:before, &:after
+			display: none
+
+	.main-about__chain-item_with_point:before
+		display: none
+
+	.main-about__chain-item_left
+		text-align: left
+		align-items: flex-start
+
+	.main-about__chain-item-image
+		display: none
+
+	.main-about__chain-item:last-child,
+	.main-about__chain-item_large_distance
+		margin-bottom: 40px
+
+	.main-about__period
+		flex-direction: column
+		margin-bottom: 0
+		&:last-child
+			.main-about__period-part
+				&:last-child
+					.main-about__chain-item
+						&:last-child
+							margin-bottom: 0
+
+	.main-nav
+		padding: 0
+
+	.banner-descr__button-preview
+		display: block
+
+	.menu,
+	.main-nav__search-form,
+	.promo-bar,
+	.footer__bottom-right,
+	.footer__column,
+	.top-nav__nav-item_icon_chat,
+	.top-nav__nav-item_icon_user,
+	.top-nav__nav-item_icon_cart,
+	.banner-descr__button-preview
+		display: none
+
+	.logo
+		width: 160px
+		position: absolute
+		left: 50%
+		top: 50%
+		transform: translate(-50%, -50%)
+	
+	.banner-descr__left
+		border-right: none
+		border-bottom: 1px solid $gray
+		padding-left: 25px
+		padding-right: 25px
+
+	.banner-descr__right
+		padding-left: 25px
+		padding-right: 25px
+		justify-content: flex-start
+
+	.banner-descr__right-text
+		padding-left: 25px
+		margin-left: 25px
+
+	.banner-descr
+		.container-fluid
+			padding: 0
+		.row
+			margin: 0
+	
+	.banners__item
+		margin-bottom: 30px
+		&:last-child
+			margin-bottom: 0
+
+	.footer__column_bordered
+		display: block
+		text-align: center
+		border-right: none
+		.img-responsive.img-width
+			width: auto
+			display: inline-block
+	
+	.footer__bottom
+		margin-right: -25px
+		margin-left: -25px
+		justify-content: center
+		text-align: center
+
+	.footer__social
+		display: -webkit-inline-flex
+		display: -moz-inline-flex
+		display: -ms-inline-flex
+		display: -o-inline-flex
+		display: inline-flex
+
+	.subscribe__left
+		border-top: 1px solid $gray
+		flex: 0 0 100%
+		order: 1
+		border-right: none
+		padding-right: 25px
+		padding-left: 25px
+
+	.subscribe
+		.container-fluid
+			padding: 0
+		.row
+			margin: 0
+
+	.subscribe__right
+		display: block
+		text-align: center
+
+	.subscribe__right-left-part
+		padding-right: 0
+		margin-bottom: 20px
+
+	.subscribe__right-title
+		margin-bottom: 10px
+
+	.footer
+		background-color: #fff
+
+	.footer__list
+		margin-bottom: 15px
+
+	.footer__social
+		margin-bottom: 15px
+
+	.footer__list-item
+		margin-bottom: 5px
+
+	.footer__bottom-menu-item
+		margin-right: 25px
+
+	.footer__list-item_type_number
+		display: inline-block
+		position: relative
+		&:after
+			margin: 0 10px
+			content: '|'
+		&:last-child
+			&:after
+				display: none
+
+	.top-nav
+		background-color: #6d5f54
+
+	.top-nav__nav-item
+		border-right: none
+		&:first-child
+			border-left: none
+			padding-right: 0
+
+	.main-banner__content
+		padding: 230px 40px 45px 40px
+		height: auto
+		margin-right: -25px
+		margin-left: -25px
+
+	.second-banner
+		padding: 80px 40px
+		align-items: center
+		background-position: right center
+
+	.main-nav__content
+		justify-content: space-between
+		min-height: 90px
+
+	.mobile-nav
+		display: -webkit-flex
+		display: -moz-flex
+		display: -ms-flex
+		display: -o-flex
+		display: flex
+
+	.main-nav__burger-container
+		display: -webkit-flex
+		display: -moz-flex
+		display: -ms-flex
+		display: -o-flex
+		display: flex
+
+	.main-nav__mobile-nav
+		align-self: center
+		padding-left: 20px
+		flex-grow: 1
+		justify-content: flex-end
+
+	.subscribe__right
+		padding-left: 25px
+		padding-right: 25px
+
+	.banner-preview
+		padding-left: 40px
+		padding-right: 40px
+		padding-top: 100px
+
+	.main-services
+		background-color: #f7f7f7
+		border-bottom: 1px solid $gray
+
+	.more-info
+		flex-direction: column
+
+	.main-services__more-info
+		margin-top: 0
+
+	.main-services__teasers
+		margin-top: 0
+		padding: 50px 0
+
+	.sustainability__banner
+		padding: 100px 15px
+		margin-right: -25px
+		margin-left: -25px
+
+	.login-popup
+		flex-wrap: wrap
+		max-width: 700px
+		width: 90%
+
+
+
+	.login-popup__left-part
+		width: 100%
+		flex: 0 0 100%
+		order: 1
+
+	.login-popup__text
+		display: none
+
+	.login-popup__right-part
+		width: 100%
+		flex: 0 0 100%
+
+	.category-banner
+		margin-right: -25px
+		margin-left: -25px
+
+	.contact-map
+		flex-direction: column
+
+	.contact-map__info-block
+		padding: 40px
+
+	.contact-map__info
+		order: 1
+
+	.contact-map__map
+		height: 300px
+
+	.main-contact__banner
+		padding: 65px 15px 180px 15px
+		margin-right: -25px
+		margin-left: -25px
+
+	.main-contact
+		padding-top: 0
+
+	.main-contact__content
+		margin-top: -120px
+
+	.subscribe__block-input
+		.form-button
+			flex: 0 0 200px
+
+	.main-services__banner
+		margin-right: -25px
+		margin-left: -25px
+		height: 400px
+
+	.main-services__teasers-item
+		margin-bottom: 50px
+		&:last-child
+			margin-bottom: 0
+
+	.teaser
+		text-align: left
+		display: -webkit-flex
+		display: -moz-flex
+		display: -ms-flex
+		display: -o-flex
+		display: flex
+		align-items: center
+
+	.teaser__image-block
+		margin-right: 60px
+
+	.teaser__image
+		margin: 0
+
+	.main-services__content
+		background: none
+
+	.more-info_bottom
+		box-shadow: none
+		.more-info__content
+			background-color: #f7f7f7
+			padding: 50px 0
+
+	.sustainability
+		background-color: #f7f7f7
+
+	.product-card
+		padding-top: 30px
+		padding-bottom: 0
+
+	.product-card__breadcrumbs
+		margin-bottom: 30px
+
+	.product-card__content
+		padding: 0 50px
+
+	.product-card__slider-for-container
+		flex: 0 0 100%
+		max-width: 100%
+		width: 100%
+
+
+	.product-card__slider-for	
+		margin-top: 0
+		.slider-for__item
+			text-align: center
+		.slider-for__image
+			width: 100%
+			display: inline-block
+
+	.product-info
+		display: -webkit-flex
+		display: -moz-flex
+		display: -ms-flex
+		display: -o-flex
+		display: flex
+		flex-direction: column
+
+	.product-info__share-item
+		margin-right: 45px
+
+	.product-info__accordion
+		margin-right: -25px
+		margin-left: -25px
+
+	.product-info__accordion-title
+		padding-left: 25px
+		padding-right: 25px
+		&:after
+			right: 25px
+
+	.product-info__accordion-content
+		padding-left: 25px
+		padding-right: 25px
+		padding-top: 20px
+		border-top: 1px solid $gray		
+
+
+	.main-banner__content h5
+		font-size: 24px
+
+	.main-banner__content h1
+		font-size: 48px
+
+	.banner-preview h3
+		font-size: 36px
+
+	.banner-preview h3 span
+		font-size: 28px
+
+	.main-services__title
+		font-size: 36px
+
+	.sustainability__title
+		font-size: 36px
+
+	.orders-table__header,
+	.orders-table__price,
+	.orders-table__quick-link
+		display: none
+
+	.orders-table__row
+		align-items: flex-start
+
+	.orders-table__content
+		flex-wrap: wrap
+		padding-left: 30px
+
+	.orders-table__link
+		padding-right: 0
+		flex: 0 0 80px
+
+	.orders-table__descr
+		flex: 0 0 100%
+		padding-right: 0
+		margin-bottom: 25px
+
+	.orders-table__qty
+		flex: 0 0 auto
+		margin-right: 38px
+
+	.orders-table__subtotal
+		flex: 0 0 auto
+
+	.sccol
+		height: 45px
+
+	.discount__block-input,
+	.main-checkout__block-input
+		flex-grow: 1
+		.form-button
+			flex: 0 0 100px
+
+	.main-cart__form-card
+		.form-card__block
+			background-color: #fff
+
+	.form-card__payment-item
+		flex: 0 0 32%
+		align-self: center
+
+	.form-card__coupon-text
+		margin-right: 25px
+
+	.sale-popup
+		flex-direction: column
+		max-width: 700px
+		width: 90%
+
+	.sale-popup__right-part
+		flex: 0 0 100%
+		width: 100%
+
+	.sale-popup__left-part
+		flex: 0 0 100%
+		width: 100%
+		height: 300px
+		background-image: url('../img/form-image-tablet.png')
+
+
+
+
+
+
+// 767
++media-breakpoint-down(sm)
+
+	.logo
+		transform: translate(-75%, -50%)
+
+
+
+
+
+
+// 575
++media-breakpoint-down(xs)
+
+	.logo
+		width: 105px
+		transform: translate(-50%, -50%)
+
+	.top-nav__content
+		justify-content: center
+
+	.top-nav__text
+		font-size: 12px
+
+	.top-nav__nav
+		display: none
+
+	.main-nav__content
+		min-height: 55px
+
+	.main-nav__burger-container
+		flex: 0 0 55px
+
+	.mobile-nav__item
+		margin-left: 20px
+
+	.mobile-nav__input
+		min-height: 36px
+
+	.mobile-burger__item
+		background-color: $text
+
+	.main-banner__content
+		padding: 75px 25px
+
+	.main-banner__content h1
+		font-size: 38px
+
+	.main-banner__content-text
+		font-size: 13px
+
+	.main-about__chain-item
+		padding: 0 25px
+
+	.button-preview
+		font-size: 12px
+		padding: 9px 15px
+		white-space: nowrap
+		border-width: 2px
+
+	.banner-descr__logo
+		flex: 0 0 56px
+
+	.banner-descr__left
+		order: 1
+		border-bottom: none
+
+	.banner-descr__right
+		border-bottom: 1px solid $gray
+
+	.banner-descr__right-text-large,
+	.banner-descr__left-text-large
+		font-size: 18px
+		line-height: 1.65
+
+	.banner-descr__left-code
+		border: none
+		font-size: 12px
+		background-color: #ccebee
+
+	.banner-preview
+		padding: 75px 25px 25px
+
+	.banner-preview h3
+		font-size: 24px
+
+	.banner-preview h3 span
+		font-size: 18px
+
+	.banner-preview__text
+		font-size: 13px
+
+	.banner-preview__button
+		min-width: 145px
+
+	.second-banner
+		padding: 75px 25px 25px
+		align-items: flex-start
+
+	.second-banner h2
+		font-size: 38px
+
+	.second-banner h2 span
+		font-size: 24px
+
+	.second-banner__text-left
+		font-size: 13px
+		padding-right: 15px
+
+	.second-banner__text-right
+		font-size: 16px
+		padding-left: 15px
+
+	.second-banner__text-right span
+		font-size: 14px
+
+	.catalog-home-page
+		padding-bottom: 0
+
+	.catalog-home-page__title
+		font-size: 20px
+
+	.product__color,
+	.product__info,
+	.product__rate
+		display: none
+
+	.subscribe__right-title
+		font-size: 16px
+
+	.subscribe__right-text
+		font-size: 13px
+
+	.subscribe__left-text
+		font-size: 13px
+		padding-left: 15px
+
+	.input-text
+		font-size: 13px
+		height: 46px
+		border-width: 2px
+
+	.subscribe__block-input .form-button
+		flex: 0 0 130px
+
+	.form-button_fontsize_sm
+		font-size: 13px
+
+	.subscribe__left-image
+		padding-right: 15px
+		border-right: 1px solid $gray
+		flex: 0 0 100px
+
+	.footer__bottom
+		font-size: 12px
+
+	.login-popup
+		max-width: 100%
+		width: 100%
+		margin-top: 90px
+
+	.sale-popup
+		max-width: 100%
+		width: 100%
+		margin-top: 90px
+
+	.my-mfp-slide-bottom.mfp-ready.mfp-bg
+		opacity: 0
+
+	.mfp-container
+		padding: 0
+
+	.mfp-close-btn-in .mfp-close
+		top: 0
+		right: 0
+		border-radius: 0
+
+	.login-popup__text
+		display: block
+		padding: 30px 25px
+
+	.account-form
+		padding: 30px 25px
+
+	.sale-form__header
+		padding: 30px 25px
+
+	.sale-form__body
+		padding: 30px 25px
+
+	.sale-form__header-title
+		font-size: 24px
+		&:before
+			width: 100px
+			left: -112px
+		&:after
+			right: -112px
+			width: 100px
+
+	.sale-form__header-descr
+		font-size: 18px
+
+	.sale-form__descr-left
+		font-size: 14px
+		span
+			font-size: 40px
+
+	.sale-form__descr-right
+		font-size: 13px
+
+	.login-popup__text-title
+		font-size: 24px
+
+	.login-popup__list-item
+		font-size: 13px
+		margin-top: 15px
+
+	.account-form__title
+		font-size: 24px
+
+	.form-button
+		font-size: 13px
+		height: 46px
+
+	.account-form__text-under-form
+		font-size: 13px
+		.quick-link
+			font-size: 13px
+
+	.main-category__dropdown-list
+		flex: 0 0 48%
+
+	.main-category__filter-handler
+		flex: 0 0 48%
+		justify-content: center
+
+	.filter
+		padding-top: 0
+
+	.main-category__top-panel
+		border-bottom: none
+
+	.main-category__product-list
+		padding: 0
+
+	.category-banner__title
+		font-size: 38px
+		line-height: 1
+
+	.breadcrumbs
+		font-size: 13px
+
+	.product-card__content
+		padding: 0
+
+	.product-card__breadcrumbs
+		display: none
+
+	.product-info__size
+		font-size: 13px
+
+	.product-info__descr
+		font-size: 28px
+
+	.product-info__price
+		font-size: 20px
+
+	.product-info__color-boxes
+		order: -1
+		text-align: center
+
+	.product-info__color-box
+		width: 40px
+		height: 40px
+		border-width: 2px
+
+	.product-info__size-boxes
+		display: -webkit-flex
+		display: -moz-flex
+		display: -ms-flex
+		display: -o-flex
+		display: flex
+		justify-content: center
+		margin-bottom: 25px
+
+	.product-info__size-box
+		width: 40px
+		height: 40px
+		border-width: 2px
+		font-size: 14px
+
+	.product-info__share
+		justify-content: center
+
+	.product-info__share-item
+		margin-right: 30px
+		&:first-child
+			display: none
+
+	.product-info__accordion-title
+		font-size: 13px
+
+	.product-info__accordion-content
+		font-size: 13px
+
+	.product__descr
+		font-size: 13px
+
+	.product__price
+		font-size: 13px
+
+	.product-info__size-link
+		border: 2px solid $gray
+		display: -webkit-inline-flex
+		display: -moz-inline-flex
+		display: -ms-inline-flex
+		display: -o-inline-flex
+		display: inline-flex
+		align-items: center
+		padding: 0 25px		
+
+	.product-info__pay-text
+		font-size: 12px
+		border-width: 2px
+
+	.product-info__affirm-image
+		width: 35px
+		top: -2px
+
+
+	.button-preview__image
+		width: 14px
+
+	.product-card__product-info
+		margin-top: 0
+
+	.product-card__slider-for-container
+		padding: 0 45px
+
+	.slick-arrow
+		position: absolute
+		top: 50%
+
+	.slick-arrow_left
+		right: 100%
+		transform: translate(-100%, -100%)
+
+	.slick-arrow_right
+		left: 100%
+		transform: translate(100%, -100%)
+
+	.main-contact
+		padding-bottom: 25px
+
+	.main-contact__banner
+		padding: 45px 25px
+
+	.main-contact__banner-title
+		font-size: 24px
+
+	.main-contact__banner-descr
+		font-size: 13px
+
+	.main-contact__content
+		margin-top: 0
+
+	.main-contact__map-descr
+		text-align: left
+		margin-top: 25px
+		br
+			display: none
+
+	.contact-map
+		margin-right: -25px
+		margin-left: -25px
+		box-shadow: none
+
+	.contact-map__map
+		height: 150px
+
+	.contact-map__info-block
+		padding: 25px
+		position: relative
+		&:last-child
+			border-bottom: 1px solid $gray
+
+	.contact-map__location-link
+		position: absolute
+		top: 25px
+		right: 25px
+
+	.main-about__banner
+		padding: 60px 25px
+
+	.main-about__banner-title
+		font-size: 24px
+		margin-bottom: 20px
+
+	.main-about__banner-descr
+		font-size: 13px
+
+	.main-about__chain-item-date
+		font-size: 16px
+
+	.main-services
+		border-bottom: none
+
+	.main-services__banner
+		margin-bottom: 0
+		height: 200px
+		padding: 0 25px
+
+	.main-services__title
+		margin-bottom: 0
+
+	.more-info
+		box-shadow: none
+
+	.more-info__content
+		padding: 25px
+
+	.more-info__title
+		font-size: 20px
+
+	.more-info__text
+		font-size: 13px
+		margin-bottom: 15px
+
+	.main-services__more-info
+		margin-right: -25px
+		margin-left: -25px
+
+	.select
+		font-size: 12px
+
+	.more-info__price-title
+		font-size: 12px
+
+	.more-info__price
+		font-size: 28px
+
+	.more-info__start-from
+		margin: 25px 0
+
+	.more-info_bottom .more-info__content
+		padding: 25px
+
+	.teaser
+		flex-direction: column
+		text-align: center
+
+	.teaser__image-block
+		margin-right: 0
+		margin-bottom: 25px
+
+	.teaser__title
+		font-size: 20px
+
+	.teaser__descr
+		font-size: 13px
+
+	.teaser__image-block
+		flex: 0 0 100px
+		width: 100px
+		max-width: 100px
+
+	.sustainability
+		background-color: #fff
+
+	.accordion__title
+		font-family: $bold
+		text-transform: none
+
+	.sustainability__banner
+		padding: 75px 25px
+
+	.sustainability__tab-content-paragraph
+		font-size: 13px
+
+	.main-checkout__title
+		font-size: 24px
+
+	.discount__block-input .form-button,
+	.main-checkout__block-input .form-button
+		flex: 0 0 75px
+
+	.main-cart__title
+		font-size: 24px
+
+	.main-cart__block-input
+		flex-grow: 1
+
+	.main-cart__payment
+		flex-wrap: wrap
+		.form-card__payment-item
+			flex: 0 0 48%
+			&:last-child
+				flex: 0 0 100%
+				margin-top: 15px
+
+
+/*==========  Mobile First  ==========*/
+
+// ≤576px
++media-breakpoint-up(sm)
+
+// ≤768px
++media-breakpoint-up(md)
+
+// ≤992px
++media-breakpoint-up(lg)
+
+// ≤1200px
++media-breakpoint-up(xl)

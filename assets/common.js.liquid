@@ -63,10 +63,20 @@ $(function() {
 		$('.filter').hide();
 	}
 
-	$('.filter__item-title').click(function () {
+	$('.filter__item_collections').click(function () {
 		$(this).toggleClass('filter__item-title_open');
 		$(this).next().slideToggle('fast');
 	});
+
+	$('.filter__item_tags').click(function () {
+		$(this).toggleClass('filter__item-title_open');
+		$(this).next().slideToggle('fast');
+	});
+
+	$('.filter__item_types').click(function () {
+		$(this).toggleClass('filter__item-title_open');
+		$(this).next().slideToggle('fast');
+	});		
 
 	$('.colors__item').click(function () {
 		$(this).toggleClass('colors__item_checked');
@@ -83,7 +93,7 @@ $(function() {
 			breakpoint: 992,
 			settings: {
 				//centerMode: true,
-				//variableWidth: true,
+				variableWidth: true,
 				infinite: true,
 				//dots: true,
 				fade: false,
@@ -102,6 +112,7 @@ $(function() {
 		}
 		]
 	});
+
 	$('.slider-nav').slick({
 		nextArrow: '<img class="slick-next" src="{{ 'slider-arr-down.png' | asset_url }}">',
 		prevArrow: '<img class="slick-prev" src="{{ 'slider-arr-up.png' | asset_url }}">',
@@ -113,6 +124,12 @@ $(function() {
 		vertical: true,
 		arrows: true,
 	});
+	
+    
+	$(window).on('resize', function(){
+		$('.slider-nav').slick('refresh')
+	})
+
 
 	$('.product-info__size-box').click(function () {
 		$('.product-info__size-box').removeClass('product-info__size-box_active');
@@ -164,7 +181,10 @@ $(function() {
 
 	$('.main-nav__burger-container').click(function () {
 		$(this).children().toggleClass('mobile-burger_open');
+		$(".mobile-nav-wrapper").toggleClass('js-menu--is-open', 1000);
 	});
 
 
 });
+
+

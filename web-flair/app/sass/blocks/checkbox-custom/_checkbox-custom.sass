@@ -1,0 +1,33 @@
+.checkbox-custom
+	position: relative
+	display: -webkit-flex
+	display: -moz-flex
+	display: -ms-flex
+	display: -o-flex
+	display: flex
+
+.checkbox-custom__indicator
+	flex: 0 0 20px
+	height: 20px
+	border: 1px solid $gray
+	background-color: #fff
+
+.checkbox-custom__box
+	opacity: 0
+	cursor: pointer
+	left: 0
+	top: 0
+	position: absolute
+	width: 20px
+	height: 20px
+	&:focus
+		&~.checkbox-custom__indicator
+			outline: 2px solid $accent
+	&:checked
+		&~.checkbox-custom__indicator
+			background-image: url(../img/check.png)
+			background-repeat: no-repeat
+			background-position: center
+
+.checkbox-custom__label
+	margin-left: 15px

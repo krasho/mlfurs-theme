@@ -1,0 +1,49 @@
+.filter
+	padding: 30px 0
+
+.filter__item
+	border-bottom: 1px solid $gray
+	position: relative
+
+.filter__item-title
+	text-transform: uppercase
+	font-size: 14px
+	line-height: 1
+	font-family: $medium
+	padding: 20px 0
+	display: -webkit-flex
+	display: -moz-flex
+	display: -ms-flex
+	display: -o-flex
+	display: flex
+	align-items: center
+	cursor: pointer
+	position: relative
+
+.filter__item_collections, .filter__item_tags, .filter__item_types
+	&:after
+		position: absolute
+		right: 5px
+		top: 50%
+		margin-top: -7px
+		transform: rotate(90deg)
+		content: url(../img/angle-right-accent.png)
+		
+
+.filter__item-title_open
+	&:after
+		content: url(../img/angle-right.png)
+		transform: rotate(-90deg)
+		right: 1px
+
+.filter__item-menu
+	overflow-y: auto
+	max-height: 150px
+	padding-bottom: 25px
+	padding-left: 5px
+	padding-top: 5px
+
+.filter__checkbox-custom
+	margin-bottom: 15px
+	&:last-child
+		margin-bottom: 0

@@ -4,18 +4,21 @@
 				<div class="col-12">
 
 					<div class="main-banner__social">
-						<a href="#" class="main-banner__social-item"><img src="{{ 'fb.png' | asset_url }}" alt="fb"></a>
-						<a href="#" class="main-banner__social-item"><img src="{{ 'tw.png' | asset_url }}" alt="tw"></a>
-						<a href="#" class="main-banner__social-item"><img src="{{ 'inst.png' | asset_url }}" alt="inst"></a>
+						<a href="https://www.facebook.com/MarksLloydsFurs" target="_blank" class="main-banner__social-item"><img src="{{ 'fb.png' | asset_url }}" alt="fb"></a>
+						<a href="https://twitter.com/markslloydsfurs" target="_blank" class="main-banner__social-item"><img src="{{ 'tw.png' | asset_url }}" alt="tw"></a>
+						<a href="http://www.instagram.com/mlfurs" target="_blank" class="main-banner__social-item"><img src="{{ 'inst.png' | asset_url }}" alt="inst"></a>
 					</div>
 
 					<a href="#" class="main-banner__link">Shop <img src="{{ 'arrow-down.png' | asset_url }}" alt="Arrow"></a>
 
 					<div class="main-banner__content" style="background-image: url({{ section.settings.hero_image | img_url: 'master' }});">
-						<h5>Celebrate the arrival of</h5>
-						<h1>Spring Weather</h1>
-						<div class="main-banner__content-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptatem, quas!</div>
-						<a href="#" class="main-banner__button-preview button-preview">Shop New Arrivals</a>
+						<h5>{{section.settings.hero_title}}</h5>
+						<h1>{{section.settings.hero_subtitle}}</h1>
+						<div class="main-banner__content-text">{{section.settings.hero_description}}</div>
+
+					 {%- if section.settings.hero_show_button == true -%}
+						   <a href="{{section.settings.hero_link_button}}" class="main-banner__button-preview button-preview">{{section.settings.hero_text_button}} </a>
+				   {%- endif -%}			 
 					</div>
 
 
@@ -32,15 +35,39 @@
       "id": "hero_image",
       "type": "image_picker",
       "label": "Hero image"
-    }
-  ],
-  
-  "presets": [
+    },
     {
-      "name": "Hero image",
-      "category": "Images"
-    }
-  ] 
+      "id": "hero_title",
+      "type": "text",
+      "label": "Title"
+    },
+    {
+      "id": "hero_subtitle",
+      "type": "text",
+      "label": "Subtitle"
+    },
+    {
+      "id": "hero_description",
+      "type": "text",
+      "label": "Description"
+    },
+		{
+			"id": "hero_text_button",
+			"type": "text",
+			"label": "Button Text"
+		},
+		{
+			"id": "hero_link_button",
+			"type": "url",
+			"label": "Button Link"
+		},
+		{
+			"id": "hero_show_button",
+			"type": "checkbox",
+			"label": "Button Text"
+		}
+										
+  ]  
 }
 {% endschema %}
 

@@ -1,0 +1,17 @@
+    <div class="product">
+        <div class="product__image">
+            <a class="product__link" href="{{product.url}}">
+                {%- if product.images.size > 0 -%}
+                    <img src="{{ product.featured_image | product_img_url: '480x480', scale: 2 }}" alt="{{ product.title | escape }}" alt="product" class="img-responsive img-width" />
+                {%- endif -%}
+            </a>
+        </div>
+        <div class="product__body">
+            <div class="product__size">em-el</div>
+            <div class="product__descr">{{product.title | scape}}</div>
+            <div class="product__price">{{product.price | money}}</div>
+            <div class="product__rate">{%- include "rate_reviews" -%}</div>
+            <!--<div class="product__info">Jane S. | Los Angeles, CA</div>-->
+            <!--<div class="product__color" style="background-color: yellow"></div>-->
+        </div>
+    </div>

@@ -1,0 +1,81 @@
+.main-banner__link
+	writing-mode: tb-rl
+	position: absolute
+	z-index: 1
+	right: -50px
+	top: 50%
+	margin-top: -20px
+	text-transform: uppercase
+	font-size: 12px
+	font-family: $bold
+	color: $text
+	text-decoration: none
+	letter-spacing: 2px
+	transition: all .25s ease
+	display: -webkit-inline-flex
+	display: -moz-inline-flex
+	display: -ms-inline-flex
+	display: -o-inline-flex
+	display: inline-flex
+	align-items: center
+	&:hover
+		opacity: .5
+		text-decoration: none
+		color: $text
+	img
+		margin-top: 15px
+		position: relative
+		margin-right: -3px
+
+.main-banner__social
+	position: absolute
+	z-index: 1
+	flex-direction: column
+	display: -webkit-flex
+	display: -moz-flex
+	display: -ms-flex
+	display: -o-flex
+	display: flex
+	align-items: center
+	left: -50px
+	top: 50%
+	margin-top: -54px
+
+.main-banner__social-item
+	transition: all .25s ease
+	margin: 5px 0
+	&:hover
+		opacity: .5
+
+.main-banner__content
+	height: calc(100vh - 309px)
+	background-size: cover
+	background-repeat: no-repeat
+	background-position: center
+	padding-left: 180px
+	display: -webkit-flex
+	display: -moz-flex
+	display: -ms-flex
+	display: -o-flex
+	display: flex
+	flex-direction: column
+	justify-content: center
+	align-items: start;
+	color: #fff
+	h5
+		font-family: $bold-italic
+		margin-bottom: 0
+		font-size: 36px
+	h1
+		padding-bottom: 15px
+		font-size: 72px
+		line-height: 1
+		border-bottom: 1px solid #c8cac7
+
+.main-banner__content-text
+	margin-top: 20px
+	font-size: 14px
+	font-family: $semi-bold
+
+.main-banner__button-preview
+	margin-top: 20px

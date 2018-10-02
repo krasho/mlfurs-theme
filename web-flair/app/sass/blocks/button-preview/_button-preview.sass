@@ -1,0 +1,43 @@
+.button-preview
+	color: #fff
+	border: 2px solid $gray
+	text-align: center
+	z-index: 1
+	display: inline-block
+	font-size: 14px
+	font-family: $semi-bold
+	text-transform: uppercase
+	padding: 15px 35px
+	text-decoration: none
+	transition: all .25s ease
+	&:hover
+		color: $text
+		text-decoration: none
+		background-color: $gray
+
+.button-preview_with_image
+	padding: 15px 20px
+	transition: background-color .25s ease
+	&:hover
+		color: #fff
+		background-color: $gray
+	&.button-preview_dark
+		&:hover
+			background-color: $gray
+			color: $text
+
+.button-preview__image
+	margin-left: 10px
+
+
+.button-preview_size_sm
+	font-size: 12px
+	font-family: $medium
+	border-width: 1px
+
+.button-preview_dark
+	color: $text
+	border-color: $text
+	&:hover
+		background-color: $text
+		color: #fff

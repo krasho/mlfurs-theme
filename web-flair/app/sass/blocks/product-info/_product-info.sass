@@ -1,0 +1,174 @@
+.product-info__size
+	font-size: 16px
+	text-transform: uppercase
+	color: #cbb6a7
+	font-family: $bold
+
+.product-info__descr
+	font-family: $light
+	font-size: 36px
+	line-height: 1.2
+	border-bottom: 1px solid $gray
+	padding-bottom: 15px
+	margin-bottom: 20px
+
+.product-info__price-rate
+	display: -webkit-flex
+	display: -moz-flex
+	display: -ms-flex
+	display: -o-flex
+	display: flex
+	justify-content: space-between
+	margin-bottom: 35px
+
+.product-info__quick-link
+	margin-right: 10px
+
+.product-info__price
+	color: #999
+	font-size: 15px
+	font-family: $regular
+	line-height: 1.5
+
+.product-info__was__price
+	color: #000
+	font-family: $regular
+	font-size: 15px	
+	line-height: 1.5
+
+.product-info__now__price
+	color: red
+	font-family: $bold
+	font-size: 24px 
+	line-height: 1.5
+
+.product-info__size-boxes
+	align-items: center
+	display: flex
+	margin-bottom: 10px
+
+
+.product-info__size-box
+	align-items: center
+	border: 1px solid $gray
+	cursor: pointer	
+	display: -webkit-inline-flex
+	display: -moz-inline-flex
+	display: -ms-inline-flex
+	display: -o-inline-flex
+	display: inline-flex
+	height: 50px	
+	justify-content: center
+	line-height: 1
+	margin-right: 10px
+	position: relative
+	text-align: center
+	width: 80px
+
+.product-info__size-box_active
+	border-color: $accent
+
+.product-info__size-box_disabled
+	opacity: .5
+	background-image: linear-gradient(-45deg, #fff 49%, $gray 50%, #fff 52%)
+	pointer-events: none
+
+.product-info__color-boxes
+	margin-bottom: 20px
+
+.product-info__color-box
+	width: 50px
+	height: 50px
+	display: -webkit-inline-flex
+	display: -moz-inline-flex
+	display: -ms-inline-flex
+	display: -o-inline-flex
+	display: inline-flex
+	margin-right: 10px
+	cursor: pointer
+	border: 1px solid #fff
+	&:last-child
+		margin-right: 0
+
+.product-info__color-box_active
+	border: 1px solid $accent
+
+.product-info__count-add
+	display: -webkit-flex
+	display: -moz-flex
+	display: -ms-flex
+	display: -o-flex
+	display: flex
+	justify-content: space-between
+	flex-wrap: wrap
+
+.product-info__count-input
+	margin-bottom: 20px
+	flex: 0 0 20%
+	&::-webkit-inner-spin-button
+		appearance: none
+		margin: 0
+	&::-webkit-outer-spin-button
+		appearance: none
+		margin: 0
+
+.product-info__form-button
+	flex: 0 0 78%
+	margin-bottom: 20px
+
+.product-info__pay-text
+	background-color: #f7f7f7
+	border: 1px solid $gray
+	display: flex
+	justify-content: center
+	font-size: 15px
+	font-family: $light	
+	margin-bottom: 20px
+	padding: 15px
+	text-align: center
+	
+	.affirm-as-low-as
+		margin-bottom: 0px
+		& span:nth-child(3)
+			outline: 1px solid blue
+
+		.affirm-ala-price
+			color: $accent
+			font-family: $bold
+		
+
+.product-info__affirm-image
+	top: -3px
+	position: relative
+	display: inline-block
+
+.product-info__buttons
+	display: -webkit-flex
+	display: -moz-flex
+	display: -ms-flex
+	display: -o-flex
+	display: flex
+	justify-content: space-between
+	flex-wrap: wrap
+
+.product-info__button-preview
+	flex: 0 0 48%
+	margin-bottom: 30px
+
+.product-info__share
+	display: flex
+	font-size: 13px
+	font-family: $semi-bold
+	text-transform: uppercase
+	align-items: center
+	margin-bottom: 30px
+
+.product-info__share-item
+	margin-right: 20px
+	&:last-child
+		margin-right: 0
+
+.product-info__share-link
+	transition: opacity .25s ease
+	&:hover
+		opacity: .5
