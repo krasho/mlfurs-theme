@@ -23,27 +23,8 @@
 						</div>
 
 						<div class="footer__column d-flex d-sm-flex d-md-flex d-lg-flex d-xl-flex">
-							<div style="flex: 0 0 209px">
-								<div class="footer__column-title">{{section.settings.text_for_footer_menu_linklist}}</div>
-								<ul class="footer__list">
-									{% for link in linklists[section.settings.footer_menu_linklist].links %}
-										<li class="footer__list-item">
-										<a class="footer__list-link" href="{{ link.url }}">{{link.title}}</a>
-										</li>
-									{% endfor %}								
-								</ul>
-							</div>
-
-							<div style="flex: 0 0 209px">
-								<div class="footer__column-title">{{section.settings.text_for_footer_menu2_linklist}}</div>
-								<ul class="footer__list">
-									{% for link in linklists[section.settings.footer_menu2_linklist].links %}
-										<li class="footer__list-item">
-										<a class="footer__list-link" href="{{ link.url }}">{{link.title}}</a>
-										</li>
-									{% endfor %}								
-								</ul>
-							</div>												
+						    {%- include "footer_menu_option", menu_title: section.settings.text_for_footer_menu_linklist, menu_name:  section.settings.footer_menu_linklist  -%}
+							{%- include "footer_menu_option", menu_title: section.settings.text_for_footer_menu2_linklist, menu_name:  section.settings.footer_menu2_linklist  -%}
 						</div>
 
 						<div class="footer__column" style="flex: 0 0 209px"> 
@@ -51,30 +32,35 @@
 							<ul class="footer__list">
 								<li class="footer__social-item footer__social-item_blured">
 								   <a class="footer__list-link" href="https://www.facebook.com/MarksLloydsFurs" target="_blank">
-								      <img src="{{ 'fb.png' | asset_url }}" alt="fb">&nbsp; Facebook
+								      <span style="width: 16px;"><img src="{{ 'fb.png' | asset_url }}" alt="fb"></span>	
+									  &nbsp; Facebook
 								   </a>
 								</li>
 								<li class="footer__social-item footer__social-item_blured">
 								   <a class="footer__list-link" href="https://twitter.com/markslloydsfurs" target="_blank">
-								      <img src="{{ 'tw.png' | asset_url }}" alt="tw">&nbsp; Twitter
+								      <span style="width: 16px;"><img src="{{ 'tw.png' | asset_url }}" alt="tw"></span>
+								      &nbsp; Twitter
 								   </a>
 								</li>
 
 								<li class="footer__social-item footer__social-item_blured">
 								   <a class="footer__list-link" href="#" target="_blank">
-								      <img src="{{ 'inst.png' | asset_url }}" alt="tw">&nbsp; Instagram
+								      <span style="width: 16px;"><img src="{{ 'inst.png' | asset_url }}" alt="tw"></span>
+								      &nbsp; Instagram
 								   </a>
 								</li>																
 
 								<li class="footer__social-item footer__social-item_blured">
 								   <a class="footer__list-link" href="#" target="_blank">
-								      <img src="{{ 'yt.png' | asset_url }}" alt="tw">&nbsp; Youtube
+								      <span style="width: 16px;"><img src="{{ 'yt.png' | asset_url }}" alt="tw"></span>
+								      &nbsp; Youtube
 								   </a>
 								</li>								
 
 								<li class="footer__social-item footer__social-item_blured">
 								   <a class="footer__list-link" href="#" target="_blank">
-								      <img src="{{ 'gp.png' | asset_url }}" alt="tw">&nbsp; Google +
+								      <span style="width: 16px;"><img src="{{ 'gp.png' | asset_url }}" alt="tw"></span>
+								      &nbsp; Google +
 								   </a>
 								</li>								
 							</ul>
