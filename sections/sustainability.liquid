@@ -1,7 +1,17 @@
 	<section class="sustainability">
 		<div class="container-fluid">
+            <div class="row">
+				<div class="col-12">
+					<div class="sustainability__banner" style="background-image: url({{ section.settings.hero | img_url: 'master' }});">
+						<div class="sustainability__title">Sustainability</div>
+					</div>
+				</div>
+			</div>	
 
-			<div class="row">
+			{%- include "sustainability_mobile" -%}	
+
+
+			<!--<div class="row">
 				<div class="col-12">
 					<div class="sustainability__banner" style="background-image: url({{ section.settings.hero | img_url: 'master' }});">
 						<div class="sustainability__title">Sustainability</div>
@@ -285,49 +295,50 @@
 											</div>
 										</div>
 									</div>
+									-->
 
-								</div>
-							</section>
-
+	</div>
+</section>
 
 {% schema %} {
-  "name": "Sustentability",
+  "name": "Sustainability",
   "settings": [
     {
       "id": "hero",
       "type": "image_picker",
       "label": "Hero Image"
-    },
+    }
+  ],
+  "blocks": [
+     {
+	   "type": "text",
+	   "name": "Sustainability Sections",
+	   "settings": [
+			{
+			"id": "title",
+			"type": "text",
+			"label": "Title"
+			},
+			{
+			"id": "image",
+			"type": "image_picker",
+			"label": "Image to Section"
+			},
+			{
+			"id": "description",
+			"type": "html",
+			"label": "Description"
+			}						
+     	]
+	}
+   ],
+
+  
+  "presets": [
     {
-      "id": "blackgama_image",
-      "type": "image_picker",
-      "label": "Blackgama Image"
-    },
-    {
-      "id": "american_image",
-      "type": "image_picker",
-      "label": "American Image"
-    },
-    {
-      "id": "nafa_image",
-      "type": "image_picker",
-      "label": "Nafa Image"
-    },
-    {
-      "id": "sagafurs_image",
-      "type": "image_picker",
-      "label": "Sagafurs Image"
-    },
-    {
-      "id": "chinchila_image",
-      "type": "image_picker",
-      "label": "Chinchila Image"
-    },
-    {
-      "id": "kopenhagen_image",
-      "type": "image_picker",
-      "label": "Kopenhagen Image"
-    }                  
-  ]
+      "name": "Sustainability Sections",
+      "category": "Products"
+    }
+  ] 
 }
-{% endschema %}   
+{% endschema %}        

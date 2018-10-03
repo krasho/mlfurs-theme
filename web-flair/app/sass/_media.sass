@@ -478,10 +478,8 @@
 	.product-info__accordion-title
 		padding-left: 25px
 		padding-right: 25px
-		&:after
-			right: 25px
 
-	.product-info__accordion-content
+	.product-info__accordion-content	
 		padding-left: 25px
 		padding-right: 25px
 		padding-top: 20px
@@ -503,8 +501,14 @@
 	.main-services__title
 		font-size: 36px
 
+
 	.sustainability__title
 		font-size: 36px
+	
+	.sustainability-mobile-accordion__accordion-content
+		padding-top: 20px
+		border-top: 1px solid $gray		
+
 
 	.orders-table__header,
 	.orders-table__price,
@@ -873,10 +877,12 @@
 		&:first-child
 			display: none
 
-	.product-info__accordion-title
+	.product-info__accordion-title,
+	.sustainability-mobile-accordion
 		font-size: 13px
 
-	.product-info__accordion-content
+	.product-info__accordion-content,
+	.sustainability-mobile-accordion__accordion-content
 		font-size: 13px
 
 	.product__descr
