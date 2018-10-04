@@ -176,7 +176,7 @@
                                     {% assign varianst_separated_by_comma = varianst_separated_by_comma | append: comma | append: variant.title %}
                                     {% assign comma = ',' %}
                                     <option {% if variant == product.selected_or_first_available_variant %} selected="selected" {% endif %} value="{{ variant.id }}">{{ variant.title | escape }} -
-                                            {{ variant.price | money }}
+                                            {{ variant.price | money }} - {{variant.inventory_quantity}}
                                     </option>
                                 {%- endfor -%}
                                 </select>
