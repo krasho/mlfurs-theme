@@ -52,7 +52,7 @@ gulp.task('js', function() {
 	return gulp.src([
 		'app/libs/jquery/dist/jquery.min.js',
 		'app/libs/magnific-popup/dist/jquery.magnific-popup.min.js',
-		'app/libs/slick-carousel/slick/slick.min.js',
+		'app/libs/slick-carousel/slick/slick.min.js',		
 		'app/js/common.js', // Always at the end
 		])
 	.pipe(concat('scripts.min.js'))
@@ -66,6 +66,7 @@ gulp.task('js-shopify', function() {
 		'app/libs/jquery/dist/jquery.min.js',
 		'app/libs/magnific-popup/dist/jquery.magnific-popup.min.js',
 		'app/libs/slick-carousel/slick/slick.min.js',		
+		'app/libs/jquery_diagonal/jquery.diagonal.js',
 		'./../assets/collections.js',		
 		'./../assets/cart.js',		
 		])

@@ -1,4 +1,13 @@
-let $left = $(".slider-nav");
+window.mlfurs_filters = []
+{% for product_option in product.options_with_values %}
+      mlfurs_filters.push({{product_option.name}}) 
+{% endfor %}
+
+console.log(mlfurs_filters)
+
+
+
+/*let $left = $(".slider-nav");
 
 function handleCarouselsHeight() {
   if (window.matchMedia("(min-width: 1024px)").matches) {
@@ -9,7 +18,40 @@ function handleCarouselsHeight() {
   }
 }
 
+function checkWhatOptionsHaveInventory(color_selected, size_selected) {
+
+  let productVariants = $("#variants_separated_by_comma").val()
+  let productVariantsArray = productVariants.split(",")
+  let newValueToSearch = ''
+
+  if (color_selected.length > 0) {
+     let option_list = $("#option_list_size").val().split(",")
+
+     option_list.forEach(function(item) {
+        newValueToSearch = color_selected+" / "+item
+        if (productVariantsArray.length >= 1) {
+            let found = productVariantsArray.findIndex( element => {
+                    return element == newValueToSearch
+            })
+
+
+            console.log("buscar:"+newValueToSearch+"  -- found:"+found)
+            if (found >=0) {
+                console.log("checar si hay inventario")
+
+            } else {
+              
+              $("#diagonal_option_size_"+item).show()
+            }
+        }
+    })
+  }
+}
+
 $('.option_to_select').on("click", function(){
+   //$(".diagonal-line").css("opacity", 0)
+   $(".product-info__diagonal-line").hide()
+
    let options = $("#options_separated_by_comma").val()
    let optionsArray = options.split(",")
    
@@ -31,11 +73,11 @@ $('.option_to_select').on("click", function(){
 
    $('#btn_to_add_cart').show()
    $("#sold-out-container").hide()
-   if (productVariantsArray.length > 1) {
+   
+   if (productVariantsArray.length >= 1) {
      let found = productVariantsArray.findIndex( element => {
             return element == newValueToSearch
       })
-
       
       if (found >= 0) {
           $('#product-select').prop('selectedIndex', found)          
@@ -58,26 +100,35 @@ $('.option_to_select').on("click", function(){
           } 
           
       } else {
+          let color_selected = $("#color_selected").val()        
+          color_selected = color_selected.toLowerCase()
+          color_selected = color_selected.split("/").join("")
+          color_selected = color_selected.split(" ").join("")
+          
+
+          let id = "diagonal_option_color_"+color_selected          
+          //$("#"+id).css("opacity", "0.4")
+          $("#"+id).show()
+          
           $("#sold-out-container").show()
           $('#btn_to_add_cart').hide()
       }
 
    }
+   let option = $(this).data("option")
+
+   $("#color-label").show() 
+   if (option_name == 'color') {
+       $("#color-label").html(newValue)
+   }
+
+
+
+
+   checkWhatOptionsHaveInventory($("#color_selected").val(), $("#color_selected").val())
 });
 
 $(window).on("load", () => {
-    console.log("en el load")
   handleCarouselsHeight();
 });
-
-
-/*$(window).load(function() {
-      $('.slides').on('setPosition', function () {
-      $(this).find('.slick-slide').height('auto');
-      var slickTrack = $(this).find('.slick-track');
-      var slickTrackHeight = $(slickTrack).height();
-      $(this).find('.slick-slide').css('height', slickTrackHeight + 'px');
-      });
-})
 */
-
