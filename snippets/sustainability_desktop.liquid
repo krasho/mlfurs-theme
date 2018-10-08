@@ -1,0 +1,25 @@
+<div class="d-none d-sm-none d-md-none d-lg-block d-xl-block  sustainability-desktop">
+  {%- for block in section.blocks -%}
+       {% assign type = 'odd' %}
+       {% assign result = forloop.index | modulo: 2 %}
+       {%- if result == 0 -%}
+          {% assign type = 'even' %}
+       {%- endif -%}
+       
+        <div class="sustainability-desktop-item item_{{type}}">
+            <div class="sustainability-desktop-text-information">
+               <div class="sustainability-desktop-text-information__title">
+                  {{block.settings.title}}
+               </div>
+
+               <div class="sustainability-desktop-text-information__description">
+                  {{block.settings.description}}
+               </div>               
+            </div>
+            <div class="sustainability-desktop-image">
+                Image here
+            </div>      
+        </div>
+   {%- endfor -%}
+   
+</div>

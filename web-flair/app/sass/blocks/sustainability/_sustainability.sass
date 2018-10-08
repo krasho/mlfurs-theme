@@ -54,3 +54,36 @@
 		content: ''
 		transform: rotate(45deg)
 
+.sustainability-desktop
+	&-item
+		display: flex
+		
+	&-text-information
+		background-color: #f7f7f7
+		padding: 4rem
+		width: 50%
+
+		&__title
+			font-family: $bold
+			font-size: 36px
+
+		&__description
+			margin-top: 1rem
+
+			ul
+				list-style-image: url(v_blue.png)
+				li				
+					list-style-type: none			
+					margin-bottom: 20px		
+	
+	&-image
+		width: 50%
+
+	.item_even
+		.sustainability-desktop-text-information
+			order: 2
+		
+		.sustainability-desktop-image
+			order: 1
+
+
