@@ -104,13 +104,9 @@
                             {%- if variant_selected != "" -%}
                                 {% assign variantArray = variant_selected | split: " / " %}
                             {%- endif -%} 
-                            
-                            {% assign options_separated_by_comma = '' %}
-                            {% assign comma = '' %}
- 
+                             
                             {% for product_option in product.options_with_values %}
-                                {% assign options_separated_by_comma = options_separated_by_comma | append: comma | append: product_option.name | downcase %}
-                                {% assign comma = ',' %}
+                                <input type="hidden" id="option_{{product_option | remove:' ' | remove: '/' | downcase}}_registered" value="">
 
                                 {% assign variantItem = variantArray[forloop.index0] | strip %}
 
@@ -121,14 +117,10 @@
                                 {%- endif -%} 
 
                                 {% assign selected_value = '' %}  
-                                {% assign comma = '' %}
-                                {% assign option_values_separated_by_comma = '' %}
                                 {% for value in product_option.values %}
                                     {% assign selected = '' %} 
                                     {% assign outline = 'outline: 1px solid #ededed;' %}                                     
 
-                                    {% assign option_values_separated_by_comma = option_values_separated_by_comma | append: comma | append: value %}
-                                    {% assign comma = ',' %}
 
                                     {%- if variant_selected != '' and value == variantItem  -%}
                                         {% assign selected = 'product-info__size-box_active product-info__color-box_active' %} 
@@ -137,28 +129,29 @@
                                     {%- endif -%}                                
                                     
 
+                                    {% assign option_name =  product_option.name | remove: ' ' | remove: '/' | downcase %}
+                                    {% assign option_value =  value | remove: ' ' | remove: '/' | downcase  %}
+
                                     {%- if product_option.name == "Color" -%}                                        
-                                            {% assign image_to_color = value | remove: " " | remove: "/" | downcase | append: ".png" %}                                            
+                                            {% assign image_to_color = value | remove: " " | remove: "/" | downcase | append: ".png" %}
+
                                             <div class="product-info__color-box {{selected}} option_to_select" 
                                                  data-name="{{value}}" 
-                                                 data-option="{{product_option.name | downcase}}"
-                                                 data-id ="option_{{product_option.name| remove: ' ' | remove: '/' | downcase}}_{{value | remove: ' ' | remove: '/' | downcase}}"
+
+                                                 data-option="{{option_name}}"
+                                                 data-value="{{value}}"                                                 
+                                                 data-id ="option_{{option_name}}_{{option_value}}"
                                                  style="background-image: url('{{image_to_color | asset_url}}'); 
                                                         background-repeat: no-repeat;
                                                         {{outline}}
                                                         background-size: 100%;
                                                         position: relative" 
-                                                id="option_{{product_option.name| remove: ' ' | remove: '/' | downcase}}_{{value | remove: ' ' | remove: '/' | downcase}}">
+                                                id="option_{{option_name}}_{{option_value}}">
 
-                                                <!--<div class="product-info__diagonal-line" 
-                                                     style="
-                                                            opacity:1;"
-                                                    id="diagonal_option_{{product_option.name| remove: ' ' | remove: '/' | downcase}}_{{value | remove: ' ' | remove: '/' | downcase}}">
-                                                </div>-->
 
                                                 <svg class="product-info__diagonal-line" 
                                                      style="display: none;"
-                                                     id="diagonal_option_{{product_option.name| remove: ' ' | remove: '/' | downcase}}_{{value | remove: ' ' | remove: '/' | downcase}}">
+                                                     id="diagonal_option_{{option_name}}_{{option_value}}">
                                                                                                             
                                                       <line x1='0' y1='0' x2='100%' y2='100%' />
 
@@ -169,15 +162,18 @@
                                     {%- else -%}
                                         <div class="product-info__size-box {{selected}} option_to_select" 
                                              data-name="{{value}}" 
-                                             data-id ="option_{{product_option.name| remove: ' ' | remove: '/' | downcase}}_{{value | remove: ' ' | remove: '/' | downcase}}"
-                                             data-option="{{product_option.name| downcase}}" id="option_{{product_option.name}}_{{value}}"
-                                             style="position: relative">
+
+                                             data-option="{{option_name}}"
+                                             data-value="{{value}}"
+                                             data-id ="option_{{option_name}}_{{option_value}}"
+                                             style="position: relative"
+                                             id="option_{{option_name}}_{{option_value}}">
                                         
                                                 {{ value | replace: "-", "<br />" }} 
 
                                                 <svg class="product-info__diagonal-line" 
                                                      style="display: none;"
-                                                     id="diagonal_option_{{product_option.name| remove: ' ' | remove: '/' | downcase}}_{{value | remove: ' ' | remove: '/' | downcase}}">
+                                                     id="diagonal_option_{{option_name}}_{{option_value}}">
                                                                                                             
                                                       <line x1='0' y1='0' x2='100%' y2='100%' />
 
@@ -185,8 +181,6 @@
                                         </div>
                                     {%- endif -%}                        
                                     {% endfor %} 
-
-                                    <input type="hidden" name="option_list_{{product_option.name | downcase}}" id="option_list_{{product_option.name | downcase}}" value="{{option_values_separated_by_comma}}">
 
                                     {%- if product_option.name == "Color" -%}
                                         <span class="quick-link quick-link_size_sm quick-link_dark" id="color-label" style="display:none;"></span>
@@ -197,14 +191,13 @@
                                     {%- endif -%}                        
                                 </div>   
 
-                                <input type="hidden" name="{{product_option.name | downcase}}_selected" id="{{product_option.name | downcase}}_selected" value="{{selected_value}}">
                             {% endfor %}
-
-                             <input type="hidden" id="options_separated_by_comma" value="{{options_separated_by_comma}}">
                              
-
                         </div>
                         {%- endif -%}            
+
+
+                        <input type="hidden" id="filter_selected" value="">
 
             
                         {%- if product.variants.size > 1 -%}
@@ -229,7 +222,7 @@
                                 {%- endfor -%}
                                 </select>
 
-                             <input type="hidden" id="variants_separated_by_comma" value="{{varianst_separated_by_comma}}">   
+                             <!--<input type="hidden" id="variants_separated_by_comma" value="{{varianst_separated_by_comma}}">   -->
                                 
                         {%- else -%}
                                 <input type="hidden" name="id" value="{{ product.variants.first.id }}" />
@@ -289,7 +282,8 @@
                                         <div class="accordion__item">
                                             <div class="product-info__accordion-title accordion__title">PRODUCT INFORMATION</div>
                                             <div class="product-info__accordion-content accordion__content">
-                                                {{ product.metafields["global"]["productInfo"] }}
+                                               <!-- {{ product.metafields["global"]["productInfo"] }} -->
+                                               {%- include "product-info-tabs" -%}
                                             </div>
                                         </div>
                                         <div class="accordion__item">

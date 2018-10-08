@@ -1,134 +1,117 @@
-window.mlfurs_filters = []
-{% for product_option in product.options_with_values %}
-      mlfurs_filters.push({{product_option.name}}) 
-{% endfor %}
+function removeCharacteres(value) {
+   let newValue = value; 
+   newValue = newValue.toLowerCase();
+   newValue = newValue.split("/").join("")
+   newValue = newValue.split(" ").join("")
+   
+   return newValue;
+}
 
-console.log(mlfurs_filters)
-
-
-
-/*let $left = $(".slider-nav");
-
-function handleCarouselsHeight() {
-  if (window.matchMedia("(min-width: 1024px)").matches) {
-    let gl2H = $(".product-card__slider-for").height();
-    $left.css("height", gl2H);
-  } else {
-    $left.css("height", "auto");
+function showColorLabel(type, labelText) {
+  if (type == 'color') {
+       $("#color-label").html(labelText)
+       $("#color-label").show() 
   }
 }
 
-function checkWhatOptionsHaveInventory(color_selected, size_selected) {
-
-  let productVariants = $("#variants_separated_by_comma").val()
-  let productVariantsArray = productVariants.split(",")
-  let newValueToSearch = ''
-
-  if (color_selected.length > 0) {
-     let option_list = $("#option_list_size").val().split(",")
-
-     option_list.forEach(function(item) {
-        newValueToSearch = color_selected+" / "+item
-        if (productVariantsArray.length >= 1) {
-            let found = productVariantsArray.findIndex( element => {
-                    return element == newValueToSearch
-            })
 
 
-            console.log("buscar:"+newValueToSearch+"  -- found:"+found)
-            if (found >=0) {
-                console.log("checar si hay inventario")
 
-            } else {
-              
-              $("#diagonal_option_size_"+item).show()
-            }
-        }
-    })
-  }
-}
 
-$('.option_to_select').on("click", function(){
-   //$(".diagonal-line").css("opacity", 0)
-   $(".product-info__diagonal-line").hide()
-
-   let options = $("#options_separated_by_comma").val()
-   let optionsArray = options.split(",")
+$(".option_to_select").on("click", function(event) {
    
-   let newValueToSearch = ''
-   let option_name = $(this).data('option') 
-   let newValue = $(this).data('name')
-   $("#"+option_name+"_selected").val(newValue)
-   let separator = ''
- 
-   optionsArray.forEach( element => {
-      value_selected = $("#"+element+"_selected").val()
-      newValueToSearch = newValueToSearch+separator+value_selected 
-
-      separator = ' / '            
-   })
-
-   let productVariants = $("#variants_separated_by_comma").val()
-   let productVariantsArray = productVariants.split(",")
-
-   $('#btn_to_add_cart').show()
-   $("#sold-out-container").hide()
-   
-   if (productVariantsArray.length >= 1) {
-     let found = productVariantsArray.findIndex( element => {
-            return element == newValueToSearch
-      })
+   let idForDiagonal = "#diagonal_"+$(this).data("id");      
+   if ($(idForDiagonal).css('display') != 'block') {
+      $('#btn_to_add_cart').show()
+      $("#sold-out-container").hide()
       
-      if (found >= 0) {
-          $('#product-select').prop('selectedIndex', found)          
-          let variant_hidden = $("#variant_hidden_"+$('#product-select').val())
 
-          let compare_price = variant_hidden.data("compare")
-          let price = variant_hidden.data("price")
+      let option_type = $(this).data("option");
+      let option_value = $(this).data("value");
 
-          $("#original_price_container").hide()
-          $("#current_price_container").show()
-          $("#now_price_container").hide()
+    
+      showColorLabel(option_type, option_value)
 
-          if (compare_price != "" && price != compare_price) {
-             $("#original_price_value").html(compare_price)
-             $("#current_price_with_compare").html(price)
-
-             $("#original_price_container").show()
-             $("#current_price_container").hide()
-             $("#now_price_container").show()
-          } 
-          
-      } else {
-          let color_selected = $("#color_selected").val()        
-          color_selected = color_selected.toLowerCase()
-          color_selected = color_selected.split("/").join("")
-          color_selected = color_selected.split(" ").join("")
-          
-
-          let id = "diagonal_option_color_"+color_selected          
-          //$("#"+id).css("opacity", "0.4")
-          $("#"+id).show()
-          
-          $("#sold-out-container").show()
-          $('#btn_to_add_cart').hide()
+      if ($.isNumeric(option_value) == false) {
+    			option_value = option_value.split("/").join("")
+          option_value = option_value.split(" ").join("")
       }
+      
+      let current_option_registered = $("#option_"+option_type+"_registered").val();
+      $("#option_"+option_type+"_registered").val(option_value)
+      
+       
 
+      mlfurs.applyFilters(option_type, option_value);  
+
+      //Me falta controlar si estoy cambiando de tipo de filtro y ademas si el valor nuevo es diferente
+      //al que está registrado
+      
+
+      
+      if (mlfurs.validateIfAllFilterAreSelected() == true) {
+
+        //validate if variant is available
+        if (mlfurs.checkAvailableInVariantAvailablefunction() == false) {
+            $("#sold-out-container").show()
+            $('#btn_to_add_cart').hide()
+        }        
+
+      } else {
+        $(".product-info__diagonal-line").hide();        
+        for(filter in mlfurs.filters) {
+          name = mlfurs.filters[filter];
+
+          if (name == option_type) {
+            continue;
+          }
+
+          filter_content = mlfurs.filter_available[name];
+
+          let found = true;
+          let id = "";
+          let value = "";
+
+          for(item in filter_content) {
+              found = mlfurs.validateIfElementExist(name, filter_content[item]);
+
+              if (found == true) {
+                continue;
+              }
+              
+              //show image
+              value = removeCharacteres(filter_content[item])
+              id = "#diagonal_option_"+name+"_"+value;
+
+              $(id).show()          
+          }
+        }
+      }
+   } else {
+     event.preventDefault();
+     $("#sold-out-container").show()
+     $('#btn_to_add_cart').hide()
    }
-   let option = $(this).data("option")
-
-   $("#color-label").show() 
-   if (option_name == 'color') {
-       $("#color-label").html(newValue)
-   }
-
-
-
-
-   checkWhatOptionsHaveInventory($("#color_selected").val(), $("#color_selected").val())
+  
 });
 
-$(window).on("load", () => {
-  handleCarouselsHeight();
-});
-*/
+
+$(document).ready(function() {
+    $('ul.product-info-tabs').each(function(){
+      var active, content, links = $(this).find('a');
+      active = links.first().addClass('active');
+      content = $(active.attr('href'));
+      links.not(':first').each(function () {
+        $($(this).attr('href')).hide();
+      });
+      $(this).find('a').click(function(e){
+        active.removeClass('active');
+        content.hide();
+        active = $(this);
+        content = $($(this).attr('href'));
+        active.addClass('active');
+        content.show();
+        return false;
+      });
+    });
+  });

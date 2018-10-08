@@ -36,3 +36,170 @@
 
   {% section 'subscribe' %}
 
+
+<script>
+	window.mlfurs= window.mlfurs|| {};   
+	
+	
+	mlfurs = {
+	   filters: [],	
+       filter_available: [],
+	   filter_to_show: [],
+	   product_variants: [],       
+	   filters_selected: [],
+	   product_variants_available:[],
+	   check: false,
+
+
+	   initializeValues: function() {
+		   this.createFilters();
+		   this.createVariantsAvailables();
+
+		   this.check = true;
+		   
+	   },
+
+	   createFilters: function() {		   
+			let option_name_downcase = ""    
+
+			{% for option in product.options_with_values %}
+				option_name_downcase = "{{option.name | remove:' ' | remove: '/' | downcase }}"	        
+				this.filters.push(option_name_downcase)
+				this.filter_available[option_name_downcase] = []
+				this.filters_selected[option_name_downcase] = ""
+
+
+				{% for value in option.values %}		   
+					this.filter_available[option_name_downcase].push("{{value}}")
+				{% endfor %}
+			{% endfor %}  
+	   },
+
+	   createVariantsAvailables: function() {
+		    let option_name_downcase = ""
+			let variant_value = ""
+			let product_variant_available= []
+
+			{% for variant in product.variants %}
+				product_variant_available = []
+				
+				variant_value = ""
+				{% for option in product.options_with_values %}
+					option_name_downcase = "{{option.name | downcase}}";
+
+					{%- if forloop.index == 1 -%}
+							variant_value = "{{variant.option1}}";
+					{%- elsif forloop.index == 2 -%}
+							variant_value = "{{variant.option2}}";
+					{%- else  -%}
+							variant_value = "{{variant.option3}}";
+					{%- endif -%}
+
+					variant_value = variant_value.split("/").join("")
+                    variant_value = variant_value.split(" ").join("")
+
+					
+					product_variant_available[option_name_downcase] = variant_value;
+				
+				{% endfor %}
+				
+			    product_variant_available['available'] = "{{variant.available}}"
+				product_variant_available['id'] = "{{variant.id}}"
+				product_variant_available['inventory_quantity'] = "{{variant.inventory_quantity}}"
+				product_variant_available['show'] = "true"
+
+				this.product_variants.push(product_variant_available)
+				
+			{% endfor %}  
+	   },
+
+	   changeFiltersSelected: function(type, value) {
+
+		   this.filters_selected[type] = value;
+	   },
+
+	   applyFilters: function(type, value) {
+		   this.changeFiltersSelected(type, value);		  
+		   this.getVariantsSatisfyTheFilters()
+		   this.getUniqueValuesForFilterAvailable(type);		   
+	   },
+
+	   getVariantsSatisfyTheFilters() {
+           this.product_variants_available = this.product_variants;
+
+           for(name in this.filters_selected) {
+			   value = this.filters_selected[name];
+
+			   if (value == "") {
+				   continue
+			   }
+
+               this.product_variants_available = this.product_variants_available.filter(variant => variant[name] == value && variant['available'] == "true")		   
+		   }		  
+	   },
+
+	   getUniqueValuesForFilterAvailable(type) {
+		   for(filter in this.filters) {
+			   name = this.filters[filter];
+
+			   if (name == type) {
+				   continue;
+			   }
+
+			   this.filter_to_show[name] =  this.getUniqueValueByFilter(name);
+		   }
+
+	   },
+
+	   getUniqueValueByFilter(filterName) {
+		   return this.product_variants_available.map(function(e){ return e[filterName]}).filter(function(e, i, a) {
+			      return i === a.indexOf(e)
+		   });
+
+	   },
+
+	   validateIfElementExist(filterName, elementToFind) {
+		   return this.filter_to_show[filterName].includes(elementToFind);
+	   },
+
+	   validateIfAllFilterAreSelected() {
+		   let quantity = this.filters.length;
+
+           let quantityFilterSelected = 0; 
+
+		   for(selected in this.filters_selected) {
+			   if (this.filters_selected[selected] != "") {
+				   quantityFilterSelected++; 
+			   }			       
+		   }
+
+		   if (quantityFilterSelected == quantity) {
+			   return true
+		   }
+
+		   return false		
+	   },
+
+
+	   checkAvailableInVariantAvailablefunction: function(){
+		if (this.product_variants_available.length == 0) {
+			return false
+		}
+
+		if (this.product_variants_available[0]['available'] == "false") {
+			return false;
+		}
+
+
+		return true;
+		}
+
+
+
+
+
+
+	}
+
+	mlfurs.initializeValues();	
+</script>
