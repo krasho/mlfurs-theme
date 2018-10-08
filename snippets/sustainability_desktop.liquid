@@ -1,12 +1,6 @@
 <div class="d-none d-sm-none d-md-none d-lg-block d-xl-block  sustainability-desktop">
-  {%- for block in section.blocks -%}
-       {% assign type = 'odd' %}
-       {% assign result = forloop.index | modulo: 2 %}
-       {%- if result == 0 -%}
-          {% assign type = 'even' %}
-       {%- endif -%}
-       
-        <div class="sustainability-desktop-item item_{{type}}">
+  {%- for block in section.blocks -%}       
+        <div class="sustainability-desktop-item">
             <div class="sustainability-desktop-text-information">
                <div class="sustainability-desktop-text-information__title">
                   {{block.settings.title}}
@@ -16,8 +10,10 @@
                   {{block.settings.description}}
                </div>               
             </div>
-            <div class="sustainability-desktop-image">
-                Image here
+            <div class="sustainability-desktop-image"
+                 style="background-image: url({{ block.settings.image | img_url: 'master' }});">
+                 
+                 <img src="{{ block.settings.image | img_url: 'master' }}" style="visibility:hidden;" />
             </div>      
         </div>
    {%- endfor -%}

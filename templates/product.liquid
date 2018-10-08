@@ -48,15 +48,12 @@
 	   product_variants: [],       
 	   filters_selected: [],
 	   product_variants_available:[],
-	   check: false,
+	   firstFilterApplied: "",
 
 
 	   initializeValues: function() {
 		   this.createFilters();
-		   this.createVariantsAvailables();
-
-		   this.check = true;
-		   
+		   this.createVariantsAvailables();		   		   
 	   },
 
 	   createFilters: function() {		   
@@ -114,14 +111,25 @@
 	   },
 
 	   changeFiltersSelected: function(type, value) {
-
 		   this.filters_selected[type] = value;
+
+		   if (this.filters_selected[type] == "") {
+			   delete this.filter_to_show[type];
+		   }
 	   },
 
 	   applyFilters: function(type, value) {
-		   this.changeFiltersSelected(type, value);		  
-		   this.getVariantsSatisfyTheFilters()
-		   this.getUniqueValuesForFilterAvailable(type);		   
+		   this.setFirtFilterApplied(type);
+		   this.changeFiltersSelected(type, value);
+		
+
+			if (this.checkIfThereIsFilterSelected() == false) {
+				this.resetAll();
+			} else {
+				
+				this.getVariantsSatisfyTheFilters()
+				this.getUniqueValuesForFilterAvailable(type);		   
+			}
 	   },
 
 	   getVariantsSatisfyTheFilters() {
@@ -159,6 +167,7 @@
 	   },
 
 	   validateIfElementExist(filterName, elementToFind) {
+
 		   return this.filter_to_show[filterName].includes(elementToFind);
 	   },
 
@@ -192,13 +201,66 @@
 
 
 		return true;
+		},
+
+		setFirtFilterApplied(filterName) {
+			if (this.checkIfThereIsFilterSelected() == false) {
+				this.firstFilterApplied = filterName;
+			}
+		},
+
+		resetFirstFilterApplied() {
+			for(filter in this.filters) {
+				filter_name = this.filters[filter];
+
+				if (filter_name == this.firstFilterApplied) {
+					continue;
+				}
+
+
+				newFirstFilter  = filter_name;
+			}
+
+
+			this.firstFilterApplied = newFirstFilter
+
+		},
+
+		removeElementToShow(filterName) {
+			delete this.filter_to_show[filterName];
+		},
+
+
+		checkIfThereIsFilterSelected() {
+			let filtered = 0;
+			for (filter in this.filters) {
+				 filter_name = this.filters[filter];
+
+				 if (this.filters_selected[filter_name] != "") {
+					 filtered++;
+				 }
+			}
+
+
+			if (filtered == 0 ) {
+				return false;
+			} 
+
+			return true;
+
+		},
+
+		resetAll() {
+	       this.filter_to_show = [];
+		   this.product_variants_available = [];
+		   this.firstFilterApplied = "";
+
+			for (filter in this.filters) {
+				filter_name = this.filters[filter];
+				this.changeFiltersSelected(filter_name, "");
+			}
+
 		}
-
-
-
-
-
-
 	}
 
 	mlfurs.initializeValues();	

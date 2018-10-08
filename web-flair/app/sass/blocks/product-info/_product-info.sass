@@ -93,6 +93,31 @@
 .product-info__color-box_active
 	border: 1px solid $accent
 
+
+/*.option_to_select
+	width: 50px
+	height: 50px
+	display: -webkit-inline-flex
+	display: -moz-inline-flex
+	display: -ms-inline-flex
+	display: -o-inline-flex
+	display: inline-flex
+	margin-right: 10px
+	cursor: pointer
+	border: 1px solid #fff
+	&:last-child
+		margin-right: 0	
+
+.option_to_select_active
+	border: 1px solid $accent
+
+.option_to_select_disabled
+	opacity: 0.6
+	
+	&:hover
+		cursor: not-allowed
+
+
 .product-info__count-add
 	display: -webkit-flex
 	display: -moz-flex
@@ -190,6 +215,10 @@
 	position: absolute	
 	top: 0
 	width: 100%
+	z-index: 1000
+	
+	&:hover
+		cursor: not-allowed
 
 	line 
 		stroke: #A9BCCA

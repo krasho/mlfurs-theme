@@ -54,9 +54,49 @@
 		content: ''
 		transform: rotate(45deg)
 
+.sustainability-tablet
+	background-color: #f7f7f7
+
+	.sustainability-container
+		padding-bottom: 2rem
+	
+	&-select
+		margin-top: 2rem
+
+		select 			
+			color: $accent
+			font-family: $bold
+
+	&-text-information
+		background-color: #ffffff
+		padding: 2rem 2rem 2rem 3rem
+
+		&__title
+			font-family: $bold
+			font-size: 36px
+
+		&__description
+			margin-top: 1rem
+
+			ul
+				list-style-image: url(v_blue.png)
+				li				
+					list-style-type: none			
+					margin-bottom: 20px		
+	
+	&-image
+		background-repeat: no-repeat
+		background-size: contain		
+
+		img
+			max-width: 100%	
+
 .sustainability-desktop
 	&-item
 		display: flex
+		
+		&:nth-child(even)
+			flex-direction: row-reverse
 		
 	&-text-information
 		background-color: #f7f7f7
@@ -77,13 +117,9 @@
 					margin-bottom: 20px		
 	
 	&-image
+		background-repeat: no-repeat
+		background-size: contain		
 		width: 50%
 
-	.item_even
-		.sustainability-desktop-text-information
-			order: 2
-		
-		.sustainability-desktop-image
-			order: 1
-
-
+		img
+			max-width: 100%

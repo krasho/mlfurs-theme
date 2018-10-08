@@ -131,16 +131,6 @@ $(function() {
 	})
 
 
-	$('.product-info__size-box').click(function () {
-		$('.product-info__size-box').removeClass('product-info__size-box_active');
-		$(this).toggleClass('product-info__size-box_active');
-	});
-
-	$('.product-info__color-box').click(function () {
-		$('.product-info__color-box').removeClass('product-info__color-box_active');
-		$(this).toggleClass('product-info__color-box_active');
-	});
-
 	$('.accordion__title').click(function () {
 		$(this).toggleClass('accordion__title_open');
 		$(this).next().slideToggle('fast');
@@ -183,6 +173,14 @@ $(function() {
 		$(this).children().toggleClass('mobile-burger_open');
 		$(".mobile-nav-wrapper").toggleClass('js-menu--is-open', 1000);
 	});
+
+	$("#sustainability-select-options").on("change", function(){
+	  $(".sustainability-container").hide();
+	  
+	  let id = $(this).val();
+
+	  $("#"+id).show();
+	}); 
 
 
 });

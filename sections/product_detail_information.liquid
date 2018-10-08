@@ -124,6 +124,7 @@
 
                                     {%- if variant_selected != '' and value == variantItem  -%}
                                         {% assign selected = 'product-info__size-box_active product-info__color-box_active' %} 
+                                        {% assign selected = 'option_to_select_active' %} 
                                         {% assign selected_value = value %}                                    
                                         {% assign outline = '' %}
                                     {%- endif -%}                                
@@ -135,7 +136,7 @@
                                     {%- if product_option.name == "Color" -%}                                        
                                             {% assign image_to_color = value | remove: " " | remove: "/" | downcase | append: ".png" %}
 
-                                            <div class="product-info__color-box {{selected}} option_to_select" 
+                                            <div class="product-info__color-box {{selected}} option_to_select  filter_{{option_name}}" 
                                                  data-name="{{value}}" 
 
                                                  data-option="{{option_name}}"
@@ -160,7 +161,7 @@
                                             
 
                                     {%- else -%}
-                                        <div class="product-info__size-box {{selected}} option_to_select" 
+                                        <div class="product-info__size-box {{selected}} option_to_select filter_{{option_name}}" 
                                              data-name="{{value}}" 
 
                                              data-option="{{option_name}}"
@@ -199,6 +200,12 @@
 
                         <input type="hidden" id="filter_selected" value="">
 
+                        <div class="reset-filter_container">
+                           <a id="reset-filter_link" href="#"> 
+                             Clear Filters
+                           </a>
+                        </div>
+
             
                         {%- if product.variants.size > 1 -%}
                                 {% assign varianst_separated_by_comma = '' %}
@@ -210,7 +217,7 @@
                                 {%- endfor -%}
 
 
-                                <select id="product-select" name="id" style="display: none;">
+                                <select id="product-select" name="id" style="display: block;">
                                 {%- for variant in product.variants -%}
                                     {%- if variant.inventory_quantity > 0-%}
                                         {% assign varianst_separated_by_comma = varianst_separated_by_comma | append: comma | append: variant.title %}

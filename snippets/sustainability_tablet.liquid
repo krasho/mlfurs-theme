@@ -1,0 +1,43 @@
+<div class="d-none d-sm-block d-md-block d-lg-none d-xl-none  sustainability-tablet">
+  <div class="form-group row sustainability-tablet-select">
+    <div class="col-md-12">
+        <select class="form-control" id="sustainability-select-options">
+            {%- for block in section.blocks -%}         
+            <option value="{{block.settings.title | remove: ' ' |  downcase}}">{{block.settings.title | upcase}}</option>
+            {%- endfor -%}        
+        </select>
+    </div>
+  </div> 
+
+
+    {%- for block in section.blocks -%}
+        {% assign show = "display:block" %} 
+    
+        {% if forloop.index > 1 %}
+              {% assign show = "display:none" %} 
+            
+        {% endif %}
+
+        <div class="sustainability-container" style="{{show}}" id="{{block.settings.title | remove: ' ' |  downcase}}"> 
+            <div class="sustainability-tablet-item">
+                <div class="sustainability-tablet-image"
+                    style="background-image: url({{ block.settings.image | img_url: 'master' }});">
+                        
+                    <img src="{{ block.settings.image | img_url: 'master' }}" style="visibility:hidden;" />
+                </div>
+                <div class="sustainability-tablet-text-information">
+                   <div class="sustainability-tablet-text-information__title">
+                     {{block.settings.title}}
+                   </div>
+
+                   <div class="sustainability-tablet-text-information__description">
+                     {{block.settings.description}}
+                  </div>               
+                </div>
+            </div>            
+        </div>
+
+    {%- endfor -%}
+
+   
+</div>
