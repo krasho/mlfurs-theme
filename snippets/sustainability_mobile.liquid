@@ -5,7 +5,9 @@
                     <div class="sustainability-mobile-accordion-title accordion__title">{{block.settings.title}}</div>
                     <div class="sustainability-mobile-accordion__accordion-content accordion__content">                                              
                        <div class="accordion__content__image" 
-                            style="background-image: url({{ block.settings.image | img_url: 'master' }});">                           
+                            style="background-image: url({{ block.settings.mobile_image | img_url: 'master' }});">   
+
+                            <img src="{{ block.settings.mobile_image | img_url: 'master' }}" style="visibility:hidden;" />                        
                        </div>
                        
                        <p class="accordion__content__title">{{block.settings.title}}</p>
