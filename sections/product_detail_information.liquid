@@ -200,7 +200,7 @@
 
                         <input type="hidden" id="filter_selected" value="">
 
-                        <div class="reset-filter_container">
+                        <div class="reset-filter_container" id="reset-filter_container" style="display: none;">
                            <a id="reset-filter_link" href="#"> 
                              Clear Filters
                            </a>
@@ -217,7 +217,7 @@
                                 {%- endfor -%}
 
 
-                                <select id="product-select" name="id" style="display: block;">
+                                <select id="product-select" name="id" style="display: none;">
                                 {%- for variant in product.variants -%}
                                     {%- if variant.inventory_quantity > 0-%}
                                         {% assign varianst_separated_by_comma = varianst_separated_by_comma | append: comma | append: variant.title %}

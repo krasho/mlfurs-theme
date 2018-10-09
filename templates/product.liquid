@@ -85,11 +85,11 @@
 					option_name_downcase = "{{option.name | downcase}}";
 
 					{%- if forloop.index == 1 -%}
-							variant_value = "{{variant.option1}}";
+							variant_value = "{{variant.option1 | remove: ' ' | remove: '/' | downcase}}";
 					{%- elsif forloop.index == 2 -%}
-							variant_value = "{{variant.option2}}";
+							variant_value = "{{variant.option2 | remove: ' ' | remove: '/' | downcase}}";
 					{%- else  -%}
-							variant_value = "{{variant.option3}}";
+							variant_value = "{{variant.option3 | remove: ' ' | remove: '/' | downcase}}";
 					{%- endif -%}
 
 					variant_value = variant_value.split("/").join("")
@@ -111,9 +111,11 @@
 	   },
 
 	   changeFiltersSelected: function(type, value) {
-		   this.filters_selected[type] = value;
+           newValue = this.cleanCharacters(value);
 
-		   if (this.filters_selected[type] == "") {
+		   this.filters_selected[type] = newValue;
+
+		   if (value == "") {
 			   delete this.filter_to_show[type];
 		   }
 	   },
@@ -137,10 +139,11 @@
 
            for(name in this.filters_selected) {
 			   value = this.filters_selected[name];
-
+			   
 			   if (value == "") {
-				   continue
+				   continue;
 			   }
+			   
 
                this.product_variants_available = this.product_variants_available.filter(variant => variant[name] == value && variant['available'] == "true")		   
 		   }		  
@@ -149,10 +152,6 @@
 	   getUniqueValuesForFilterAvailable(type) {
 		   for(filter in this.filters) {
 			   name = this.filters[filter];
-
-			   if (name == type) {
-				   continue;
-			   }
 
 			   this.filter_to_show[name] =  this.getUniqueValueByFilter(name);
 		   }
@@ -166,9 +165,14 @@
 
 	   },
 
-	   validateIfElementExist(filterName, elementToFind) {
+	   validateIfElementExist(filterName, elementToFind) {           		   
 
-		   return this.filter_to_show[filterName].includes(elementToFind);
+		   newValue = this.cleanCharacters(elementToFind);
+		   if (this.filter_to_show.hasOwnProperty(filterName) == false) {
+			   return false;
+		   }
+           		   
+		   return this.filter_to_show[filterName].includes(newValue);
 	   },
 
 	   validateIfAllFilterAreSelected() {
@@ -260,6 +264,21 @@
 				this.changeFiltersSelected(filter_name, "");
 			}
 
+		},
+
+		cleanCharacters(value) {
+		   newValue = value;
+		   if (newValue != "") {
+			   
+			  if (isNaN(newValue) == true) {
+				 newValue = newValue.toLowerCase();				 
+				 newValue = newValue.split("/").join("");
+				 newValue = newValue.split(" ").join("");
+
+			  }
+		   }	
+           
+		   return newValue;
 		}
 	}
 

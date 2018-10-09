@@ -1,11 +1,17 @@
-function removeCharacteres(value) {
-   let newValue = value; 
-   newValue = newValue.toLowerCase();
-   newValue = newValue.split("/").join("")
-   newValue = newValue.split(" ").join("")
-   
-   return newValue;
-}
+/*function cleanCharacters(value) {
+    newValue = value;
+    if (newValue != "") {
+      
+      if (isNaN(newValue) == true) {
+        newValue = newValue.toLowerCase();				 
+        newValue = newValue.split("/").join("");
+        newValue = newValue.split(" ").join("");
+
+      }
+    }	
+        
+    return newValue;
+}*/
 
 function showColorLabel(type, labelText) {
   if (type == 'color') {
@@ -19,11 +25,12 @@ function disableOptionsRemaining() {
   values = mlfurs.filter_available[mlfurs.firstFilterApplied];
 
   for(value in values) {
-      id = "option_"+mlfurs.firstFilterApplied+"_"+removeCharacteres(values[value]);
+      newValue = mlfurs.cleanCharacters(values[value]); 
+      id = "option_"+mlfurs.firstFilterApplied+"_"+newValue;
       
       if ($("#"+id).hasClass("option_to_select_active") == false && $("#diagonal"+id).css("display") != 'block') {
           $("#"+id).addClass("option_to_select_disabled");
-          $("#"+id).attr("disabled", "disabled").off('click');
+          $("#"+id).attr("disabled", "disabled");
       }
   }
 }
@@ -51,7 +58,7 @@ $("#reset-filter_link").on("click", function(event){
 $(".option_to_select").on("click", function(event) {
 		let id = $(this).data("id");
 
-		if ($("#diagonal_"+id).css('display') != 'block') {
+		if (($("#diagonal_"+id).css('display') != 'block') && $(this).hasClass('option_to_select_disabled') == false   )    {
             $("#reset-filter_container").show();
             $('#btn_to_add_cart').show()
             $("#sold-out-container").hide()
@@ -84,7 +91,9 @@ $(".option_to_select").on("click", function(event) {
                        mlfurs.resetFirstFilterApplied() 
                    }
 
+
                } else {
+                  $('.filter_'+option_type).removeClass('option_to_select_active');
                   $(this).toggleClass('option_to_select_active');
                }
                
@@ -124,7 +133,7 @@ $(".option_to_select").on("click", function(event) {
                 let value = "";
 
                 for(item in filter_content) {
-                    value = removeCharacteres(filter_content[item])
+                    value = mlfurs.cleanCharacters(filter_content[item]);
                     id = "#diagonal_option_"+name+"_"+value;
 
                     if (mlfurs.checkIfThereIsFilterSelected() == false) {
@@ -134,8 +143,10 @@ $(".option_to_select").on("click", function(event) {
                           found = mlfurs.validateIfElementExist(name, filter_content[item]);
 
                           if (found == true) {
-                            continue;
+                             enableOption("#option_"+name+"_"+value);
+                             continue;
                           }
+                          
                           
                           //show image
                           $(id).show()                               
