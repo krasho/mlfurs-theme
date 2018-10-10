@@ -129,7 +129,7 @@ $(function() {
 		$(this).next().slideToggle('fast');
 	});
 
-	$('.sustainability__tab-content').not(':first').hide();
+	/*$('.sustainability__tab-content').not(':first').hide();
 	$('.sustainability__tab').click(function() {
 		$('.sustainability__tab').removeClass('sustainability__tab_active').eq($(this).index()).addClass('sustainability__tab_active');
 		$('.sustainability__tab-content').hide().eq($(this).index()).fadeIn()
@@ -146,7 +146,7 @@ $(function() {
 		$('.sustainability__dropdown-list .dropdown-list__name').text($(this).text());
 		$('.sustainability__list-content').hide().eq($(this).index()).fadeIn();
 	});
-
+    */
 
 
 
