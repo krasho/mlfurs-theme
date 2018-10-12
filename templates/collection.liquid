@@ -4,3 +4,113 @@
 {%- section 'collection_content' -%}
 
 {%- section 'subscribe' -%}
+
+
+<style>
+/* Your designer can adjust these to get all kind of looks: 
+one or separate lines, active links instead of checkboxes, colors etc. */
+
+.cf-title {
+    display: block;
+    font-family: "MetropolisMedium", sans-serif;
+    font-size: 14px;
+    line-height: 1;
+    text-transform: uppercase;
+}
+
+.cf-options-container {
+    display: block;
+    overflow-y: auto;
+    max-height: 150px;
+    padding-bottom: 25px;
+    padding-left: 5px;
+    padding-top: 5px;    
+
+}
+
+.cf-options-container label {
+    display: block;
+    min-height: 24px;
+    padding-left: 25px;
+    font-weight: normal;
+    cursor: pointer;
+    vertical-align: sub;    
+    margin-bottom: 15px;
+    position: relative;
+}
+
+
+
+
+.cf-options-container label span{
+    font-size: 14px;
+    font-family: MetropolisLight,sans-serif;
+    margin-left: 5px;
+    text-transform: none;
+}
+
+
+
+input[type="checkbox"] {
+    width: auto;
+    opacity: 0.00000001;
+    position: absolute;
+    left: 0;
+    margin-left: -20px;
+}
+
+.helper {
+    position: absolute;
+    top: -4px;
+    left: -4px;
+    cursor: pointer;
+    display: block;
+    font-size: 16px;
+    user-select: none;
+    color: #e7e7e7;
+}
+.helper:before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0;
+    margin: 4px;
+    width: 22px;
+    height: 22px;
+    transition: transform 0.28s ease;
+    border-radius: 0px;
+    border: 1px solid #ededed;
+    background-color: #fff;    
+}
+.helper:after {
+  content: '';
+    display: block;
+    width: 10px;
+    height: 5px;
+    border-bottom: 2px solid #00b0be;
+    border-left: 2px solid #00b0be;
+    -webkit-transform: rotate(-45deg) scale(0);
+    -moz-transform: rotate(-45deg) scale(0);
+    -ms-transform: rotate(-45deg) scale(0);
+    transform: rotate(-45deg) scale(0);
+    position: absolute;
+    top: 12px;
+    left: 10px;
+}
+input[type="checkbox"]:checked ~ .helper::before {
+    border-color: #00b0be;
+    color: #00b0be;
+}
+
+input[type="checkbox"]:checked ~ .helper::after {
+    -webkit-transform: rotate(-45deg) scale(1);
+    -moz-transform: rotate(-45deg) scale(1);
+    -ms-transform: rotate(-45deg) scale(1);
+    transform: rotate(-45deg) scale(1);
+}
+
+input[type="checkbox"]:focus + label::before {
+    outline: rgb(59, 153, 252) auto 5px;
+}
+
+</style>

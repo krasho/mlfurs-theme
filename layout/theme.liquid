@@ -125,5 +125,9 @@
   {%- if template.name == 'product' -%}
      {{ 'products.js' | asset_url | script_tag }}
   {%- endif -%}
+
+
+	{% include 'custom_mlfurs_collection-filter-v2' %}
+
 </body>
 </html>

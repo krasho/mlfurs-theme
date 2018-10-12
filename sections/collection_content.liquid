@@ -43,39 +43,12 @@
 			</div>
 
 			<div class="row">
+			    
 				<div class="col-lg-3 main-category__filter-container">
-					<div class="filter">					    
-                        <div class="filter__item">
-						   <div class="filter__item-title filter__item_tags">FILTER BY</div>
-						   <div class="filter__item-menu">
-						        {% assign current_tags_string = current_tags | join: '+' %}
-								{% assign current_tags_array = current_tags_string | split: '+' %}
-																
+				   <div class="filter collection-filters-container cf-select-wrapper cf-select-wrapper" style="padding-bottom: 0;">
+				   </div>
 
-								{% for tag in collection.all_tags %}
-								    {% assign checked = '' %}
-									{% assign tag_without_whitespace = tag | replace: " ", "-"%}
-								    <div class="checkbox-custom filter__checkbox-custom">
-									    
-										{% if current_tags_array contains tag_without_whitespace  %}
-										    {% assign checked = 'checked' %}										    
-										{% endif %}
-
-										<input name="checkbox_filters[]" 
-										       type="checkbox" 
-											   class="checkbox-custom__box checkbox_tags" 
-											   value="{{tag | replace: ' ', '-'}}" 											   
-											   {{checked}}>
-										<div class="checkbox-custom__indicator"></div>
-										<span class="label_type_filter">{{ tag  }}</span>										
-									</div>	
-								{% endfor %}
-                                
-								<button type="submit" id="update_filters">Update</button>
-						   </div>
-						</div>
-												
-
+					<div class="filter" style="padding-top: 0;">
                         <div class="filter__item">
 						   <div class="filter__item-title filter__item_collections">COLLECTIONS</div>						
 								<div class="filter__item-menu">
@@ -109,22 +82,6 @@
 								</div>	
 						</div>
 
-						<div class="filter__item">
-							<div class="filter__item-title filter__item-title_open">Fur Type</div>
-							<div class="filter__item-menu">
-								<div class="colors">
-									<div class="colors__item colors__item_with_border" style="background-color: white"></div>
-									<div class="colors__item" style="background-color: pink"></div>
-									<div class="colors__item colors__item_checked" style="background-color: pink"></div>
-									<div class="colors__item" style="background-color: pink"></div>
-									<div class="colors__item" style="background-color: pink"></div>
-									<div class="colors__item" style="background-color: pink"></div>
-									<div class="colors__item" style="background-color: pink"></div>
-									<div class="colors__item" style="background-color: pink"></div>
-									<div class="colors__item" style="background-image: url(img/banner-1.png);"></div>
-								</div>
-							</div>
-						</div>
 					</div>					
 
 				</div>

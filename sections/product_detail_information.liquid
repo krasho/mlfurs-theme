@@ -206,14 +206,14 @@
                            </a>
                         </div>
 
-            
+                        {%- assign was_price =  product.metafields.custom_fields["was_price"]  -%}
                         {%- if product.variants.size > 1 -%}
                                 {% assign varianst_separated_by_comma = '' %}
                                 {% assign comma = '' %}
                                 
                             
                                 {%- for variant in product.variants -%}
-                                    <input type = "hidden" id="variant_hidden_{{variant.id}}" data-price="{{variant.price | money}}" data-compare="{{variant.compare_at_price| money}}" data-wasprice="{{product.metafields['global']['was_price'] | money}}">
+                                    <input type = "hidden" id="variant_hidden_{{variant.id}}" data-price="{{variant.price | money}}" data-compare="{{variant.compare_at_price| money}}" data-wasprice="was_price | money}}">
                                 {%- endfor -%}
 
 
@@ -258,7 +258,7 @@
 
                                     <div class="product-info__share_container d-flex d-sm-flex d-md-flex d-lg-flex d-xl-flex  justify-content-between align-items-center">
                                         <div class="product-info__item">
-                                           ITEM NUMBER {{ product.metafields["global"]["product_id"] }}
+                                           ITEM NUMBER {{ product.metafields.custom_fields["productid"] }}
                                         </div>
                                         <div class="product-info__share align-self-end">                                        
                                             <div class="product-info__share-item">Share</div>
@@ -289,8 +289,8 @@
                                         <div class="accordion__item">
                                             <div class="product-info__accordion-title accordion__title">PRODUCT INFORMATION</div>
                                             <div class="product-info__accordion-content accordion__content">
-                                               <!-- {{ product.metafields["global"]["productInfo"] }} -->
-                                               {%- include "product-info-tabs" -%}
+                                               {{ product.metafields.custom_fields["productinfo"] }}
+                                               
                                             </div>
                                         </div>
                                         <div class="accordion__item">
