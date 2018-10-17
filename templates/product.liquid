@@ -15,7 +15,8 @@
 
 		</div>
 	</section>
-
+     
+	{%- assign current_product_selected = product  -%} 
 	<section class="catalog-home-page">
 		<div class="container-fluid">
 			<div class="row">
@@ -29,6 +30,9 @@
 			</div>
 		</div>
 	</section>
+
+	{%- assign product = current_product_selected  -%} 
+	{% include 'recently-viewed-products'  %}
 
 
   {% section 'subscribe' %}
