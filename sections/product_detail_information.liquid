@@ -216,7 +216,7 @@
                                     <input type = "hidden" id="variant_hidden_{{variant.id}}" data-price="{{variant.price | money}}" data-compare="{{variant.compare_at_price| money}}" data-wasprice="was_price | money}}">
                                 {%- endfor -%}
 
-
+                        
                                 <select id="product-select" name="id" style="display: none;">
                                 {%- for variant in product.variants -%}
                                     {%- if variant.inventory_quantity > 0-%}
@@ -308,3 +308,250 @@
 
 			</div>
 			</div>
+
+<script>
+	window.mlfurs= window.mlfurs|| {};   
+	
+	
+	mlfurs = {
+	   filters: [],	
+       filter_available: [],
+	   filter_to_show: [],
+	   product_variants: [],       
+	   filters_selected: [],
+	   product_variants_available:[],
+	   firstFilterApplied: "",
+
+
+	   initializeValues: function() {
+		   this.createFilters();
+		   this.createVariantsAvailables();		   		   
+	   },
+
+	   createFilters: function() {		   
+			let option_name_downcase = ""    
+
+			{% for option in product.options_with_values %}
+				option_name_downcase = "{{option.name | remove:' ' | remove: '/' | downcase }}"	        
+				this.filters.push(option_name_downcase)
+				this.filter_available[option_name_downcase] = []
+				this.filters_selected[option_name_downcase] = ""
+
+
+				{% for value in option.values %}		   
+					this.filter_available[option_name_downcase].push("{{value}}")
+				{% endfor %}
+			{% endfor %}  
+	   },
+
+	   createVariantsAvailables: function() {
+		    let option_name_downcase = ""
+			let variant_value = ""
+			let product_variant_available= []
+			{% for variant in product.variants %}
+				product_variant_available = []
+				
+				variant_value = ""
+				{% for option in product.options_with_values %}
+					option_name_downcase = "{{option.name | downcase}}";
+
+					{%- if forloop.index == 1 -%}
+							variant_value = "{{variant.option1 | remove: ' ' | remove: '/' | downcase}}";
+					{%- elsif forloop.index == 2 -%}
+							variant_value = "{{variant.option2 | remove: ' ' | remove: '/' | downcase}}";
+					{%- else  -%}
+							variant_value = "{{variant.option3 | remove: ' ' | remove: '/' | downcase}}";
+					{%- endif -%}
+
+					variant_value = variant_value.split("/").join("")
+                    variant_value = variant_value.split(" ").join("")
+
+					
+					product_variant_available[option_name_downcase] = variant_value;
+				
+				{% endfor %}
+				
+			    product_variant_available['available'] = "{{variant.available}}"
+				product_variant_available['id'] = "{{variant.id}}"
+				product_variant_available['inventory_quantity'] = "{{variant.inventory_quantity}}"
+				product_variant_available['show'] = "true"
+
+				this.product_variants.push(product_variant_available)
+				
+			{% endfor %}  
+	   },
+
+	   changeFiltersSelected: function(type, value) {
+           newValue = this.cleanCharacters(value);
+
+		   this.filters_selected[type] = newValue;
+
+		   if (value == "") {
+			   delete this.filter_to_show[type];
+		   }
+	   },
+
+	   applyFilters: function(type, value) {
+		   this.setFirtFilterApplied(type);
+		   this.changeFiltersSelected(type, value);
+		
+
+			if (this.checkIfThereIsFilterSelected() == false) {
+				this.resetAll();
+			} else {
+				
+				this.getVariantsSatisfyTheFilters()
+				this.getUniqueValuesForFilterAvailable(type);		   
+			}
+	   },
+
+	   getVariantsSatisfyTheFilters() {
+           this.product_variants_available = this.product_variants;
+
+           for(name in this.filters_selected) {
+			   value = this.filters_selected[name];
+			   
+			   if (value == "") {
+				   continue;
+			   }
+			   
+
+               this.product_variants_available = this.product_variants_available.filter(variant => variant[name] == value && variant['available'] == "true")		   
+		   }		  
+	   },
+
+	   getUniqueValuesForFilterAvailable(type) {
+		   for(filter in this.filters) {
+			   name = this.filters[filter];
+
+			   this.filter_to_show[name] =  this.getUniqueValueByFilter(name);
+		   }
+
+	   },
+
+	   getUniqueValueByFilter(filterName) {
+		   return this.product_variants_available.map(function(e){ return e[filterName]}).filter(function(e, i, a) {
+			      return i === a.indexOf(e)
+		   });
+
+	   },
+
+	   validateIfElementExist(filterName, elementToFind) {           		   
+
+		   newValue = this.cleanCharacters(elementToFind);
+		   if (this.filter_to_show.hasOwnProperty(filterName) == false) {
+			   return false;
+		   }
+           		   
+		   return this.filter_to_show[filterName].includes(newValue);
+	   },
+
+	   validateIfAllFilterAreSelected() {
+		   let quantity = this.filters.length;
+
+           let quantityFilterSelected = 0; 
+
+		   for(selected in this.filters_selected) {
+			   if (this.filters_selected[selected] != "") {
+				   quantityFilterSelected++; 
+			   }			       
+		   }
+
+		   if (quantityFilterSelected == quantity) {
+			   return true
+		   }
+
+		   return false		
+	   },
+
+
+	   checkAvailableInVariantAvailablefunction: function(){
+		if (this.product_variants_available.length == 0) {
+			return false
+		}
+
+		if (this.product_variants_available[0]['available'] == "false") {
+			return false;
+		}
+
+
+		return true;
+		},
+
+		setFirtFilterApplied(filterName) {
+			if (this.checkIfThereIsFilterSelected() == false) {
+				this.firstFilterApplied = filterName;
+			}
+		},
+
+		resetFirstFilterApplied() {
+			for(filter in this.filters) {
+				filter_name = this.filters[filter];
+
+				if (filter_name == this.firstFilterApplied) {
+					continue;
+				}
+
+
+				newFirstFilter  = filter_name;
+			}
+
+
+			this.firstFilterApplied = newFirstFilter
+
+		},
+
+		removeElementToShow(filterName) {
+			delete this.filter_to_show[filterName];
+		},
+
+
+		checkIfThereIsFilterSelected() {
+			let filtered = 0;
+			for (filter in this.filters) {
+				 filter_name = this.filters[filter];
+
+				 if (this.filters_selected[filter_name] != "") {
+					 filtered++;
+				 }
+			}
+
+
+			if (filtered == 0 ) {
+				return false;
+			} 
+
+			return true;
+
+		},
+
+		resetAll() {
+	       this.filter_to_show = [];
+		   this.product_variants_available = [];
+		   this.firstFilterApplied = "";
+
+			for (filter in this.filters) {
+				filter_name = this.filters[filter];
+				this.changeFiltersSelected(filter_name, "");
+			}
+
+		},
+
+		cleanCharacters(value) {
+		   newValue = value;
+		   if (newValue != "") {
+			   
+			  if (isNaN(newValue) == true) {
+				 newValue = newValue.toLowerCase();				 
+				 newValue = newValue.split("/").join("");
+				 newValue = newValue.split(" ").join("");
+
+			  }
+		   }	
+           
+		   return newValue;
+		}
+	}
+
+	mlfurs.initializeValues();	
+</script>            

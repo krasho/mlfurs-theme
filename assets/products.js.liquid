@@ -114,6 +114,7 @@ $(".option_to_select").on("click", function(event) {
                   $('#btn_to_add_cart').hide()
               } else {
                   let idToSelectInVariants = mlfurs.product_variants_available[0].id;
+                  console.log("id to sel:"+idToSelectInVariants);
 
                   $("#product-select").val(idToSelectInVariants);
 
