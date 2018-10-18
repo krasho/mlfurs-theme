@@ -1,5 +1,5 @@
-
 {% unless template == 'index' or template == 'cart' or template == 'list-collections' %}
+
 <div class="{{class_to_breadcrumbs}}" role="navigation" aria-label="breadcrumbs">
     <div class="{{class_to_item}}">
         <a href="/" class="{{class_to_link}}">Home</a>
@@ -8,12 +8,24 @@
     <div class="{{class_to_item}}">
         <a href="/" class="{{class_to_link}}">{{ page.title }}</a>
     </div>    
-  {% elsif template contains 'product' %}         
+  {% elsif template contains 'product' %}    
     {% if collection.url %}
        <div class="{{class_to_item}}">
           <a href="{{collection.url}}" class="{{class_to_link}}">{{ collection.title }}</a>
        </div> 
     {% endif %}
+
+    {%- assign product_collection =  product.collections[0] -%}
+    {% if product_collection.title == 'All' %}
+       {%- assign product_collection =  product.collections[1] -%}
+    {% endif %}
+
+    {% if product_collection.url %}
+       <div class="{{class_to_item}}">
+          <a href="{{product_collection.url}}" class="{{class_to_link}}">{{ product_collection.title }}</a>
+       </div> 
+    {% endif %}
+
 
     <div class="{{class_to_item}}">
        <span class="{{class_to_last_item}}">{{ product.title }}</span>

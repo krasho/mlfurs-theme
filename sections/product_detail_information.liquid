@@ -25,7 +25,7 @@
                            {%- endif -%}   
                            {%- include "rate_reviews" -%}
                            {%- if product__reviews-count == 0 -%}
-                                    <span>No Reviews</span>
+                                    <!--<span>No Reviews</span>-->
                            {%- endif -%}
 
                         </div>
@@ -73,7 +73,7 @@
                                     Now: <span id="now_price_value">{{price | money}}</span> 
                                 </div>
 
-                                <div class="product-info__original__price" id="current_price_container" style="{{display_current}}">                                                                
+                                <div class="product-info__current__price" id="current_price_container" style="{{display_current}}">                                                                
                                     <span id="current_price_value" >{{product.price | money}}</span>
                                 </div>
 
@@ -85,9 +85,6 @@
                                        <a href="#" class="quick-link product-info__quick-link quick-link_size_sm">Be the first to review</a>
                                 {%- endif -%}   
                                 {%- include "rate_reviews" -%} 
-                                {%- if product__reviews-count == 0 -%}
-                                       <span>No Reviews</span>
-                                {%- endif -%}                                
                             </div>
 						</div>
 
@@ -281,8 +278,8 @@
 
                                     <div class="product-info__accordion accordion">
                                         <div class="accordion__item">
-                                            <div class="product-info__accordion-title accordion__title">EDITOR'S NOTES</div>
-                                            <div class="product-info__accordion-content accordion__content">
+                                            <div class="product-info__accordion-title accordion__title accordion__title_open">EDITOR'S NOTES</div>
+                                            <div class="product-info__accordion-content accordion__content" style="display: block">
                                                 {{ product.description }}
                                             </div>
                                         </div>
