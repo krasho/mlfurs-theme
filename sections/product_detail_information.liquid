@@ -15,7 +15,7 @@
 
 
 				<div class="col d-lg-none">
-					<div class="product-info__size">em-el</div>
+					<div class="product-info__size">{{product.vendor}}</div>
 					<div class="product-info__descr">{{product.title | scape}}</div>
 					<div class="product-info__price-rate">
 						<div class="product-info__price">{{product.price | money}}</div>
@@ -47,7 +47,7 @@
 
 				<div class="product-card__product-info-container">
 					<div class="product-info product-card__product-info">
-						<div class="product-info__size d-none d-lg-block">em-el</div>
+						<div class="product-info__size d-none d-lg-block">{{product.vendor}}</div>
 						<div class="product-info__descr d-none d-lg-block">{{product.title | scape}}</div>
 						<div class="product-info__price-rate d-none d-lg-flex">
                             {%- assign variant= product.selected_or_first_available_variant-%}
