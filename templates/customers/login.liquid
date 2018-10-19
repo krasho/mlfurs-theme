@@ -1,0 +1,51 @@
+		<div id="login-popup" class="login-popup popup-window" style="margin-bottom: 10px">
+			<div class="login-popup__left-part">
+          {%- if form.errors -%}
+            <div class="form-message form-message--error">
+              {{ form.errors | default_errors }}
+            </div>
+          {%- endif -%}
+
+				{% form 'customer_login', class: 'account-form'  %}        				  
+					<div class="account-form__title">Login</div>
+					<div class="account-form__body">
+
+					<label for="email">Email Address</label>
+					<input class="input-text account-form__input-text" type="email" value="" name="customer[email]" size="30" required />
+
+					<label for="password">Password</label>
+					<input class="input-text account-form__input-text" type="password" value="" name="customer[password]" size="30" required />
+						
+						<input type="submit" class="form-button" value="{{ 'customer.login.sign_in' | t }}">
+					</div>
+				{% endform %}
+
+
+				{% form 'recover_customer_password', class: 'account-form'  %}        
+				  
+
+					<div class="account-form__title">Reset Password</div>
+          <div class="account-form__subtitle">  We will send you an email to reset your password.</div>
+					<div class="account-form__body">
+					<label for="email">Email Address</label>
+					<input class="input-text account-form__input-text" type="email" value="" name="email" size="30" required />
+						
+						<input type="submit" class="form-button" value="{{ 'customer.recover_password.submit' | t }}">
+					</div>
+				{% endform %}
+
+
+			</div>
+			<div class="login-popup__right-part">
+				<img src="{{ 'login-image.png' | asset_url }}" alt="Login" class="img-responsive img-width">
+				<div class="login-popup__text">
+					<div class="login-popup__text-title">Ml Furs Advantage</div>
+					<div class="login-popup__list">
+						<li class="login-popup__list-item">Lorem ipsum dolor sit amet.</li>
+						<li class="login-popup__list-item">Lorem ipsum dolor sit.</li>
+						<li class="login-popup__list-item">Lorem ipsum dolor.</li>
+						<li class="login-popup__list-item">Lorem ipsum dolor sit.</li>
+						<li class="login-popup__list-item">Lorem ipsum.</li>
+					</div>
+				</div>
+			</div>

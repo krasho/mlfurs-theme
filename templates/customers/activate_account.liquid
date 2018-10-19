@@ -1,0 +1,56 @@
+<div class="container-fluid customer-container">
+  <div class="d-flex d-sm-flex d-sm-flex d-md-flex d-lg-flex d-xl-flex justify-content-between align-items-center customer-container-header">
+    <div class="customer-container-header-title">
+       {{ 'customer.activate_account.title' | t }}
+    </div>
+
+    <div class="customer-container-header-subtitle">
+       {{ 'customer.activate_account.subtext' | t }}
+    </div>    
+  </div>
+
+  <div class="customer-container-main">
+      <div class="customer-container-main-form" id="customer-container-main-form" style="margin-bottom: 20px;">  
+         {% form 'activate_customer_password', class: 'account-form' %}
+              {%- if form.errors -%}
+                <div class="form-message form-message--error">
+                  {{ form.errors | default_errors }}
+                </div>
+              {%- endif -%}
+             
+              <div class="form-group row" style="margin-top: 10px">
+                <label for="CustomerPassword" class="col-sm-1 col-form-label">{{ 'customer.activate_account.password' | t }}</label>
+                <div class="col-sm-5">
+                  <input 
+                          autocomplete="off" 
+                          maxlength="255" 
+                          name="customer[password]" 
+                          type="password" 
+                          id="CustomerPassword" 
+                          class="form-control"
+                          placeholder="{{ 'customer.activate_account.password' | t }}">
+                </div>
+
+                <label for="CustomerPasswordConfirmation" class="col-sm-1 col-form-label">{{ 'customer.activate_account.password' | t }}</label>
+                <div class="col-sm-5">
+                  <input 
+                          autocomplete="off" 
+                          maxlength="255" 
+                          name="customer[password_confirmation]" 
+                          type="password" 
+                          id="CustomerPasswordConfirmation" 
+                          class="form-control"
+                          placeholder="{{ 'customer.activate_account.password_confirm' | t }}">
+                </div>
+              </div>
+
+
+           <div class="form-group row">
+              <button type="submit" name="btn-save" class="btn btn-primary ">{{ 'customer.activate_account.submit' | t }}</button>
+              <button type="submit" name="decline" class="btn btn-danger" id="customer-container-main-new-address__cancel">{{ 'customer.activate_account.cancel' | t }}</button>
+           </div>              
+
+         {% endform %}
+      <div>
+  </div>
+</div>

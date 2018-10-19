@@ -1,0 +1,41 @@
+		<div id="login-popup" class="login-popup popup-window" style="margin-bottom: 10px">
+			<div class="login-popup__left-part">
+				{% form 'create_customer', class: 'account-form'  %}
+				  {{ form.errors | default_errors }}
+					<div class="account-form__title">Create an Account</div>
+					<div class="account-form__body">
+
+					<label for="first_name">First Name</label>
+					<input class="input-text account-form__input-text" type="text" value="" name="customer[first_name]" size="30" required />
+
+					<label for="last_name">Last Name</label>
+					<input class="input-text account-form__input-text" type="text" value="" name="customer[last_name]" size="30" required />
+
+					<label for="email">Email Address</label>
+					<input class="input-text account-form__input-text" type="email" value="" name="customer[email]" size="30" required />
+
+					<label for="password">Password</label>
+					<input class="input-text account-form__input-text" type="password" value="" name="customer[password]" size="30" required />
+						
+						<input type="submit" class="form-button" value="Create">
+					</div>
+					<div class="account-form__text-under-form">
+						Have an account? <a href="/account/login" class="quick-link">Login</a>
+					</div>
+				{% endform %}
+
+
+			</div>
+			<div class="login-popup__right-part">
+				<img src="{{ 'login-image.png' | asset_url }}" alt="Login" class="img-responsive img-width">
+				<div class="login-popup__text">
+					<div class="login-popup__text-title">Ml Furs Advantage</div>
+					<div class="login-popup__list">
+						<li class="login-popup__list-item">Lorem ipsum dolor sit amet.</li>
+						<li class="login-popup__list-item">Lorem ipsum dolor sit.</li>
+						<li class="login-popup__list-item">Lorem ipsum dolor.</li>
+						<li class="login-popup__list-item">Lorem ipsum dolor sit.</li>
+						<li class="login-popup__list-item">Lorem ipsum.</li>
+					</div>
+				</div>
+			</div>

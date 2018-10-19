@@ -1,0 +1,81 @@
+.customer-container     
+    &-header
+        border-bottom:  1px solid  $gray
+    
+        &-title 
+            font-family: $bold
+            font-size: 36px
+    &-main
+        margin-bottom: 20px
+        margin-top: 20px
+        &-new-address
+            margin-top: 10px
+            text-align: left
+        &-form
+            background-color: #f4f4f4
+
+
+        &-addresses
+            &-edit-form
+                background-color: #f4f4f4
+
+                .account-form__title 
+                    margin-bottom: 10px
+        
+        &_invoce__generals            
+            background-color: #f4f4f4
+            border: 1px solid $gray
+            padding: 10px
+            margin-bottom: 20px
+
+        &_invoce__order
+            border: 1px solid $gray            
+
+            +media-breakpoint-down(sm)
+               border: none
+               flex-wrap:  wrap
+
+            .invoce-order__left
+                background-color: #f4f4f4
+                padding: 20px
+                width: 30%
+
+                +media-breakpoint-down(sm)
+                   border: 1px solid $gray
+                   width: 100%
+
+                .invoice-order__billing_information
+                    border-bottom: 1px solid $gray
+
+                .invoice-order__shipping_information
+                    margin-top: 20px
+
+            .invoce-order__right
+                border: 1px solid $gray
+                padding: 10px 20px
+                width: 70%
+
+                +media-breakpoint-down(sm)
+                   border: none
+                   font-size: 12px
+                   padding: 0px
+                   width: 100%
+
+
+                &_table
+                    +media-breakpoint-down(sm)
+                       border: 1px solid $gray
+                       margin-top: 20px
+        
+        .table-desktop
+            display: table
+            
+            +media-breakpoint-down(sm)
+               display: none
+
+        .table-mobile
+            display: none
+
+            +media-breakpoint-down(sm)
+               display: table
+

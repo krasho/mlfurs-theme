@@ -154,6 +154,70 @@ $(function() {
 		$(this).children().toggleClass('mobile-burger_open');
 		$(".mobile-nav-wrapper").toggleClass('js-menu--is-open', 1000);
 	});
+
+
+
+	$("#customer-container-main-new-address__link").on("click", function(event){
+       event.preventDefault();
+
+	   $("#customer-container-main-form").toggle()
+	});
+
+	$("#customer-container-main-new-address__cancel").on("click", function(event){
+       $("#customer-container-main-form").toggle()
+	});
+	
+
+    // Initialize observers on address selectors, defined in shopify_common.js
+    if (Shopify) {
+      // eslint-disable-next-line no-new
+      new Shopify.CountryProvinceSelector(
+        'AddressCountryNew',
+        'AddressProvinceNew',
+        {
+          hideElement: 'AddressProvinceContainerNew'
+        }
+      );
+    }	
+
+    $('.address-edit-toggle').on('click', function() {
+      let formId = $(this).data('form-id');
+      $('#EditAddress_' + formId).toggleClass('d-none');
+	  $('#ContentAddress_' + formId).toggleClass('d-none');
+    });	
+
+    $('.address-delete').on('click', function() {
+      var $el = $(this);
+      var formId = $el.data('form-id');
+      var confirmMessage = $el.data('confirm-message');
+
+      // eslint-disable-next-line no-alert
+      if (
+        confirm(
+          confirmMessage || 'Are you sure you wish to delete this address?'
+        )
+      ) {
+        Shopify.postLink('/account/addresses/' + formId, {
+          parameters: { _method: 'delete' }
+        });
+      }
+    });	
+
+    // Initialize each edit form's country/province selector
+    $('.address-country-option').each(function() {
+      let formId = $(this).data('form-id');
+      let countrySelector = 'AddressCountry_' + formId;
+      let provinceSelector = 'AddressProvince_' + formId;
+      let containerSelector = 'AddressProvinceContainer_' + formId;
+      	  
+      
+      // eslint-disable-next-line no-new
+      new Shopify.CountryProvinceSelector(countrySelector, provinceSelector, {
+        hideElement: containerSelector
+      });
+    });
+
 });
+
 
 
