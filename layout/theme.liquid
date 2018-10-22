@@ -135,10 +135,16 @@
   {{ 'theme.js' | asset_url | script_tag }}
 	{{ 'scripts.min.js' | asset_url | script_tag }}
   {{ 'common.js' | asset_url | script_tag }}
-  
+	
   {%- if template.name == 'product' -%}
      {{ 'products.js' | asset_url | script_tag }}
   {%- endif -%}
+
+  {%- if template.name == 'collection' -%}
+     {{ 'collections.js' | asset_url | script_tag }}
+  {%- endif -%}
+	
+
 
 
 	{% include 'custom_mlfurs_collection-filter-v2' %}

@@ -4,8 +4,24 @@
 				<div class="col-12">
 
 					{%- assign  collection_image = collection.url | split: "/" | last | append: ".png" -%}
+					{%- assign  collection_image_default =  section.settings.hero -%}
+					{%- assign  ruta = collection_image  | img_url: 'master' -%}
+          
+					{%- assign  rutaArray = ruta | split: "." -%}
 
-					<div class="category-banner" style="background-image: url({{ collection_image | img_url: 'master' }});">
+					{% if rutaArray.size > 0%}
+					   {%- assign  lastItem = rutaArray | last  -%}
+
+						 {% if lastItem == "gif"  %}
+						    {%- assign  collection_image = collection_image_default -%}
+						 {% endif%}
+
+					{% endif%}
+					
+					<div class="category-banner" id="category_banner" 
+					     data-default_image = "{{collection_image_default}}" 
+					     style="background-image: url({{ collection_image | img_url: 'master' }});">					  
+
 						<div class="category-banner__title">{{collection.title}}</div>
 	        					  
 				    {% assign class_to_link = 'breadcrumbs__link' %}
@@ -20,8 +36,7 @@
 		</div>
 	</section>
 
-
-    {% schema %} {
+  {% schema %} {
   "name": "Collection Information",
   "settings": [
     {
