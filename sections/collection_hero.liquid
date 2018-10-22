@@ -2,25 +2,14 @@
 		<div class="container-fluid">
 			<div class="row">
 				<div class="col-12">
-
-					{%- assign  collection_image = collection.url | split: "/" | last | append: ".png" -%}
-					{%- assign  collection_image_default =  section.settings.hero -%}
-					{%- assign  ruta = collection_image  | img_url: 'master' -%}
           
-					{%- assign  rutaArray = ruta | split: "." -%}
-
-					{% if rutaArray.size > 0%}
-					   {%- assign  lastItem = rutaArray | last  -%}
-
-						 {% if lastItem == "gif"  %}
-						    {%- assign  collection_image = collection_image_default -%}
-						 {% endif%}
-
-					{% endif%}
-					
-					<div class="category-banner" id="category_banner" 
+					{%- assign  collection_image = collection.url | split: "/" | last | append: ".jpg" | file_img_url : 'master' -%}
+					{%- assign  collection_image_default =  section.settings.hero | img_url: 'master' -%}
+					          
+					  <div class="category-banner" id="category_banner" 
 					     data-default_image = "{{collection_image_default}}" 
-					     style="background-image: url({{ collection_image | img_url: 'master' }});">					  
+					     style="background-image: url({{ collection_image}});">			
+					
 
 						<div class="category-banner__title">{{collection.title}}</div>
 	        					  
@@ -35,6 +24,16 @@
 			</div>
 		</div>
 	</section>
+
+	<script>
+	window.mlfurs_collections= window.mlfurs_collections|| {};
+
+	mlfurs_collections = {
+		   collection_image: "{{collection_image}}", 
+			 collection_image_default: "{{collection_image_default}}"
+
+	}
+	</script>
 
   {% schema %} {
   "name": "Collection Information",

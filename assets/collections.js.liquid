@@ -20,3 +20,15 @@ $("#collection-form").on("submit", function(event) {
 
     location.href = url    
 })
+
+
+$(document).ready(function() { 
+    $.ajax({
+        url: "https:"+mlfurs_collections.collection_image,
+        type: "HEAD",
+        error: function () {
+                $("#category_banner").css("background-image", "url("+mlfurs_collections.collection_image_default+")");
+        }
+    });
+});
+
