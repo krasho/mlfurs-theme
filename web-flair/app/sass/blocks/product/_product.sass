@@ -7,22 +7,18 @@
 	width: 100%
 	display: block
 	position: relative
-	&:before
-		content: ''
+
+	.quik-view-image
+		display: none
 		position: absolute
 		top: 0
 		left: 0
-		width: 100%
-		height: 100%
-		background-color: rgba(#000, .7)
-		z-index: 1
-		opacity: 0
-		transition: all .25s ease
+		z-index: 99
+	
 	&:hover
-		text-decoration: none
-		&:before
-			opacity: 1
-
+		.quik-view-image
+			display: inline
+	
 .product__size
 	color: #cbb6a7
 	font-size: 12px
@@ -54,3 +50,9 @@
 	width: 25px
 	height: 25px
 	border-radius: 50%
+
+
+.sca-qv-image
+	&:hover
+		.quik-view-image
+			display: inline

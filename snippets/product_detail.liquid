@@ -1,13 +1,24 @@
     <div class="product">
         <div class="product__image">
-            <a class="product__link" href="{{product.url}}">
-                {%- if product.images.size > 0 -%}
-                    <img src="{{ product.featured_image | product_img_url: '480x480', scale: 2 }}" alt="{{ product.title | escape }}" alt="product" class="img-responsive img-width" />
+            <a class="product__link" href="{{product.url}}"
+               id="product__link_{{product.id}}">
+                {%- if product.images.size > 0 -%}                                        
+                    <img src="{{ product.featured_image | product_img_url: '480x480', scale: 2 }}" 
+                         alt="{{ product.title | escape }}" 
+                         class="img-responsive img-width"/>
+
+                    {% if product.metafields.custom_fields["quick_view_image"] != blank %}                        
+                        <img src="{{ product.metafields.custom_fields['quick_view_image'] }}" 
+                            alt="{{ product.title | escape }}" 
+                            class="img-responsive img-width quik-view-image"/>
+                    {% endif %}
+
+                    {% include 'sca-quick-view' %}     
                 {%- endif -%}
             </a>
         </div>
         <div class="product__body">
-            <div class="product__size">{{product.vendor}}</div>
+            <div class="product__size">{{product.metafields.custom_fields["designer"]}}</div>
             <div class="product__descr">{{product.title | scape}}</div>
             <div class="product__price">{{product.price | money}}</div>
             <div class="product__rate">{%- include "rate_reviews" -%}</div>

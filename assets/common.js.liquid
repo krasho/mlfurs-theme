@@ -216,8 +216,16 @@ $(function() {
         hideElement: containerSelector
       });
     });
-
 });
+
+
+$(window).on("scroll", function() {
+   let allinone_bar_fixed = $("#allinone_bar_fixed");
+  
+   if (allinone_bar_fixed.length) { //already exists the div
+       $("#shopify-section-header").css("margin-top", "50px");
+   }
+})
 
 
 
