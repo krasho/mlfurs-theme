@@ -7,18 +7,19 @@
 					{%- assign  collection_image_default =  section.settings.hero | img_url: 'master' -%}
 					          
 					  <div class="category-banner" id="category_banner" 
-					     data-default_image = "{{collection_image_default}}" 
-					     style="background-image: url({{ collection_image}});">			
-					
+					     data-default_image = "{{collection_image_default}}"
+							 style="background-image: url({{ collection_image}});">
 
-						<div class="category-banner__title">{{collection.title}}</div>
-	        					  
-				    {% assign class_to_link = 'breadcrumbs__link' %}
-  					{% assign class_to_breadcrumbs = 'breadcrumbs' %} 
-					  {% assign class_to_item = 'breadcrumbs__item' %}
-					  {% assign class_to_last_item = '' %} 
-            
-						{%- include 'breadcrumbs' -%}
+							 <div class="category-banner__content">
+									<div class="category-banner__title">{{collection.title}}</div>
+												
+									{% assign class_to_link = 'breadcrumbs__link' %}
+									{% assign class_to_breadcrumbs = 'breadcrumbs' %} 
+									{% assign class_to_item = 'breadcrumbs__item' %}
+									{% assign class_to_last_item = '' %} 
+									
+									{%- include 'breadcrumbs' -%}
+							 </div>														 
 					</div>
 				</div>
 			</div>

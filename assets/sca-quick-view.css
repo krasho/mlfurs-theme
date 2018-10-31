@@ -236,6 +236,13 @@ input.disabled.sca-qv-cartbtn:hover {
     border:none;
     z-index: 70999 !important;
 }
+
+@media (max-width: 991.98px) {
+  .sca-qv-image .sca-qv-button {
+    display: none !important;
+  }
+}
+
 .sca-qv-image:hover .sca-qv-button{
     opacity:1; 
     filter:alpha(opacity=100); 

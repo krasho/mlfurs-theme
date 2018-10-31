@@ -4,19 +4,21 @@
 				<div class="col-12">
 					<div class="footer__main">
 						<div class="footer__column footer__column_bordered" style="flex: 0 0 209px">
-							<div class="footer__column-title">Visit us</div>
+							<div class="footer__column-title">{{section.settings.text_for_title_to_left_section}}</div>
 							<ul class="footer__list">
-								<li class="footer__list-item">263 Josephine St.<br>Denver, CO 80206 <br> M-S 10am-5:00pm MST</li>
-								<li class="footer__list-item footer__list-item_type_number"><a class="footer__list-link" href="#">1-877-653-3877</a></li>
-								<li class="footer__list-item footer__list-item_type_number"><a class="footer__list-link" href="#">1-303-322-2287</a></li>
+								<!--<li class="footer__list-item">263 Josephine St.<br>Denver, CO 80206 <br> M-S 10am-5:00pm MST</li>-->
+								<li class="footer__list-item">{{section.settings.text_for_address}}<br>{{section.settings.text_for_location}}<br>{{section.settings.text_for_time}}</li>
+								<li class="footer__list-item footer__list-item_type_number"><a class="footer__list-link" href="#">{{section.settings.text_for_phone1}}</a></li>
+								<li class="footer__list-item footer__list-item_type_number"><a class="footer__list-link" href="#">{{section.settings.text_for_phone2}}</a></li>
 							</ul>
-							<ul class="footer__social">
+							<!--<ul class="footer__social">
 								<li class="footer__social-item footer__social-item_blured"><a href="#"><img src="{{ 'fb.png' | asset_url }}" alt="fb"></a></li>
 								<li class="footer__social-item footer__social-item_blured"><a href="#"><img src="{{ 'tw.png' | asset_url }}" alt="tw"></a></li>
 								<li class="footer__social-item footer__social-item_blured"><a href="#"><img src="{{ 'inst.png' | asset_url }}" alt="inst"></a></li>
 								<li class="footer__social-item"><a href="#"><img src="{{ 'yt.png' | asset_url }}" alt="yt"></a></li>
 								<li class="footer__social-item"><a href="#"><img src="{{ 'gp.png' | asset_url }}" alt="gp"></a></li>
 							</ul>
+							-->
 							<div class="footer__paypal">
 								<img class="img-responsive img-width" src="{{ 'paypal.png' | asset_url }}" alt="paypal">
 							</div>
@@ -31,25 +33,38 @@
 							<div class="footer__column-title">STAY CONECTED</div>
 							<ul class="footer__list">
 								<li class="footer__social-item footer__social-item_blured">
-								   <a class="footer__list-link" href="https://www.facebook.com/MarksLloydsFurs" target="_blank">
+								   <a class="footer__list-link" href="{{section.settings.footer_url_facebook}}" target="_blank">
 								      <span style="width: 16px;"><img src="{{ 'fb.png' | asset_url }}" alt="fb"></span>	
 									  &nbsp; Facebook
 								   </a>
 								</li>
 								<li class="footer__social-item footer__social-item_blured">
-								   <a class="footer__list-link" href="https://twitter.com/markslloydsfurs" target="_blank">
+								   <a class="footer__list-link" href="{{section.settings.footer_url_twitter}}" target="_blank">
 								      <span style="width: 16px;"><img src="{{ 'tw.png' | asset_url }}" alt="tw"></span>
 								      &nbsp; Twitter
 								   </a>
 								</li>
 
 								<li class="footer__social-item footer__social-item_blured">
-								   <a class="footer__list-link" href="https://www.instagram.com/mlfurs/" target="_blank">
+								   <a class="footer__list-link" href="{{section.settings.footer_url_instagram}}" target="_blank">
 								      <span style="width: 16px;"><img src="{{ 'inst.png' | asset_url }}" alt="tw"></span>
 								      &nbsp; Instagram
 								   </a>
 								</li>																
 
+								<li class="footer__social-item footer__social-item_blured">
+								   <a class="footer__list-link" href="{{section.settings.footer_url_youtube}}" target="_blank">
+								      <span style="width: 16px;"><img src="{{ 'yt.png' | asset_url }}" alt="tw"></span>
+								      &nbsp; Youtube
+								   </a>
+								</li>
+
+								<li class="footer__social-item footer__social-item_blured">
+								   <a class="footer__list-link" href="{{section.settings.footer_url_pinterest}}" target="_blank">
+								      <span style="width: 16px;"><img src="{{ 'pint.png' | asset_url }}" alt="tw"></span>
+								      &nbsp; Pinterest
+								   </a>
+								</li>
 							</ul>
 						</div>
 					</div>
@@ -83,6 +98,36 @@
   "settings": [
     {
       "type": "text",
+      "id": "text_for_title_to_left_section",
+      "label": "Title for Left Section"
+    },		
+    {
+      "type": "text",
+      "id": "text_for_address",
+      "label": "Address"      
+    },
+    {
+      "type": "text",
+      "id": "text_for_location",
+      "label": "City, State, Zip Code"      
+    },
+    {
+      "type": "text",
+      "id": "text_for_time",
+      "label": "Time"      
+    },
+    {
+      "type": "text",
+      "id": "text_for_phone1",
+      "label": "Phone 1"      
+    },
+    {
+      "type": "text",
+      "id": "text_for_phone2",
+      "label": "Phone 2"      
+    },								
+    {
+      "type": "text",
       "id": "text_for_footer_menu_linklist",
       "label": "Title for Menu 1"
     },	  
@@ -100,7 +145,32 @@
       "type": "link_list",
       "id": "footer_menu2_linklist",
       "label": "Menu 2"      
-    }	
+    },
+    {
+      "type": "url",
+      "id": "footer_url_facebook",
+      "label": "Facebook URL"      
+    },
+    {
+      "type": "url",
+      "id": "footer_url_twitter",
+      "label": "Twitter URL"      
+    },
+    {
+      "type": "url",
+      "id": "footer_url_instagram",
+      "label": "Instagram URL"      
+    },
+    {
+      "type": "url",
+      "id": "footer_url_youtube",
+      "label": "Youtube URL"      
+    },
+    {
+      "type": "url",
+      "id": "footer_url_pinterest",
+      "label": "Pinterest URL"      
+    }										
   ]
 }
 {% endschema %}

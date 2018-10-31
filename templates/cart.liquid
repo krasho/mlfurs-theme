@@ -171,11 +171,16 @@
 								<img src="{{ 'checkout-paypal.png' | asset_url }}" alt="paypal" class="form-card__payment-image img-responsive">
 							</div>
 						</div>
+						<div class="form-card__payment">
+							{% if additional_checkout_buttons %}
+							<div class="form-card__payment-item d-lg-non additional-checkout-buttons">
+								{{ content_for_additional_checkout_buttons }}
+							</div>
+							{% endif %}						
+						</div>
 					</div>
 				</div>
 			</div>
 		  </form>			
 		</div>
 	</section>
-
-	{% section 'subscribe' %}

@@ -228,4 +228,9 @@ $(window).on("scroll", function() {
 })
 
 
+$("#sustainability-select-options").on("change", function(){
+   let value = $(this).val();
 
+   $(".sustainability-tablet .sustainability-container").hide();
+   $("#"+value).show();
+});

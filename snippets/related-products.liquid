@@ -1,5 +1,6 @@
 
-{%- assign RELATED_PRODUCTS_LIMIT = 4 -%}
+{%- assign RELATED_PRODUCTS_LIMIT = 5 -%}
+{%- assign RELATED_PRODUCTS_TO_SHOW = 4 -%}
 {%- if product.metafields.theme.related_products != blank -%}
         {%- assign related_product_handles = product.metafields.theme.related_products | split: ',' -%}
         
@@ -30,9 +31,13 @@
               {%- endunless -%}
             {%- endfor -%}
 
-            {%- for related_product in related_collection.products limit:RELATED_PRODUCTS_LIMIT -%}
-                  {%- assign product =  related_product -%}
-                  {%- include 'related_product_information' -%}
+            {%- assign showed = 0 -%}
+            {%- for related_product in related_collection.products limit:RELATED_PRODUCTS_LIMIT -%}                                  
+                  {%- if (current_product_selected.id != related_product.id and showed < RELATED_PRODUCTS_TO_SHOW ) -%}
+                        {%- assign product =  related_product -%}
+                        {%- include 'related_product_information' -%}
+                        {%- assign showed = showed | plus: 1 -%}
+                  {%- endif -%}
             {%- endfor -%}
         {%- endif -%}
 {%- endif -%}
