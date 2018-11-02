@@ -25,6 +25,13 @@
 	font-family: $bold
 	text-transform: uppercase
 
+	&__link
+		color: #cbb6a7
+
+		&:hover
+			color: #cbb6a7
+
+
 .product__descr
 	font-size: 14px
 
@@ -56,3 +63,16 @@
 	&:hover
 		.quik-view-image
 			display: inline
+
+.product__swatches
+	.swatch
+		background-repeat: no-repeat
+		background-size: 100%
+		border: 1px solid $gray
+		height: 20px
+		margin-right: 5px
+		width: 20px
+
+		&:nth-last-child(1)
+			margin-right: 0
+

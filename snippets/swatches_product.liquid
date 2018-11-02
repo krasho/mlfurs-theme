@@ -1,0 +1,11 @@
+{% for product_option in product.options_with_values %}
+    {%- if product_option.name == "Color" -%}
+        {% for value in product_option.values %}
+            {% assign image_to_color = value | remove: " " | remove: "/" | downcase | append: ".png" %}
+            <div class="swatch"
+                    style="background-image: url('{{image_to_color | asset_url}}');">
+            </div>
+
+        {% endfor %}
+    {%- endif -%}
+{% endfor %}

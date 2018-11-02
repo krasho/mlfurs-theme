@@ -18,9 +18,16 @@
             </a>
         </div>
         <div class="product__body">
-            <div class="product__size">{{product.metafields.custom_fields["designer"]}}</div>
+            <div class="d-flex justify-content-between">
+                <div class="product__size">
+                  <a class="product__size__link" href="{{product.url}}">
+                      {{product.metafields.custom_fields["designer"]}}
+                  </a> 
+                </div>
+                <div class="product__swatches d-flex">{% include 'swatches_product' %}</div>                        
+            </div> 
             <div class="product__descr">{{product.title | scape}}</div>
-            <div class="product__price">{{product.price | money}}</div>
+            <div class="product__price">{{product.price | money}}</div>            
             <div class="product__rate">{%- include "rate_reviews" -%}</div>
         </div>
     </div>
