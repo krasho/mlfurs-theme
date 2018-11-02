@@ -93,14 +93,21 @@
 						{%- if collection.products_count > 0 -%}		
 							{%- paginate collection.products by 12 -%}							
 									{%- for product in collection.products -%}
-										<div class="col-6 col-lg-4 main-category__product">
+										<div class="col-6 col-lg-4 main-category__product" id="product-{{ forloop.index | plus:paginate.current_offset }}">
 										{%-  include 'product_detail' -%}
 										</div>   
 									{%- endfor -%}
 
-								{%- if paginate.pages > 1 -%}
+								{% if paginate.next %}
+									<div id="more" class="more"><p>&darr; <a href="{{ paginate.next.url }}">More</a></p></div>        
+								{% endif %}
+
+								<!--{%- if paginate.pages > 1 -%}
 										{{ paginate | default_pagination }}
-								{%- endif -%}
+								{%- endif -%}-->
+
+
+								<div id="product-list-foot"></div>
 
 							{%- endpaginate -%}							
 						{%- else -%}

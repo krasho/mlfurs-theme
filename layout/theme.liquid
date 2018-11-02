@@ -50,7 +50,6 @@
     {{ "customer_area.js"  | shopify_asset_url | script_tag }}
 {% include 'sca-quick-view-init' %}
  <script src="//staticxx.s3.amazonaws.com/aio_stats_lib_v1.min.js?v=1.0"></script>
-<!-- GSSTART Infinite Scroll code start. Do not change --><script type="text/javascript" src="https://gravity-apps.com/shopify/js/shopify/infinitescroll2261.js?v=e3a67e3a7fb2089d8ce9e9346ac963bd"></script> <!-- nfinite Scroll code end. Do not change GSEND -->
 </head>
 
 <body class="body template-{{ template | replace: '.', ' ' | truncatewords: 1, '' | handle }}" id="{{ page_title | handle }}">  
@@ -70,7 +69,10 @@
   {{ 'theme.js' | asset_url | script_tag }}
 	{{ 'scripts.min.js' | asset_url | script_tag }}
   {{ 'common.js' | asset_url | script_tag }}
-	
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-dotimeout/1.0/jquery.ba-dotimeout.min.js"></script>	
+  
+  
   {%- if template.name == 'product' -%}
      {{ 'products.js' | asset_url | script_tag }}
   {%- endif -%}
@@ -80,6 +82,13 @@
   {%- if template.name == 'collection' -%}
      {{ 'collections.js' | asset_url | script_tag }}
    
+     <script>
+         $(document).ready(function () {
+           $(window).scroll(function(){
+               $.doTimeout( 'scroll', 200, ScrollExecute);
+           });
+         });         
+     </script>   
   {%- endif -%}
 	
 
@@ -89,6 +98,8 @@
 
 {% include 'sca-quick-view-template' %} 
  <input type="hidden" id="656565115116111114101" data-customer-id="{{ customer.id }}" data-customer-email="{{ customer.email }}" data-customer-name="{{ customer.first_name }} {{ customer.last_name }}"/>
+ 
+ 
  </body>
 </html>
 {% include 'livechat_chat_window' %}
