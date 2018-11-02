@@ -1,11 +1,11 @@
 
 {%- assign RELATED_PRODUCTS_LIMIT = 5 -%}
 {%- assign RELATED_PRODUCTS_TO_SHOW = 4 -%}
-{%- if product.metafields.theme.related_products != blank -%}
-        {%- assign related_product_handles = product.metafields.theme.related_products | split: ',' -%}
+{%- if product.metafields.custom_fields["related_products"] != blank -%}
+        {%- assign related_product_handles = product.metafields.custom_fields["related_products"] | split: ',' -%}
         
-        {%- for related_product_handle in related_product_handles -%}          
-              {%- assign product =  related_product_handle -%}
+        {%- for related_product_handle in related_product_handles -%}
+              {%- assign product = all_products[related_product_handle] -%}
               {%- include 'related_product_information' -%}
         {%- endfor -%}
 {%- else -%}

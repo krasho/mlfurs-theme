@@ -1,10 +1,18 @@
 .category-banner
-	background-size: cover
+	background-size: contain
 	background-repeat: no-repeat	
 	background-position: center
 	text-align: center	
 	min-height: auto
 	padding: 5vw 0
+	display: flex
+	justify-content: center
+	align-items: center
+
+	@include media-breakpoint-down(sm)
+	   display: none
+
+	
 
 	&__content
 		

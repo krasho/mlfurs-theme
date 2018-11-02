@@ -90,7 +90,7 @@
 				<div class="col">
 					<div class="main-category__product-list">
 						<div class="row">						
-						{%- if collection.products_count > 0 -%}						
+						{%- if collection.products_count > 0 -%}		
 							{%- paginate collection.products by 12 -%}							
 									{%- for product in collection.products -%}
 										<div class="col-6 col-lg-4 main-category__product">
@@ -99,9 +99,10 @@
 									{%- endfor -%}
 
 								{%- if paginate.pages > 1 -%}
-								{{ paginate | default_pagination }}
+										{{ paginate | default_pagination }}
 								{%- endif -%}
-							{%- endpaginate -%}
+
+							{%- endpaginate -%}							
 						{%- else -%}
 							<div style="text-align: center; width: 100%;">
 							   <strong>No Found Products</strong>
@@ -112,9 +113,9 @@
 						</div>
 
 
-						<div class="text-center d-none d-md-block">
+						<!--<div class="text-center d-none d-md-block">
 							<a href="#" class="button-preview button-preview_dark button-preview_size_sm">Learn More</a>
-						</div>
+						</div>-->
 					</div>
 				</div>
 

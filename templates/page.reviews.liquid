@@ -1,0 +1,22 @@
+{% assign collection = collections["all"] %}
+
+<section class="reviews-page">
+		<div class="container-fluid reviews">
+            {%- if collection.products_count > 0 -%}
+                    {%- for product in collection.products -%}
+                        {% if product.metafields.spr.reviews %}
+                        <div class="product review">
+                            <div class="product__body review-header">
+                                <div class="product__size">{{product.metafields.custom_fields["designer"]}}</div>
+                                <div class="product__descr">{{product.title | scape}}</div>
+                            </div>                                                
+                                                            
+                            <div id="shopify-product-reviews" data-id="{{product.id}}">{{ product.metafields.spr.reviews }}</div>
+                        </div>
+                        {% endif%}
+                    {%- endfor -%}
+            {%- endif-%}
+        </div>
+</section>    
+
+
