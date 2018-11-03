@@ -78,7 +78,6 @@
   {%- endif -%}
 
 
-
   {%- if template.name == 'collection' -%}
      {{ 'collections.js' | asset_url | script_tag }}
    
@@ -92,6 +91,16 @@
   {%- endif -%}
 	
 
+  {%- if template.name == 'search' -%}   
+     <script>
+         $(document).ready(function () {
+           $(window).scroll(function(){
+               $.doTimeout( 'scroll', 100, ScrollExecute);
+           });
+         });         
+     </script>   
+  {%- endif -%}
+	
 
 
 	{% include 'custom_mlfurs_collection-filter-v2' %}

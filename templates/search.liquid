@@ -16,12 +16,6 @@
         <div class="grid">
             <div class="grid__item medium-up--two-fifths medium-up--push-three-tenths">
             <form action="/search" method="get" role="search" class="search">
-                <div aria-live="polite" class="form-message form-message--error search-result-error-message hide" data-search-error-message>
-                <ul id="error-search-form">
-                    <li>{{ 'general.search.empty_search_message' | t }}</li>
-                </ul>
-                </div>
-
                 <div class="search-input-group">
                     <input type="search"
                         id="SearchInput"
@@ -49,50 +43,28 @@
     </div>
 
 
-    {% if search.performed %}
-    {% if search.results_count > 0 %}
+    {% if search.performed %}    
+        {% if search.results_count > 0 %}
         <hr aria-hidden="true" />
-    {% endif %}
-    <h2 class="visually-hidden">{{ 'general.search.heading' | t: count: search.results_count }}</h2>
-    <div class="row">				
-        {% for item in search.results %}
-        <!--<li class="list-view-item">-->
-            {% if item.object_type == 'product' %}
-                {% include 'product-card-list', product: item %}
-            <!--{% else %}
-                <div class="product-card product-card--list">
-                <a href="{{ item.url }}" class="full-width-link">
-                    <span class="visually-hidden">{{ item.title }}</span>
-                </a>
-                <div class="list-view-item__link">
-                    {% if item.image %}
-                    <div class="list-view-item__image-column">
-                        <div class="list-view-item__image-wrapper">
-                        <img class="list-view-item__image" src="{{ item.image.src | img_url: '600x600' }}" alt="{{ item.image.alt | escape }}">
-                        </div>
-                    </div>
+        {% endif %}
+        <h2 class="visually-hidden">{{ 'general.search.heading' | t: count: search.results_count }}</h2>
+        <div class="main-category__product-list">
+            <div class="row">				
+                {% for item in search.results %}
+                    {% if item.object_type == 'product' %}
+                        
+                        {% include 'product-card-list', product: item %}
+                    {% endif %}
+                {% endfor %}
+
+                    {% if paginate.next %}
+                    <div id="more" class="more"><p>&darr; <a href="{{ paginate.next.url }}">More</a></p></div>        
                     {% endif %}
 
-                    <div class="list-view-item__title-column">
-                    <div class="list-view-item__title" aria-hidden="true">{{ item.title }}</div>
-                    <div>
-                        {% if item.published_at %}{{ item.published_at | date: "%b %d, %Y" }} &#8212; {% endif %}
-                        {{ item.content | strip_html | truncate: 200 }}
-                    </div>
-                    </div>
-                </div>
-                </div>
-                -->
-            {% endif %}
-        <!--</li>-->
-        {% endfor %}
-    <!--</ul>-->
-    </div>
+                    <div id="product-list-foot"></div>
+            </div>
+        </div>   
 
-    {% if paginate.pages > 1 %}
-        {% include 'pagination' %}
-    {% endif %}
-    {% endif %}
-
-    {% endpaginate %}
+        {% endif %}
+        {% endpaginate %}
 </div>    
