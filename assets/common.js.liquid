@@ -1,8 +1,17 @@
-function ScrollExecute() {           
-	if($(document).height() - 1000 < ($(document).scrollTop() + $(window).height())) {
-		scrollNode = $('.more').last();    
-		scrollURL = $('#more p a').last().attr("href");
-		if(scrollNode.length > 0 && scrollNode.css('display') != 'none') {
+var readingProducts = false;
+function ScrollExecute() {
+	let endlessOffset = 800;
+	let parentContainerBottom =  $(".main-category__product-list").outerHeight();
+	let windowBottom 		  = ($(document).scrollTop() + $(window).height() + endlessOffset);
+
+
+    if (readingProducts == false && $(parentContainerBottom).length) {	
+		console.log("paret:"+parentContainerBottom+" win:"+windowBottom);  
+		if (windowBottom > parentContainerBottom) {
+			scrollNode = $('.more').last();    
+			scrollURL = $('#more p a').last().attr("href");
+             
+			readingProducts = true;
 			$.ajax({
 				type: 'GET',
 				url: scrollURL,
@@ -11,6 +20,7 @@ function ScrollExecute() {
 					scrollNode.hide();                           
 				},
 				success: function(data) {
+					console.log("En el AJAX")
 					// remove loading feedback
 					scrollNode.next().remove();
 					// $('.more').hide();
@@ -18,13 +28,25 @@ function ScrollExecute() {
 					filteredData.insertBefore( $("#product-list-foot") );      
 
 					let more = $(data).find("#more");
-					more.insertBefore($("#product-list-foot"));             
+					more.insertBefore($("#product-list-foot"));
+
+					SCAShopify.initSettings(jQuery191) //add the quick button 
+
+					readingProducts = false;            
 				},
 				dataType: "html"
 			});
 		}
 	}
-	}     
+
+    console.log("paret:"+parentContainerBottom+" win:"+windowBottom);  
+}
+
+function reload_js(src) {
+    $('script[src="' + src + '"]').remove();
+    $('<script>').attr('src', src).appendTo('head')
+}
+    
 
 
 

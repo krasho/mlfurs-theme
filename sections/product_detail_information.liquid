@@ -368,10 +368,12 @@
 				
 				{% endfor %}
 				
-			    product_variant_available['available'] = "{{variant.available}}"
-				product_variant_available['id'] = "{{variant.id}}"
-				product_variant_available['inventory_quantity'] = "{{variant.inventory_quantity}}"
-				product_variant_available['show'] = "true"
+			    product_variant_available['available'] = "{{variant.available}}";
+				product_variant_available['id'] = "{{variant.id}}";
+				product_variant_available['inventory_quantity'] = "{{variant.inventory_quantity}}";
+				product_variant_available['show'] = "true";
+                product_variant_available['image'] = "{{variant.image | img_url: 'master'}}";
+
 
 				this.product_variants.push(product_variant_available)
 				

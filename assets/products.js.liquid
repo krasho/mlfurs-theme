@@ -42,6 +42,11 @@ function enableOption(idToEnable) {
 
 }
 
+function changeProductImage(imageToChange) {
+    console.log("variantID:"+imageToChange)
+
+}
+
 
 $("#reset-filter_link").on("click", function(event){
    event.preventDefault();
@@ -114,9 +119,10 @@ $(".option_to_select").on("click", function(event) {
                   $('#btn_to_add_cart').hide()
               } else {
                   let idToSelectInVariants = mlfurs.product_variants_available[0].id;
-                  console.log("id to sel:"+idToSelectInVariants);
+                  let imageToChange = mlfurs.product_variants_available[0].image;                  
 
                   $("#product-select").val(idToSelectInVariants);
+                  changeProductImage(imageToChange);
 
 
               }       
@@ -177,4 +183,4 @@ $(document).ready(function() {
         return false;
       });
     });
-  });
+});

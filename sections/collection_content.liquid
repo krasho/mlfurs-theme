@@ -89,9 +89,10 @@
 
 				<div class="col">
 					<div class="main-category__product-list">
-						<div class="row">						
+					   total: {{collection.products_count}}			
+						<div class="row">									
 						{%- if collection.products_count > 0 -%}		
-							{%- paginate collection.products by 12 -%}							
+							{%- paginate collection.products by 30 -%}							
 									{%- for product in collection.products -%}
 										<div class="col-6 col-lg-4 main-category__product" id="product-{{ forloop.index | plus:paginate.current_offset }}">
 										{%-  include 'product_detail' -%}
