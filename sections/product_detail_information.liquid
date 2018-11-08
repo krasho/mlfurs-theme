@@ -6,7 +6,9 @@
             <div class="slider-nav product-card__slider-nav">
               {%- for image in product.images -%}
                 <div class="slider-nav__item">
-                  <img  alt="product" class="slider-nav__image img-responsive img-width" src="{{ image | product_img_url: '240x240', scale: 2 }}" alt="{{ product.title | escape }}" />
+                  {% assign  slider_image = image | product_img_url: '240x240', scale: 2  %}
+                  <img  alt="product" class="slider-nav__image img-responsive img-width" src="{{ slider_image }}" alt="{{ product.title | escape }}" 
+                        data-original="{{ image | product_img_url: 'master'}}"/>                  
                 </div>
               {%- endfor -%}  
             </div>
@@ -107,7 +109,8 @@
 
                                 {% assign variantItem = variantArray[forloop.index0] | strip %}
 
-                                {%- if product_option.name == "Color" -%}                                    
+                                {%- if product_option.name == "Color" -%} 
+                                     {% assign loopCount =  forloop.index %}                                   
                                     <div class="product-info__color-boxes">
                                 {%- else -%}
                                     <div class="product-info__size-boxes">
@@ -130,7 +133,26 @@
                                     {% assign option_name =  product_option.name | remove: ' ' | remove: '/' | downcase %}
                                     {% assign option_value =  value | remove: ' ' | remove: '/' | downcase  %}
 
-                                    {%- if product_option.name == "Color" -%}                                        
+                                    {%- if product_option.name == "Color" -%}                                       
+                                        {% for variant in product.variants %}
+                                             {% assign variantImage = ""  %} 
+                                            {% if loopCount == 1 %}
+                                                {% assign variantValue = variant.option1  %} 
+                                            {% elsif loopCount == 2 %} 
+                                                {% assign variantValue = variant.option2  %}   
+                                            {% else %}   
+                                                {% assign variantValue = variant.option3  %}   
+                                            {%- endif -%}
+
+                                            {% if variantValue == value %}
+                                            {% assign variantImage = variant.image | img_url: "master"  %}   
+                                            {% break %}
+                                            {%- endif -%}
+                                            
+                                        {% endfor %}
+
+
+
                                             {% assign image_to_color = value | remove: " " | remove: "/" | downcase | append: ".png" %}
 
                                             <div class="product-info__color-box {{selected}} option_to_select  filter_{{option_name}}" 
@@ -144,7 +166,8 @@
                                                         {{outline}}
                                                         background-size: 100%;
                                                         position: relative" 
-                                                id="option_{{option_name}}_{{option_value}}">
+                                                id="option_{{option_name}}_{{option_value}}"
+                                                data-variant="{{variantImage}}">
 
 
                                                 <svg class="product-info__diagonal-line" 
@@ -185,7 +208,7 @@
                                     {%- endif -%}
 
                                     {%- if product_option.name == "Size" -%}
-                                        <a href="#" class="product-info__size-link quick-link quick-link_size_sm quick-link_dark">Size Guide</a>
+                                        <a href="/pages/customer-service-fur-jacket-size" target="_blank" class="product-info__size-link quick-link quick-link_size_sm quick-link_dark">Size Guide</a>
                                     {%- endif -%}                        
                                 </div>   
 
@@ -232,15 +255,28 @@
                                 <input type="hidden" name="id" value="{{ product.variants.first.id }}" />
                         {%- endif -%}            
                                     <div class="product-info__count-add">
-                                        <input name="quantity" type="number" class="product-info__count-input input-text input-text_height_sm text-center input-text_bg_gray input-text_size_sm" value="1">
-                                        <button id="btn_to_add_cart" class="product-info__form-button form-button form-button_height_sm form-button_fontsize_sm" type="submit" {% unless product.available %}disabled="disabled"{% endunless %}>Add to cart</button>
 
-                                        <div id="sold-out-container" class="sold-out product-info__form-button form-button form-button_height_sm form-button_fontsize_sm" style="display:none; margin-bottom: 20px; background-color: #557b97; opacity: 0.5; color: #fff;">
-                                            <div class="sold_out d-flex d-sm-flex d-md-flex d-lg-flex d-xl-flex justify-content-center align-items-center" id="sold_out" 
-                                                style="height: 100%">
-                                                        <span>Sold Out</span>
-                                            </div>    
-                                        </div>
+                                        {%- if product.available == true  -%}
+                                            <input name="quantity" type="number" class="product-info__count-input input-text input-text_height_sm text-center input-text_bg_gray input-text_size_sm" value="1">
+                                            <button id="btn_to_add_cart" class="product-info__form-button form-button form-button_height_sm form-button_fontsize_sm" type="submit" {% unless product.available %}disabled="disabled"{% endunless %}>Add to cart</button>
+
+                                            <div id="sold-out-container" class="sold-out product-info__form-button form-button form-button_height_sm form-button_fontsize_sm" style="display:none; margin-bottom: 20px; background-color: #557b97; opacity: 0.5; color: #fff;">
+                                                <div class="sold_out d-flex d-sm-flex d-md-flex d-lg-flex d-xl-flex justify-content-center align-items-center" id="sold_out" 
+                                                    style="height: 100%">
+                                                            <span>Sold Out</span>
+                                                </div>    
+                                            </div>
+
+                                        {%- else -%}
+                                            <div class="sold-out form-button form-button_height_sm form-button_fontsize_sm" style="margin-bottom: 20px; background-color: #557b97; opacity: 0.5; color: #fff;">
+                                                <div class="sold_out d-flex d-sm-flex d-md-flex d-lg-flex d-xl-flex justify-content-center align-items-center product-info__form-button_sold_out" 
+                                                    id="sold_out" 
+                                                    style="height: 100%">
+                                                            <span>Out of Stock</span>
+                                                </div>    
+                                            </div>
+                                         {%- endif -%}
+
                                     </div>
                         
                                     <div class="product-info__pay-text">

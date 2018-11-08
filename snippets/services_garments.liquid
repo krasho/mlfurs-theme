@@ -1,0 +1,23 @@
+{%- if collection.products_count > 0 -%}
+    {%- paginate collection.products by 1 -%}	
+    {% for product in collection.products %}
+        {%-  assign firstProduct = product  -%}
+    {%- endfor -%}   
+    {%- endpaginate -%}	 
+{%- endif -%}
+
+<select class="select more-info__select select_color_gray select_bg_gray" name="cbo_garment" id="cbo_garment">
+    <option selected value="0">Select Garment</option>
+        {% for product_option in firstProduct.options_with_values %}        
+            {% for value in product_option.values %}
+                <option value="{{value}}">
+                {{ value }}
+                </option>
+            {% endfor %}        
+
+        {%- endfor -%}   
+</select>
+
+<div class="field_error_container" id="cbo_garment_error" style="display:none;">
+* Garment is a Required field
+</div>

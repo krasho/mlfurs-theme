@@ -1,12 +1,27 @@
 var readingProducts = false;
+var whereAreInTheFinishPage = false;
+
+function validateIfWhereAreInTheFinishPage() {
+    let more = $("#more");
+
+	if (more.length > 0) {
+		return false
+	}
+
+	return true;
+}
+
 function ScrollExecute() {
 	let endlessOffset = 800;
 	let parentContainerBottom =  $(".main-category__product-list").outerHeight();
 	let windowBottom 		  = ($(document).scrollTop() + $(window).height() + endlessOffset);
+    
+	if (whereAreInTheFinishPage == false) {
+       whereAreInTheFinishPage = validateIfWhereAreInTheFinishPage();
+	}
+	
 
-
-    if (readingProducts == false && $(parentContainerBottom).length) {	
-		console.log("paret:"+parentContainerBottom+" win:"+windowBottom);  
+    if (readingProducts == false && $(parentContainerBottom).length >0 && whereAreInTheFinishPage == false) {			
 		if (windowBottom > parentContainerBottom) {
 			scrollNode = $('.more').last();    
 			scrollURL = $('#more p a').last().attr("href");
@@ -20,18 +35,25 @@ function ScrollExecute() {
 					scrollNode.hide();                           
 				},
 				success: function(data) {
-					console.log("En el AJAX")
+					
 					// remove loading feedback
 					scrollNode.next().remove();
 					// $('.more').hide();
+					
 					let filteredData = $(data).find(".main-category__product");                           
 					filteredData.insertBefore( $("#product-list-foot") );      
 
 					let more = $(data).find("#more");
-					more.insertBefore($("#product-list-foot"));
 
-					SCAShopify.initSettings(jQuery191) //add the quick button 
+					if (more.length > 0) {
+						more.insertBefore($("#product-list-foot"));
 
+						SCAShopify.initSettings(jQuery191) //add the quick button 
+
+					} else {
+						whereAreInTheFinishPage = true;
+					}
+                    
 					readingProducts = false;            
 				},
 				dataType: "html"
@@ -39,7 +61,6 @@ function ScrollExecute() {
 		}
 	}
 
-    console.log("paret:"+parentContainerBottom+" win:"+windowBottom);  
 }
 
 function reload_js(src) {
@@ -47,7 +68,18 @@ function reload_js(src) {
     $('<script>').attr('src', src).appendTo('head')
 }
     
+function changeCart(obj, operation)
+{
+   let line = obj.data("line");
 
+   let quantity = 0
+
+   if (operation == 'edit') {
+      let quantity = $("#line_quantity_"+line).val();   
+   }
+   
+   location.href="/cart/change?line="+line+"&quantity="+quantity;  
+}
 
 
 $(function() {
@@ -287,3 +319,84 @@ $("#sustainability-select-options").on("change", function(){
    $("#"+value).show();
 });
 
+
+$("#add_to_cart_service").on("click", function(event) {    
+
+    let garment = $("#cbo_garment").val();
+    let service = $("#cbo_services").val();
+    let quantity = $("#cbo_quantity_items").val();
+
+    $("#cbo_garment_error").hide(); 
+	$("#cbo_services_error").hide();
+	$("#cbo_quantity_error").hide();
+
+    if (garment == 0 || garment.length == 0 ) {
+        $("#cbo_garment_error").show();
+		event.preventDefault();
+    } else if (service == 0 || service.length == 0) {
+		$("#cbo_services_error").show();
+		event.preventDefault();
+    } else if (quantity == 0 || quantity.length == 0) {
+        $("#cbo_quantity_error").show();
+		event.preventDefault();
+    } else {
+        let variant_id = mlfurs_services.findVariantByProductAndGarment(service, garment);
+
+		if (variant_id != "") {
+			$("#product-select").val(variant_id);						
+		}
+    }
+})
+
+
+$("#trustware_link").on("click", function(event) {
+   event.preventDefault();
+
+   window.open('https://sealserver.trustwave.com/cert.php?customerId=6ccbc30633c44596af83f06f9a0cc8eb&amp;size=105x54&amp;style=','c_TW', 'location=no, toolbar=no, resizable=yes, scrollbars=yes, directories=no, status=no, width=615, height=720'); 
+   return false; 
+});
+
+$("#trustware_link").on("contextmenu", function(event) {
+	event.preventDefault();
+	alert('Copying Prohibited by Law - Trusted Commerce is a Service Mark of TrustWave Holdings, Inc.');	
+});
+
+$("#authorize_link").on("click", function(event) {
+   window.open('//verify.authorize.net/anetseal/?pid=e72173ca-cad4-49e1-8c5b-28cf197cbf06&amp;rurl=http%3A//www.mlfurs.com/','AuthorizeNetVerification','width=600,height=430,dependent=yes,resizable=yes,scrollbars=yes,menubar=no,toolbar=no,status=no,directories=no,location=yes');   
+   return false;
+});
+
+$("#authorize_link").on("mouseover", function(event) {
+	window.status='http://www.authorize.net/'; 
+	return true;
+});	
+
+$("#authorize_link").on("mouseout", function(event) {
+	window.status=''; 
+	return true;
+});
+
+
+$(".swatch").on("click", function() {
+ let image = $(this).data("image");
+
+ if (image.length > 0) {
+	 let productId = $(this).data("product");
+
+	 $("#product_"+productId).attr("src", image);
+ }
+});
+
+
+$(".edit-cart").on("click", function(event){
+   event.preventDefault()
+   changeCart($(this), "edit");
+});
+
+
+$(".remove-cart").on("click", function(event){
+   event.preventDefault();
+
+   changeCart($(this), "delete");
+ 
+})

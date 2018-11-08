@@ -8,8 +8,8 @@
 							<ul class="footer__list">
 								<!--<li class="footer__list-item">263 Josephine St.<br>Denver, CO 80206 <br> M-S 10am-5:00pm MST</li>-->
 								<li class="footer__list-item">{{section.settings.text_for_address}}<br>{{section.settings.text_for_location}}<br>{{section.settings.text_for_time}}</li>
-								<li class="footer__list-item footer__list-item_type_number"><a class="footer__list-link" href="#">{{section.settings.text_for_phone1}}</a></li>
-								<li class="footer__list-item footer__list-item_type_number"><a class="footer__list-link" href="#">{{section.settings.text_for_phone2}}</a></li>
+								<li class="footer__list-item footer__list-item_type_number"><a class="footer__list-link" href="tel:{{section.settings.text_for_phone1}}">{{section.settings.text_for_phone1}}</a></li>
+								<li class="footer__list-item footer__list-item_type_number"><a class="footer__list-link" href="tel:{{section.settings.text_for_phone2}}">{{section.settings.text_for_phone2}}</a></li>
 							</ul>
 							<!--<ul class="footer__social">
 								<li class="footer__social-item footer__social-item_blured"><a href="#"><img src="{{ 'fb.png' | asset_url }}" alt="fb"></a></li>
@@ -76,16 +76,16 @@
 					<div class="footer__bottom">
 						<div class="footer__bottom-left">
 							<ul class="footer__bottom-menu">
-								<li class="footer__bottom-menu-item"><a class="footer__bottom-menu-link" href="#">Careers</a></li>
-								<li class="footer__bottom-menu-item"><a class="footer__bottom-menu-link" href="#">Sitemap</a></li>
-								<li class="footer__bottom-menu-item"><a class="footer__bottom-menu-link" href="#">Privacy Policy</a></li>
+								<li class="footer__bottom-menu-item"><a class="footer__bottom-menu-link" href="https://www.linkedin.com/jobs/cap/view/307980704/?pathWildcard=307980704&trk=job_capjs" target="_blank">Careers</a></li>
+								<li class="footer__bottom-menu-item"><a class="footer__bottom-menu-link" href="/pages/sitemap">Sitemap</a></li>
+								<li class="footer__bottom-menu-item"><a class="footer__bottom-menu-link" href="/pages/privacy-and-security">Privacy Policy</a></li>
 							</ul>
 							<div class="footer__bottom-copyright">&copy; 2018 Marks-Lloyds Furs. All Rights Reserved</div>
 						</div>
 						<ul class="footer__bottom-right">
-							<li class="footer__bottom-company"><a href="#"><img src="{{ 'authorize.png' | asset_url }}" alt="authorize.net"></a></li>
-							<li class="footer__bottom-company"><a href="#"><img src="{{ 'accredited.png' | asset_url }}" alt="accredited"></a></li>
-							<li class="footer__bottom-company"><a href="#"><img src="{{ 'trustwave.png' | asset_url }}" alt="trustwave"></a></li>
+							<li class="footer__bottom-company"><a href="https://verify.authorize.net/anetseal/?pid=e72173ca-cad4-49e1-8c5b-28cf197cbf06&rurl=http%3A//www.mlfurs.com/" target="_blank" id="authorize_link"><img src="{{ 'authorize.png' | asset_url }}" alt="authorize.net"></a></li>
+							<li class="footer__bottom-company"><a href="https://www.bbb.org/us/co/denver/profile/wholesale-fur/marks-lloyds-furs-0885-10293#sealclick" target="_blank"><img src="{{ 'accredited.png' | asset_url }}" alt="accredited"></a></li>
+							<li class="footer__bottom-company"><a href="#" id="trustware_link"><img src="{{ 'trustwave.png' | asset_url }}" alt="trustwave"></a></li>
 							<li class="footer__bottom-company"><a href="#"><img src="{{ 'verified.png' | asset_url }}" alt="verified"></a></li>
 						</ul>
 					</div>

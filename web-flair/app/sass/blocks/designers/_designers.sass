@@ -1,0 +1,44 @@
+.designers
+    &-directory
+        margin-top: 20px 
+
+        a 
+           color: #000
+    table
+        border-bottom: 1px solid $gray !important
+        margin-bottom: 20px        
+        width: 60% !important
+
+        @include media-breakpoint-down(sm) 
+           width: 100% !important
+
+        tr
+            td
+                width: 15% !important
+
+                @include media-breakpoint-down(sm) 
+                   font-size: 13px
+                   white-space: nowrap
+        
+            &:first-child td
+                font-size: 36px
+
+                @include media-breakpoint-down(sm) 
+                   font-size: 28px                   
+
+            &:last-child td
+                padding-bottom: 15px                
+    
+    &-banner
+        background-size: cover
+        background-repeat: no-repeat	
+        background-position: center
+        text-align: center	
+        min-height: auto
+        padding: 7vw 0
+        display: flex
+        justify-content: center
+        align-items: center
+
+        @include media-breakpoint-down(sm)
+           display: none

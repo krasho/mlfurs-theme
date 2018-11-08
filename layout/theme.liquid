@@ -93,14 +93,15 @@
 
   {%- if template.name == 'search' -%}   
      <script>
-         $(document).ready(function () {
+         $(document).ready(function () {            
            $(window).scroll(function(){
                $.doTimeout( 'scroll', 100, ScrollExecute);
            });
-         });         
+         });
      </script>   
   {%- endif -%}
 	
+  
 
 
 	{% include 'custom_mlfurs_collection-filter-v2' %}
@@ -108,7 +109,7 @@
 {% include 'sca-quick-view-template' %} 
  <input type="hidden" id="656565115116111114101" data-customer-id="{{ customer.id }}" data-customer-email="{{ customer.email }}" data-customer-name="{{ customer.first_name }} {{ customer.last_name }}"/>
  
- 
+ {% include 'scroll-to-the-top' %}
  </body>
 </html>
 {% include 'livechat_chat_window' %}

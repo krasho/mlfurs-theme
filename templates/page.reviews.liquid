@@ -1,20 +1,23 @@
 {% assign collection = collections["all"] %}
-
+{% assign qty = 0 %}
 <section class="reviews-page">
 		<div class="container-fluid reviews">
             {%- if collection.products_count > 0 -%}
-                    {%- for product in collection.products -%}
-                        {% if product.metafields.spr.reviews %}
-                        <div class="product review">
-                            <div class="product__body review-header">
-                                <div class="product__size">{{product.metafields.custom_fields["designer"]}}</div>
-                                <div class="product__descr">{{product.title | scape}}</div>
-                            </div>                                                
-                                                            
-                            <div id="shopify-product-reviews" data-id="{{product.id}}">{{ product.metafields.spr.reviews }}</div>
-                        </div>
-                        {% endif%}
-                    {%- endfor -%}
+                    {% paginate collection.products by 200 %}
+                        {%- for product in collection.products -%}
+                            {% if product.metafields.spr.reviews and qty < 30 %}
+                                {% assign qty = qty | plus: 1 %}                    
+                                <div class="product review">
+                                    <div class="product__body review-header">
+                                        <div class="product__size">{{product.metafields.custom_fields["designer"]}}</div>
+                                        <div class="product__descr">{{product.title | scape}}</div>
+                                    </div>                                                
+                                                                    
+                                    <div id="shopify-product-reviews" data-id="{{product.id}}">{{ product.metafields.spr.reviews }}</div>
+                                </div>
+                            {% endif%}
+                        {%- endfor -%}
+                    {% endpaginate%}    
             {%- endif-%}
         </div>
 </section>    

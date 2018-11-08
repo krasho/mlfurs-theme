@@ -47,43 +47,6 @@
 				<div class="col-lg-3 main-category__filter-container" style="display:none">
 				   <div class="filter collection-filters-container cf-select-wrapper cf-select-wrapper" style="display:none">
 				   </div>
-
-					<div class="filter" style="padding-top: 0; display:none">
-                        <div class="filter__item">
-						   <div class="filter__item-title filter__item_collections">COLLECTIONS</div>						
-								<div class="filter__item-menu">
-									{%- for collection_option in collections -%}
-										{%-if collection_option.all_products_count > 0 -%}
-										<div class="checkbox-custom filter__checkbox-custom">
-												{%- if collection.handle == collection_option.handle -%}
-														{{collection_option.title | escape}}
-														<span class="label_type_filter">({{collection_option.all_products_count}})</span>
-													
-												{%- else -%}	
-													<a href="{{ collection_option.url }}?sort_by={{ collection.sort_by }}">
-															{{collection_option.title | escape}}
-															<span class="label_type_filter">({{collection_option.all_products_count}})</span>
-													</a>																					  
-												{%-endif-%}
-										</div>									
-										{%- endif -%}
-									{%- endfor -%}  
-								</div>	
-						</div>
-
-                        <div class="filter__item">
-						   <div class="filter__item-title filter__item_types">TYPES</div>						
-								<div class="filter__item-menu">
-									{%- for product_type in collection.all_types -%}										
-										<div class="checkbox-custom filter__checkbox-custom">
-										        {{ product_type | link_to_type }}
-										</div>									
-									{%- endfor -%}  
-								</div>	
-						</div>
-
-					</div>					
-
 				</div>
 
 

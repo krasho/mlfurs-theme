@@ -112,9 +112,15 @@
 											<div class="orders-table__qty">
 												<div class="sccol">
 													<a href="javascript: void(0);" class="sccol__minus"><img src="{{ 'minus.png' | asset_url }}" alt="minus"></a>
-													<input  type="number" name="updates[]" readonly="readonly" class="sccol__input" value="{{item.quantity}}"  min="1">
+													<input id="line_quantity_{{forloop.index}}"  type="number" name="updates[]" readonly="readonly" class="sccol__input" value="{{item.quantity}}"  min="1">
 													<a href="javascript: void(0);" class="sccol__plus"><img src="{{ 'plus.png' | asset_url }}" alt="plus"></a>
-													<a href="#" class="quick-link orders-table__quick-link quick-link_size_sm edit-cart">Edit</a>
+													<a href="#" 
+													   class="quick-link orders-table__quick-link quick-link_size_sm edit-cart"
+													   data-line="{{forloop.index}}">Edit</a>
+
+													<a href="#" 
+													   class="quick-link orders-table__remove-link quick-link_size_sm remove-cart"
+													   data-line="{{forloop.index}}">Remove</a>													   
 												</div>
 											</div>
 											<div class="orders-table__subtotal">{{ item.line_price | money }}</div>

@@ -51,8 +51,7 @@
         <div class="main-category__product-list">
             <div class="row">				
                 {% for item in search.results %}
-                    {% if item.object_type == 'product' %}
-                        
+                    {% if item.object_type == 'product' %}                        
                         {% include 'product-card-list', product: item %}
                     {% endif %}
                 {% endfor %}

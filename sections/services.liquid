@@ -6,7 +6,7 @@
 
 						<div class="main-services__banner" style="background-image: url({{ section.settings.hero | img_url: 'master' }});">
 							<div class="main-services__banner-content">
-								<div class="main-services__title">Name of the service</div>
+								<div class="main-services__title">Expert Fur Service</div>
 							</div>
 						</div>
 
@@ -15,35 +15,66 @@
 								<div class="main-services__more-info more-info">
 									<div class="more-info__image d-none d-lg-block" style="background-image: url({{ section.settings.about_service | img_url: 'master' }});"></div>
 									<div class="more-info__content main-services__more-info-form-container">
-										<form class="more-info__form">
-											<div class="more-info__title">About Service</div>
-											<div class="more-info__text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Laborum ex voluptates, quos possimus maxime dolorem. Laborum ex voluptates, quos possimus maxime dolorem</div>
-											<select class="select more-info__select select_color_gray select_bg_gray">
-												<option selected value="0">Select Garment</option>
-												<option value="1">One value</option>
-												<option value="2">Two value</option>
-												<option value="3">Three value</option>
-												<option value="4">Four value</option>
-											</select>
-											<select class="select more-info__select select_color_gray select_bg_gray">
+										<form class="more-info__form" action="/cart/add" method="post">
+											<div class="more-info__title">Service in 3 Easy Steps</div>
+											<div class="more-info__text">
+											  <ol class="more-info__list_steps">
+											     <li>Select type of garment that needs service</li>
+												 <li>Select service needed</li>
+												 <li>Select number of items</li>
+											  </ol>
+											
+											</div>
+											
+											{%-  assign collection = collections['Services']  -%}
+
+											{% include "services_garments" %}											
+                                    											
+											<select name="cbo_services" id="cbo_services" class="select more-info__select select_color_gray select_bg_gray">
 												<option selected value="0">Select Service</option>
-												<option value="1">One value</option>
-												<option value="2">Two value</option>
-												<option value="3">Three value</option>
-												<option value="4">Four value</option>
+
+												{%- if collection.products_count > 0 -%}
+												   {%- for product in collection.products -%}
+												       <option value="{{product.id}}">{{product.title | scape}} - ({{product.price | money}})</option> 
+												   {%- endfor -%}    
+												{%- endif -%}                     
 											</select>
-											<select class="select more-info__select select_color_gray select_bg_gray">
-												<option selected value="0">Number of Garnments</option>
-												<option value="1">One value</option>
-												<option value="2">Two value</option>
-												<option value="3">Three value</option>
-												<option value="4">Four value</option>
+
+											<div class="field_error_container" id="cbo_services_error" style="display:none;">
+											* Service is a Required field
+											</div>
+
+											<select name="quantity" id="cbo_quantity_items" class="select more-info__select select_color_gray select_bg_gray">
+												<option selected value="0">Number of Items</option>
+												<option value="1">1</option>
+												<option value="2">2</option>
+												<option value="3">3</option>
+												<option value="4">4</option>
+												<option value="5">5</option>
+												<option value="6">6</option>
 											</select>
+
+											<div class="field_error_container" id="cbo_quantity_error" style="display:none;">
+											* Quantity is a Required field
+											</div>
+
 											<div class="more-info__start-from">
 												<div class="more-info__price-title">Starting from</div>
-												<div class="more-info__price">$750.00</div>
+												<div class="more-info__price">$150.00 Storage Bundle</div>
+												<div class="more-info__include_text">* Includes Shipping</div>
 											</div>
-											<button class="form-button form-button_height_sm form-button_fontsize_sm">Request this service</button>
+											
+											<button class="form-button form-button_height_sm form-button_fontsize_sm" id="add_to_cart_service">Request this service</button>
+
+
+											<select name="id" id="product-select" style="display:none">
+												{%- for product in collection.products -%}		                 													
+													{% for variant in product.variants %} 
+													   <option value={{variant.id}}>{{variant.title}} - {{variant.id}}</option>
+                                     	            {%- endfor -%}
+ 												{%- endfor -%}
+
+											</select>
 										</form>
 									</div>
 								</div>
@@ -60,8 +91,7 @@
 													<img src="{{ 'clock.png' | asset_url }}" alt="diamond" class="teaser__image img-responsive">
 												</div>
 												<div class="teaser__text-block">
-													<div class="teaser__title">Lorem ipsum.</div>
-													<div class="teaser__descr">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolores, minus.</div>
+													<div class="teaser__title">Fast and Convenient</div>													
 												</div>
 											</div>
 										</div>
@@ -71,8 +101,7 @@
 													<img src="{{ 'fiber.png' | asset_url }}" alt="diamond" class="teaser__image img-responsive">
 												</div>
 												<div class="teaser__text-block">
-													<div class="teaser__title">Lorem ipsum.</div>
-													<div class="teaser__descr">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolores, minus.</div>
+													<div class="teaser__title">Fine Craftsmanship</div>													
 												</div>
 											</div>
 										</div>
@@ -82,8 +111,7 @@
 													<img src="{{ 'diamond.png' | asset_url }}" alt="diamond" class="teaser__image img-responsive">
 												</div>
 												<div class="teaser__text-block">
-													<div class="teaser__title">Lorem ipsum.</div>
-													<div class="teaser__descr">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolores, minus.</div>
+													<div class="teaser__title">Focused on Quality</div>													
 												</div>
 											</div>
 										</div>
@@ -101,9 +129,11 @@
 								</div>
 								<div class="more-info main-services__more-info more-info_bottom">
 									<div class="more-info__content">
-										<div class="more-info__title">More Information</div>
-										<div class="more-info__text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Recusandae culpa aperiam molestiae veritatis, necessitatibus ea vero? Quae dolore ea perferendis magnam expedita repudiandae, rem, facilis optio numquam quia hic nulla. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Recusandae culpa aperiam molestiae veritatis, necessitatibus ea vero? Quae dolore ea perferendis magnam expedita repudiandae, rem, facilis optio numquam quia hic nulla. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Recusandae culpa aperiam molestiae veritatis, necessitatibus ea vero? Quae dolore ea perferendis magnam expedita repudiandae, rem, facilis optio numquam quia hic nulla.</div>
-										<div class="more-info__text">Quae dolore ea perferendis magnam expedita repudiandae, rem, facilis optio numquam quia hic nulla. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Recusandae culpa aperiam molestiae veritatis, necessitatibus ea vero? Quae dolore ea perferendis magnam expedita repudiandae, rem, facilis optio numquam quia hic nulla. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Recusandae culpa aperiam molestiae veritatis, necessitatibus ea vero? Quae dolore ea perferendis magnam expedita repudiandae, rem, facilis optio numquam quia hic nulla.</div>
+										<div class="more-info__title">Expert Fur Service</div>
+										<div class="more-info__text">With proper care, quality furs will maintain their beauty and soft touch season after season. ML Furs provides a full line of on-site fur services including cleaning, glazing, storage, repair, restyling, appraisals, trade-ins and special orders. Since 1951, spanning decades of experience, and a commitment to attentive customer care, our master furriers will keep your fur, shearling, and leather garments as luxurious and soft as the day they were purchased.</div>
+										<div class="more-info__text">How do you protect your furs against standard wear and tear, whether vintage or brand new? Most importantly, professional storage during the spring and summer months is imperative to expanding the lifespan of your invaluable furs. During the spring and summer months, it is crucial that fur coats, jackets, and vests are shielded from humidity, extreme temperatures, dryness, and insects. ML Furs not only welcomes you to store your furs in our insured, secure vault for the season; we make it easy with free pickup and delivery in the Denver Metro area and shipping options across the United States.</div>
+										<div class="more-info__text">Most fur owners use fur storage as an opportunity to have their garments professionally cleaned and glazed. Dust, dirt, and solvents threaten the beauty and longevity of your furs and require the gentle hand of a professional to be properly removed. Our master furriers handle your most coveted fur coats, jackets, and vests with respect and care. In addition to cleaning, our fur services include detailed inspections and repair quotes. To best protect your investment, furs should be repaired immediately if loose closures, seam openings, or minor wear are detected. ML Furs will restore your garments to their finest condition so you can enjoy your warmest, most stylish coat during their life span. With thoughtful customer service, our knowledgeable furriers also do appraisals and place special orders to fulfill your every need.</div>
+										<div class="more-info__text">If you want to bring new life to an old fur, ML Furs has the expert touch and fashion know-how to restyle outdated patterns into contemporary coats, jackets, vests, accessories, and home decor you’ll love. Or you can trade in an old fur towards the purchase of a pristine garment in today’s hottest style. With our full suite of fur services, ML Furs is dedicated to keeping your wardrobe updated and in good repair all year long.</div>
 									</div>
 									<div class="more-info__image" style="background-image: url({{ section.settings.more_info | img_url: 'master' }});"></div>
 								</div>
@@ -134,6 +164,47 @@
 			</div>
 		</div>
 	</section>
+
+
+<script>
+window.mlfurs_services = window.mlfurs_services || {};   
+
+mlfurs_services = {
+    products_services_available : [],
+
+	initializeValues: function() {
+		let item = null;
+		{%- for product in collection.products -%}		                 		    
+			{% for variant in product.variants %} 
+			   item = new Object();
+			   item["variant_id"] = "{{variant.id}}";
+			   item["garment"] = "{{variant.option1}}";
+			   item["product_id"] = "{{product.id}}";
+               
+			   this.products_services_available.push(item);
+
+			   item = null;
+			{%- endfor -%}
+			
+		{%- endfor -%}
+	},
+
+	findVariantByProductAndGarment(product_id, garment) {
+		let product = null;
+		for (item in this.products_services_available) {
+			product = this.products_services_available[item];
+
+			if (product.product_id == product_id && product.garment == garment) {
+				return product.variant_id;
+			}
+			
+		}
+	}
+}
+
+mlfurs_services.initializeValues();
+</script>
+
 
 {% schema %} {
   "name": "Services Information",

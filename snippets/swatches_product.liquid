@@ -1,9 +1,29 @@
 {% for product_option in product.options_with_values %}
     {%- if product_option.name == "Color" -%}
+        {% assign loopCount =  forloop.index %}
         {% for value in product_option.values %}
             {% assign image_to_color = value | remove: " " | remove: "/" | downcase | append: ".png" %}
+
+            {% for variant in product.variants %}
+                {% if loopCount == 1 %}
+                      {% assign variantValue = variant.option1  %} 
+                {% elsif loopCount == 2 %} 
+                      {% assign variantValue = variant.option2  %}   
+                {% else %}   
+                      {% assign variantValue = variant.option3  %}   
+                {%- endif -%}
+
+                {% if variantValue == value %}
+                   {% assign variantImage = variant.image | img_url: "master"  %}   
+                   {% break %}
+                {%- endif -%}
+                
+            {% endfor %}
+
             <div class="swatch"
-                    style="background-image: url('{{image_to_color | asset_url}}');">
+                 style="background-image: url('{{image_to_color | asset_url}}');"
+                 data-image= "{{variantImage}}"
+                 data-product= "{{product.id}}">
             </div>
 
         {% endfor %}

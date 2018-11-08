@@ -5,7 +5,8 @@
                 {%- if product.images.size > 0 -%}                                        
                     <img src="{{ product.featured_image | product_img_url: '480x480', scale: 2 }}" 
                          alt="{{ product.title | escape }}" 
-                         class="img-responsive img-width"/>
+                         class="img-responsive img-width" 
+                         id="product_{{product.id}}"/>
 
                     {% if product.metafields.custom_fields["quick_view_image"] != blank %}                        
                         <img src="{{ product.metafields.custom_fields['quick_view_image'] }}" 

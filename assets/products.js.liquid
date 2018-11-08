@@ -42,11 +42,20 @@ function enableOption(idToEnable) {
 
 }
 
-function changeProductImage(imageToChange) {
-    console.log("variantID:"+imageToChange)
-
+function changeProductImage(imageToChange) {    
 }
 
+function changeMainImage(option_selected)
+{
+   let option_type = option_selected.data("option");
+
+   if (option_type == "color") {
+      let variantImage = option_selected.data("variant");
+
+      let image = $(".slider-for__item.slick-current.slick-active img");      
+      image.attr("src", variantImage); 
+   }
+}
 
 $("#reset-filter_link").on("click", function(event){
    event.preventDefault();
@@ -62,6 +71,8 @@ $("#reset-filter_link").on("click", function(event){
 
 $(".option_to_select").on("click", function(event) {
 		let id = $(this).data("id");
+
+        changeMainImage($(this));
 
 		if (($("#diagonal_"+id).css('display') != 'block') && $(this).hasClass('option_to_select_disabled') == false   )    {
             $("#reset-filter_container").show();
@@ -121,10 +132,7 @@ $(".option_to_select").on("click", function(event) {
                   let idToSelectInVariants = mlfurs.product_variants_available[0].id;
                   let imageToChange = mlfurs.product_variants_available[0].image;                  
 
-                  $("#product-select").val(idToSelectInVariants);
-                  changeProductImage(imageToChange);
-
-
+                  $("#product-select").val(idToSelectInVariants);                  
               }       
 
             } else {
@@ -183,4 +191,19 @@ $(document).ready(function() {
         return false;
       });
     });
+});
+
+
+$(".slider-nav__item").on("click", function() {  
+  let originalImage = $(".slider-nav__item.slick-current.slick-active img").data("original");
+  let actualImage = $(".slider-for__item.slick-current.slick-active img").attr("src");      
+  
+  console.log("original:"+originalImage);
+  console.log("actual:"+actualImage);
+  
+  if (originalImage != actualImage) {
+        let image = $(".slider-for__item.slick-current.slick-active img");      
+        image.attr("src", originalImage);      
+  }
+  
 });

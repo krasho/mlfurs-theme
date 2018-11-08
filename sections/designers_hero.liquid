@@ -1,0 +1,26 @@
+<section>
+		<div class="container-fluid">
+			<div class="row">
+				<div class="col-12">          
+					{%- assign  designer_hero =  section.settings.hero | img_url: 'master' -%}
+					          
+					  <div class="designers-banner" id="category_banner" 					     
+							 style="background-image: url({{designer_hero}});">							
+					  </div>
+				</div>
+			</div>
+		</div>
+</section>
+
+
+  {% schema %} {
+  "name": "Designers Information",
+  "settings": [
+    {
+      "id": "hero",
+      "type": "image_picker",
+      "label": "Hero Image"
+    } 
+  ]
+}
+{% endschema %}
