@@ -10,12 +10,22 @@
                 <a href="#" class="top-nav__nav-item top-nav__nav-item_icon_phone">1-877-653-3877</a>
                 <a href="#" class="top-nav__nav-item top-nav__nav-item_icon_chat">Live chat</a>                                   
                 {% if customer %}
-                  <a href="/account" class="top-nav__nav-item top-nav__nav-item_icon_user">{{ customer.first_name }}</a> |  
+                  <a href="/account" class="top-nav__nav-item top-nav__nav-item_icon_user">{{ customer.first_name }}</a>  
                   {{ 'Log out' | customer_logout_link | replace: '<a', '<a class="top-nav__nav-item top-nav__nav-item_logout-link"' }}
                 {% else %}
                     <a href="/account/register" class="top-nav__nav-item top-nav__nav-item_icon_user">login/Sign Up</a>
                 {% endif %}
-                <a href="/cart" class="top-nav__nav-item top-nav__nav-item_icon_cart">Bag</a>
+
+                <div class="sd_dropdown-mini-cart">
+                   <div class="sd_dropdown-minibag"> 
+                      <span class="top-nav__nav-item top-nav__nav-item_icon_cart">Bag<span class="dropcount"></span></span>
+                      
+                   </div>
+                   <div class="sd_dropdown-inner-area">
+                     <div class="sd_dropdown-cart-items"></div> 
+                   </div>
+                </div>                
+                <!--<a href="/cart" class="top-nav__nav-item top-nav__nav-item_icon_cart">Bag</a>-->
               </div>
             </div>
           </div>
@@ -62,9 +72,20 @@
                 {% else %}
                     <a href="/account/register" class="mobile-nav__item popup"><img src="{{ 'user-dark.png' | asset_url }}" alt="User" ></a>
                 {% endif %}
+ 
+                <div class="mobile-nav__item">
+                  <div class="sd_dropdown-mini-cart">
+                    <div class="sd_dropdown-minibag"> 
+                        <span><img src="{{ 'cart-dark.png' | asset_url }}" alt="cart" ></span>
+                        <span class="dropcount sd_dropdown-minibag__quantity"></span>                        
+                    </div>
+                    <div class="sd_dropdown-inner-area">
+                      <div class="sd_dropdown-cart-items"></div> 
+                    </div>
+                  </div>
+                </div>
 
-                
-                <a href="#" class="mobile-nav__item"><img src="{{ 'cart-dark.png' | asset_url }}" alt="search" ></a>
+                <!--<a href="#" class="mobile-nav__item"><img src="{{ 'cart-dark.png' | asset_url }}" alt="search" ></a>-->
               </div>
 
               <nav class="menu grid__item medium-up--one-half small--hide" id="AccessibleNav" role="navigation">

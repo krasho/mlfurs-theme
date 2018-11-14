@@ -191,19 +191,24 @@ $(document).ready(function() {
         return false;
       });
     });
+
 });
 
 
 $(".slider-nav__item").on("click", function() {  
   let originalImage = $(".slider-nav__item.slick-current.slick-active img").data("original");
   let actualImage = $(".slider-for__item.slick-current.slick-active img").attr("src");      
-  
-  console.log("original:"+originalImage);
-  console.log("actual:"+actualImage);
-  
+    
   if (originalImage != actualImage) {
         let image = $(".slider-for__item.slick-current.slick-active img");      
         image.attr("src", originalImage);      
   }
   
 });
+
+
+$("#affirm-container").on("click", ".__affirm-logo", function(){
+    $(".affirm-modal-trigger").trigger("click");
+});
+
+
