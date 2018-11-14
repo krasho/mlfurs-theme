@@ -1,10 +1,11 @@
-<link href="{{ 'globomenu.css' | asset_url }}" rel="stylesheet" type="text/css" media="all">
+{% unless canonical_url contains 'apps/menu/preview' %}
+<link href="{{ 'v3globomenu.css' | asset_url }}" rel="stylesheet" type="text/css" media="all">
 <script>
   var MenuApp = {
     shop 	: '{{ shop.permanent_domain }}',
     menu	: "main-menu",
     themeId	: 796,
-    menuClass	: 'globomenu-store-796 globomenu globomenu-main globomenu-horizontal globomenu-transition-shift globomenu-items-align-left globomenu-sub-indicators  globomenu-trigger-hover globomenu-responsive globomenu-responsive-collapse',
+    menuClass	: 'globomenu-store-796 globomenu globomenu-main globomenu-horizontal globomenu-transition-shift globomenu-items-align-left  globomenu-trigger-hover globomenu-responsive globomenu-responsive-collapse search-2 ',
     mobileBtn	: '<a class="globomenu-responsive-toggle-796 globomenu-responsive-toggle globomenu-responsive-toggle-content-align-left"><i class="fa fa-bars"></i>Menu</a>',
     linkLists	: {
       {% for list in linklists %}
@@ -18,5 +19,6 @@
   };
 </script>
 {% include 'globo-megamenu' %}
-<script src="{{ 'globomenu.js' | asset_url }}" type="text/javascript"></script>
+<script src="{{ 'v3globomenu.js' | asset_url }}" type="text/javascript"></script>
 <script>MenuApp.init();</script>
+{% endunless %}

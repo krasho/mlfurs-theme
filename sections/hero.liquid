@@ -11,15 +11,17 @@
 
 					<a href="#" class="main-banner__link">Shop <img src="{{ 'arrow-down.png' | asset_url }}" alt="Arrow"></a>
 
-					<div class="main-banner__content" style="background-image: url({{ section.settings.hero_image | img_url: 'master' }});">
-						<h5>{{section.settings.hero_title}}</h5>
-						<h1>{{section.settings.hero_subtitle}}</h1>
-						<div class="main-banner__content-text">{{section.settings.hero_description}}</div>
-
-					 {%- if section.settings.hero_show_button == true -%}
-						   <a href="{{section.settings.hero_link_button}}" class="main-banner__button-preview button-preview">{{section.settings.hero_text_button}} </a>
-				   {%- endif -%}			 
+					<div class="main-banner__content main-banner__content__desktop" style="background-image: url({{ section.settings.hero_image | img_url: 'master' }});">
+					   {%- include "hero_content" -%}
 					</div>
+
+					<div class="main-banner__content main-banner__content__tablet" style="background-image: url({{ section.settings.hero_image_tablet | img_url: 'master' }});">
+					   {%- include "hero_content" -%}
+					</div>
+
+					<div class="main-banner__content main-banner__content__mobile" style="background-image: url({{ section.settings.hero_image_mobile | img_url: 'master' }});">
+					   {%- include "hero_content" -%}
+					</div>					
 
 
 				</div>
@@ -35,6 +37,16 @@
       "id": "hero_image",
       "type": "image_picker",
       "label": "Hero image"
+    },
+    {
+      "id": "hero_image_tablet",
+      "type": "image_picker",
+      "label": "Hero image for tablets"
+    },
+    {
+      "id": "hero_image_mobile",
+      "type": "image_picker",
+      "label": "Hero image for mobile"
     },
     {
       "id": "hero_title",

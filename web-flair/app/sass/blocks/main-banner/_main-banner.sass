@@ -79,3 +79,32 @@
 
 .main-banner__button-preview
 	margin-top: 20px
+
+
+.main-banner__content__desktop
+	display: block
+	height: calc(100vh - 109px)
+	background-size: 100%
+	@include media-breakpoint-down(xl)
+	   //background-size: contain
+
+	@include media-breakpoint-down(md) 
+	   display: none
+
+.main-banner__content__tablet
+	display: none
+	height: calc(100vh - 109px)
+
+	@include media-breakpoint-down(md) 
+	   display: block
+
+	@include media-breakpoint-down(sm) 
+	   display: none	   
+
+
+.main-banner__content__mobile
+	display: none
+	height: calc(100vh - 109px)
+
+	@include media-breakpoint-down(sm) 
+	   display: block

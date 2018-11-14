@@ -4,20 +4,21 @@
 				<div class="col-12 col-lg-6 banners__item">
 
 					<div class="banner-preview" style="background-image: url({{ section.settings.preview1 | img_url: 'master' }});">
-						<h3>From One Runway <br> <span>To Another</span></h3>
-						<div class="banner-preview__text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptatem, quas!</div>
-						<a href="#" class="banner-preview__button button-preview">Shop Runway Looks</a>
+                      <h1>From One Runway</h1>
+                      <h2>to Another</h2>
+						<div class="banner-preview__text">{{section.settings.preview1_description}}</div>
+						<a href="{{section.settings.preview1_link}}" class="banner-preview__button button-preview">Shop EM-EL</a>
 					</div>
 
 				</div>
 				<div class="col-12 col-lg-6 banners__item">
 
 					<div class="banner-preview" style="background-image: url({{ section.settings.preview2 | img_url: 'master' }});">
-						<h3><span>Apres-ski</span> <br> In Style</h3>
-						<div class="banner-preview__text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptatem, quas!</div>
+						
+						<div class="banner-preview__text">{{section.settings.preview2_description}}</div>
 						<div class="banner-preview__buttons">
-							<a href="#" class="banner-preview__button button-preview">Shop Man</a>
-							<a href="#" class="banner-preview__button button-preview">Shop Women</a>
+							<a href="{{section.settings.preview1_link_1}}" class="banner-preview__button button-preview"></a>
+							<a href="{{section.settings.preview1_link_2}}" class="banner-preview__button button-preview"></a>
 						</div>
 					</div>
 
@@ -27,13 +28,14 @@
 			<div class="row">
 				<div class="col-12">
 					<div class="second-banner banners__second-banner" style="background-image: url({{ section.settings.banner_full | img_url: 'master' }});">
-						<div class="second-banner__content">
+						<!--<div class="second-banner__content">
 							<h2><span>Say Goodbye to</span> <br>Winter Blues</h2>
 							<div class="second-banner__descr">
 								<div class="second-banner__text-left">Save <br> <span>40%</span></div>
 								<div class="second-banner__text-right">On Full Priced Items <br> <span>- Shop Now</span></div>
 							</div>
 						</div>
+						-->
 					</div>
 				</div>
 			</div>
@@ -48,11 +50,37 @@
       "type": "image_picker",
       "label": "Image for Preview 1"
     },
+		{
+      "id": "preview1_description",
+      "type": "richtext",
+      "label": "Description for Preview 1"
+		},
+		{
+      "id": "preview1_link",
+      "type": "url",
+      "label": "Link for Preview 1"
+		},		
     {
       "id": "preview2",
       "type": "image_picker",
       "label": "Image for Preview 2"
     },
+
+		{
+      "id": "preview2_description",
+      "type": "richtext",
+      "label": "Description for Preview 2"
+		},
+		{
+      "id": "preview2_link_1",
+      "type": "url",
+      "label": "Link 1 for Preview 2"
+		},		
+		{
+      "id": "preview2_link_2",
+      "type": "url",
+      "label": "Link 2 for Preview 2"
+		},
     {
       "id": "banner_full",
       "type": "image_picker",

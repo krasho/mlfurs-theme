@@ -1,0 +1,204 @@
+	<section class="main-cart">
+		<div class="container-fluid">
+			<div class="row">
+				<div class="col-12">
+					<div class="main-cart__title">Your cart</div>
+				</div>
+			</div>
+
+			<form action="/cart" method="post" id="cart-form">
+			<div class="row">
+
+				<!-- Mobile cart -->
+				<div class="col-12 d-sm-none">
+					<div class="form-card">
+						<div class="form-card__block">
+							<div class="form-card__table-header">
+								<div class="form-card__table-header-item form-card__table-header-item_product">Product</div>
+								<div class="form-card__table-header-item text-center">Qty</div>
+								<div class="form-card__table-header-item text-right">Subtotal</div>
+							</div>
+						</div>
+
+                        {%- if cart.items.size > 0 -%}		
+						    <div class="form-card__block">					
+								{%- for item in cart.items -%}
+										<div class="form-card__table-body">
+											<div class="form-card__table-body-item form-card__table-body-item_product">
+												<a href="{{item.url}}" class="form-card__table-image">
+													<img src="{{ item | img_url: '120x120', scale: 2 }}" alt="Product" class="img-responsive">
+												</a>
+												<a href="{{item.url}}" class="form-card__table-name">{{ item.title | escape }}</a>
+											</div>
+											<div class="form-card__table-body-item text-center">{{item.quantity}}</div>
+											<div class="form-card__table-body-item text-right">{{ item.line_price | money }}</div>
+										</div>
+
+								{%- endfor -%}
+							</div>		
+
+							<div class="form-card__block">
+								<div class="form-card__detail">
+									<div class="form-card_detail-name">Subtotal</div>
+									<div class="form-card_detail-value">{{ cart.original_total_price | money }}</div>
+								</div>
+							</div>
+
+							<div class="form-card__block">
+								<div class="form-card__detail">
+									<div class="form-card_detail-name"><b>Grandtotal</b></div>
+									<div class="form-card_detail-value">{{ cart.total_price | money }}</div>
+								</div>
+							</div>
+
+							<div class="form-card__block">
+								<div class="form-card__coupon">
+									<div class="form-card__coupon-text">Coupon code:</div>
+									<form class="main-cart__block-input block-input">
+										<input type="text" class="input-text input-text_outline_dark">
+										<input type="submit" class="block-input__form-button form-button form-button_fontsize_sm form-button_dark" value="APPLY">
+									</form>
+								</div>
+							</div>
+
+                            <input class="form-button" type="submit" name="checkout" value="Proceed tocheckout" />
+							
+						<div class="main-cart__payment form-card__payment">
+							<div class="form-card__payment-item">
+								<img src="{{ 'affirm-mobile.png' | asset_url }}" alt="Affirm" class="form-card__payment-image img-responsive">
+							</div>
+							<div class="form-card__payment-item">
+								<img src="{{ 'amazon-mobile.png' | asset_url }}" alt="Amazon" class="form-card__payment-image img-responsive">
+							</div>
+							<div class="form-card__payment-item">
+								<img src="{{ 'paypal-mobile.png' | asset_url }}" alt="Paypal" class="form-card__payment-image img-responsive">
+							</div>
+						</div>							
+						{%- else -%}
+							
+							<p>Your cart is empty.</p>
+
+						{%- endif -%}						
+
+					</div>
+				</div>
+
+				<!-- Mobile cart -->
+
+
+				<div class="col-lg-8 d-none d-sm-block">
+
+					<div class="orders-table">
+						<div class="orders-table__header">
+							<div class="orders-table__header-row">
+								<div class="orders-table__header-item orders-table__header-item_product">Product</div>
+								<div class="orders-table__header-item orders-table__header-item_price">Price</div>
+								<div class="orders-table__header-item orders-table__header-item_qty">Qty</div>
+								<div class="orders-table__header-item orders-table__header-item_subtotal">Subtotal</div>
+							</div>
+						</div>
+                        <div class="orders-table__body">
+							{%- if cart.items.size > 0 -%}							
+								{%- for item in cart.items -%}
+									<div class="orders-table__row">
+										<a href="{{item.url}}" class="orders-table__link">
+											<img src="{{ item | img_url: '120x120', scale: 2 }}" alt="Product" class="orders-table__image img-responsive">
+										</a>
+										<div class="orders-table__content">
+											<div class="orders-table__descr">
+												<div class="orders-table__name"><a class="orders-table__name-link" href="{{item.url}}">{{ item.title | escape }}</a></div>
+											</div>
+											<div class="orders-table__price"> {{ item.price | money }}</div>
+											<div class="orders-table__qty">
+												<div class="sccol">
+													<a href="javascript: void(0);" class="sccol__minus"><img src="{{ 'minus.png' | asset_url }}" alt="minus"></a>
+													<input id="line_quantity_{{forloop.index}}"  type="number" name="updates[]" readonly="readonly" class="sccol__input" value="{{item.quantity}}"  min="1">
+													<a href="javascript: void(0);" class="sccol__plus"><img src="{{ 'plus.png' | asset_url }}" alt="plus"></a>
+													<!--<a href="#" 
+													   class="quick-link orders-table__quick-link quick-link_size_sm edit-cart"
+													   data-line="{{forloop.index}}">Edit</a>-->
+
+													<a href="#" 
+													   class="quick-link orders-table__remove-link quick-link_size_sm remove-cart"
+													   data-line="{{forloop.index}}">Remove</a>													   
+												</div>
+											</div>
+											<div class="orders-table__subtotal">{{ item.line_price | money }}</div>
+										</div>
+									</div>
+								{%- endfor -%}														
+							
+							{%- else -%}
+							
+							<p>Your cart is empty.</p>
+
+							{%- endif -%}
+						</div>
+					</div>
+				</div>
+
+				<div class="col-lg-4 d-none d-sm-block">
+					<div class="main-cart__form-card form-card">
+						<div class="form-card__block">
+							<div class="form-card__title">Summary</div>
+						</div>
+						<div class="form-card__block">
+							<div class="form-card__descr">Estimated shipping & Tax</div>
+						</div>
+						<div class="form-card__block">
+							<div class="form-card__detail">
+								<div class="form-card_detail-name">Subtotal</div>
+								<div class="form-card_detail-value">{{ cart.original_total_price | money }}</div>
+							</div>
+							<div class="form-card__detail">
+								<div class="form-card_detail-name">Discount</div>
+								<div class="form-card_detail-value">{{ cart.total_discount | money }}</div>
+							</div>
+							<div class="form-card__detail">
+								<div class="form-card_detail-name">Tax</div>								
+								<div class="form-card_detail-value">$0.00</div>
+							</div>
+						</div>
+						<div class="form-card__block">
+							<div class="form-card__detail">
+								<div class="form-card_detail-name form-card_detail-name_large">Total</div>
+								<div class="form-card_detail-value form-card_detail-value_large">{{ cart.total_price | money }}</div>
+							</div>
+						</div>
+
+                        <div class="form-card__block">
+						    <div>
+							    <input type="checkbox" id="agree" />
+							    <span> I agree with the </span>
+								<span><a href="#" id="term-conditions-link">terms and conditions.</a></span>
+							</div>
+
+							<div class="term-conditions-text" id="term-conditions-text" style="display: none">
+							    {{section.settings.term_conditions}}
+							</div>
+						</div>
+
+						<input class="form-button" type="submit" name="checkout" value="Proceed to checkout" id="checkout-button"/>
+						<div class="form-card__payment">						    
+							{% if additional_checkout_buttons %}
+							   {{ content_for_additional_checkout_buttons }}
+							{% endif %}						
+						</div>
+					</div>
+				</div>
+			</div>
+		  </form>			
+		</div>
+	</section>
+
+{% schema %} {
+  "name": "Term and Conditions",
+  "settings": [
+    {
+      "id": "term_conditions",
+      "type": "richtext",
+      "label": "Content"
+    }
+  ]
+}
+{% endschema %}

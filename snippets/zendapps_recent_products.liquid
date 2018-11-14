@@ -4,8 +4,8 @@
 
 <style type="text/css">
         #zaImage{
-        height: 285px;
-        width: 285px;
+        height: auto;
+        width: auto;
     }
 
     .rv__clearfix {
@@ -32,9 +32,6 @@
         background-color: #fff;
         padding: 0px 0 20px;
     }
-
-        .rv__grid .rv__row .rv__column > div {  border: 1px solid #dcdcdc;  }
-    .rv__grid .rv__row .rv__column > div:hover{  box-shadow: 0 7px 7px 0 rgba(0,0,0,0.2); }
 
     
     #za_row{text-align: center;}
@@ -140,6 +137,57 @@
 
 </script>
 
-{{ 'https://recently-viewed-products.zendapps.com/script/153/zendapps_rp_fc38db62c351e8c040429caca0a5a589.js' | script_tag }}
+{{ 'https://recently-viewed-products.appsarrow.com/script/153/zendapps_rp_c0e876f1ed52b44e64abe9c810d0f4ed.js' | script_tag }}
 
-<style></style>
+<style>#zaImage {
+margin-bottom: 20px;   
+width: 100%;
+}
+.owl-carousel {
+    padding-left: 115px;
+    padding-right: 115px;
+   display: block;
+}
+
+.za_prod_title {
+  font-family: MetropolisRegular,sans-serif;
+  font-size: 14px;
+  text-align: left;
+  font-weight: normal;
+  margin: 0;
+}
+
+.rv__price {
+    font-family: MetropolisBold,sans-serif;
+    text-align: left;
+    font-size: 16px;
+}
+
+
+.rv__grid .rv__row .rv__column > div {
+   border: none;
+}
+
+.rv__grid .rv__row .rv__column {
+   padding: 0;
+}
+.rv__twelve .rv__center{
+    margin-bottom: 35px;
+    text-align: center;
+    font-size: 24px !important;
+    text-transform: uppercase;
+    font-family: MetropolisLight,sans-serif;
+}
+
+@media (max-width: 1199.98px){
+   .owl-carousel {
+       padding-left: 25px;
+       padding-right: 25px;
+   }
+}
+.rv__grid .rv__row .rv__column > div {
+    margin:0!important;
+}
+.rv__grid .rv__row .rv__column {
+    padding: 15px !important;
+}</style>

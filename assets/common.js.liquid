@@ -70,15 +70,23 @@ function reload_js(src) {
     
 function changeCart(obj, operation)
 {
-   let line = obj.data("line");
+   let line = obj.data("line");   
+   let quantity = 0  
 
-   let quantity = 0
+   if (operation == 'edit') {	
+       quantity = $("#line_quantity_"+line).val();   
 
-   if (operation == 'edit') {
-      let quantity = $("#line_quantity_"+line).val();   
+		$.post('/cart/change.js', {
+			quantity: quantity,
+			line: line
+		});
+
+   } else {
+       location.href="/cart/change?line="+line+"&quantity="+quantity;  
    }
+
    
-   location.href="/cart/change?line="+line+"&quantity="+quantity;  
+   //location.href="/cart/change?line="+line+"&quantity="+quantity;  
 }
 
 
@@ -377,7 +385,7 @@ $("#authorize_link").on("mouseout", function(event) {
 });
 
 
-$(".swatch").on("click", function() {
+$(".main-category__product-list").on("click", ".swatch", function() {
  let image = $(this).data("image");
 
  if (image.length > 0) {
@@ -399,4 +407,20 @@ $(".remove-cart").on("click", function(event){
 
    changeCart($(this), "delete");
  
+});
+
+
+$("#checkout-button").on("click", function(event){   
+   if ($('#agree').is(':checked') == false) {
+       // $("#cart-form").submit();
+		$("#agree").focus();  
+        alert("You must agree with the terms and conditions of sales to check out.");
+		event.preventDefault();
+        return false;
+
+   }
+});
+
+$("#term-conditions-link").on("click", function(){
+	$("#term-conditions-text").toggle("slow");
 });
