@@ -10,7 +10,12 @@
 					     data-default_image = "{{collection_image_default}}"
 							 style="background-image: url({{ collection_image}});">
 
-							 <div class="category-banner__content">
+               {%- assign  visibility_value = "visible" -%}
+               {% if collection.handle == 'sale' %}
+							    {%- assign  visibility_value = "hidden" -%}
+							 {% endif %}
+               
+							 <div class="category-banner__content" style="visibility: {{visibility_value}}">
 									<div class="category-banner__title">{{collection.title}}</div>
 												
 									{% assign class_to_link = 'breadcrumbs__link' %}
