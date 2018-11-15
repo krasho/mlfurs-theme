@@ -1,0 +1,31 @@
+{% if form.posted_successfully? %}
+  <p class="alert alert-success" tabindex="-1" data-form-status="success">
+    {{ 'contact.form.post_success' | t }}
+  </p>
+{% endif %}
+
+{%- if form.errors -%}
+  <div class="alert alert-danger">
+    <h3 tabindex="-1" data-form-status="error">{{ 'contact.form.error_heading' | t }}</h3>
+    <ul>
+      {% for field in form.errors %}
+        <li>
+
+          {% capture field_label %}
+            {% case field %}
+              {% when 'author' %}
+                {{ 'contact.form.name' | t }}
+              {% when 'body' %}
+                {{ 'contact.form.message' | t }}
+              {% else %}
+                {{ form.errors.translated_fields[field] }}
+            {% endcase %}
+          {% endcapture %}
+
+          {% comment %} the href should match the input's id {% endcomment %}
+          <a class="alert-link" href="#{{ formId }}-{{ field }}">{{ field_label | strip | capitalize }} {{ form.errors.messages[field] }}</a>
+        </li>
+      {% endfor %}
+    </ul>
+  </div>
+{%- endif -%}

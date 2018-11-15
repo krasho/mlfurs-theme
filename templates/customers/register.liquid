@@ -1,43 +1,34 @@
-		<div id="login-popup" class="login-popup popup-window" style="margin-bottom: 10px">
-			<div class="login-popup__left-part">
-				{% form 'create_customer', class: 'account-form'  %}
-				  {{ form.errors | default_errors }}
-					<div class="account-form__title">Create an Account</div>
-					<div class="account-form__body">
-
-					<label for="first_name">First Name</label>
-					<input class="input-text account-form__input-text" type="text" value="" name="customer[first_name]" size="30" required />
-
-					<label for="last_name">Last Name</label>
-					<input class="input-text account-form__input-text" type="text" value="" name="customer[last_name]" size="30" required />
-
-					<label for="email">Email Address</label>
-					<input class="input-text account-form__input-text" type="email" value="" name="customer[email]" size="30" required />
-
-					<label for="password">Password</label>
-					<input class="input-text account-form__input-text" type="password" value="" name="customer[password]" size="30" required />
-						
-						<input type="submit" class="form-button" value="Create">
-					</div>
-					<div class="account-form__text-under-form">
-						Have an account? <a href="/account/login" class="quick-link">Login</a>
-					</div>
-				{% endform %}
-
-
-			</div>
-			<div class="login-popup__right-part">
-				<img src="{{ 'preview-full-SignUp_image_alt1.jpg' | asset_url }}" alt="Login" class="img-responsive img-width">
-				<div class="login-popup__text">
-					<div class="login-popup__text-title">Sign up today and start living luxuriously!</div>
-					<div class="login-popup__list">
-						<li class="login-popup__list-item">Receive <strong>20%</strong> off your first purchase</li>
-						<li class="login-popup__list-item">Automatic enrollment in our upcoming referral and loyalty programs.</li>
-						<li class="login-popup__list-item">Sneak peeks at the newest arrivals.</li>
-						<li class="login-popup__list-item">Access to exclusive deals throughout the year.</li>
-					</div>
-				</div>
-			</div>
-		</div>
-	</div>
+<div id="login-popup" class="login-popup popup-window" style="margin-bottom: 10px">
+  <div class="login-popup__left-part">
+    {% form 'create_customer', class: 'account-form', action: "https://vital-forms-api.ellipsis.cloud/api/form/vfob/a6f8b253-c6be-4252-aa58-a542241aa837$5becc1b7d5844a00b998f75d", data-vfib: "0", action: "https://vital-forms-api.ellipsis.cloud/api/form/vfob/a6f8b253-c6be-4252-aa58-a542241aa837$5becc1f9d5844a00b998f75e",
+    data-vfib: "0" %} {{ form.errors | default_errors }}
+    <div class="account-form__title">Create an Account</div>
+    <div class="account-form__body">
+      <label for="first_name">First Name</label>
+      <input class="input-text account-form__input-text" type="text" value="" name="customer[first_name]" size="30" required />
+      <label for="last_name">Last Name</label>
+      <input class="input-text account-form__input-text" type="text" value="" name="customer[last_name]" size="30" required />
+      <label for="email">Email Address</label>
+      <input class="input-text account-form__input-text" type="email" value="" name="customer[email]" size="30" required />
+      <label for="password">Password</label>
+      <input class="input-text account-form__input-text" type="password" value="" name="customer[password]" size="30" required />
+      <input type="submit" class="form-button" value="Create"> </div>
+    <div class="account-form__text-under-form"> Have an account?
+      <a href="/account/login" class="quick-link">Login</a> 
+    </div> {% endform %}
+  </div>
+  <div class="login-popup__right-part">
+    <img src="{{ 'preview-full-SignUp_image_alt1.jpg' | asset_url }}" alt="Register" class="img-responsive img-width">
+    <div class="login-popup__text">
+      <div class="login-popup__text-title">Sign up today and start living luxuriously!</div>
+      <div class="login-popup__list">
+        <li class="login-popup__list-item">Receive <strong>20%</strong>  off your first purchase</li>
+        <li class="login-popup__list-item">Automatic enrollment in our upcoming referral and loyalty programs.</li>
+        <li class="login-popup__list-item">Sneak peeks at the newest arrivals.</li>
+        <li class="login-popup__list-item">Access to exclusive deals throughout the year.</li>
+      </div>
+    </div>
+  </div>
+</div>
+</div>
 </div>

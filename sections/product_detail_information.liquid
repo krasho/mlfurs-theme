@@ -238,11 +238,12 @@
 
                         
                                 <select id="product-select" name="id" style="display: none;">
+                                   <option value="">Select</option>
                                 {%- for variant in product.variants -%}
                                     {%- if variant.inventory_quantity > 0-%}
                                         {% assign varianst_separated_by_comma = varianst_separated_by_comma | append: comma | append: variant.title %}
                                         {% assign comma = ',' %}
-                                        <option {% if variant == product.selected_or_first_available_variant %} selected="selected" {% endif %} value="{{ variant.id }}">{{ variant.title | escape }} -
+                                        <option  value="{{ variant.id }}">{{ variant.title | escape }} -
                                                 {{ variant.price | money }}
                                         </option>
                                     {%- endif -%}    
@@ -252,7 +253,7 @@
                              <!--<input type="hidden" id="variants_separated_by_comma" value="{{varianst_separated_by_comma}}">   -->
                                 
                         {%- else -%}
-                                <input type="hidden" name="id" value="{{ product.variants.first.id }}" />
+                                <input type="hidden" name="id" id="product-select" value="{{ product.variants.first.id }}" />
                         {%- endif -%}            
                                     <div class="product-info__count-add">
 

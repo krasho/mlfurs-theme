@@ -81,12 +81,9 @@
 	margin-top: 20px
 
 
+
 .main-banner__content__desktop
-	display: block
-	height: calc(100vh - 109px)
-	background-size: 100%
-	@include media-breakpoint-down(xl)
-	   //background-size: contain
+	display: block	
 
 	@include media-breakpoint-down(md) 
 	   display: none
@@ -108,3 +105,35 @@
 
 	@include media-breakpoint-down(sm) 
 	   display: block
+
+
+#shopify-section-hero 
+	.main-banner__content 
+		min-height: 500px
+
+#shopify-section-1535420535068 
+	.banner-preview 
+		min-height: 450px
+
+
+.banners .categories_desktop
+	display: flex	
+
+	@include media-breakpoint-down(md) 
+	   display: none
+	   
+
+.banners .categories_tablet
+	display: none
+	@include media-breakpoint-down(md) 
+	   display: flex
+
+	@include media-breakpoint-down(sm) 
+	   display: none	   
+
+.banners .categories_mobile
+	display: none
+
+	@include media-breakpoint-down(sm) 
+	   display: flex	
+

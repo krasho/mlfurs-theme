@@ -211,4 +211,11 @@ $("#affirm-container").on("click", ".__affirm-logo", function(){
     $(".affirm-modal-trigger").trigger("click");
 });
 
-
+$("#btn_to_add_cart").on("click", function(event) {
+   let product_selected = $("#product-select").val();
+ 
+   if(product_selected == "" || product_selected.lenght == 0 || product_selected == undefined) {
+       alert("Please select all options");
+       event.preventDefault()
+   }
+});

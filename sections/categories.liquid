@@ -1,43 +1,39 @@
 	<section class="banners">
 		<div class="container-fluid">
-			<div class="row">
-				<div class="col-12 col-lg-6 banners__item">
+			<div class="row categories_desktop">
+			   {% assign preview1 = section.settings.preview1 %}
+				 {% assign preview2 = section.settings.preview2 %}
+			   {% include 'home_categories_content' %}
+			</div>
 
-					<div class="banner-preview" style="background-image: url({{ section.settings.preview1 | img_url: 'master' }});">
-                      <h1>From One Runway</h1>
-                      <h2>to Another</h2>
-						<div class="banner-preview__text">{{section.settings.preview1_description}}</div>
-						<a href="{{section.settings.preview1_link}}" class="banner-preview__button button-preview">Shop EM-EL</a>
-					</div>
+			<div class="row categories_tablet">
+			   {% assign preview1 = section.settings.preview1_tablet %}
+				 {% assign preview2 = section.settings.preview2_tablet %}
+			   {% include 'home_categories_content' %}
+			</div>
 
-				</div>
-				<div class="col-12 col-lg-6 banners__item">
-
-					<div class="banner-preview" style="background-image: url({{ section.settings.preview2 | img_url: 'master' }});">
-						
-						<div class="banner-preview__text">{{section.settings.preview2_description}}</div>
-						<div class="banner-preview__buttons">
-							<a href="{{section.settings.preview1_link_1}}" class="banner-preview__button button-preview"></a>
-							<a href="{{section.settings.preview1_link_2}}" class="banner-preview__button button-preview"></a>
-						</div>
-					</div>
-
-				</div>
+			<div class="row categories_mobile">
+			   {% assign preview1 = section.settings.preview1_mobile %}
+				 {% assign preview2 = section.settings.preview2_mobile %}
+			   {% include 'home_categories_content' %}
 			</div>
 
 			<div class="row">
-				<div class="col-12">
+				<div class="col-12 second_banner_desktop">
 					<div class="second-banner banners__second-banner" style="background-image: url({{ section.settings.banner_full | img_url: 'master' }});">
-						<!--<div class="second-banner__content">
-							<h2><span>Say Goodbye to</span> <br>Winter Blues</h2>
-							<div class="second-banner__descr">
-								<div class="second-banner__text-left">Save <br> <span>40%</span></div>
-								<div class="second-banner__text-right">On Full Priced Items <br> <span>- Shop Now</span></div>
-							</div>
-						</div>
-						-->
 					</div>
 				</div>
+
+				<div class="col-12 second_banner_tablet">
+					<div class="second-banner banners__second-banner" style="background-image: url({{ section.settings.banner_full_tablet | img_url: 'master' }});">
+					</div>
+				</div>
+
+				<div class="col-12 second_banner_mobile">
+					<div class="second-banner banners__second-banner" style="background-image: url({{ section.settings.banner_full_mobile | img_url: 'master' }});">
+					</div>
+				</div>
+
 			</div>
 		</div>
 	</section>
@@ -49,6 +45,16 @@
       "id": "preview1",
       "type": "image_picker",
       "label": "Image for Preview 1"
+    },
+    {
+      "id": "preview1_tablet",
+      "type": "image_picker",
+      "label": "Image for Preview 1 for Tablets"
+    },
+    {
+      "id": "preview1_mobile",
+      "type": "image_picker",
+      "label": "Image for Preview 1 for mobiles"
     },
 		{
       "id": "preview1_description",
@@ -65,7 +71,16 @@
       "type": "image_picker",
       "label": "Image for Preview 2"
     },
-
+    {
+      "id": "preview2_tablet",
+      "type": "image_picker",
+      "label": "Image for Preview 2 for Tablets"
+    },
+    {
+      "id": "preview2_mobile",
+      "type": "image_picker",
+      "label": "Image for Preview 2 for mobiles"
+    },
 		{
       "id": "preview2_description",
       "type": "richtext",
@@ -85,7 +100,17 @@
       "id": "banner_full",
       "type": "image_picker",
       "label": "Image Full Banner"
-    }              
+    },
+    {
+      "id": "banner_full_tablet",
+      "type": "image_picker",
+      "label": "Image Full Banner for tablets"
+    },
+    {
+      "id": "banner_full_mobile",
+      "type": "image_picker",
+      "label": "Image Full Banner for mobiles"
+    }				              
   ],
   
   "presets": [

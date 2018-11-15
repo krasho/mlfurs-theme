@@ -51,3 +51,25 @@
 	display: -o-flex
 	display: flex
 	justify-content: space-between
+
+
+.banners .second_banner_desktop
+	display: block
+
+	@include media-breakpoint-down(md) 
+	   display: none
+	   
+
+.banners .second_banner_tablet
+	display: none
+	@include media-breakpoint-down(md) 
+	   display: block
+
+	@include media-breakpoint-down(sm) 
+	   display: none	   
+
+.banners .second_banner_mobile
+	display: none
+
+	@include media-breakpoint-down(sm) 
+	   display: block		   

@@ -37,6 +37,44 @@
 												Football games are televised on Saturdays and Sundays.
 											</div>
 										</div>
+
+										{% form 'contact' , class: 'account-form'%}
+											{%- assign formId = 'ContactForm' -%}
+											{% include 'form-status', formId %}
+
+                      <div class="account-form__title">Send us a mesasge</div>
+											<div class="account-form__body">
+													<label for="{{ formId }}-name">{{ 'contact.form.name' | t }}</label>
+													<input class="input-text account-form__input-text" type="text" id="{{ formId }}-name" name="contact[name]" value="{% if form[name] %}{{ form[name] }}{% elsif customer %}{{ customer.name }}{% endif %}">
+
+													<label for="{{ formId }}-email">{{ 'contact.form.email' | t }} <span aria-hidden="true">*</span></label>
+													<input
+														type="email"
+														class="input-text account-form__input-text"
+														id="{{ formId }}-email"
+														name="contact[email]"
+														autocorrect="off"
+														autocapitalize="off"
+														value="{% if form.email %}{{ form.email }}{% elsif customer %}{{ customer.email }}{% endif %}"
+														aria-required="true"
+														{%- if form.errors contains 'email' -%}
+															class="input--error"
+															aria-invalid="true"
+															aria-describedby="{{ formId }}-email-error"
+														{%- endif -%}
+														>
+
+
+													<label for="{{ formId }}-message">{{ 'contact.form.message' | t }}</label>
+													<textarea class="input-text account-form__input-text" rows="10" id="{{ formId }}-message" name="contact[body]">{% if form.body %}{{ form.body }}{% endif %}</textarea>
+
+													<input type="submit" class="form-button" value="{{ 'contact.form.submit' | t }}">
+
+											</div>
+											
+
+										{% endform %}
+
 									</div>
 									<div class="map contact-map__map">
 										<iframe src="https://snazzymaps.com/embed/82111" width="100%" height="100%" style="border:none;"></iframe>

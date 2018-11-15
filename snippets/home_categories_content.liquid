@@ -1,0 +1,23 @@
+    <div class="col-12 col-lg-6 banners__item">
+        <div class="banner-preview" style="background-image: url({{ preview1 | img_url: 'master' }});">
+            <h1>FROM ONE RUNWAY</h1>
+            <h2>to Another</h2>
+            <div class="banner-preview__text">{{section.settings.preview1_description}}</div>
+            <a href="{{section.settings.preview1_link}}" class="banner-preview__button button-preview">Shop EM-EL</a>
+        </div>
+
+    </div>
+    <div class="col-12 col-lg-6 banners__item">
+
+        <div class="banner-preview" style="background-image: url({{ preview2 | img_url: 'master' }});">
+              
+            <h2>Style that fits you</h2>
+          <h1>LIKE A GLOVE</h1>
+            <div class="banner-preview__text">{{section.settings.preview2_description}}</div>
+            <div class="banner-preview__buttons">
+                <a href="{{section.settings.preview2_link_1}}" class="banner-preview__button button-preview">Shop Men</a>
+                <!--<a href="{{section.settings.preview2_link_2}}" class="banner-preview__button button-preview">Shop </a>-->
+            </div>
+        </div>
+
+    </div>
