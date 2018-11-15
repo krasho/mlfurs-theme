@@ -8,7 +8,7 @@
               <div class="top-nav__text"><a class="top-nav__link">Free Shipping! On all Purchases</a></div>
               <div class="top-nav__nav">
                 <a href="tel:18776533877" class="top-nav__nav-item top-nav__nav-item_icon_phone">1-877-653-3877</a>
-                <a href="#" class="top-nav__nav-item top-nav__nav-item_icon_chat">Live chat</a>                                   
+                <a href="#" class="top-nav__nav-item top-nav__nav-item_icon_chat" onclick="LC_API.open_chat_window()">Live chat</a>                                   
                 {% if customer %}
                   <a href="/account" class="top-nav__nav-item top-nav__nav-item_icon_user">{{ customer.first_name }}</a>  
                   {{ 'Log out' | customer_logout_link | replace: '<a', '<a class="top-nav__nav-item top-nav__nav-item_logout-link"' }}
@@ -52,7 +52,7 @@
                             
               <div class="d-sm-none main-nav__mobile-phone">
                 <a href="#login-popup" class="popup">
-                  <img src="{{ 'phone-dark.png' | asset_url }}" alt="phone-dark">
+                  <a href="tel:18776533877"><img src="{{ 'phone-dark.png' | asset_url }}" alt="phone-dark"></a>
                 </a>
               </div>
               
