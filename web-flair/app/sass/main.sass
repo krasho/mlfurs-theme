@@ -3,6 +3,8 @@
 @import "libs"
 @import "base"
 
+//mixins
+@import "_mixins/fluid-ratio"    
 
 //Blocks
 @import "blocks/button-preview/button-preview"
@@ -141,5 +143,10 @@
     padding-left: 20px
     padding-right: 20px
     margin: 0 auto
+
+.globomenu-submenu-align-full_width
+   width: 1180px
+   max-width: 100%
+   min-height: unset
 
 @import "media" // Always at the end
