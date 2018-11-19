@@ -500,7 +500,8 @@ body:not(.rtl) .globomenu.globomenu-horizontal .globomenu-item-level-0:first-chi
 .globomenu .globomenu-item .globomenu-submenu-drop{
     position:absolute;
     height:0;
-    min-height: 0 !important;
+    /*min-height: 0 !important;*/
+    min-height: 554px !important;  
     visibility:hidden;
     overflow:hidden;
 }
