@@ -1,7 +1,9 @@
 $(".dropdown-list__menu-link").on("click", function(event){
    event.preventDefault()
    let newValue = $(this).data('value')
+   let url = $(this).attr( 'action' )
    $("#sort_by").val(newValue)
+    
    $("#collection-form").submit()
 })
 
@@ -9,16 +11,20 @@ $(".dropdown-list__menu-link").on("click", function(event){
 $("#collection-form").on("submit", function(event) {    
     let url = $(this).attr( 'action' )
     let tags = []
-    $(".checkbox_tags").each(function(){
-       if ($(this).is(":checked")) {           
+    let sort_by = $("#sort_by").val()
+    $(".cf-checkbox").each(function(){
+       if ($(this).is(":checked") && $(this).val() != "" ) {           
            tags.push($(this).val())
        }
     })
 
     url = url + "/"+tags.join("+")
+    url = url + "?sort_by="+sort_by
+    
+
     event.preventDefault()
 
-    location.href = url    
+    location.href = url
 })
 
 
