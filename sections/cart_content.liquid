@@ -106,7 +106,10 @@
 										</a>
 										<div class="orders-table__content">
 											<div class="orders-table__descr">
-												<div class="orders-table__name"><a class="orders-table__name-link" href="{{item.url}}">{{ item.title | escape }}</a></div>
+												<div class="orders-table__name">
+												   <span class="orders-table__name-link">{{ item.title | escape }}</span>
+												   <!--<a class="orders-table__name-link" href="{{item.url}}">{{ item.title | escape }}</a>-->
+												</div>
 											</div>
 											<div class="orders-table__price"> {{ item.price | money }}</div>
 											<div class="orders-table__qty">
