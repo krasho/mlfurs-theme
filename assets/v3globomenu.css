@@ -500,8 +500,7 @@ body:not(.rtl) .globomenu.globomenu-horizontal .globomenu-item-level-0:first-chi
 .globomenu .globomenu-item .globomenu-submenu-drop{
     position:absolute;
     height:0;
-    /*min-height: 0 !important;*/
-    min-height: 554px !important;  
+    min-height: 0 !important;
     visibility:hidden;
     overflow:hidden;
 }
@@ -2151,18 +2150,18 @@ span.gm-badge {
 }
 
 .globomenu .globomenu-item .globomenu-submenu-drop{
-    -webkit-transition-duration:300ms !important;
-    -ms-transition-duration:300ms !important;
-    transition-duration:300ms !important;
+    -webkit-transition-duration:400ms !important;
+    -ms-transition-duration:400ms !important;
+    transition-duration:400ms !important;
 }
 
 .globomenu .globomenu-item .globomenu-target.highlight-one, .highlight-one{
     color: #33aebc !important;
-    background: #ffffff !important;
+    background: rgba(255,255,255,0.01) !important;
 }
 .globomenu .globomenu-item .globomenu-target.highlight-one:hover, .highlight-one:hover{
     color: #2a909c !important;
-    background: #ffffff !important;
+    background: rgba(255,255,255,0.03) !important;
 }
 .globomenu .globomenu-item .globomenu-target.highlight-two, .highlight-two{
     color: #b7b7b7 !important;
@@ -2173,10 +2172,10 @@ span.gm-badge {
     background: #393635 !important;
 }
 .globomenu .globomenu-item .globomenu-target.highlight-three, .highlight-three{
-    color: rgba(255,255,255,0.6) !important;
-    background: #ff6d00 !important;
+    color: #ffffff !important;
+    background: #ffffff !important;
 }
 .globomenu .globomenu-item .globomenu-target.highlight-three:hover, .highlight-three:hover{
     color: #ffffff !important;
-    background: #cc5700 !important;
+    background: #ffffff !important;
 }
