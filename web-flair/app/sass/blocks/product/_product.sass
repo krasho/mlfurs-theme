@@ -81,3 +81,15 @@
 		&:nth-last-child(1)
 			margin-right: 0
 
+
+.product__swatches__desktop
+	display: flex
+
+	@include media-breakpoint-down(sm)
+	   display: none
+
+.product__swatches__mobile
+	display: none
+
+	@include media-breakpoint-down(sm)
+	   display: flex

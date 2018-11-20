@@ -22,7 +22,8 @@
             <div class="d-flex justify-content-between">
                 <div class="product__size">
                   {{product.metafields.custom_fields["designer"]}}
-                </div>                
+                </div>
+                <div class="product__swatches product__swatches__desktop">{% include 'swatches_product' %}</div>                        
             </div> 
             <div class="product__descr">
                 <div class="product__descr">
@@ -33,7 +34,7 @@
             </div>
             <div class="product__price">{{product.price | money}}</div>            
             <div class="product__rate">{%- include "rate_reviews" -%}</div>
-            <div class="product__swatches d-flex">{% include 'swatches_product' %}</div>
+            <div class="product__swatches product__swatches__mobile"> {% include 'swatches_product' %}</div>
         </div>
     </div>
 
