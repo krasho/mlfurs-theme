@@ -13,10 +13,13 @@
                             alt="{{ product.title | escape }}" 
                             class="img-responsive img-width quik-view-image"/>
                     {% endif %}
-
-                    {% include 'sca-quick-view' %}     
+                    
                 {%- endif -%}
             </a>
+
+            {%- if product.images.size > 0 -%}
+               {% include 'sca-quick-view' %}     
+            {%- endif -%}
         </div>
         <div class="product__body">
             <div class="d-flex justify-content-between">
@@ -39,17 +42,17 @@
             
             {%- if compare_at_price > 0 and compare_at_price != price -%}
                 <div class="product-info__original__price">                                                                
-                    Original Price: <span>{{compare_at_price | money}}</span> 
+                    Original Price: 
+                    <span class="original__price__decimals">{{compare_at_price | money}}</span> 
+                    <span class="original__price__nodecimals">{{compare_at_price | money | remove: '.00'}}</span> 
                 </div>
-
-                {%- include "was-price" -%}
 
                 <div class="product-info__now__price">                                                                                                    
                     Now: <span id="now_price_value">{{price | money}}</span> 
                 </div>
 
             {%- else -%}
-                <div class="product__price">{{product.price | money}}</div>            
+                <div class="product__price ">{{product.price | money}}</div>
             {%- endif -%}
 
             
