@@ -20,8 +20,8 @@
 		min-width: 500px
 	
 	.product-card__slider-for-container
-		flex-shrink: 1
-		max-width: 100%
+		/*flex-shrink: 1*/
+		/*max-width: 100%*/
 		flex: 0 0 37.5%
 		margin-left: 0
 		margin-right: 0
@@ -898,10 +898,12 @@
 		margin-bottom: 25px
 
 	.product-info__size-box
-		width: 40px
-		height: 40px
 		border-width: 2px
 		font-size: 14px
+		height: auto
+		margin: 5px 3px
+		padding: 10px 20px				
+		width: auto
 
 	.product-info__share
 		justify-content: center
@@ -925,15 +927,15 @@
 	.product__price
 		font-size: 13px
 
-	.product-info__size-link
-		border: 2px solid $gray
+	.product-info__size-link		
 		display: -webkit-inline-flex
 		display: -moz-inline-flex
 		display: -ms-inline-flex
 		display: -o-inline-flex
 		display: inline-flex
-		align-items: center
-		padding: 0 25px		
+		align-items: center		
+		float: right
+		padding: 25px
 
 	.product-info__pay-text
 		font-size: 12px
