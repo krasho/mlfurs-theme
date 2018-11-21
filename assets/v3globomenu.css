@@ -2150,9 +2150,9 @@ span.gm-badge {
 }
 
 .globomenu .globomenu-item .globomenu-submenu-drop{
-    -webkit-transition-duration:400ms !important;
-    -ms-transition-duration:400ms !important;
-    transition-duration:400ms !important;
+    -webkit-transition-duration:600ms !important;
+    -ms-transition-duration:600ms !important;
+    transition-duration:600ms !important;
 }
 
 .globomenu .globomenu-item .globomenu-target.highlight-one, .highlight-one{
