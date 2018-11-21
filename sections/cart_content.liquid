@@ -111,7 +111,10 @@
 												   <!--<a class="orders-table__name-link" href="{{item.url}}">{{ item.title | escape }}</a>-->
 												</div>
 											</div>
-											<div class="orders-table__price"> {{ item.price | money }}</div>
+											<div class="orders-table__price">
+                                              <span class="hulkapps-cart-item-price" data-key="{{item.key}}">
+												{{ item.price | money }}
+											  </span></div>
 											<div class="orders-table__qty">
 												<div class="sccol">
 													<a href="javascript: void(0);" class="sccol__minus"><img src="{{ 'minus.png' | asset_url }}" alt="minus"></a>
@@ -126,7 +129,11 @@
 													   data-line="{{forloop.index}}">Remove</a>													   
 												</div>
 											</div>
-											<div class="orders-table__subtotal">{{ item.line_price | money }}</div>
+											<div class="orders-table__subtotal">
+       		                                   <span class="hulkapps-cart-item-line-price" data-key="{{item.key}}">
+													{{ item.line_price | money }}
+												</span>
+                                          </div>
 										</div>
 									</div>
 								{%- endfor -%}														
@@ -165,7 +172,11 @@
 						<div class="form-card__block">
 							<div class="form-card__detail">
 								<div class="form-card_detail-name form-card_detail-name_large">Total</div>
-								<div class="form-card_detail-value form-card_detail-value_large">{{ cart.total_price | money }}</div>
+								<div class="form-card_detail-value form-card_detail-value_large">
+                              		<span class="hulkapps-cart-original-total">
+										{{ cart.total_price | money }}
+									</span>
+                              </div>
 							</div>
 						</div>
 

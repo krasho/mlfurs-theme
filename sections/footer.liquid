@@ -3,7 +3,7 @@
 			<div class="row">
 				<div class="col-12">
 					<div class="footer__main">
-						<div class="footer__column footer__column_bordered footer_visit_us footer-menu footer-menu--1">
+						<div class="footer__column footer__column_bordered footer_visit_us">
 							<div class="footer__column-title">{{section.settings.text_for_title_to_left_section}}</div>
 							<ul class="footer__list">
 								<!--<li class="footer__list-item">263 Josephine St.<br>Denver, CO 80206 <br> M-S 10am-5:00pm MST</li>-->
@@ -24,15 +24,13 @@
 							</div>
 						</div>
 
-						<div class="footer-menu footer-menu--2">
+						<div class="footer__column d-flex d-sm-flex d-md-flex d-lg-flex d-xl-flex">
 						    {%- include "footer_menu_option", menu_title: section.settings.text_for_footer_menu_linklist, menu_name:  section.settings.footer_menu_linklist  -%}
-						</div>
-                      	<div class="footer-menu footer-menu--3">
 							{%- include "footer_menu_option", menu_title: section.settings.text_for_footer_menu2_linklist, menu_name:  section.settings.footer_menu2_linklist  -%}
 						</div>
 
-						<div class="footer__column column stay_connected footer-menu footer-menu--4"> 
-							<div class="footer__column-title">STAY CONECTED</div>
+						<div class="footer__column column stay_connected"> 
+							<div class="footer__column-title">STAY CONNECTED</div>
 							<ul class="footer__list">
 								<li class="footer__social-item footer__social-item_blured">
 								   <a class="footer__list-link" href="{{section.settings.footer_url_facebook}}" target="_blank">
