@@ -1,0 +1,439 @@
+			<div class="product-card__content">
+				<div class="row">
+
+        {%- if product.images.size > 0 -%}
+          <div class="product-card__slider-nav-container d-none d-lg-flex">
+            <div class="slider-nav product-card__slider-nav">
+              {%- for image in product.images -%}
+                <div class="slider-nav__item">
+                  {% assign  slider_image = image | product_img_url: '240x240', scale: 2  %}
+                  <img  alt="product" class="slider-nav__image img-responsive img-width" src="{{ slider_image }}" alt="{{ product.title | escape }}" 
+                        data-original="{{ image | product_img_url: 'master'}}"/>                  
+                </div>
+              {%- endfor -%}  
+            </div>
+          </div>
+        {%- endif -%}  
+
+
+				<div class="col d-lg-none">
+					<div class="product-info__size">{{product.metafields.custom_fields["designer"]}}</div>
+					<div class="product-info__descr">{{product.title | scape}}</div>
+					<div class="product-info__price-rate">
+						<div class="product-info__price">{{product.price | money}}</div>
+						<div class="product-info__rate">                           
+                           {%- if product__reviews-count == 0 -%}
+                              <a href="#" class="quick-link product-info__quick-link quick-link_size_sm">Be the first to review</a>
+                           {%- endif -%}   
+                           {%- include "rate_reviews" -%}
+                           {%- if product__reviews-count == 0 -%}
+                                    <!--<span>No Reviews</span>-->
+                           {%- endif -%}
+
+                        </div>
+					</div>
+				</div>
+
+
+        {%- if product.images.size > 0 -%}
+				  <div class="product-card__slider-for-container">
+					  <div class="slider-for product-card__slider-for">
+              {%- for image in product.images -%}
+                <div class="slider-for__item">
+                  <img src="{{ image | product_img_url: 'master'}}" alt="product" class="slider-nav__image img-responsive img-width">
+                </div>
+              {%- endfor -%}  
+            </div>
+          </div>
+        {%- endif -%}        
+
+				<div class="product-card__product-info-container">
+					<div class="product-info product-card__product-info">
+						<div class="product-info__size d-none d-lg-block">{{product.metafields.custom_fields["designer"]}}</div>
+						<div class="product-info__descr d-none d-lg-block">{{product.title | scape}}</div>
+						<div class="product-info__price-rate d-none d-lg-flex">
+                            {%- assign variant= product.selected_or_first_available_variant-%}
+                            {%- assign compare_at_price = variant.compare_at_price | times: 1 -%}
+                            {%- assign price = variant.price -%}
+
+							<div class="product-info__price">                            
+                                {%- assign display_original= "display:none" -%}
+                                {%- assign display_current= "display:block" -%}
+                                {%- if compare_at_price > 0 and compare_at_price != price -%}
+                                   {%- assign display_original= "display:block" -%}
+                                   {%- assign display_current= "display:none" -%}
+                                {%- endif -%}
+
+                                <div class="product-info__original__price" id="original_price_container" 
+                                     style="{{display_original}}">                                                                
+                                    Original Price: <span id="original_price_value">{{compare_at_price | money}}</span> 
+                                </div>
+
+                                {%- include "was-price" -%}
+
+                                <div class="product-info__now__price" id="now_price_container" style="{{display_original}}">                                                                                                    
+                                    Now: <span id="now_price_value">{{price | money}}</span> 
+                                </div>
+
+                                <div class="product-info__current__price" id="current_price_container" style="{{display_current}}">                                                                
+                                    <span id="current_price_value" >{{product.price | money}}</span>
+                                </div>
+
+
+                            </div>
+							<div class="product-info__rate">
+                                {%- include "count_reviews" -%}                                
+                                {%- if product__reviews-count == 0 -%}
+                                       <a href="#" class="quick-link product-info__quick-link quick-link_size_sm">Be the first to review</a>
+                                {%- endif -%}   
+                                {%- include "rate_reviews" -%} 
+                            </div>
+						</div>
+
+                        {% form "product", product %}
+         
+                        <input type="hidden" id="filter_selected" value="">
+
+        
+                        {%- if product.variants.size > 1 -%}                                                    
+                                <select id="product-select" name="id" style="display: none;">
+                                   <option value="">Select</option>
+                                {%- for variant in product.variants -%}
+                                       {%- if forloop.index == 1 -%}
+                                            <option  value="{{ variant.id }}" selected>{{ variant.title | escape }} - {{ variant.price | money }}
+                                       {%- else -%}
+                                            <option  value="{{ variant.id }}">{{ variant.title | escape }} - {{ variant.price | money }}
+                                       {%- endif -%}
+                                        
+                                        </option>
+                                {%- endfor -%}
+                                </select>                             
+                                
+                        {%- else -%}
+                                <input type="hidden" name="id" id="product-select" value="{{ product.variants.first.id }}" />
+                        {%- endif -%}            
+                                    <div class="product-info__count-add">
+
+                                        {%- if product.available == true  -%}
+                                            <input name="quantity" type="number" class="product-info__count-input input-text input-text_height_sm text-center input-text_bg_gray input-text_size_sm" value="1">
+                                            <button id="btn_to_add_cart" class="product-info__form-button form-button form-button_height_sm form-button_fontsize_sm" type="submit" {% unless product.available %}disabled="disabled"{% endunless %}>Add to cart</button>
+
+                                            <div id="sold-out-container" class="sold-out product-info__form-button form-button form-button_height_sm form-button_fontsize_sm" style="display:none; margin-bottom: 20px; background-color: #557b97; opacity: 0.5; color: #fff;">
+                                                <div class="sold_out d-flex d-sm-flex d-md-flex d-lg-flex d-xl-flex justify-content-center align-items-center" id="sold_out" 
+                                                    style="height: 100%">
+                                                            <span>Sold Out</span>
+                                                </div>    
+                                            </div>
+
+                                        {%- else -%}
+                                            <div class="sold-out form-button form-button_height_sm form-button_fontsize_sm" style="margin-bottom: 20px; background-color: #557b97; opacity: 0.5; color: #fff;">
+                                                <div class="sold_out d-flex d-sm-flex d-md-flex d-lg-flex d-xl-flex justify-content-center align-items-center product-info__form-button_sold_out" 
+                                                    id="sold_out" 
+                                                    style="height: 100%">
+                                                            <span>Out of Stock</span>
+                                                </div>    
+                                            </div>
+                                         {%- endif -%}
+
+                                    </div>
+                        
+                      
+                      <div class="hulkapps-volumes"></div>
+                                    <div class="product-info__pay-text">
+                                       <b>Pay in Installments</b>: &nbsp;
+                                       <p class="affirm-as-low-as" id="affirm-container" data-page-type="product" data-amount="{{variant.price}}"></p>
+                                    </div>
+
+                                   <!--
+                                    <div class="product-info__buttons">
+                                        <a href="#" class="product-info__button-preview button-preview button-preview_with_image button-preview_dark button-preview_size_sm">Add to wish list <img class="button-preview__image" src="{{ 'heart.png' | asset_url }}" alt="heart"></a>
+                                        <a href="#" class="product-info__button-preview button-preview button-preview_with_image button-preview_dark button-preview_size_sm">Compare <img class="button-preview__image" src="{{ 'compare.png' | asset_url }}" alt="compare"></a>
+                                    </div>
+                                    -->
+
+                                    <div class="product-info__share_container d-flex d-sm-flex d-md-flex d-lg-flex d-xl-flex  justify-content-between align-items-center">
+                                        <div class="product-info__item">
+                                           ITEM NUMBER {{ product.metafields.custom_fields["productid"] }}
+                                        </div>
+                                        <div class="product-info__share align-self-end">                                        
+                                            <div class="product-info__share-item">Share</div>
+                                            <div class="product-info__share-item">
+                                                <a href="https://www.facebook.com/MarksLloydsFurs" target="_blank" class="product-info__share-link"><img src="{{ 'fb.png' | asset_url }}" alt="fb"></a>
+                                            </div>
+                                            <div class="product-info__share-item">
+                                                <a href="https://twitter.com/markslloydsfurs" target="_blank" class="product-info__share-link"><img src="{{ 'tw.png' | asset_url }}" alt="tw"></a>
+                                            </div>
+                                            <div class="product-info__share-item">
+                                                <a href="https://www.pinterest.com/mlfurs/?eq=mlfurs&etslf=4025" target="_blank" class="product-info__share-link"><img src="{{ 'pint.png' | asset_url }}" alt="pint"></a>
+                                            </div>
+                                            <div class="product-info__share-item">
+                                                <a href="mailto:customerservice@mlfurs.com" class="product-info__share-link"><img src="{{ 'mail.png' | asset_url }}" alt="mail"></a>
+                                            </div>
+                                        </div>
+
+                                    </div>
+
+
+                                    <div class="product-info__accordion accordion">
+                                        <div class="accordion__item">
+                                            <div class="product-info__accordion-title accordion__title accordion__title_open">EDITOR'S NOTES</div>
+                                            <div class="product-info__accordion-content accordion__content" style="display: block">
+                                                {{ product.description }}
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        {% endform %}  
+
+			</div>
+			</div>
+
+<script>
+	window.mlfurs= window.mlfurs|| {};   
+	
+	
+	mlfurs = {
+	   filters: [],	
+       filter_available: [],
+	   filter_to_show: [],
+	   product_variants: [],       
+	   filters_selected: [],
+	   product_variants_available:[],
+	   firstFilterApplied: "",
+
+
+	   initializeValues: function() {
+		   this.createFilters();
+		   this.createVariantsAvailables();		   		   
+	   },
+
+	   createFilters: function() {		   
+			let option_name_downcase = ""    
+
+			{% for option in product.options_with_values %}
+				option_name_downcase = "{{option.name | remove:' ' | remove: '/' | downcase }}"	        
+				this.filters.push(option_name_downcase)
+				this.filter_available[option_name_downcase] = []
+				this.filters_selected[option_name_downcase] = ""
+
+
+				{% for value in option.values %}		   
+					this.filter_available[option_name_downcase].push("{{value}}")
+				{% endfor %}
+			{% endfor %}  
+	   },
+
+	   createVariantsAvailables: function() {
+		    let option_name_downcase = ""
+			let variant_value = ""
+			let product_variant_available= []
+			{% for variant in product.variants %}
+				product_variant_available = []
+				
+				variant_value = ""
+				{% for option in product.options_with_values %}
+					option_name_downcase = "{{option.name | downcase}}";
+
+					{%- if forloop.index == 1 -%}
+							variant_value = "{{variant.option1 | remove: ' ' | remove: '/' | downcase}}";
+					{%- elsif forloop.index == 2 -%}
+							variant_value = "{{variant.option2 | remove: ' ' | remove: '/' | downcase}}";
+					{%- else  -%}
+							variant_value = "{{variant.option3 | remove: ' ' | remove: '/' | downcase}}";
+					{%- endif -%}
+
+					variant_value = variant_value.split("/").join("")
+                    variant_value = variant_value.split(" ").join("")
+
+					
+					product_variant_available[option_name_downcase] = variant_value;
+				
+				{% endfor %}
+				
+			    product_variant_available['available'] = "{{variant.available}}";
+				product_variant_available['id'] = "{{variant.id}}";
+				product_variant_available['inventory_quantity'] = "{{variant.inventory_quantity}}";
+				product_variant_available['show'] = "true";
+                product_variant_available['image'] = "{{variant.image | img_url: 'master'}}";
+
+
+				this.product_variants.push(product_variant_available)
+				
+			{% endfor %}  
+	   },
+
+	   changeFiltersSelected: function(type, value) {
+           newValue = this.cleanCharacters(value);
+
+		   this.filters_selected[type] = newValue;
+
+		   if (value == "") {
+			   delete this.filter_to_show[type];
+		   }
+	   },
+
+	   applyFilters: function(type, value) {
+		   this.setFirtFilterApplied(type);
+		   this.changeFiltersSelected(type, value);
+		
+
+			if (this.checkIfThereIsFilterSelected() == false) {
+				this.resetAll();
+			} else {
+				
+				this.getVariantsSatisfyTheFilters()
+				this.getUniqueValuesForFilterAvailable(type);		   
+			}
+	   },
+
+	   getVariantsSatisfyTheFilters() {
+           this.product_variants_available = this.product_variants;
+
+           for(name in this.filters_selected) {
+			   value = this.filters_selected[name];
+			   
+			   if (value == "") {
+				   continue;
+			   }
+			   
+
+               this.product_variants_available = this.product_variants_available.filter(variant => variant[name] == value && variant['available'] == "true")		   
+		   }		  
+	   },
+
+	   getUniqueValuesForFilterAvailable(type) {
+		   for(filter in this.filters) {
+			   name = this.filters[filter];
+
+			   this.filter_to_show[name] =  this.getUniqueValueByFilter(name);
+		   }
+
+	   },
+
+	   getUniqueValueByFilter(filterName) {
+		   return this.product_variants_available.map(function(e){ return e[filterName]}).filter(function(e, i, a) {
+			      return i === a.indexOf(e)
+		   });
+
+	   },
+
+	   validateIfElementExist(filterName, elementToFind) {           		   
+
+		   newValue = this.cleanCharacters(elementToFind);
+		   if (this.filter_to_show.hasOwnProperty(filterName) == false) {
+			   return false;
+		   }
+           		   
+		   return this.filter_to_show[filterName].includes(newValue);
+	   },
+
+	   validateIfAllFilterAreSelected() {
+		   let quantity = this.filters.length;
+
+           let quantityFilterSelected = 0; 
+
+		   for(selected in this.filters_selected) {
+			   if (this.filters_selected[selected] != "") {
+				   quantityFilterSelected++; 
+			   }			       
+		   }
+
+		   if (quantityFilterSelected == quantity) {
+			   return true
+		   }
+
+		   return false		
+	   },
+
+
+	   checkAvailableInVariantAvailablefunction: function(){
+		if (this.product_variants_available.length == 0) {
+			return false
+		}
+
+		if (this.product_variants_available[0]['available'] == "false") {
+			return false;
+		}
+
+
+		return true;
+		},
+
+		setFirtFilterApplied(filterName) {
+			if (this.checkIfThereIsFilterSelected() == false) {
+				this.firstFilterApplied = filterName;
+			}
+		},
+
+		resetFirstFilterApplied() {
+			for(filter in this.filters) {
+				filter_name = this.filters[filter];
+
+				if (filter_name == this.firstFilterApplied) {
+					continue;
+				}
+
+
+				newFirstFilter  = filter_name;
+			}
+
+
+			this.firstFilterApplied = newFirstFilter
+
+		},
+
+		removeElementToShow(filterName) {
+			delete this.filter_to_show[filterName];
+		},
+
+
+		checkIfThereIsFilterSelected() {
+			let filtered = 0;
+			for (filter in this.filters) {
+				 filter_name = this.filters[filter];
+
+				 if (this.filters_selected[filter_name] != "") {
+					 filtered++;
+				 }
+			}
+
+
+			if (filtered == 0 ) {
+				return false;
+			} 
+
+			return true;
+
+		},
+
+		resetAll() {
+	       this.filter_to_show = [];
+		   this.product_variants_available = [];
+		   this.firstFilterApplied = "";
+
+			for (filter in this.filters) {
+				filter_name = this.filters[filter];
+				this.changeFiltersSelected(filter_name, "");
+			}
+
+		},
+
+		cleanCharacters(value) {
+		   newValue = value;
+		   if (newValue != "") {
+			   
+			  if (isNaN(newValue) == true) {
+				 newValue = newValue.toLowerCase();				 
+				 newValue = newValue.split("/").join("");
+				 newValue = newValue.split(" ").join("");
+
+			  }
+		   }	
+           
+		   return newValue;
+		}
+	}
+
+	mlfurs.initializeValues();	
+</script>            

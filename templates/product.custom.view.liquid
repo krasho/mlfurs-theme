@@ -1,0 +1,38 @@
+	<section class="product-card">
+		<div class="container-fluid">
+
+			<div class="row">
+				<div class="col-12">
+				    {% assign class_to_link = 'breadcrumbs__link breadcrumbs__link_dark' %}
+					{% assign class_to_breadcrumbs = 'breadcrumbs product-card__breadcrumbs breadcrumbs_size_sm' %}
+					{% assign class_to_item = 'breadcrumbs__item .breadcrumbs__item_dark' %}
+					{% assign class_to_last_item = 'breadcrumbs__item breadcrumbs__item_dark breadcrumbs__item_disabled' %}
+				    {% include 'breadcrumbs' %}
+				</div>
+			</div>
+         	
+			{% section 'product_detail_information_custom_view' %}
+
+		</div>
+	</section>
+
+	<!-- 
+	{%- assign current_product_selected = product  -%} 
+	<section class="catalog-home-page">
+		<div class="container-fluid">
+			<div class="row">
+				<div class="col-12">
+					<div class="catalog-home-page__title">Related products</div>
+				</div>
+			</div>
+			<div class="row">				
+			{%- assign RELATED_PRODUCTS_LIMIT = 4 -%}
+			{%- include 'related-products' -%}
+			</div>
+		</div>
+	</section>
+
+	{%- assign product = current_product_selected  -%} 
+	-->
+	 
+{% include 'zendapps_recent_products' %}
