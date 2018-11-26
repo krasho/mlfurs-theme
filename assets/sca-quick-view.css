@@ -237,9 +237,10 @@ input.disabled.sca-qv-cartbtn:hover {
     z-index: 70999 !important;
 }
 
-@media (max-width: 991.98px) {
+@media (max-width: 991.98px) {  
   .sca-qv-image .sca-qv-button {
-    display: none !important;
+    /*display: none !important;*/
+    visibility: hidden !important;
   }
 }
 
