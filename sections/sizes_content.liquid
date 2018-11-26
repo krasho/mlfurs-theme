@@ -1,0 +1,41 @@
+<nav>
+  <div class="nav nav-tabs" id="nav-tab" role="tablist">
+    <a class="nav-item nav-link active" id="nav-women-tab" data-toggle="tab" href="#nav-women" role="tab" aria-controls="nav-women" aria-selected="true">Women's Sizes</a>
+    <a class="nav-item nav-link" id="nav-men-tab" data-toggle="tab" href="#nav-men" role="tab" aria-controls="nav-men" aria-selected="false">Men's Sizes</a>
+    <a class="nav-item nav-link" id="nav-glove-tab" data-toggle="tab" href="#nav-glove" role="tab" aria-controls="nav-glove" aria-selected="false">Glove Sizes</a>
+  </div>
+</nav>
+<div class="tab-content" id="nav-tabContent">
+  <div class="tab-pane fade show active" id="nav-women" role="tabpanel" aria-labelledby="nav-women-tab">
+     <img src="{{section.settings.women_image | img_url: 'master' }}" alt="Women's Sizes" />     
+  </div>
+
+  <div class="tab-pane fade" id="nav-men" role="tabpanel" aria-labelledby="nav-men-tab">
+     <img src="{{section.settings.men_image | img_url: 'master' }}" alt="Men's Sizes" />     
+  </div>
+  <div class="tab-pane fade" id="nav-glove" role="tabpanel" aria-labelledby="nav-glove-tab">
+     <img src="{{section.settings.glove_image | img_url: 'master' }}" alt="Glove's Sizes" />          
+  </div>
+</div>
+
+{% schema %} {
+  "name": "Size Images",
+  "settings": [
+    {
+      "id": "women_image",
+      "type": "image_picker",
+      "label": "Women's Sizes Image"
+    },
+    {
+      "id": "men_size",
+      "type": "image_picker",
+      "label": "Men's Sizes Image"
+    },
+    {
+      "id": "glove_size",
+      "type": "image_picker",
+      "label": "Glove's Size Image"
+    }										
+  ]  
+}
+{% endschema %}
