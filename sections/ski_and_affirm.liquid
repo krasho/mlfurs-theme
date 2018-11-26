@@ -3,11 +3,11 @@
 			<div class="row">
 				<div class="col-12 col-lg-6 banner-descr__left">
 					<div class="banner-descr__left-text">
-						<div class="banner-descr__left-text-large">SKI Sale 20% Off</div>
-						<div class="banner-descr__left-text-small">Save 20% on your next ski purchase using our code</div>
+						<div class="banner-descr__left-text-large">{{section.settings.promotion_title}}</div>
+						<div class="banner-descr__left-text-small">{{section.settings.promotion_subtitle}}</div>
 					</div>
 					<div class="banner-descr__left-code">
-						code: <span>ski2018</span>
+						<span>SHOP NOW</span>
 					</div>
 				</div>
 				<div class="col-12 col-lg-6 banner-descr__right">                    
@@ -30,6 +30,16 @@
 {% schema %} {
   "name": "SKI and Affirm Banner",
   "settings": [
+    {
+      "id": "promotion_title",
+      "type": "text",
+      "label": "Promotion Title"
+    },
+    {
+      "id": "promotion_subtitle",
+      "type": "text",
+      "label": "Promotion Subtitle"
+    }				
   ],
   
   "presets": [
