@@ -3,14 +3,18 @@
 <section class="reviews-page">
 		<div class="container-fluid reviews">
             {%- if collection.products_count > 0 -%}
-                    {% paginate collection.products by 200 %}
+                    {% paginate collection.products by 1000 %}
                         {%- for product in collection.products -%}
                             {% if product.metafields.spr.reviews and qty < 30 %}
                                 {% assign qty = qty | plus: 1 %}                    
                                 <div class="product review">
                                     <div class="product__body review-header">
                                         <div class="product__size">{{product.metafields.custom_fields["designer"]}}</div>
-                                        <div class="product__descr">{{product.title | scape}}</div>
+                                        <div class="product__descr">
+                                           <a class="product__descr__link" href="{{product.url}}">
+                                              {{product.title | scape}}
+                                           </a>   
+                                        </div>
                                     </div>                                                
                                                                     
                                     <div id="shopify-product-reviews" data-id="{{product.id}}">{{ product.metafields.spr.reviews }}</div>
