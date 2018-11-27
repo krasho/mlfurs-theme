@@ -1,5 +1,30 @@
+    
     <nav class="mobile-nav-wrapper medium-up--hide" role="navigation">
+    <!--<form class="mobile-nav__search-form" method="get" action="/search">
+      <input type="hidden" name="type" value="product">
+      <input class="mobile-nav__input main-nav__search-form-input snize-input-style" placeholder="Search all Products...">
+      <button type="submit" class="globomenu-search-submit"><i class="globomenu-icon fa fa-search" aria-hidden="true"></i></button>
+
+      <i class="fa fa-search mobile-nav__search-form-icon " aria-hidden="true"></i>
+    </form>-->
+      <div class="mobile-nav globomenu-store-796 globomenu globomenu-main globomenu-horizontal globomenu-transition-shift globomenu-items-align-left globomenu-responsive globomenu-responsive-collapse search-2 globomenu-trigger-click ">
+        <div id="search-menu" class="globomenu-item globomenu-item-level-0">
+           <a class="globomenu-target globomenu-item-layout-icon_left js-no-transition" data-no-instant="true"><i class="globomenu-icon fa fa-search" aria-hidden="true"></i></a>
+           <div class="globomenu-search-container">
+              <div class="globomenu-search">
+                 <form role="search" method="get" class="globomenu-searchform" action="/search">
+                   <input type="hidden" name="type" value="product">
+                   <input class="globomenu-search-input snize-input-style" type="search" name="q" value="" placeholder="Search all products..." autocomplete="off">
+                   <button type="button" class="globomenu-search-close"><i class="fa fa-times" aria-hidden="true"></i></button>
+                   <button type="submit" class="globomenu-search-submit"><i class="globomenu-icon fa fa-search" aria-hidden="true"></i></button>
+                 </form>
+               </div>
+           </div>
+         </div>    
+      </div>
+
       <ul id="MobileNav" class="mobile-nav">
+      
         {% for link in linklists[section.settings.main_linklist].links %}
           {%- assign outerLoopIndex = forloop.index -%}
 
