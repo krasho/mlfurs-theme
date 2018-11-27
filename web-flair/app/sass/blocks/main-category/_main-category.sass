@@ -11,18 +11,6 @@
 .main-category__product-list
 	padding: 30px 0
 
-	.product-info__original__price
-		color: #999
-		font-size: 15px
-		font-family: $regular
-		line-height: 1.5	
-		text-decoration: line-through
-
-		@include media-breakpoint-down(sm)
-		   font-size: 14px
-		   white-space: nowrap		
-
-
 	.product__descr__link
 		font-weight: 700
 
@@ -31,16 +19,29 @@
 		   font-size: 19px 
 		   white-space: nowrap
 
-	.original__price__decimals
-		display: inline
-		
-		@include media-breakpoint-down(sm)
-		   display: none
-
-	.original__price__nodecimals
-		display: none
-		@include media-breakpoint-down(sm)
-		   display: inline
-
 .main-category__product
 	margin-bottom: 30px
+
+
+.product-info__original__price
+	color: #999
+	font-size: 15px
+	font-family: $regular
+	line-height: 1.5	
+	text-decoration: line-through
+
+	@include media-breakpoint-down(sm)
+		font-size: 14px
+		white-space: nowrap		
+
+
+.original__price__decimals
+	display: inline
+	
+	@include media-breakpoint-down(sm)
+		display: none
+
+.original__price__nodecimals
+	display: none
+	@include media-breakpoint-down(sm)
+		display: inline
