@@ -13,23 +13,33 @@
 		margin-left: 0
 
 .mobile-nav__search-form
+	background-color: #393635
+	font-family: MetropolisRegular,sans-serif
+	font-size: 16px
+	position: relative
 	width: 100%
 
 .mobile-nav__input
+	background: 0 0	
+	color: #777777
+	font-family: MetropolisRegular,sans-serif
+	font-size: 16px	
 	height: 100%
 	min-height: 50px
 	padding-bottom: 0
 	padding-right: 15px
 	min-width: auto
-	opacity: 0
-	visibility: hidden
-	pointer-events: none
-	-webkit-transform: translate(0,100%)
-	-ms-transform: translate(0,100%)
-	transform: translate(0,100%)
-	-webkit-transition: opacity .3s,visibility .3s,-webkit-transform .3s
-	transition: opacity .3s,visibility .3s,transform .3s
-	transition: opacity .3s,visibility .3s,transform .3s,-webkit-transform .3s
+	padding: 14px 50px 14px 25px	
+
+.mobile-nav__search-form-icon
+	background: 0 0
+	right: 15px
+	top: 50%
+	transform: translateY(-50%)
+	color: #777777
+	position: absolute
+	z-index: 10
+    	
 
 .mobile-nav__input_visible
 	opacity: 1
