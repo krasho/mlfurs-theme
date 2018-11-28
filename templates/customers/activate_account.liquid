@@ -1,10 +1,10 @@
-<div class="container-fluid customer-container">
+<div class="container-fluid customer-container" style="padding-top:20px;">
   <div class="d-flex d-sm-flex d-sm-flex d-md-flex d-lg-flex d-xl-flex justify-content-between align-items-center customer-container-header">
-    <div class="customer-container-header-title">
+    <div class="customer-container-header-title" style="line-height:1;padding:10px;">
        {{ 'customer.activate_account.title' | t }}
     </div>
 
-    <div class="customer-container-header-subtitle">
+    <div class="customer-container-header-subtitle" style="line-height:1;padding:10px;text-align:right;">
        {{ 'customer.activate_account.subtext' | t }}
     </div>    
   </div>
@@ -19,8 +19,8 @@
               {%- endif -%}
              
               <div class="form-group row" style="margin-top: 10px">
-                <label for="CustomerPassword" class="col-sm-1 col-form-label">{{ 'customer.activate_account.password' | t }}</label>
                 <div class="col-sm-5">
+                 <label for="CustomerPassword" class="col-sm-1 col-form-label" style="padding-left:0;">{{ 'customer.activate_account.password' | t }}</label>
                   <input 
                           autocomplete="off" 
                           maxlength="255" 
@@ -31,8 +31,8 @@
                           placeholder="{{ 'customer.activate_account.password' | t }}">
                 </div>
 
-                <label for="CustomerPasswordConfirmation" class="col-sm-1 col-form-label">{{ 'customer.activate_account.password' | t }}</label>
                 <div class="col-sm-5">
+                 <label for="CustomerPasswordConfirmation" class="col-sm-1 col-form-label" style="padding-left:0;">{{ 'customer.activate_account.password' | t }}</label>
                   <input 
                           autocomplete="off" 
                           maxlength="255" 
@@ -45,9 +45,9 @@
               </div>
 
 
-           <div class="form-group row">
-              <button type="submit" name="btn-save" class="btn btn-primary ">{{ 'customer.activate_account.submit' | t }}</button>
-              <button type="submit" name="decline" class="btn btn-danger" id="customer-container-main-new-address__cancel">{{ 'customer.activate_account.cancel' | t }}</button>
+           <div class="form-group row" style="margin-left:0;">
+              <button type="submit" name="btn-save" class="btn btn-primary " style="background-color: #00b0be;border: none;margin: 0 15px 15px 0;">{{ 'customer.activate_account.submit' | t }}</button>
+              <button type="submit" name="decline" class="btn btn-danger" id="customer-container-main-new-address__cancel" style="margin: 0 15px 15px 0;">{{ 'customer.activate_account.cancel' | t }}</button>
            </div>              
 
          {% endform %}
