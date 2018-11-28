@@ -16,6 +16,7 @@
                     
                 {%- endif -%}
             </a>
+            
 
             {%- if product.images.size > 0 -%}
                {% include 'sca-quick-view' %}     
@@ -33,7 +34,7 @@
                     <a class="product__descr__link" href="{{product.url}}">
                         {{product.title | scape}}       
                     </a> 
-                </div>
+                </div>              
             </div>
 
             {%- assign variant= product.selected_or_first_available_variant-%}

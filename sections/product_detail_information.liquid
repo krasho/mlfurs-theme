@@ -51,6 +51,7 @@
 					<div class="product-info product-card__product-info">
 						<div class="product-info__size d-none d-lg-block">{{product.metafields.custom_fields["designer"]}}</div>
 						<div class="product-info__descr d-none d-lg-block">{{product.title | scape}}</div>
+                                   
 						<div class="product-info__price-rate d-none d-lg-flex">
                             {%- assign variant= product.selected_or_first_available_variant-%}
                             {%- assign compare_at_price = variant.compare_at_price | times: 1 -%}
@@ -86,7 +87,7 @@
                                 {%- if product__reviews-count == 0 -%}
                                        <a href="#" class="quick-link product-info__quick-link quick-link_size_sm">Be the first to review</a>
                                 {%- endif -%}   
-                                {%- include "rate_reviews" -%} 
+                                {%- include "rate_reviews" -%}
                             </div>
 						</div>
 
@@ -119,11 +120,11 @@
                                 {% assign selected_value = '' %}  
                                 {% for value in product_option.values %}
                                     {% assign selected = '' %} 
-                                    {% assign outline = 'outline: 1px solid #ededed;' %}                                     
-
+                                    {% assign outline = 'outline: 1px solid #ededed;' %}
+                                    {% assign loopCount2 =  forloop.index %}
 
                                     {%- if variant_selected != '' and value == variantItem  -%}
-                                        {% assign selected = 'product-info__size-box_active product-info__color-box_active' %} 
+                                        <!--{% assign selected = 'product-info__size-box_active product-info__color-box_active' %} -->
                                         {% assign selected = 'option_to_select_active' %} 
                                         {% assign selected_value = value %}                                    
                                         {% assign outline = '' %}
@@ -133,7 +134,17 @@
                                     {% assign option_name =  product_option.name | remove: ' ' | remove: '/' | downcase %}
                                     {% assign option_value =  value | remove: ' ' | remove: '/' | downcase  %}
 
-                                    {%- if product_option.name == "Color" -%}                                       
+                                    {%- if product_option.name == "Color" -%}
+                                        {% comment %}
+                                           If they want to select all first options I need to put this If before if product_option.name == "Color"
+                                           and create a new If to set the  default_color_option value
+
+                                        {% endcomment %}
+                                            {%- if loopCount2 == 1  -%} 
+                                                {% assign selected = 'option_to_select_active' %}
+                                                <input type="hidden" id="default_color_option" value="option_{{option_name}}_{{option_value}}" data-value="{{option_value}}" />
+                                            {%- endif -%}
+
                                         {% for variant in product.variants %}
                                              {% assign variantImage = ""  %} 
                                             {% if loopCount == 1 %}
@@ -333,7 +344,7 @@
                                         </div>
                                         <div class="accordion__item">
                                             <div class="product-info__accordion-title accordion__title">REVIEWS</div>
-                                            <div class="product-info__accordion-content accordion__content">
+                                            <div class="product-info__accordion-content accordion__content">                                                                                                                                         
                                                 <div id="shopify-product-reviews" data-id="{{product.id}}">{{ product.metafields.spr.reviews }}</div>
                                             </div>
                                         </div>                                        
@@ -590,8 +601,22 @@
 		   }	
            
 		   return newValue;
-		}
+		},
+
+        selectFirstOptions() {
+            let filter_value = "";
+			for (filter in this.filters) {
+				filter_name = this.filters[filter];
+
+                if (filter_name == "color") {
+                    filter_value = this.filter_available[filter_name][0];
+
+                    this.applyFilters(filter_name, filter_value);
+                }				
+			}            
+        }
 	}
 
 	mlfurs.initializeValues();	
+    mlfurs.selectFirstOptions();
 </script>            

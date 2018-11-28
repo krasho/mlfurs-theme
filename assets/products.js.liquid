@@ -57,6 +57,43 @@ function changeMainImage(option_selected)
    }
 }
 
+function showDiagonalImage() {
+    $(".product-info__diagonal-line").hide();        
+
+    for(filter in mlfurs.filters) {
+        name = mlfurs.filters[filter];
+
+        filter_content = mlfurs.filter_available[name];
+
+        let found = true;
+        let id = "";
+        let value = "";
+
+        for(item in filter_content) {
+            value = mlfurs.cleanCharacters(filter_content[item]);
+            id = "#diagonal_option_"+name+"_"+value;
+
+            if (mlfurs.checkIfThereIsFilterSelected() == false) {
+                enableOption("#option_"+name+"_"+value);                      
+            } else {
+                if (name != mlfurs.firstFilterApplied) {
+                    found = mlfurs.validateIfElementExist(name, filter_content[item]);
+
+                    if (found == true) {
+                        enableOption("#option_"+name+"_"+value);
+                        continue;
+                    }
+                    
+                    
+                    //show image
+                    $(id).show()                               
+                }
+            }
+        }
+    }
+
+}
+
 $("#reset-filter_link").on("click", function(event){
    event.preventDefault();
    
@@ -136,39 +173,12 @@ $(".option_to_select").on("click", function(event) {
               }       
 
             } else {
-              $(".product-info__diagonal-line").hide();        
-
-              for(filter in mlfurs.filters) {
-                name = mlfurs.filters[filter];
-
-                filter_content = mlfurs.filter_available[name];
-
-                let found = true;
-                let id = "";
-                let value = "";
-
-                for(item in filter_content) {
-                    value = mlfurs.cleanCharacters(filter_content[item]);
-                    id = "#diagonal_option_"+name+"_"+value;
-
-                    if (mlfurs.checkIfThereIsFilterSelected() == false) {
-                        enableOption("#option_"+name+"_"+value);                      
-                    } else {
-                      if (name != mlfurs.firstFilterApplied) {
-                          found = mlfurs.validateIfElementExist(name, filter_content[item]);
-
-                          if (found == true) {
-                             enableOption("#option_"+name+"_"+value);
-                             continue;
-                          }
-                          
-                          
-                          //show image
-                          $(id).show()                               
-                      }
-                    }
+                if (mlfurs.checkAvailableInVariantAvailablefunction() == false) {
+                    $("#sold-out-container").show()
+                    $('#btn_to_add_cart').hide()
                 }
-              }
+
+                showDiagonalImage();
             }
 		}
 });
@@ -192,6 +202,23 @@ $(document).ready(function() {
       });
     });
 
+    
+    //set the correct main image color
+    let default_color_option = $("#default_color_option").val();
+    if (default_color_option.length > 0) {
+        let color_option = $("#"+default_color_option);
+        let option_value = $(color_option).data("value");
+        showColorLabel("color", option_value) 
+        changeMainImage(color_option);
+
+        if (mlfurs.checkAvailableInVariantAvailablefunction() == false) {
+            $("#sold-out-container").show()
+            $('#btn_to_add_cart').hide()
+        }        
+
+    }
+
+    showDiagonalImage();
 });
 
 
