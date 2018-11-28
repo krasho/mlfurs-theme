@@ -7,7 +7,7 @@
 						<div class="banner-descr__left-text-small">{{section.settings.promotion_subtitle}}</div>
 					</div>
 					<div class="banner-descr__left-code">
-						<span>SHOP NOW</span>
+						<a class="quick-link banner-descr__link" href="{{section.settings.button_link}}"><span>{{section.settings.button_text}}</span></a>            
 					</div>
 				</div>
 				<div class="col-12 col-lg-6 banner-descr__right">                    
@@ -39,7 +39,17 @@
       "id": "promotion_subtitle",
       "type": "text",
       "label": "Promotion Subtitle"
-    }				
+    },
+    {
+      "id": "button_text",
+      "type": "text",
+      "label": "Button Text"
+    },
+    {
+      "id": "button_link",
+      "type": "url",
+      "label": "Button Link"
+    }        
   ],
   
   "presets": [
