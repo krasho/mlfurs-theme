@@ -589,15 +589,32 @@
 	.logo
 		transform: translate(-75%, -50%)
 	
-	.footer_dynamic_menu
-		flex: 0 0 92px
-    
-	.stay_connected,	
-		flex: 0 0 182px
+	.footer__main
+		justify-content: space-between
+		flex-wrap: wrap
+		
+		.footer__column:nth-child(1)
+			flex: 0 0 30%
+			text-align: left
+			order: 1
 
-	.footer_visit_us 
-		flex: 0 0 163px
+		.footer__column:nth-child(2)
+			flex: 0 0 65%
+			margin-left: 5%
+			order: 2
 
+		.footer__column:nth-child(3)
+			flex: 0 0 30%
+			margin-top: 40px
+			margin-left: 0px
+			order: 3
+
+
+		.footer__column:nth-child(4)
+			flex: 0 0 65%
+			margin-top: 40px
+			order: 4									
+		
 
 	.product-card__product-info-container
 		max-width: 100%
@@ -627,9 +644,6 @@
 		font-size: 12px
 
 	.top-nav__nav
-		display: none
-
-	.footer__column,	
 		display: none
 
 	.footer_dynamic_menu
@@ -687,6 +701,7 @@
 		border: none
 		font-size: 12px
 		background-color: #ccebee
+		white-space: nowrap
 
 	.banner-preview
 		padding: 75px 25px 25px
@@ -767,6 +782,24 @@
 
 	.footer__bottom
 		font-size: 12px
+
+	.footer__main		
+		.footer__column-title		
+			font-size: 11px
+
+		.footer__column:nth-child(1)
+			flex: 0 0 50%
+
+		.footer__column:nth-child(2)
+			flex: 0 0 45%
+
+		.footer__column:nth-child(3)
+			flex: 0 0 45%
+			order: 4
+
+		.footer__column:nth-child(4)		    
+			flex: 0 0 50%
+			order: 3
 
 	.login-popup
 		max-width: 100%

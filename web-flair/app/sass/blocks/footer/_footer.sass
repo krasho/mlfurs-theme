@@ -3,12 +3,7 @@
 	clear: both
 
 .footer__main
-	display: -webkit-flex
-	display: -moz-flex
-	display: -ms-flex
-	display: -o-flex
-	display: flex
-	justify-content: space-between
+	display: flex	
 	padding: 40px 0
 
 .footer__column-title
@@ -102,5 +97,10 @@
 .footer_visit_us 
 	flex: 0 0 200px
 
-.footer_dynamic_menu
-	flex: 0 0 180px
+.footer__main	
+	.footer_dynamic_menu
+		flex: 0 0 180px
+		
+	.footer__column:nth-last-child(2)
+		flex: 1 0 180px
+		margin-left: 40px
