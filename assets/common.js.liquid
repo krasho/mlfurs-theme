@@ -205,6 +205,8 @@ $(function() {
 		]
 	});
 
+    $(".slider-hidden__image").removeAttr("style") 
+
 	$('.slider-nav').slick({
 		nextArrow: '<img class="slick-next" src="{{ 'slider-arr-down.png' | asset_url }}">',
 		prevArrow: '<img class="slick-prev" src="{{ 'slider-arr-up.png' | asset_url }}">',
@@ -215,7 +217,10 @@ $(function() {
 		verticalSwiping: true,
 		vertical: true,
 		arrows: true,
+		lazyLoad: 'ondemand',
 	});
+	
+
 	
     
 	$(window).on('resize', function(){
