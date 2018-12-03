@@ -173,7 +173,7 @@ $(".option_to_select").on("click", function(event) {
               }       
 
             } else {
-                if (mlfurs.checkAvailableInVariantAvailablefunction() == false) {
+                if (mlfurs.checkAvailableInVariantAvailablefunction() == false && mlfurs.checkIfThereIsFilterSelected() == true) {
                     $("#sold-out-container").show()
                     $('#btn_to_add_cart').hide()
                 }
