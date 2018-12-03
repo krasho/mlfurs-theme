@@ -7,7 +7,9 @@
               {%- for image in product.images -%}
                 <div class="slider-nav__item">
                   {% assign  slider_image = image | product_img_url: '240x240', scale: 2  %}
-                  <img  alt="product" class="slider-nav__image img-responsive img-width" src="{{ slider_image }}" alt="{{ product.title | escape }}" 
+                  <img  alt="product" class="slider-nav__image img-responsive img-width"                         
+                        src="{{slider_image}}"
+                        alt="{{ product.title | escape }}" 
                         data-original="{{ image | product_img_url: 'master'}}"/>                  
                 </div>
               {%- endfor -%}  
@@ -38,11 +40,23 @@
         {%- if product.images.size > 0 -%}
 				  <div class="product-card__slider-for-container">
 					  <div class="slider-for product-card__slider-for">
-              {%- for image in product.images -%}
-                <div class="slider-for__item">
-                  <img src="{{ image | product_img_url: 'master'}}" alt="product" class="slider-nav__image img-responsive img-width">
-                </div>
-              {%- endfor -%}  
+                      {%- for image in product.images -%}
+                         <div class="slider-for__item">
+
+                            {%- if forloop.index == 1 -%}
+                                    <img alt="product" 
+                                         src="{{ image | product_img_url: 'master' }}"
+                                         class="slider-nav__image img-responsive img-width">
+                            {%- else -%}      
+                                    <img alt="product" 
+                                        data-lazy="{{ image | product_img_url: 'master' }}"
+                                        class="slider-nav__image img-responsive img-width slider-hidden__image"
+                                        style="visibility: hidden;">
+                                                            
+                            {%- endif -%}
+
+                         </div>
+                    {%- endfor -%}  
             </div>
           </div>
         {%- endif -%}        
