@@ -1,8 +1,15 @@
 <!doctype html>
 <html lang="en">
 <head>
-  	<title>{{ shop.name }} - {{ page_title }}</title>
+ 
+  <!--SEO Stuffs -->
+  <meta name="google-site-verification" content="iiR1E7WlGQGbeXrYnw17gN2BHYqWLU6kfATfh0S8qbI" />
 
+  {% include 'SEOManager' %}
+
+  {% include 'social-meta-tags' %}
+    <!--End of SEO Stuffs -->  
+  
     <meta charset="utf-8">
     <!-- <base href="/"> -->
 <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
@@ -21,13 +28,6 @@
     <!-- Custom Browsers Color Start -->
     <meta name="theme-color" content="#000">
     <!-- Custom Browsers Color End -->
-  <!--Ivan's BS -->
-  <meta name="google-site-verification" content="VCDBsCjPYOiCGGcupb-q0jyoXfj35kSa_Qv6vY9ObYo" />
-
-  {% include 'SEOManager' %}
-
-  {% include 'social-meta-tags' %}
-    <!--End of Ivan's BS -->
 
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
  
@@ -75,6 +75,7 @@
 
   <script src="//scripts.iconnode.com/54769.js"></script>
 
+  {% include 'judgeme_core' %}
 </head>
 
 <body class="body template-{{ template | replace: '.', ' ' | truncatewords: 1, '' | handle }}" id="{{ page_title | handle }}">  
