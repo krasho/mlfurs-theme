@@ -3,4 +3,30 @@
 
 .banners__second-banner
 	margin-top: 30px
-	@include fluid-ratio(1645px 580px, 300px 150px)
+	position: relative
+
+.second_banner_desktop
+	.banners__second-banner
+	   @include fluid-ratio(1645px 580px, 300px 150px)
+	   
+
+.second_banner_tablet
+	.banners__second-banner
+	   @include fluid-ratio(800px 400px, 400px 300px)
+
+	   .second_banner__shop_button
+		   .banner-preview__button
+			   padding: 5px 35px			   
+
+.second_banner_mobile
+	.banners__second-banner
+	   @include fluid-ratio(768px 120px, 575px 50px)
+
+	   .second_banner__shop_button
+		   padding: 0
+
+		   .banner-preview__button
+			   min-width: 150px
+			   padding: 5px 15px
+			   
+	   

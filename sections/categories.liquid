@@ -21,17 +21,25 @@
 			<div class="row">
 				<div class="col-12 second_banner_desktop">
 					<div class="second-banner banners__second-banner" style="background-image: url({{ section.settings.banner_full | img_url: 'master' }});">
+             <div class="second_banner__shop_button">
+                <a href="{{section.settings.banner_full_button_link}}" class="banner-preview__button button-preview button-preview_dark">Shop Now</a>
+             </div>             
 					</div>
 				</div>
 
 				<div class="col-12 second_banner_tablet">
 					<div class="second-banner banners__second-banner" style="background-image: url({{ section.settings.banner_full_tablet | img_url: 'master' }});">
+             <div class="second_banner__shop_button">
+                <a href="{{section.settings.banner_full_button_link}}" class="banner-preview__button button-preview button-preview_dark">Shop Now</a>
+             </div>          
 					</div>
 				</div>
 
 				<div class="col-12 second_banner_mobile">
+          <a href="{{section.settings.banner_full_button_link}}">
 					<div class="second-banner banners__second-banner" style="background-image: url({{ section.settings.banner_full_mobile | img_url: 'master' }});">
 					</div>
+          </a>
 				</div>
 
 			</div>
@@ -110,7 +118,17 @@
       "id": "banner_full_mobile",
       "type": "image_picker",
       "label": "Image Full Banner for mobiles"
-    }				              
+    },
+    {
+      "id": "banner_full_button_text",
+      "type": "text",
+      "label": "Button Text"
+    },
+    {
+      "id": "banner_full_button_link",
+      "type": "url",
+      "label": "Button Link"
+    }        				              
   ],
   
   "presets": [
