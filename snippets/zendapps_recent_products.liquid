@@ -93,7 +93,7 @@
         color: #000000 !important;
     }
 </style>
-<div id="rv__recent_products" class="rv__grid za_grid recently_viewed_products" style="display:none;margin-top: 10px;margin-bottom: 10px;padding: 0px;background-color: #ffffff;min-height: 400px;">
+<div id="rv__recent_products" class="rv__grid za_grid" style="display:none;margin-top: 10px;margin-bottom: 10px;padding: 0px;background-color: #ffffff;min-height: 400px;">
     <div class="rv__row" id="za_main_row">
         <div class="rv__twelve" id="za_m_h1">
             <h1 id="za_title" class="rv__center" style="padding-top: 25px;font-size: 35px">Recently Viewed Products</h1>
@@ -108,7 +108,7 @@
 
     var spinner = new Spinner({top: "70%", scale: 0.5}).spin( document.getElementById('rv__spinner'))
 
-    var za_pHandle
+    var za_pHandle;
     {% if product %}
     za_pHandle = "{{product.handle}}";
     {% endif %}
@@ -135,9 +135,11 @@
 
     var zend_money_format = '{{shop.money_format}}';
 
+    var show_current_product = '0';
+
 </script>
 
-{{ 'https://recently-viewed-products.appsarrow.com/script/153/zendapps_rp_c0e876f1ed52b44e64abe9c810d0f4ed.js' | script_tag }}
+{{ 'https://recently-viewed-products.appsarrow.com/script/153/zendapps_rp_cb507f13bcf4b271a7f0544275e4db34.js' | script_tag }}
 
 <style>#zaImage {
 margin-bottom: 20px;   
