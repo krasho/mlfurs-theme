@@ -145,9 +145,10 @@ $(function() {
 	$('.filter-handler').click(function () {
 		$('.filter-handler__burger').toggleClass('filter-handler__burger_open');
 		$('.filter').slideToggle('fast');
-		if (clientWidth > 991) {
+		
+		//if (clientWidth > 991) {
 			$('.main-category__filter-container').slideToggle('fast');
-		}	
+		//}	
 	});
 
 	if (clientWidth <= 991) {

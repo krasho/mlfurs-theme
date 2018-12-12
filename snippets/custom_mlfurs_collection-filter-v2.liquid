@@ -154,12 +154,23 @@
                 i += "<div class='filter__item'><span class='filter__item-title filter__item_collections'>" + ("" == p.label ? p.name : p.label) + "</span>", i += " <span class='filter__item-menu cf-options-container'>";
                 var u = 720;
                 if ("number" == typeof window.cf_mobile_width && (u = window.cf_mobile_width), jQuery(window).width() <= u && (p.style = "select"), "select" == p.style) {
-                    i += "<select class='cf-select'>", i += "<option value=''>" + ("string" == typeof p.all ? p.all : "") + "</option>";
+                   /* i += "<select class='cf-select'>", i += "<option value=''>" + ("string" == typeof p.all ? p.all : "") + "</option>";
                     for (h = 0; h < f.values.length; h++) i += "<option value='" + f.values[h].tag + "' ", a.indexOf(f.values[h].tag.toLowerCase()) >= 0 && (i += " selected", c.push({
                         option_name: f.name,
                         variant_title: f.values[h].name
                     })), i += ">" + f.values[h].name + "</option>";
-                    i += "</select>"
+                    i += "</select>"*/
+
+                    for (var d = !1, m = "string" == typeof p.all ? p.all : "", w = "", h = 0; h < f.values.length; h++) {
+                        var g = "cf-" + CollectionFilterConvertToSlug(p.name) + "-",
+                            y = f.values[h].tag.replace(g, "");
+                        w += "<label class='checkbox-custom filter__checkbox-custom'><input class='cf-checkbox' name='" + p.name + "[]' data-group-name='" + p.name + "' type='checkbox' value='" + f.values[h].tag + "' id='" + y + "'    ", w += (a.indexOf(f.values[h].tag.toLowerCase()) >= 0 ? " checked " : "") + " > <i class='helper'></i> <span>" + f.values[h].name + "</span></label>", a.indexOf(f.values[h].tag.toLowerCase()) >= 0 && (d = !0, c.push({
+                            option_name: f.name,
+                            variant_title: f.values[h].name
+                        }))
+                    }
+                    "" != m && (i += "<label><input class='cf-checkbox' name='" + p.name + "[]' data-group-name='" + p.name + "' type='checkbox' value='' id=''    ", 0 == d && (i += " checked "), i += " ><i class='helper'></i> <span>" + m + "</span></label>"), i += w
+
                 }
                 if ("checkboxes" == p.style) {
                     for (var d = !1, m = "string" == typeof p.all ? p.all : "", w = "", h = 0; h < f.values.length; h++) {
