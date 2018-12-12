@@ -68,9 +68,9 @@
                 <!--<a href="#" class="mobile-nav__item mobile-nav__item-search"><img src="{{ 'search-dark.png' | asset_url }}" alt="search" ></a>-->
 
                 {% if customer %}
-                    <a href="/account" class="mobile-nav__item popup"><img src="{{ 'user-dark.png' | asset_url }}" alt="User" ></a>                  
+                    <a href="/account" class="mobile-nav__item"><img src="{{ 'user-dark.png' | asset_url }}" alt="User" ></a>                  
                 {% else %}
-                    <a href="/account/register" class="mobile-nav__item popup"><img src="{{ 'user-dark.png' | asset_url }}" alt="User" ></a>
+                    <a href="/account/register" class="mobile-nav__item"><img src="{{ 'user-dark.png' | asset_url }}" alt="User" ></a>
                 {% endif %}
  
                 <!--<div class="mobile-nav__item">
@@ -85,7 +85,7 @@
                   </div>
                 </div>-->
 
-                <a href="#" class="mobile-nav__item"><img src="{{ 'cart-dark.png' | asset_url }}" alt="search" ></a>
+                <a href="/cart" class="mobile-nav__item"><img src="{{ 'cart-dark.png' | asset_url }}" alt="cart" ></a>
               </div>
 
               <nav class="menu grid__item medium-up--one-half small--hide" id="AccessibleNav" role="navigation">
