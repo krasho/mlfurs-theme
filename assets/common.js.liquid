@@ -427,6 +427,24 @@ $("#checkout-button").on("click", function(event){
    }
 });
 
+$("#checkout-mobile-button").on("click", function(event){   
+   if ($('#agree-mobile').is(':checked') == false) {
+       // $("#cart-form").submit();
+		$("#agree-mobile").focus();  
+        alert("You must agree with the terms and conditions of sales to check out.");
+		event.preventDefault();
+        return false;
+
+   }
+});
+
+
+
 $("#term-conditions-link").on("click", function(){
 	$("#term-conditions-text").toggle("slow");
+});
+
+
+$("#term-conditions-mobile-link").on("click", function(){
+	$("#term-conditions-mobile-text").toggle("slow");
 });
