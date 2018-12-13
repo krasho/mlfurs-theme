@@ -17,12 +17,33 @@
           </div>
         {%- endif -%}  
 
+            {%- assign variant= product.selected_or_first_available_variant-%}
+            {%- assign compare_at_price = variant.compare_at_price | times: 1 -%}
+            {%- assign price = variant.price -%}
+
 
 				<div class="col d-lg-none">
 					<div class="product-info__size">{{product.metafields.custom_fields["designer"]}}</div>
 					<div class="product-info__descr">{{product.title | scape}}</div>
 					<div class="product-info__price-rate">
-						<div class="product-info__price">{{product.price | money}}</div>
+                        
+						<div class="product-info__price">
+                            {%- if compare_at_price > 0 and compare_at_price != price -%}
+                                <div class="product-info__now__price" id="now_price_container">
+                                    <span id="now_price_value">{{price | money}}</span> 
+                                </div>
+
+                                <div class="product-info__original__price" id="original_price_container">
+                                    <span id="original_price_value">{{compare_at_price | money}}</span> 
+                                </div>
+                            {%- else -%}
+                                <div class="product-info__current__price" id="current_price_container">
+                                    <span id="current_price_value" >{{product.price | money}}</span>
+                                </div>
+
+                            {%- endif -%}
+                        
+                        </div>
 						<div class="product-info__rate">                           
                            {%- if product__reviews-count == 0 -%}
                               <a href="#" class="quick-link product-info__quick-link quick-link_size_sm">Be the first to review</a>
@@ -67,10 +88,6 @@
 						<div class="product-info__descr d-none d-lg-block">{{product.title | scape}}</div>
                                    
 						<div class="product-info__price-rate d-none d-lg-flex">
-                            {%- assign variant= product.selected_or_first_available_variant-%}
-                            {%- assign compare_at_price = variant.compare_at_price | times: 1 -%}
-                            {%- assign price = variant.price -%}
-
 							<div class="product-info__price">                            
                                 {%- assign display_original= "display:none" -%}
                                 {%- assign display_current= "display:block" -%}
