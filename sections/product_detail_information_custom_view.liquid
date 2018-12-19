@@ -139,10 +139,13 @@
                         
                       
                       <div class="hulkapps-volumes"></div>
+                                {%- assign priceToValiteAffirm = price | divided_by: 100  -%}
+                                {%- if priceToValiteAffirm > 500 -%}   
                                     <div class="product-info__pay-text">
-                                       <b>Pay in Installments</b>: &nbsp;
+                                       <b>Pay in Installments</b>:&nbsp;
                                        <p class="affirm-as-low-as" id="affirm-container" data-page-type="product" data-amount="{{variant.price}}"></p>
                                     </div>
+                                {%- endif -%}					  
 
                                    <!--
                                     <div class="product-info__buttons">
