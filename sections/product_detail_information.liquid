@@ -375,8 +375,11 @@
                                         </div>
                                         <div class="accordion__item">
                                             <div class="product-info__accordion-title accordion__title">REVIEWS</div>
-                                            <div class="product-info__accordion-content accordion__content">                                                                                                                                         
+                                            <div class="product-info__accordion-content accordion__content">   
+                                              {% include 'judgeme_widgets', widget_type: 'judgeme_review_widget', concierge_install: true %}
+                                              {% comment %}
                                                 <div id="shopify-product-reviews" data-id="{{product.id}}">{{ product.metafields.spr.reviews }}</div>
+                                              {% endcomment %}
                                             </div>
                                         </div>                                        
                                         
