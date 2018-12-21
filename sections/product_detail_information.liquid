@@ -259,15 +259,7 @@
                         </div>
                         {%- endif -%}            
 
-
                         <input type="hidden" id="filter_selected" value="">
-
-                        <!--<div class="reset-filter_container" id="reset-filter_container" style="display: none;">
-                           <a id="reset-filter_link" href="#"> 
-                             Clear Filters
-                           </a>
-                        </div>-->
-
                         {%- assign was_price =  product.metafields.custom_fields["was_price"]  -%}
                         {%- if product.variants.size > 1 -%}
                                 {% assign varianst_separated_by_comma = '' %}
@@ -295,7 +287,7 @@
                              <!--<input type="hidden" id="variants_separated_by_comma" value="{{varianst_separated_by_comma}}">   -->
                                 
                         {%- else -%}
-                                <input type="hidden" name="id" id="product-select" value="{{ product.variants.first.id }}" />
+                            <input type="hidden" name="id" id="product-select" value="{{ product.variants.first.id }}" />
                         {%- endif -%}            
                                     <div class="product-info__count-add">
 
