@@ -27,6 +27,14 @@ $("#collection-form").on("submit", function(event) {
     location.href = url
 })
 
+$("#chk_clear_filter").on("click", function(event) {
+   CollectionFilterFlush();
+   
+   let url =  $(this).data("url");
+   
+   location.href=url;
+});
+
 
 $(document).ready(function() { 
     $.ajax({
