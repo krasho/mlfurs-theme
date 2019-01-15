@@ -1,0 +1,13 @@
+{% comment %}
+  DO NOT MODIFY THIS FILE DIRECTLY. THIS FILE WILL BE OVERWRITTEN.
+  YOU CAN MODIFY THE LIQUID CODE FOR THIS CUSTOM FIELD HERE:
+  https://customfields.bonify.io/dashboard/mlfurs.myshopify.com/products/edit-field/47322
+{% endcomment %}
+{% if product.metafields.custom_fields["related_products"] != blank %}
+  <div class="custom-field custom-field__related-products custom-field__type--text">
+    <h3 class="custom-field--title">related_products</h3>
+    <div class="custom-field--value">
+      {{ product.metafields.custom_fields["related_products"] }}
+    </div>
+  </div>
+{% endif %}

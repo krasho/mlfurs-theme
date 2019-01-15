@@ -1,0 +1,14 @@
+<h3 href="javascript:void(0)" class="gf-refine-toggle-mobile" tabindex="0" aria-label="{{ 'globo_filter.sorting.filter_by' | t }}">
+    <span onclick="globofilter.toggleCanvas()">
+        <i class="ion-ios-settings"></i> {{ 'globo_filter.sorting.filter_by' | t }}    </span>
+    <a onclick="clearAllFilter()" href="javascript:;" class="gf-refine-toggle visible-xs">{{ 'globo_filter.generate.clear_all' | t }}</a>
+</h3>
+<div class="sort-by">
+    <div class="sort-by-toggle" role="button" tabindex="0" aria-expanded="false">
+        {{ 'globo_filter.sorting.sort_by' | t }} <i class="ion-ios-arrow-down"></i>
+    </div>
+    <div class="sort-by-panel" aria-hidden="true">
+        <ul>
+            <li><a onclick="changeSortBy('best-selling')" title="{{ 'globo_filter.sorting.best_selling' | t }}" class="sort-item-link js-no-transition">{{ 'globo_filter.sorting.best_selling' | t }}</a></li>            <li><a onclick="changeSortBy('manual')" title="{{ 'globo_filter.sorting.featured' | t }}" class="sort-item-link js-no-transition">{{ 'globo_filter.sorting.featured' | t }}</a></li>            <li><a onclick="changeSortBy('title-ascending')" title="{{ 'globo_filter.sorting.az' | t }}" class="sort-item-link js-no-transition">{{ 'globo_filter.sorting.az' | t }}</a></li>            <li><a onclick="changeSortBy('title-descending')" title="{{ 'globo_filter.sorting.za' | t }}" class="sort-item-link js-no-transition">{{ 'globo_filter.sorting.za' | t }}</a></li>            <li><a onclick="changeSortBy('price-ascending')" title="{{ 'globo_filter.sorting.price_ascending' | t }}" class="sort-item-link js-no-transition">{{ 'globo_filter.sorting.price_ascending' | t }}</a></li>            <li><a onclick="changeSortBy('price-descending')" title="{{ 'globo_filter.sorting.price_descending' | t }}" class="sort-item-link js-no-transition">{{ 'globo_filter.sorting.price_descending' | t }}</a></li>            <li><a onclick="changeSortBy('created-descending')" title="{{ 'globo_filter.sorting.date_descending' | t }}" class="sort-item-link js-no-transition">{{ 'globo_filter.sorting.date_descending' | t }}</a></li>            <li><a onclick="changeSortBy('created-ascending')" title="{{ 'globo_filter.sorting.date_ascending' | t }}" class="sort-item-link js-no-transition">{{ 'globo_filter.sorting.date_ascending' | t }}</a></li>            <li><a onclick="changeSortBy('sale-descending')" title="{{ 'globo_filter.sorting.sale_percent' | t }}" class="sort-item-link js-no-transition">{{ 'globo_filter.sorting.sale_percent' | t }}</a></li>        </ul>
+    </div>
+</div>

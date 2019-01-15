@@ -1,0 +1,37 @@
+{% if template contains 'collection' %}
+{{ 'v4.globo.filter.css' | asset_url | stylesheet_tag }}<script>
+  var GloboFilterConfig = {
+    api: {
+      filterUrl: "https://app.globosoftware.net/filter/filter"
+    },
+    shop: {
+      name: "{{ shop.name | escape }}",
+      url: "{{ shop.url }}",
+      domain: "{{ shop.permanent_domain }}",
+    },
+    moneyFormat: "{{ shop.money_format | replace:'"',"'" }}",
+    collectionId: {{ collection.id | default: 0 }},
+    collectionSort: "{{ collection.default_sort_by | default: 'best-selling' }}",
+    currentTags: {{ current_tags | json }},
+    currentVendor: "{{ collection.current_vendor }}",
+    currentType: "{{ collection.current_type }}",
+    no_image_url: "https://cdn.shopify.com/s/images/themes/product-1.png",
+    filterLayout: 2,
+    showCount: 1,
+    isLoadMore: true,
+    themeStoreId:  796,
+    filter_class: "gf-top_one swatch-round theme-store-id-796"
+  };
+</script>
+
+{% include 'globo.filter.template' %}<!-- Include Resources -->
+{{ 'v4.globo.filter.lib.js' | asset_url | script_tag }}
+<!-- Initialize App -->
+<script>
+  var globofilter = new GloboFilter();
+  globofilter.init();
+</script>
+
+<!-- Initialize & Customize Filter -->
+<script>globofilter.initFilter();</script>
+{% endif %}

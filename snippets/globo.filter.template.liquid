@@ -1,0 +1,127 @@
+<!-- /* Start: product Template */ -->
+<script id="productTemplate" type="template/html">
+    <div class="product col-lg-4 col-md-4 col-sm-4 col-xs-6">
+        <div class="product-inner clearfix aspect-ratio-075 {!soldOutClass!}">
+            <div class="product-thumbnail   hover-effect">
+                <a class="loop-thumbnail" href="{% if collection.handle %}/collections/{{collection.handle}}{% endif %}/products/{!productHandle!}">
+                    {!soldOut!}                    {!sale!}                    <div class="aspect-product__images">
+                        <img class="lazy product-item-image aspect-product__picture" src="{!productFeaturedImage!}" data-src="{!productFeaturedImage!}" alt="{!productTitle!}">
+                        <img class="lazy image-hover aspect-product__picture" src="{!productSecondImage!}" alt="{!productTitle!}">                    </div>
+                </a>
+                                <div class="footer-button">
+                                            <a onclick="globofilter.quickView('{% if collection.handle %}/collections/{{collection.handle}}{% endif %}/products/{!productHandle!}')" href="javascript:;" class="product-quick-view"><i class="p-icon ion-ios-eye-outline" data-original-title="Quick View" rel="tooltip"></i></a>
+                                                                <form action="/cart/add" method="post" enctype="multipart/form-data">
+                            <input type="hidden" name="id" value="{!productFirstVariant!}">
+                            <button type="submit" class="button product_type_simple add_to_cart_button ajax_add_to_cart"><i class="p-icon ion-bag" rel="tooltip" data-original-title="Add to cart"></i></button>
+                        </form>
+                                        <div class="clear"></div>
+                </div>
+                            </div>
+            <div class="product-details">
+                <h3><a href="{% if collection.handle %}/collections/{{collection.handle}}{% endif %}/products/{!productHandle!}">{!productTitle!}</a></h3>
+                <div class="grid-view-item__vendor">{!productVendor!}</div>                <div class="star-rating"><span class="shopify-product-reviews-badge" data-id="{!productId!}"></span></div>
+                <span class="price-wrapper">
+                    <span class="price">
+                        {!productCompareAtPrice!}
+                        {!productPrice!}
+                    </span>
+                </span>
+                {!colorSwatch!}                <div class="clear"></div>
+            </div>
+        </div>
+    </div>
+</script>
+
+<script id="productTemplate_soldOut" type="template/html">
+    <span class="sold-out">{{ 'globo_filter.generate.sold_out' | t }}</span>
+</script>
+<script id="productTemplate_soldOutClass" type="template/html"> soldout</script>
+<script id="productTemplate_sale" type="template/html">
+    <span class="sale">{{ 'globo_filter.generate.sale' | t }}</span>
+</script>
+<script id="productTemplate_price" type="template/html">
+    <span class="price-new money">{!price!}</span>
+</script>
+<script id="productTemplate_comparePrice" type="template/html">
+    <del><span class="price-old money">{!compare_at_price!}</span></del>
+</script>
+<!-- /* End: product Template */ -->
+
+<!-- /* Start: filter Tree Template */ -->
+<script id="filterTreeHTML" type="template/html">
+  <h3 href="javascript:void(0)" class="gf-refine-toggle-mobile visible-xs" tabindex="0" aria-label="Filter by">
+    <i class="ion-ios-settings"></i> {{ 'globo_filter.sorting.filter_by' | t }}    {!clearAll!}
+  </h3>
+  <div class="gf-filter-contents">{!filterHTML!}</div>
+  {!selectedHTML!}
+</script>
+
+<script id="selectedHTML" type="template/html">
+<div class="globo-selected-items-wrapper hidden-xs">
+  <ul class="globo-selected-items">
+    <li class="selected-item gf-option-label"><a href="javascript:;" onclick="clearAllFilter()" class="clear-refinements">{{ 'globo_filter.generate.clear_all' | t }}</a></li>
+    {!selectedItems!}
+  </ul>
+</div>
+</script>
+
+<script id="selectedItems" type="template/html">
+<li class="selected-item gf-option-label">
+  <a onclick="removeFilterValue({!filterOptionId!},{!id!})" href="javascript:;">
+    <span class="selected-item"><strong>{!value!}</strong></span>
+    <span class="gf-clear"></span>
+  </a>
+</li>
+</script>
+
+<script id="clearHTML" type="template/html">
+  <a href="javascript:" class="gf-clear" onclick="removeFilter({!filterOptionId!})">{{ 'globo_filter.generate.clear' | t }}</a>
+</script>
+
+<script id="clearAllHTML" type="template/html">
+  <a href="javascript:;" onclick="clearAllFilter()" class="gf-refine-toggle">{{ 'globo_filter.generate.clear_all' | t }}</a>
+</script>
+
+<script id="filterHTML" type="template/html">
+  <div class="gf-option-block {!style!} {!iscollapsed!}">
+    <div class="gf-block-title">
+      <h3><span>{!label!}</span><span class="js-status-icon ion-plus-round" aria-hidden="true"></span><span class="js-status-icon ion-minus-round" aria-hidden="true"></span></h3>
+      {!clear!}
+    </div>
+    <div class="gf-block-content">
+      <div class="gf-scroll {!scroll!}">
+        {!ul!}
+      </div>
+    </div>
+  </div>
+</script>
+
+<script id="filterCollectionItem" type="template/html">
+  <li><a{!selected!} onclick="changeCollection({!id!}, '{!handle!}')" href="javascript:">{!value!}{!count!}</a></li>
+</script>
+
+<script id="filterCheckboxItem" type="template/html">
+  <li><a{!selected!} onclick="toggleCheckboxFilter({!filterOptionId!},{!id!})" href="javascript:">{!value!}{!count!}</a></li>
+</script>
+
+<script id="filterRadioItem" type="template/html">
+  <li><a{!selected!} onclick="toggleRadioFilter({!filterOptionId!},{!id!})" href="javascript:">{!value!}{!count!}</a></li>
+</script>
+
+<script id="filterSwatchItem" type="template/html">
+  <li><a{!selected!} onclick="toggleCheckboxFilter({!filterOptionId!},{!id!})" href="javascript:" title="{!value!}">{!swatch!}</a></li>
+</script>
+
+<script id="filterRangeBlock" type="template/html">
+  <div class="gf-range-inputs">
+    <input class="gf-range-min" id="min-{!filterOptionId!}" value="{!valuemin!}" type="text">
+    <span class="gf-range-split"> - </span>
+    <input class="gf-range-max" id="max-{!filterOptionId!}" value="{!valuemax!}" type="text">
+    <input class="gf-inputs" value="{!valuemin!}:{!valuemax!}" id="ranger-{!filterOptionId!}" name="filter[{!filterOptionId!}][]" type="hidden">
+  </div>
+  <div class="gf-range-slider" data-min="{!rangemin!}" data-max="{!rangemax!}" data-id="{!filterOptionId!}" data-attribute="{!filterOptionId!}" id="slider-{!filterOptionId!}"></div>
+</script>
+<!-- /* End: filter Tree Template */ -->
+<script id="filterLoadMore" type="template/html">
+    <svg class="lds-spinner" width="60px"  height="60px"  xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 100 100" preserveAspectRatio="xMidYMid" style="background: none;"><g transform="rotate(0 50 50)"><rect x="47" y="24" rx="9.4" ry="4.8" width="6" height="12" fill="#000"><animate attributeName="opacity" values="1;0" keyTimes="0;1" dur="1s" begin="-0.9166666666666666s" repeatCount="indefinite"></animate></rect></g><g transform="rotate(30 50 50)"><rect x="47" y="24" rx="9.4" ry="4.8" width="6" height="12" fill="#000"><animate attributeName="opacity" values="1;0" keyTimes="0;1" dur="1s" begin="-0.8333333333333334s" repeatCount="indefinite"></animate></rect></g><g transform="rotate(60 50 50)"><rect x="47" y="24" rx="9.4" ry="4.8" width="6" height="12" fill="#000"><animate attributeName="opacity" values="1;0" keyTimes="0;1" dur="1s" begin="-0.75s" repeatCount="indefinite"></animate></rect></g><g transform="rotate(90 50 50)"><rect x="47" y="24" rx="9.4" ry="4.8" width="6" height="12" fill="#000"><animate attributeName="opacity" values="1;0" keyTimes="0;1" dur="1s" begin="-0.6666666666666666s" repeatCount="indefinite"></animate></rect></g><g transform="rotate(120 50 50)"><rect x="47" y="24" rx="9.4" ry="4.8" width="6" height="12" fill="#000"><animate attributeName="opacity" values="1;0" keyTimes="0;1" dur="1s" begin="-0.5833333333333334s" repeatCount="indefinite"></animate></rect></g><g transform="rotate(150 50 50)"><rect x="47" y="24" rx="9.4" ry="4.8" width="6" height="12" fill="#000"><animate attributeName="opacity" values="1;0" keyTimes="0;1" dur="1s" begin="-0.5s" repeatCount="indefinite"></animate></rect></g><g transform="rotate(180 50 50)"><rect x="47" y="24" rx="9.4" ry="4.8" width="6" height="12" fill="#000"><animate attributeName="opacity" values="1;0" keyTimes="0;1" dur="1s" begin="-0.4166666666666667s" repeatCount="indefinite"></animate></rect></g><g transform="rotate(210 50 50)"><rect x="47" y="24" rx="9.4" ry="4.8" width="6" height="12" fill="#000"><animate attributeName="opacity" values="1;0" keyTimes="0;1" dur="1s" begin="-0.3333333333333333s" repeatCount="indefinite"></animate></rect></g><g transform="rotate(240 50 50)"><rect x="47" y="24" rx="9.4" ry="4.8" width="6" height="12" fill="#000"><animate attributeName="opacity" values="1;0" keyTimes="0;1" dur="1s" begin="-0.25s" repeatCount="indefinite"></animate></rect></g><g transform="rotate(270 50 50)"><rect x="47" y="24" rx="9.4" ry="4.8" width="6" height="12" fill="#000"><animate attributeName="opacity" values="1;0" keyTimes="0;1" dur="1s" begin="-0.16666666666666666s" repeatCount="indefinite"></animate></rect></g><g transform="rotate(300 50 50)"><rect x="47" y="24" rx="9.4" ry="4.8" width="6" height="12" fill="#000"><animate attributeName="opacity" values="1;0" keyTimes="0;1" dur="1s" begin="-0.08333333333333333s" repeatCount="indefinite"></animate></rect></g><g transform="rotate(330 50 50)"><rect x="47" y="24" rx="9.4" ry="4.8" width="6" height="12" fill="#000"><animate attributeName="opacity" values="1;0" keyTimes="0;1" dur="1s" begin="0s" repeatCount="indefinite"></animate></rect></g></svg>
+</script>

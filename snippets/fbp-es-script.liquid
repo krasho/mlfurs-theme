@@ -1,0 +1,109 @@
+<script>
+ 
+var pInfScrLoading = false;
+var pInfScrDelay= 500;
+
+
+function windowHeight() {
+    var docElemProp = window.document.documentElement.clientHeight,
+        body = window.document.body;
+    return window.document.compatMode === 'CSS1Compat' && docElemProp || body && body.clientHeight || docElemProp;
+}
+  
+
+function fadeIn(el) {
+  el.style.opacity = 0;
+
+
+  var tick = function() {
+    el.style.opacity = +el.style.opacity + 0.01;
+
+
+    if (+el.style.opacity < 1) {
+      (window.requestAnimationFrame && requestAnimationFrame(tick)) || setTimeout(tick, 50)
+    }
+  };
+
+  tick();
+}
+
+
+function pInfScrExecute() {
+	var height = document.body.scrollHeight;
+    var scrollTop = (window.pageYOffset !== undefined) ? window.pageYOffset : (document.documentElement || document.body.parentNode || document.body).scrollTop;
+
+	if(height - 1500 < (scrollTop + windowHeight())) {
+		var loadingImage;
+		var morenodes = document.querySelectorAll('.more');
+        var fbpLoading = document.querySelectorAll('.fbp-loading');
+		var moreANodesdocument = document.querySelectorAll('.more a');
+		pInfScrNode =  morenodes[morenodes.length-1];
+        fbploadingdiv = fbpLoading[fbpLoading.length-1];
+		
+		if(!pInfScrLoading && pInfScrNode!=null && pInfScrNode.style.display != 'none') {
+		  
+            pInfScrURL = moreANodesdocument[moreANodesdocument.length-1].href;
+			var request = new XMLHttpRequest();
+			request.open('GET', pInfScrURL, true);
+			pInfScrLoading = true;
+			  loadingImage = fbploadingdiv
+              loadingImage.innerHTML = '<img style="width:200px; margin:0 auto;" src="https://cdn.shopify.com/s/files/1/2302/3221/files/Eclipse.svg"/>';
+			  pInfScrNode.parentNode.insertBefore(loadingImage, pInfScrNode.nextSibling);
+			  pInfScrNode.style.display = 'none';
+			request.onload = function() {
+			  if (request.status >= 200 && request.status < 400) {
+				// Success!
+				var resp = request.responseText;
+                loadingImage.innerHTML = '';
+                if(pInfScrNode && pInfScrNode.parentNode && pInfScrNode.nextSibling){
+				   pInfScrNode.parentNode.removeChild(pInfScrNode.nextSibling);
+					var el = document.createElement( 'div' );
+					el.innerHTML = resp;
+				  var filteredData = el.querySelector('.collection-matrix');
+				 
+                fadeIn(document.getElementById('product-list-foot').parentNode.insertBefore( filteredData, document.getElementById('product-list-foot') ));
+
+                  
+				  
+				  pInfScrLoading = false;
+
+                  
+                }
+			  }
+			};
+			request.send();
+		}
+  }
+}
+
+function domReady()
+{
+	var height = document.body.scrollHeight;
+	var scrollTop = (window.pageYOffset !== undefined) ? window.pageYOffset : (document.documentElement || document.body.parentNode || document.body).scrollTop;
+
+	window.onscroll = function(){
+	
+			setTimeout(pInfScrExecute, pInfScrDelay);
+			if( height - 1500 > scrollTop + windowHeight() ) {
+			  pInfScrDelay = 100;
+		}
+  };	
+}
+
+if (document.addEventListener) {
+    document.addEventListener('DOMContentLoaded', function () {
+        document.removeEventListener('DOMContentLoaded', arguments.callee, false);
+        domReady();
+    }, false);
+
+    // If IE event model is used
+} else if (document.attachEvent) {
+    // ensure firing before onload
+    document.attachEvent('onreadystatechange', function () {
+        if (document.readyState === 'complete') {
+            document.detachEvent('onreadystatechange', arguments.callee);
+            domReady();
+        }
+    });
+}
+</script>

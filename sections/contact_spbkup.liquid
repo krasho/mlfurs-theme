@@ -1,0 +1,112 @@
+	<section class="main-contact">
+		<div class="container-fluid">
+			<div class="row">
+				{% include 'nav-sidebar', option_selected: 'contact' %}
+				<div class="col">
+					<div class="main-contact__banner" style="background-image: url({{ section.settings.banner | img_url: 'master' }})">
+						<div class="main-contact__banner-title">Contact us</div>
+						<div class="main-contact__banner-descr">
+							{{section.settings.description}}
+						</div>
+					</div>
+					<div class="main-contact__content">
+						<div class="row">
+							<div class="col-lg-10 offset-lg-1">
+								<div class="contact-map">
+									<div class="contact-map__info">
+										<div class="contact-map__info-block contact-map__info-block_theme_brown">
+											<div class="contact-map__info-title">Marks-Lloyds Furs</div>
+											<div class="contact-map__info-address">
+												<div class="contact-map__info-descr">263 Josephine St.<br>Denver, CO 80206</div>
+												<a href="http://maps.google.com/maps?f=q&source=s_q&hl=en&geocode=&q=263+Josephine+St.+Denver,+CO+80206&sll=37.0625,-95.677068&sspn=41.546728,93.076172&ie=UTF8&hq=&hnear=263+Josephine+St,+Denver,+Colorado+80206&z=16" class="contact-map__location-link location-link">Directions</a>
+											</div>
+										</div>
+										<div class="contact-map__info-block">
+											<div class="contact-map__info-descr">
+												<a class="contact-map__info-link" href="tel:3033222287">303-322-22-87</a><br>
+												<a class="contact-map__info-link" href="tel:3033222287">1-877-mlf-furs <br >(1-877-653-3877)</a>
+											</div>
+										</div>
+										<div class="contact-map__info-block">
+											<div class="contact-map__info-descr">
+												Hours: <br>
+												Mon-Sat 9am - 5:30pm <br>
+												Sunday 11am - 3pm
+											</div>
+											<div class="contact-map__info-descr">
+												Football games are televised on Saturdays and Sundays.
+											</div>
+										</div>
+
+										{% form 'contact' , class: 'account-form'%}
+											{%- assign formId = 'ContactForm' -%}
+											{% include 'form-status', formId %}
+
+                      <div class="account-form__title">Send us a message</div>
+											<div class="account-form__body">
+													<label for="{{ formId }}-name">{{ 'contact.form.name' | t }}</label>
+													<input class="input-text account-form__input-text" type="text" id="{{ formId }}-name" name="contact[name]" value="{% if form[name] %}{{ form[name] }}{% elsif customer %}{{ customer.name }}{% endif %}">
+
+													<label for="{{ formId }}-email">{{ 'contact.form.email' | t }} <span aria-hidden="true">*</span></label>
+													<input
+														type="email"
+														class="input-text account-form__input-text"
+														id="{{ formId }}-email"
+														name="contact[email]"
+														autocorrect="off"
+														autocapitalize="off"
+														value="{% if form.email %}{{ form.email }}{% elsif customer %}{{ customer.email }}{% endif %}"
+														aria-required="true"
+														{%- if form.errors contains 'email' -%}
+															class="input--error"
+															aria-invalid="true"
+															aria-describedby="{{ formId }}-email-error"
+														{%- endif -%}
+														>
+
+
+													<label for="{{ formId }}-message">{{ 'contact.form.message' | t }}</label>
+													<textarea class="input-text account-form__input-text" rows="10" id="{{ formId }}-message" name="contact[body]">{% if form.body %}{{ form.body }}{% endif %}</textarea>
+
+													<input type="submit" class="form-button" value="{{ 'contact.form.submit' | t }}">
+
+											</div>
+											
+
+										{% endform %}
+
+									</div>
+									<div class="map contact-map__map">
+										<iframe src="https://snazzymaps.com/embed/82111" width="100%" height="100%" style="border:none;"></iframe>
+									</div>
+								</div>
+								<div class="main-contact__map-descr">
+								   Marks-Lloyds Furs is conveniently located in Cherry Creek North at 263 Josephine St.; where University Boulevard becomes a one-way traveling North, between 2nd and 3rd Ave. on the West side of the street.   Free validated parking in the US bank building located at 210 University BLVD.
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+
+
+
+			</div>
+		</div>
+	</section>
+
+{% schema %} {
+  "name": "Contact Us",
+  "settings": [
+    {
+      "id": "banner",
+      "type": "image_picker",
+      "label": "Banner"
+    },
+    {
+      "id": "description",
+      "type": "richtext",
+      "label": "Description"
+    }	 
+  ]
+}
+{% endschema %}

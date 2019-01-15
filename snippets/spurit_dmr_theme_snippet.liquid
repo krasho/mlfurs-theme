@@ -1,0 +1,30 @@
+<script>
+  if(typeof(Spurit) === 'undefined'){
+    var Spurit = {};
+  }
+  if(!Spurit.Discountmanager){
+    Spurit.Discountmanager = {};
+  }
+  if(!Spurit.Discountmanager.snippet){
+    Spurit.Discountmanager.snippet = {};
+  }
+
+  Spurit.Discountmanager.snippet.shopHash = '1ae2271dea067bbf2ff33f8898078c55';
+
+  Spurit.Discountmanager.snippet.products = {};
+  {% if collection %}
+      {% for i in (1..50) %}
+          {% paginate collection.products by i %}
+              {% for product in collection.products %}
+                Spurit.Discountmanager.snippet.products['{{product.handle}}'] = {{product.id}};
+              {% endfor %}
+          {% endpaginate %}
+      {% endfor %}
+  {% endif %}
+  {% if product %}
+    Spurit.Discountmanager.snippet.product = {{product.id}};
+  {% endif %}
+</script>
+
+<script src="https://s3.amazonaws.com/shopify-apps/discountmanager2/common.js"></script>
+<link href="https://s3.amazonaws.com/shopify-apps/discountmanager2/common.css" rel="stylesheet" type="text/css" media="all">

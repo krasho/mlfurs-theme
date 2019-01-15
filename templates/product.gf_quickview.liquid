@@ -1,0 +1,103 @@
+{% layout none %}
+{%- assign current_variant = product.selected_or_first_available_variant -%}
+    <div itemscope itemtype="http://schema.org/Product" class="product">
+      <a href="#" class="gfqv-close-modal"><i class="ion-ios-close-empty"></i></a>
+      <div class="gfqv-product-wrapper">
+        <div class="container">
+          <meta itemprop="url" content="{{product.url}}" />
+          <meta itemprop="image" content="{{ product.featured_image.src | img_url: '800x' }}" />
+          <div class="row">
+            <div class="col-md-6 col-sm-12 col-xs-12 product-images-wrapper">
+              <div id="product-images-content-product-quickview-template" class="product-images-content">
+                <div class="product-gallery" >
+                  <figure id="product-images-product-quickview-template" class="product-images owl-carousel">
+                    {% for image in product.images %}
+                    <div data-thumb="{{image | img_url: '70x70'}}" class="product-gallery__image easyzoom el_zoom">
+                      <a class="zoom FeaturedImage-product-quickview-template"
+                         href="{{image | img_url}}" tabindex="-1"
+                         data-id="#product-video-template-24077711628"
+                         data-type=""
+                         data-size="1500x1500" >
+                        <img src="{{image | img_url: '600x600'}}"
+                             class="lazy attachment-shop_single size-shop_single"
+                             data-src="{{image | img_url: 'original'}}"
+                             alt="{{ product.title }}"
+                             data-large_image="{{image | img_url: 'original'}}"
+                             data-large_image_width="1500"
+                             data-large_image_height="1500"
+                             srcset="{{image | img_url: '600x'}} 600w, {{image | img_url: '150x'}} 150w, {{image | img_url: '300x'}} 300w, {{image | img_url: '768x'}} 768w, {{image | img_url: '70x'}} 70w, {{image | img_url: '480x'}} 480w, {{image | img_url: '370x'}} 370w, {{image | img_url: '540x'}} 540w, {{image | img_url: '1000x'}} 1000w" sizes="(max-width: 600px) 100vw, 600px">
+                      </a>
+                    </div>
+                    {% endfor %}
+                  </figure>
+                </div>
+                <div class="product-thumbnails" id="product-thumbnails-product-quickview-template">
+                  <div class="thumbnails">
+                    {% for image in product.images %}
+                    <div>
+                      <img src="{{image | img_url: '70x70'}}"
+                           class="attachment-shop_thumbnail size-shop_thumbnail" alt="Clothes Boxed"
+                           srcset="{{image | img_url: '70x'}} 70w, {{image | img_url: '150x'}} 150w, {{image | img_url: '235x'}} 235w, {{image | img_url: '768x'}} 768w" sizes="(max-width: 70px) 100vw, 70px" />
+                    </div>
+                    {% endfor %}
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="col-md-6 col-sm-12 col-xs-12 col-md-offset-1 product-summary">
+              <div class="product-details">
+                <h1 itemprop="name" class="product_title">{{product.title}}</h1>
+                <div class="rt-unero-product-rating"><span class="shopify-product-reviews-badge" data-id="{{product.id}}"></span></div>
+                <div itemprop="offers" itemscope itemtype="http://schema.org/Offer">
+                  <div class="product-single__price-product-quickview-template">
+                    <p class="price">
+                      <span id="product-quickview-price" class="price-new">
+                        <span class="money">{{current_variant.price | money}}</span>
+                      </span>
+                      <del id="product-quickview-oldprice">
+                        <span class="price-old">
+                          <span class="money">{{current_variant.compare_at_price | money}}</span>
+                        </span>
+                      </del>
+                    </p>
+                  </div>
+                </div>
+
+                <div itemprop="description" class="woo-short-description">
+                  {{ product.description }}
+                </div>
+                <form action="/cart/add" method="post" enctype="multipart/form-data" class="globo-product-form">
+                  {% if product.variants.size > 1 %}
+                  <select name="id" id="gfqv-select">
+                    {% for variant in product.variants %}
+                    {% if variant.available %}
+                    <option {% if variant == product.selected_or_first_available_variant %} selected="selected" {% endif %} value="{{ variant.id }}">
+                      {{ variant.title }}
+                    </option>
+                    {% else %}
+                    <option disabled="disabled">{{ variant.title }} - {{ 'globo_filter.generate.sold_out' | t }}</option>
+                    {% endif %}
+                    {% endfor %}
+                  </select>
+                  {% else %}
+                  <input type="hidden" name="id" value="{{product.selected_or_first_available_variant.id}}" />
+                  {% endif %}
+                  <div class="variations_button">
+                    <div class="quantity">
+                      <span class="decrease ion-ios-minus-empty"></span>
+                      <input type="number" step="1" min="1" max="20" name="quantity" value="1" title="Qty" class="input-text qty text" size="4" pattern="[0-9]*" inputmode="numeric" />
+                      <span class="increase ion-ios-plus-empty"></span>
+                    </div>
+                    <div id="gfqv-btn-wrap">
+                      <button type="submit" id="gfqv-btn">{{ 'globo_filter.generate.add_to_cart' | t }}</button>
+                    </div>
+                  </div>
+                </form>
+                <div class="clear"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  {% unless product == empty %}<script type="application/json" id="ProductJson-product-template">{{ product | json }}</script>{% endunless %}
