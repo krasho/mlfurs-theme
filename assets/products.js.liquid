@@ -73,6 +73,8 @@ function showDiagonalImage() {
             value = mlfurs.cleanCharacters(filter_content[item]);
             id = "#diagonal_option_"+name+"_"+value;
 
+            id = id.replace(/\./g,'_');
+
             if (mlfurs.checkIfThereIsFilterSelected() == false) {
                 enableOption("#option_"+name+"_"+value);                      
             } else {
