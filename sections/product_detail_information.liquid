@@ -214,7 +214,7 @@
 
                                                 <svg class="product-info__diagonal-line" 
                                                      style="display: none;"
-                                                     id="diagonal_option_{{option_name}}_{{option_value}}">
+                                                     id="diagonal_option_{{option_name}}_{{option_value | replace: '.', '_' }}">
                                                                                                             
                                                       <line x1='0' y1='0' x2='100%' y2='100%' />
 
@@ -236,7 +236,7 @@
 
                                                 <svg class="product-info__diagonal-line" 
                                                      style="display: none;"
-                                                     id="diagonal_option_{{option_name}}_{{option_value}}">
+                                                     id="diagonal_option_{{option_name}}_{{option_value | replace: '.', '_' }}">
                                                                                                             
                                                       <line x1='0' y1='0' x2='100%' y2='100%' />
 
@@ -287,6 +287,33 @@
                              <!--<input type="hidden" id="variants_separated_by_comma" value="{{varianst_separated_by_comma}}">   -->
                                 
                         {%- else -%}
+                            {% for product_option in product.options_with_values %}
+                                {%- if product_option.name == "Color" -%} 
+                                     {% assign loopCount =  forloop.index %}                                   
+                                    <div class="product-info__color-boxes">
+                                            <div class="product-info__color-box option_to_select_active" 
+                                                 style="background-image: url('{{image_to_color | asset_url}}'); 
+                                                        background-repeat: no-repeat;
+                                                        {{outline}}
+                                                        background-size: 100%;
+                                                        position: relative">
+                                            </div>                                            
+                                    </div>
+
+                                {%- else -%}
+                                    <div class="product-info__size-boxes">
+                                        <div class="product-info__size-box option_to_select_active" 
+                                             style="position: relative">
+                                        
+                                                {{ product.variants.first.title | replace: "-", "<br />" }} 
+                                        </div>
+                                    </div>
+                                {%- endif -%} 
+                            {%- endfor -%}  
+
+                                    
+
+
                             <input type="hidden" name="id" id="product-select" value="{{ product.variants.first.id }}" />
                         {%- endif -%}            
                                     <div class="product-info__count-add">
@@ -625,7 +652,6 @@
 				 newValue = newValue.toLowerCase();				 
 				 newValue = newValue.split("/").join("");
 				 newValue = newValue.split(" ").join("");
-
 			  }
 		   }	
            
