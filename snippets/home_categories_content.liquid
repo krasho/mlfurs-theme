@@ -1,23 +1,28 @@
-    <div class="col-12 col-lg-6 banners__item">
-        <div class="banner-preview" style="background-image: url({{ preview1 | img_url: 'master' }});">
-            <!--<h2>SHOP NEW MARKDOWNS AND NEW ITEMS UP TO 65% OFF</h2>
-            <h2>SHOP ML FURS SALE NOW</h2> -->
-            <div class="banner-preview__text">{{section.settings.preview1_description}}</div>
-            <a href="{{section.settings.preview1_link}}" class="banner-preview__button button-preview">{{section.settings.preview1_text_button}}</a>
-        </div>
+<style>
+    .card-body{
+        padding: 0px;
+    }
+    .promotionals > .btn{
+        border-radius: 0rem;
+    }
 
-    </div>
-    <div class="col-12 col-lg-6 banners__item">
-
-        <div class="banner-preview" style="background-image: url({{ preview2 | img_url: 'master' }});">
-              
-            <!--<h2>SHOP THE LARGEST FUR COLLECTION ONLINE WITH MLFURS YEAR END SALES</h2>
-          <h1>Shop Now to Save</h1> -->
-            <div class="banner-preview__text">{{section.settings.preview2_description}}</div>
-            <div class="banner-preview__buttons">
-                <a href="{{section.settings.preview2_link_1}}" class="banner-preview__button button-preview">{{section.settings.preview2_text_button}}</a>
-                <!--<a href="{{section.settings.preview2_link_2}}" class="banner-preview__button button-preview">Shop </a>-->
+</style>
+<div class="row">
+    <div class="col-md-6">
+        <div class="card text-center">
+            <div class="card-body promotionals">
+                <img class="img-responsive" src="{{  preview1 | img_url: 'master'  }}" />
+                <a href="{{section.settings.preview1_link}}" class="btn btn-lg btn-block button-preview_dark">{{section.settings.preview1_text_button}}</a>
             </div>
         </div>
 
     </div>
+    <div class="col-md-6">
+        <div class="card text-center">
+            <div class="card-body promotionals">
+                <img class="img-responsive" src="{{  preview2 | img_url: 'master'  }}" />
+                <a href="{{section.settings.preview2_link_1}}"  class="btn btn-lg btn-block button-preview_dark">{{section.settings.preview1_text_button}}</a>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,448 @@
+{
+  "current": {
+    "color_text": "#3d4246",
+    "color_body_text": "#69727b",
+    "color_sale_text": "#557b97",
+    "color_borders": "#e8e9eb",
+    "color_button": "#557b97",
+    "color_button_text": "#fff",
+    "color_small_button": "#fff",
+    "color_small_button_text": "#3d4246",
+    "color_text_field": "#fff",
+    "color_text_field_text": "#000",
+    "color_image_overlay_text": "#fff",
+    "color_image_overlay": "#3d4246",
+    "image_overlay_opacity": 40,
+    "color_body_bg": "#fff",
+    "type_header_font": "work_sans_n6",
+    "type_header_base_size": 26,
+    "type_base_font": "work_sans_n4",
+    "type_base_size": 16,
+    "type_bold_product_titles": false,
+    "share_image": "",
+    "share_facebook": true,
+    "share_twitter": true,
+    "share_pinterest": true,
+    "social_twitter_link": "",
+    "social_facebook_link": "",
+    "social_pinterest_link": "",
+    "social_instagram_link": "",
+    "social_tumblr_link": "",
+    "social_snapchat_link": "",
+    "social_youtube_link": "",
+    "social_vimeo_link": "",
+    "favicon": "shopify:\/\/shop_images\/favicon.png",
+    "checkout_header_image": "",
+    "checkout_logo_image": "shopify:\/\/shop_images\/logo.png",
+    "checkout_logo_position": "left",
+    "checkout_logo_size": "medium",
+    "checkout_body_background_image": "",
+    "checkout_body_background_color": "#fff",
+    "checkout_input_background_color_mode": "white",
+    "checkout_sidebar_background_image": "",
+    "checkout_sidebar_background_color": "#fafafa",
+    "checkout_heading_font": "Lato",
+    "checkout_body_font": "Lato",
+    "checkout_accent_color": "#74adb4",
+    "checkout_button_color": "#74adb4",
+    "checkout_error_color": "#e32c2b",
+    "scm_pl_piregex": "img.slider-nav__image",
+    "scm_pl_pisregex": "a.product__link",
+    "sections": {
+      "header": {
+        "type": "header",
+        "settings": {
+          "logo": "shopify:\/\/shop_images\/MLFurs_logo.png",
+          "main_linklist": "main-menu"
+        }
+      },
+      "hero": {
+        "type": "hero",
+        "settings": {
+          "hero_image": "shopify:\/\/shop_images\/Sweetest_Sale_1900x767_Hero_40_V2_0f53419a-9168-4494-801c-3562dca6d9a4.jpg",
+          "hero_image_tablet": "shopify:\/\/shop_images\/friendsgiving_1698x900_0d60c68f-1a3b-43d6-b7ee-b62c9c61fb5a.jpg",
+          "hero_image_mobile": "shopify:\/\/shop_images\/CyburrDays_HeroBanner_Extended2_9ea18037-8f62-4ef4-867e-537d403ea28d.jpg",
+          "hero_title": "",
+          "hero_subtitle": "",
+          "hero_description": "",
+          "hero_text_button": "Shop Now",
+          "hero_link_button": "shopify:\/\/collections\/sweetest-sale",
+          "hero_show_button": false
+        }
+      },
+      "footer": {
+        "type": "footer",
+        "settings": {
+          "text_for_title_to_left_section": "VISIT US",
+          "text_for_address": "263 Josephine St.",
+          "text_for_location": "Denver, CO 80206",
+          "text_for_time": "Mon-Sat 10am-5:30pm Mountain Time",
+          "text_for_phone1": "1-877-653-3877",
+          "text_for_phone2": "1-303-322-2287",
+          "text_for_footer_menu_linklist": "SHOP MLFURS",
+          "footer_menu_linklist": "footer",
+          "text_for_footer_menu2_linklist": "CUSTOMER CARE",
+          "footer_menu2_linklist": "footer-menu-2",
+          "footer_url_facebook": "https:\/\/www.facebook.com\/MarksLloydsFurs\/",
+          "footer_url_twitter": "https:\/\/twitter.com\/markslloydsfurs",
+          "footer_url_instagram": "https:\/\/www.instagram.com\/mlfurs\/",
+          "footer_url_youtube": "https:\/\/www.youtube.com\/user\/mlfurs\/featured?view_as=subscriber",
+          "footer_url_pinterest": "https:\/\/www.pinterest.com\/mlfurs\/"
+        }
+      },
+      "1535420507101": {
+        "type": "ski_and_affirm",
+        "settings": {
+          "promotion_title": "GET ON THE LIST",
+          "promotion_subtitle": "SIGN UP TO SAVE ON YOUR FIRST PURCHASE*",
+          "button_text": "REGISTER NOW",
+          "button_link": "https:\/\/mlfurs.com\/account\/register"
+        }
+      },
+      "1535420535068": {
+        "type": "categories",
+        "settings": {
+          "preview1": "shopify:\/\/shop_images\/Lunar_New_Year_Cat_Preview_10_2.jpg",
+          "preview1_tablet": "shopify:\/\/shop_images\/Lunar_New_Year_Cat_Preview_10_2.jpg",
+          "preview1_mobile": "shopify:\/\/shop_images\/Lunar_New_Year_Cat_Preview_10_2.jpg",
+          "preview1_description": "",
+          "preview1_link": "shopify:\/\/collections\/sale",
+          "preview1_text_button": "SHOP NOW",
+          "preview2": "shopify:\/\/shop_images\/2018_9_Lookbooks_Cat_Preview_2a9231de-ee5b-498c-9199-53d7fdbfbcb6.jpg",
+          "preview2_tablet": "shopify:\/\/shop_images\/2018_9_Lookbooks_Cat_Preview_2a9231de-ee5b-498c-9199-53d7fdbfbcb6.jpg",
+          "preview2_mobile": "shopify:\/\/shop_images\/2018_9_Lookbooks_Cat_Preview_2a9231de-ee5b-498c-9199-53d7fdbfbcb6.jpg",
+          "preview2_description": "",
+          "preview2_link_1": "shopify:\/\/collections\/lookbooks",
+          "preview2_link_2": "shopify:\/\/collections\/lookbooks",
+          "preview2_text_button": "SHOP NOW",
+          "banner_full": "shopify:\/\/shop_images\/Look_Good_Ski_Lower_Banner_1698x600_2ef5a042-94d1-463e-bf77-e3b507503fc0.jpg",
+          "banner_full_tablet": "shopify:\/\/shop_images\/Look_Good_Ski_Lower_Banner_1698x600_2ef5a042-94d1-463e-bf77-e3b507503fc0.jpg",
+          "banner_full_mobile": "shopify:\/\/shop_images\/Look_Good_Ski_Lower_Banner_1698x600_2ef5a042-94d1-463e-bf77-e3b507503fc0.jpg",
+          "banner_full_button_text": "",
+          "banner_full_button_link": "shopify:\/\/collections\/designer-ski-wear"
+        }
+      },
+      "collection_hero": {
+        "type": "collection_hero",
+        "settings": {
+          "hero": "shopify:\/\/shop_images\/category-banner.jpg"
+        }
+      },
+      "collection_content": {
+        "type": "collection_content",
+        "settings": {}
+      },
+      "subscribe": {
+        "type": "subscribe",
+        "settings": {}
+      },
+      "about": {
+        "type": "about",
+        "settings": {
+          "banner": "shopify:\/\/shop_images\/about-banner.png",
+          "photo1": "shopify:\/\/shop_images\/1950_s_Marilyn.jpeg",
+          "photo2": "shopify:\/\/shop_images\/CherryCreekNorth.jpg",
+          "photo3": "shopify:\/\/shop_images\/page_14_no_copy.jpg",
+          "photo4": "shopify:\/\/shop_images\/2017_Lookbook.jpeg",
+          "photo5": "shopify:\/\/shop_images\/IMG_7342.jpg"
+        }
+      },
+      "contact": {
+        "type": "contact",
+        "settings": {
+          "banner": "shopify:\/\/shop_images\/banner-contact.png",
+          "description": "<p>Marks-Lloyds Furs and MLFurs.com are the only places to shop for fur coats, and remember, nothing says glamour like fur, and no one says it better than Marks-Lloyds Furs or MLFurs.com<\/p>"
+        }
+      },
+      "services": {
+        "type": "services",
+        "settings": {
+          "hero": "shopify:\/\/shop_images\/banner-services.jpg",
+          "about_service": "shopify:\/\/shop_images\/services-image-1.png",
+          "more_info": "shopify:\/\/shop_images\/services-image-2.jpeg"
+        }
+      },
+      "sustainability": {
+        "type": "sustainability",
+        "blocks": {
+          "1538518993945": {
+            "type": "text",
+            "settings": {
+              "title": "Real Fur",
+              "image_desktop": "shopify:\/\/shop_images\/80P4581_crop.jpg",
+              "image_tablet": "shopify:\/\/shop_images\/MLFurs-real_fur-tablet.jpeg",
+              "image_mobile": "shopify:\/\/shop_images\/MLFurs-real_fur-mobile.jpeg",
+              "description": "<ul>\n<li>\nProducts contain only real fur, either ranch-raised or from a country that governs sustainability.\n<\/li>\n\n<li>\nReal fur is naturally resilient and can last for decades. Garments can be redesigned and restyled down the road to stay up-to-date with trends through time. Not only does it provide durability, real fur is also biodegradable and does not sit to rot in a landfill at the end of its life. Synthetic garments that come from petroleum, however, do not biodegrade and tend not to last nearly as long as genuine fur.\n<\/li>\n\n<li>\nUnlike plastic-based artificial fur, real fur is a natural, warm, and versatile material with a low ecological burden. Many vegan friendly fashion products produce thousands of synthetic fibres that have been found to harm ocean creatures. A shocking study in 2016 revealed that polyester fleece jackets release up to two grams of microfibres per wash, causing harm to marine life and circling back to humans. Studies have also shown that up to 700,000 plastic fibres could be released during every washing machine cycle and are not capable of being filtered out effectively. \n<\/li>\n\n<li>\nDemand for fur is continually growing in the textile industry, and consumers only want it if it is obtained ethically. The 50% spike in fur sales from 2011 to 2013 was because fur companies are being held more accountable to ethical standards now more than ever. According to the Fur Information Council of America (FICA), the largest U.S. fur industry association, the number of authentic fur designers has climbed from 42 to 500 since 1985.\n<\/li>\n<\/ul>"
+            }
+          },
+          "1538520253897": {
+            "type": "text",
+            "settings": {
+              "title": "Respect For Animals",
+              "image_desktop": "shopify:\/\/shop_images\/respect_for_animals.jpg",
+              "image_tablet": "shopify:\/\/shop_images\/respect_for_animals.jpg",
+              "image_mobile": "shopify:\/\/shop_images\/respect_for_animals.jpg",
+              "description": "<ul>\n<li>Farmed fur-bearers receive constant access to nutritious food\/clean water, protection from predators\/extreme weather, and veterinary care.\n<\/li>\n<li>\nStrict biosecurity protocols are followed to protect livestock from diseases that may come from outside of the fur farm. If a truck is entering the property to deliver food, for example, the tires must pass through an antiseptic bath for disinfection before entering the farmyard. Any visitors are required to wear sterile jumpsuits and boot covers. \n<\/li>\n<li>\nAnimals in fur farms are given the freedom to express their natural behaviors and adapt to life well on the farm. For example, wild mink are known to travel long distances in search of food and many do not live as long as those on the farm if they cannot continue to find food. They spend 70-80% of their time in small, underground dens to feel secure once they have found food. On the farm, mink spend a similar amount of time in their nest boxes and use the rest of their time to eat, drink, and play in attached, larger pens. Given the preferred solitude minks in nature tend to have, on the farm they are housed in individual pens after weaning. Mink that are taken care of on fur farms are ensured pampering and a healthy habitat so that their pelts are well preserved and of extremely high quality. Without these regulations, the market would be forced to turn to places with less regulation, such as China, and quality assurance would dwindle.<\/li>\n<\/ul>"
+            }
+          },
+          "1538520276338": {
+            "type": "text",
+            "settings": {
+              "title": "Respect For Nature",
+              "image_desktop": "shopify:\/\/shop_images\/Traceability_crop.jpg",
+              "image_tablet": "shopify:\/\/shop_images\/Traceability_crop.jpg",
+              "image_mobile": "shopify:\/\/shop_images\/Traceability_crop.jpg",
+              "description": "<ul>\n<li>Fur processing is carefully regulated in North America to protect the environment.\n<\/li>\n<li>\nFur farming completes the agricultural production cycle to ensure that nothing is wasted. Farmed mink and fox are fed leftovers from the parts of chickens, pigs, and fish that we don’t eat. The manure, bedding, and carcasses are composted to produce organic fertilizer that replenishes the soil and spreads the growth of vegetation. \n<\/li>\n<li>\nSourcing as many sustainable products as possible helps to enrich the environment and protect it for the future. \n<\/li>\n<li>\nFaux fur is plastic, and real fur is being missed as a recyclable material. The plastic in faux fur has a negative impact on the environment with every machine wash due to the tiny fibres that are unable to be filtered out of our water systems. Every single bit of plastic that has ever been made still exists and will continue existing for at least 500 years. Replace the creation of plastic with genuine fur, and you have greatly reduced landfill buildup. \n<\/li>\n<li>\nCheap, mass-produced clothing has a very high ecological cost due to its disposability as opposed to natural, recyclable fur that has a long life and can be repurposed into pillows, throws, or new garments and is biodegradable at the end of its life. No matter the purpose, genuine fur can last for generations and does not sit in landfills due to its ability to break down and give back to the earth; it can even be used as compost in your garden!<\/li>\n<\/ul>"
+            }
+          },
+          "1538520290235": {
+            "type": "text",
+            "settings": {
+              "title": "Certification",
+              "image_desktop": "shopify:\/\/shop_images\/Certification.jpg",
+              "image_tablet": "shopify:\/\/shop_images\/Certification.jpg",
+              "image_mobile": "shopify:\/\/shop_images\/Certification.jpg",
+              "description": "<ul>\n<li>Due to an elaborate certification system, the animal welfare standards for fur farming are much more strict than they are for the meat industry.<br>\n<span style=\"color:#33aebc;\">Out of 325.72 million people in the US, 3.2% or 7.3 million people are vegetarians and 59% of those are women.<br>\nOut of 325.72 million people in the US, 0.5% or 1 million are vegans and 79% of those are women.<\/span>\n<\/li>\n<li>\nThe Saga Certification system, in place since 2005, is a unique farm management system producing the highest level of animal welfare.<\/li>\n<li>\nThe main criteria to qualify for Saga Certification includes advanced animal well-being and health, conditions for rearing animals, farm hygiene, breeding conditions, environmental management, food maintenance, and record keeping. The certification has over 60 criteria and is valid for three years at a time and then requires a re-audit. 80% of MLFurs’ inventory is mink, and out of that inventory 70% is Saga certified.<\/li>\n<\/ul>"
+            }
+          },
+          "1538520299330": {
+            "type": "text",
+            "settings": {
+              "title": "Traceability",
+              "image_desktop": "shopify:\/\/shop_images\/80P6005_crop.jpg",
+              "image_tablet": "shopify:\/\/shop_images\/80P6005_crop.jpg",
+              "image_mobile": "shopify:\/\/shop_images\/80P6005_crop.jpg",
+              "description": "<ul>\n<li>All products are either raised from a ranch or come from a country that regulates sustainability for fur products, and are labeled to show the country of origin. \nProducts are obtained through auctions: American Legend, Blackglama, North American Fur Auction (NAFA), Saga Furs, and Kopenhagen Fur Auction House.\n<\/li>\n<li>\nBlackgama offers verification for authenticity via serial numbers which are only visible under ultraviolet light and are inscribed on the label, sewn into each garment, and searchable on their website. \n<\/li>\n<li>\nFurs purchased from Saga Furs allow consumers to follow the skin all the way to the completed product with RFID tagging technology, and may even be able to scan the tag with their phones in the near future to achieve complete transparency.\n<\/li>\n<li>\nNAFA provides Origins Assured labels with its products to provide customer confidence that each garment comes from a country where local or national governance regulates the industry.<\/li>\n<\/ul>"
+            }
+          }
+        },
+        "block_order": [
+          "1538518993945",
+          "1538520253897",
+          "1538520276338",
+          "1538520290235",
+          "1538520299330"
+        ],
+        "settings": {
+          "hero": "shopify:\/\/shop_images\/sustainability.jpg"
+        }
+      },
+      "coming_soon": {
+        "type": "coming_soon",
+        "settings": {
+          "hero_image": "shopify:\/\/shop_images\/banner-1.png"
+        }
+      },
+      "ski_and_affirm": {
+        "type": "ski_and_affirm",
+        "settings": {
+          "promotion_title": "",
+          "promotion_subtitle": "",
+          "button_text": "",
+          "button_link": ""
+        }
+      },
+      "categories": {
+        "type": "categories",
+        "settings": {
+          "preview1": "shopify:\/\/shop_images\/preview-1.png",
+          "preview1_tablet": "",
+          "preview1_mobile": "",
+          "preview1_description": "",
+          "preview1_link": "",
+          "preview1_text_button": "",
+          "preview2": "shopify:\/\/shop_images\/preview-2.png",
+          "preview2_tablet": "",
+          "preview2_mobile": "",
+          "preview2_description": "",
+          "preview2_link_1": "",
+          "preview2_link_2": "",
+          "preview2_text_button": "",
+          "banner_full": "shopify:\/\/shop_images\/banner-2.png",
+          "banner_full_tablet": "",
+          "banner_full_mobile": "",
+          "banner_full_button_text": "",
+          "banner_full_button_link": ""
+        }
+      },
+      "featured_products_home": {
+        "type": "featured_products_home",
+        "blocks": {
+          "1535556767704": {
+            "type": "product",
+            "settings": {
+              "product": ""
+            }
+          },
+          "1535556785114": {
+            "type": "product",
+            "settings": {
+              "product": ""
+            }
+          },
+          "1535556790379": {
+            "type": "product",
+            "settings": {
+              "product": ""
+            }
+          },
+          "1535556795246": {
+            "type": "product",
+            "settings": {
+              "product": ""
+            }
+          }
+        },
+        "block_order": [
+          "1535556767704",
+          "1535556785114",
+          "1535556790379",
+          "1535556795246"
+        ],
+        "settings": {}
+      },
+      "page_hero": {
+        "type": "page_hero",
+        "settings": {
+          "hero_image": "shopify:\/\/shop_images\/banner-2.png",
+          "hero_description": "Appointments"
+        }
+      },
+      "designers_hero": {
+        "type": "designers_hero",
+        "settings": {
+          "hero": "shopify:\/\/shop_images\/Designers_1690x300_ac399c69-ad00-4dfb-8adf-d0ed7feddefb.jpg"
+        }
+      },
+      "cart_content": {
+        "type": "cart_content",
+        "settings": {
+          "term_conditions": "<p>By checking this box, I have read and agree to the <a href=\"\/pages\/terms-and-conditions\" title=\"Terms and Conditions\">Return Policy Terms and Conditions<\/a>.<\/p>\n<p><\/p>\n<p>I accept the policies and terms of MLFurs.com regarding returns, exchanges and credits set forth on this invoice.<\/p>\n<p><\/p>\n<p>If my order is placed over the phone by a representative of ML Furs, all terms and conditions are agreed to by customer verbally set forth on this invoice.<\/p>"
+        }
+      },
+      "sizes_content": {
+        "type": "sizes_content",
+        "settings": {
+          "women_image": "shopify:\/\/shop_images\/mlfurs_sizeChart_womens_2018final_V2.jpeg",
+          "men_size": "shopify:\/\/shop_images\/preview-lightbox-mlfurs_sizeChart_mens_2018final_update.jpg",
+          "glove_size": "shopify:\/\/shop_images\/HESTRA_SizeChart.jpeg"
+        }
+      }
+    },
+    "content_for_index": [
+      "hero",
+      "1535420507101",
+      "1535420535068"
+    ]
+  },
+  "presets": {
+    "Default": {
+      "color_text": "#3d4246",
+      "color_body_text": "#69727b",
+      "color_sale_text": "#557B97",
+      "color_borders": "#e8e9eb",
+      "color_button": "#557B97",
+      "color_button_text": "#fff",
+      "color_small_button": "#fff",
+      "color_small_button_text": "#3d4246",
+      "color_text_field": "#fff",
+      "color_text_field_text": "#000",
+      "color_image_overlay_text": "#fff",
+      "color_image_overlay": "#3d4246",
+      "image_overlay_opacity": 40,
+      "color_body_bg": "#fff",
+      "type_header_font": "work_sans_n6",
+      "type_header_base_size": 26,
+      "type_base_font": "work_sans_n4",
+      "type_base_size": 16,
+      "type_bold_product_titles": false,
+      "share_facebook": true,
+      "share_twitter": true,
+      "share_pinterest": true,
+      "sections": {
+        "header": {
+          "type": "header",
+          "settings": {}
+        },
+        "hero": {
+          "type": "hero",
+          "settings": {}
+        },
+        "footer": {
+          "type": "footer",
+          "settings": {}
+        }
+      },
+      "content_for_index": [
+        "hero"
+      ]
+    },
+    "Light": {
+      "color_text": "#162950",
+      "color_body_text": "#6d6d6d",
+      "color_sale_text": "#DA2F0C",
+      "color_borders": "#e4e4e4",
+      "color_button": "#DA2F0C",
+      "color_button_text": "#ffffff",
+      "color_small_button": "#eaeaea",
+      "color_small_button_text": "#162950",
+      "color_text_field": "#ffffff",
+      "color_text_field_text": "#162950",
+      "color_image_overlay_text": "#ffffff",
+      "color_image_overlay": "#3d3d3d",
+      "image_overlay_opacity": 40,
+      "color_body_bg": "#f8f8f8",
+      "type_header_font": "muli_n6",
+      "type_header_base_size": 26,
+      "type_base_font": "muli_n4",
+      "type_base_size": 18,
+      "type_bold_product_titles": true,
+      "share_facebook": true,
+      "share_twitter": true,
+      "share_pinterest": true,
+      "social_twitter_link": "",
+      "social_facebook_link": "",
+      "social_pinterest_link": "",
+      "social_instagram_link": "",
+      "social_tumblr_link": "",
+      "social_snapchat_link": "",
+      "social_youtube_link": "",
+      "social_vimeo_link": "",
+      "favicon": "",
+      "checkout_header_image": "",
+      "checkout_logo_image": "",
+      "checkout_logo_position": "left",
+      "checkout_logo_size": "small",
+      "checkout_body_background_image": "",
+      "checkout_body_background_color": "#ffffff",
+      "checkout_input_background_color_mode": "white",
+      "checkout_sidebar_background_image": "",
+      "checkout_sidebar_background_color": "#e8f3f6",
+      "checkout_heading_font": "Roboto",
+      "checkout_body_font": "Source Sans Pro",
+      "checkout_accent_color": "#1990c6",
+      "checkout_button_color": "#23314e",
+      "checkout_error_color": "#ff6d6d",
+      "sections": {
+        "header": {
+          "type": "header",
+          "settings": {
+            "logo": "",
+            "main_linklist": "main-menu"
+          }
+        },
+        "hero": {
+          "type": "hero",
+          "settings": {}
+        },
+        "footer": {
+          "type": "footer",
+          "settings": {}
+        }
+      },
+      "content_for_index": [
+        "hero"
+      ]
+    }
+  }
+}
